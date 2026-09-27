@@ -55,7 +55,7 @@ export default function Home() {
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-top sm:object-[top_center] opacity-40 sm:opacity-55 lg:opacity-75"
+              className="object-cover object-top sm:object-[top_center] opacity-55 sm:opacity-75 lg:opacity-90"
             />
             {/* Directional blend gradients around the founder image */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#07090e] via-[#07090e]/60 to-transparent lg:via-[#07090e]/30" />
