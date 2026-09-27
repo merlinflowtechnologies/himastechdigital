@@ -39,39 +39,38 @@ export function Navbar() {
   }, []);
 
   const beforeServicesLinks = [
-    { name: "Real Estate", href: "/#real-estate" },
+    { name: "★ Real Estate", href: "/real-estate", isFlagship: true },
   ];
 
   const afterServicesLinks = [
+    { name: "Training", href: "/training", isSpecial: false },
     { name: "AI Marketing", href: "/#ai-marketing" },
-    { name: "Portfolio", href: "/#portfolio" },
-    { name: "Training", href: "/#training" },
-    { name: "Testimonials", href: "/#testimonials" },
-    { name: "About", href: "/#about" },
     { name: "Merlinflow Tech", href: "/merlinflow", isSpecial: true },
   ];
 
   const moreLinks = [
+    { name: "Case Studies & Portfolio", href: "/#portfolio", desc: "Real estate & brand growth results" },
     { name: "Live Dashboard", href: "/#dashboard", desc: "Real campaign metrics & KPIs" },
+    { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & photos" },
     { name: "Who We Help", href: "/#who-we-help", desc: "8 specialized industry sectors" },
     { name: "6-Step Process", href: "/#process", desc: "Our proven revenue multiplication engine" },
+    { name: "About Founder", href: "/#about", desc: "Kishore Patel & company vision" },
     { name: "FAQ", href: "/#faq", desc: "Frequently asked questions & answers" },
   ];
 
-
-  // Mobile flat list
+  // Mobile list matching user priority
   const allMobileLinks = [
-    { name: "Real Estate Marketing", href: "/#real-estate" },
-    { name: "Services", href: "/#services" },
+    { name: "★ Real Estate Marketing (Flagship)", href: "/real-estate", isFlagship: true },
+    { name: "Services (12 Specialized)", href: "/services" },
+    { name: "Training Academy (Real Estate & Media)", href: "/training", isSpecial: true },
     { name: "AI Marketing", href: "/#ai-marketing" },
+    { name: "Case Studies & Portfolio", href: "/#portfolio" },
     { name: "Live Dashboard", href: "/#dashboard" },
-    { name: "Portfolio", href: "/#portfolio" },
-    { name: "Our Process", href: "/#process" },
-    { name: "Training Academy", href: "/#training" },
-    { name: "Testimonials", href: "/#testimonials" },
-    { name: "Who We Help", href: "/#who-we-help" },
-    { name: "About Founder", href: "/#about" },
     { name: "Merlinflow Tech Alliance", href: "/merlinflow", isSpecial: true },
+    { name: "Client Testimonials", href: "/#testimonials" },
+    { name: "Who We Help", href: "/#who-we-help" },
+    { name: "Our 6-Step Process", href: "/#process" },
+    { name: "About Founder", href: "/#about" },
     { name: "FAQs", href: "/#faq" },
   ];
 
@@ -119,7 +118,11 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-xs font-bold transition-all px-2.5 py-1 rounded-full whitespace-nowrap text-slate-100 hover:text-white hover:bg-white/10"
+                className={`relative text-xs font-black transition-all px-3 py-1 rounded-full whitespace-nowrap ${
+                  link.isFlagship
+                    ? "bg-amber-400/20 text-amber-300 border border-amber-400/50 hover:bg-amber-400/30 hover:text-white shadow-[0_0_15px_rgba(245,158,11,0.25)] flex items-center gap-1"
+                    : "text-slate-100 hover:text-white hover:bg-white/10"
+                }`}
               >
                 <span>{link.name}</span>
               </Link>
@@ -339,13 +342,19 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* Mobile Real Estate Link */}
+              {/* Mobile Real Estate Link - Flagship #1 */}
               <Link
-                href="/#real-estate"
-                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
+                href="/real-estate"
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-black transition-all bg-amber-400/15 border border-amber-400/40 text-amber-300 hover:bg-amber-400/25 shadow-xs"
                 onClick={() => setIsOpen(false)}
               >
-                Real Estate Marketing
+                <div className="flex items-center gap-2">
+                  <span className="text-amber-400">★</span>
+                  <span>Real Estate Marketing</span>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 px-2 py-0.5 rounded-md">
+                  Flagship
+                </span>
               </Link>
 
               {/* Mobile Services Accordion (12 Services) */}
@@ -396,6 +405,18 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
 
+              {/* Mobile Training Academy Link - #2 Priority */}
+              <Link
+                href="/training"
+                className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5 border border-white/10 glass-card"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Training Academy (Real Estate &amp; Media)</span>
+                <span className="text-[10px] font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-400/40 px-2 py-0.5 rounded-md">
+                  5 Tracks
+                </span>
+              </Link>
+
               {/* Other Mobile Links */}
               <Link
                 href="/#ai-marketing"
@@ -405,6 +426,13 @@ export function Navbar() {
                 AI Marketing
               </Link>
               <Link
+                href="/#portfolio"
+                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Case Studies &amp; Portfolio
+              </Link>
+              <Link
                 href="/#dashboard"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
@@ -412,25 +440,11 @@ export function Navbar() {
                 Live Dashboard
               </Link>
               <Link
-                href="/#portfolio"
-                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
-              >
-                Portfolio
-              </Link>
-              <Link
                 href="/#process"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
               >
-                Our Process
-              </Link>
-              <Link
-                href="/#training"
-                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
-              >
-                Training Academy
+                Our 6-Step Process
               </Link>
               <Link
                 href="/#testimonials"

@@ -51,9 +51,9 @@ interface TrainingModule {
 }
 
 export function TrainingSection() {
-  const [activeTab, setActiveTab] = useState<string>("digital-marketing");
+  const [activeTab, setActiveTab] = useState<string>("real-estate-sales");
   const [showBookingModal, setShowBookingModal] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState<string>("Digital Marketing Training");
+  const [selectedProgram, setSelectedProgram] = useState<string>("Real Estate Sales & Marketing Training");
   const [mounted, setMounted] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,7 +64,7 @@ export function TrainingSection() {
     phone: "",
     email: "",
     teamSize: "5 - 15 members",
-    program: "Digital Marketing Training",
+    program: "Real Estate Sales & Marketing Training",
     notes: ""
   });
 
@@ -74,16 +74,58 @@ export function TrainingSection() {
 
   const programs: TrainingModule[] = [
     {
-      id: "digital-marketing",
-      category: "Program 01",
-      title: "Digital Marketing Training",
-      badge: "Core Growth Engine",
-      shortDesc: "Equip your marketing department with cutting-edge media buying skills, server-side CAPI telemetry, and repeatable lead acquisition funnels.",
-      icon: Target,
+      id: "real-estate-sales",
+      category: "Program 01 • Flagship",
+      title: "Real Estate Sales & Marketing Training",
+      badge: "★ Flagship Core Track",
+      shortDesc: "Master the complete real estate growth engine: HNI buyer targeting, Meta/Google ad funnels for gated communities & plots, WhatsApp 24/7 site-visit booking, and telephonic closing scripts.",
+      icon: Building2,
       accentGradient: "from-amber-500/20 via-amber-500/5 to-transparent",
       borderColor: "border-amber-400/30",
       iconBg: "bg-amber-400/10 text-amber-400 border border-amber-400/20",
       textColor: "text-amber-400",
+      curriculum: [
+        {
+          week: "Module 01",
+          topic: "Speed-to-Lead & Real Estate Buyer Psychology",
+          deliverable: "Sub-5-minute contact cadences and automated WhatsApp nurture sequences for luxury buyers."
+        },
+        {
+          week: "Module 02",
+          topic: "Meta & Google Ads for Luxury Properties & Plots",
+          deliverable: "Setting up Advantage+ campaigns, hyper-local tech park geo-fencing, and NRI investor funnels."
+        },
+        {
+          week: "Module 03",
+          topic: "Telephonic Lead Qualification & Objection Handling",
+          deliverable: "Custom objection handling scripts for budget, location, and approval timelines."
+        },
+        {
+          week: "Module 04",
+          topic: "Site Visit Conversion & High-Ticket Closing Scripts",
+          deliverable: "Experiential property tour playbooks that turn casual visitors into token depositors."
+        }
+      ],
+      keyOutcomes: [
+        "Elevate lead-to-site-visit conversion rates from 4% to 18%+",
+        "Master direct acquisition of luxury villa, apartment, and plot buyers",
+        "Eliminate lead leakage with ironclad CRM follow-up protocols",
+        "Equip sales callers with confidence against tough price negotiations",
+        "Accelerate transaction velocity across luxury villas, plots & flats"
+      ],
+      idealFor: "Real estate builders, developers, channel partners, brokers, site sales managers, and marketing heads."
+    },
+    {
+      id: "digital-marketing",
+      category: "Program 02",
+      title: "Digital Marketing Training",
+      badge: "Core Growth Engine",
+      shortDesc: "Equip your marketing department with cutting-edge media buying skills, server-side CAPI telemetry, and repeatable lead acquisition funnels.",
+      icon: Target,
+      accentGradient: "from-cyan-500/20 via-cyan-500/5 to-transparent",
+      borderColor: "border-cyan-400/30",
+      iconBg: "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20",
+      textColor: "text-cyan-400",
       curriculum: [
         {
           week: "Module 01",
@@ -113,47 +155,6 @@ export function TrainingSection() {
         "Live campaign management with verified attribution metrics"
       ],
       idealFor: "In-house marketing teams, marketing heads, and founders wanting total ad control."
-    },
-    {
-      id: "real-estate-sales",
-      category: "Program 02",
-      title: "Real Estate Sales Training",
-      badge: "High-Ticket Closing",
-      shortDesc: "Master the psychology of selling high-value properties. Transform incoming digital enquiries into confirmed, high-intent site visits and bookings.",
-      icon: Building2,
-      accentGradient: "from-cyan-500/20 via-cyan-500/5 to-transparent",
-      borderColor: "border-cyan-400/30",
-      iconBg: "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20",
-      textColor: "text-cyan-400",
-      curriculum: [
-        {
-          week: "Module 01",
-          topic: "Speed-to-Lead Response Workflows",
-          deliverable: "Sub-5-minute contact cadences and automated WhatsApp nurture sequences."
-        },
-        {
-          week: "Module 02",
-          topic: "Telephonic Lead Qualification Mastery",
-          deliverable: "Custom objection handling scripts for budget, location, and approval timelines."
-        },
-        {
-          week: "Module 03",
-          topic: "Site Visit Conversion & Walk-in Protocols",
-          deliverable: "Experiential property tour playbooks that turn casual visitors into token depositors."
-        },
-        {
-          week: "Module 04",
-          topic: "NRI & High-Ticket Closing Psychology",
-          deliverable: "Virtual presentation frameworks tailored for overseas and HNI property investors."
-        }
-      ],
-      keyOutcomes: [
-        "Elevate lead-to-site-visit conversion rates from 4% to 18%+",
-        "Eliminate lead leakage with ironclad CRM follow-up protocols",
-        "Equip sales callers with confidence against tough price negotiations",
-        "Accelerate transaction velocity across luxury villas, plots & flats"
-      ],
-      idealFor: "Real estate sales teams, tele-callers, site relationship managers, and developers."
     },
     {
       id: "ai-tools",
@@ -311,6 +312,13 @@ export function TrainingSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 flex flex-wrap items-center justify-center gap-4"
           >
+            <Link
+              href="/training"
+              className="px-6 py-3.5 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/40 text-amber-300 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+            >
+              <GraduationCap className="w-4 h-4 text-amber-400" />
+              <span>Explore Training Academy (5 Tracks) →</span>
+            </Link>
             <button
               onClick={() => handleOpenBooking("Corporate Training Session")}
               className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-amber-500/20 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 cursor-pointer uppercase tracking-wider"

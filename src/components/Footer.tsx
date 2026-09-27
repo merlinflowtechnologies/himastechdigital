@@ -36,14 +36,14 @@ export function Footer() {
 
   // Exact Requested Quick Links List
   const quickLinks = [
-    { name: "Home", href: "/#home" },
-    { name: "About", href: "/#about" },
-    { name: "Services", href: "/#services" },
-    { name: "Real Estate Marketing", href: "/#real-estate" },
+    { name: "Home", href: "/" },
+    { name: "★ Real Estate Marketing", href: "/real-estate" },
+    { name: "12 Digital Services", href: "/services" },
+    { name: "Training Academy", href: "/training" },
     { name: "AI Marketing", href: "/#ai-marketing" },
-    { name: "Portfolio", href: "/#portfolio" },
-    { name: "Training", href: "/#training" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Portfolio & Case Studies", href: "/#portfolio" },
+    { name: "About Us", href: "/#about" },
+    { name: "Contact Us", href: "/#contact" },
   ];
 
   return (

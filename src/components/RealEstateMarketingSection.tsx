@@ -17,7 +17,8 @@ import {
   ArrowRight, 
   Sparkles, 
   CheckCircle2, 
-  PhoneCall 
+  PhoneCall,
+  ChevronRight
 } from "lucide-react";
 import Link from "next/link";
 
@@ -189,6 +190,29 @@ export function RealEstateMarketingSection() {
           >
             A physical hoarding only captures who drives past. We turn your real estate development into an omnichannel demand-generation machine that attracts qualified luxury buyers across India and the NRI diaspora.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          >
+            <Link
+              href="/real-estate"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:scale-105 transition-all flex items-center gap-2 shadow-md cursor-pointer"
+            >
+              <span>Explore Dedicated Real Estate Hub</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/training"
+              className="px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 hover:text-white font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+            >
+              <span>Real Estate Sales Training</span>
+              <ChevronRight className="w-4 h-4 text-amber-400" />
+            </Link>
+          </motion.div>
         </div>
 
         {/* 12-Module Bento Grid */}
