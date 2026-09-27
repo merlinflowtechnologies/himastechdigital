@@ -8,14 +8,27 @@ import { X, ZoomIn } from "lucide-react";
 export function FounderGallerySection() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
 
-  // Gallery Photos - Pure imagery without any text overlays or description boxes
+  // Gallery Photos - Pure imagery from user uploads in /gallery/ without any text overlays
   const photos = [
-    { src: "/saik.jpeg", alt: "Gallery Photo 1" },
-    { src: "/realty-hero.jpg", alt: "Gallery Photo 2" },
-    { src: "/luxury-villa.jpg", alt: "Gallery Photo 3" },
-    { src: "/ceo.jpg", alt: "Gallery Photo 4" },
-    { src: "/ai-video-portfolio.jpg", alt: "Gallery Photo 5" },
-    { src: "/branding-portfolio.jpg", alt: "Gallery Photo 6" },
+    { src: "/gallery/img1.jpeg", alt: "Gallery Photo 1" },
+    { src: "/gallery/img2.jpeg", alt: "Gallery Photo 2" },
+    { src: "/gallery/img3.jpeg", alt: "Gallery Photo 3" },
+    { src: "/gallery/img4.jpeg", alt: "Gallery Photo 4" },
+    { src: "/gallery/img5.jpeg", alt: "Gallery Photo 5" },
+    { src: "/gallery/img6.jpeg", alt: "Gallery Photo 6" },
+    { src: "/gallery/img7.jpeg", alt: "Gallery Photo 7" },
+    { src: "/gallery/img8.jpeg", alt: "Gallery Photo 8" },
+    { src: "/gallery/img9.jpeg", alt: "Gallery Photo 9" },
+    { src: "/gallery/img10.jpeg", alt: "Gallery Photo 10" },
+    { src: "/gallery/img11.jpeg", alt: "Gallery Photo 11" },
+    { src: "/gallery/img12.jpeg", alt: "Gallery Photo 12" },
+    { src: "/gallery/img13.jpeg", alt: "Gallery Photo 13" },
+    { src: "/gallery/img14.jpeg", alt: "Gallery Photo 14" },
+    { src: "/gallery/img16.jpeg", alt: "Gallery Photo 15" },
+    { src: "/gallery/img17.jpeg", alt: "Gallery Photo 16" },
+    { src: "/gallery/cimg1.jpeg", alt: "Gallery Photo 17" },
+    { src: "/gallery/cimg2.jpeg", alt: "Gallery Photo 18" },
+    { src: "/gallery/cimg3.jpeg", alt: "Gallery Photo 19" },
   ];
 
   return (

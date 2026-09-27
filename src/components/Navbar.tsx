@@ -50,6 +50,7 @@ export function Navbar() {
 
   const moreLinks = [
     { name: "Founder & Moments Gallery", href: "/#gallery", desc: "Leadership, site visits & workshops" },
+    { name: "Social Media Activity", href: "/#social-activity", desc: "Live Instagram reels & project shoots" },
     { name: "Case Studies & Portfolio", href: "/#portfolio", desc: "Real estate & brand growth results" },
     { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & photos" },
     { name: "Who We Help", href: "/#who-we-help", desc: "8 specialized industry sectors" },
@@ -64,6 +65,7 @@ export function Navbar() {
     { name: "Services (12 Specialized)", href: "/services" },
     { name: "Training Academy (Real Estate & Media)", href: "/training", isSpecial: true },
     { name: "Founder Moments Gallery", href: "/#gallery" },
+    { name: "Social Media Activity", href: "/#social-activity" },
     { name: "AI Marketing", href: "/#ai-marketing" },
     { name: "Case Studies & Portfolio", href: "/#portfolio" },
     { name: "Merlinflow Tech Alliance", href: "/merlinflow", isSpecial: true },
@@ -418,6 +420,20 @@ export function Navbar() {
               </Link>
 
               {/* Other Mobile Links */}
+              <Link
+                href="/#gallery"
+                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Founder &amp; Moments Gallery
+              </Link>
+              <Link
+                href="/#social-activity"
+                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Social Media Activity
+              </Link>
               <Link
                 href="/#ai-marketing"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"

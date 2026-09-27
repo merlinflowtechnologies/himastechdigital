@@ -19,6 +19,7 @@ import { ProcessSection } from "@/components/ProcessSection";
 import { TrainingSection } from "@/components/TrainingSection";
 import { ClientTestimonialsSection } from "@/components/ClientTestimonialsSection";
 import { FounderGallerySection } from "@/components/FounderGallerySection";
+import { SocialMediaActivitySection } from "@/components/SocialMediaActivitySection";
 import { AboutSection } from "@/components/AboutSection";
 import { MerlinflowSection } from "@/components/MerlinflowSection";
 import { FaqSection } from "@/components/FaqSection";
@@ -311,6 +312,9 @@ export default function Home() {
 
       {/* 10. Founder & Agency Moments Photo Gallery */}
       <FounderGallerySection />
+
+      {/* 10.5 Live Social Media Activity • Instagram Reels */}
+      <SocialMediaActivitySection />
 
       {/* 11. About Us & Strategic Vision */}
       <AboutSection />

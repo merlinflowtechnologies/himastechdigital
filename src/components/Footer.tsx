@@ -170,6 +170,15 @@ export function Footer() {
               </li>
               <li>
                 <Link 
+                  href="/#social-activity" 
+                  onClick={(e) => handleScrollTo(e, "/#social-activity")}
+                  className="hover:text-amber-300 transition-colors block py-0.5 text-slate-300"
+                >
+                  Live Social Media Activity
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/#testimonials" 
                   onClick={(e) => handleScrollTo(e, "/#testimonials")}
                   className="hover:text-amber-300 transition-colors block py-0.5"
