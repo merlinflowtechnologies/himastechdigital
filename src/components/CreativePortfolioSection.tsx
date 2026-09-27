@@ -112,57 +112,57 @@ export function CreativePortfolioSection() {
           })}
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with Compact Cards */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12"
         >
           <AnimatePresence>
             {filteredProjects.map((project, idx) => (
               <motion.div
                 key={project.slug}
                 layout
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                transition={{ duration: 0.35, delay: idx * 0.05 }}
-                whileHover={{ y: -6 }}
-                className="glass-card glass-card-hover rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)] transition-all duration-300 flex flex-col justify-between group"
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ duration: 0.3, delay: idx * 0.04 }}
+                whileHover={{ y: -4 }}
+                className="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Project Image Frame */}
-                  <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-slate-900 border-b border-white/10">
+                  {/* Compact Project Image Frame */}
+                  <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-900 border-b border-white/10">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-black/25 to-transparent" />
 
                     {/* Category Pill Tag */}
-                    <div className="absolute top-3.5 left-3.5 z-10">
-                      <span className="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-amber-400 border border-amber-400/30 text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+                    <div className="absolute top-2.5 left-2.5 z-10">
+                      <span className="px-2.5 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md text-amber-400 border border-amber-400/30 text-[9px] font-black uppercase tracking-wider flex items-center gap-1 shadow-md">
                         <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                         {project.categoryLabel}
                       </span>
                     </div>
 
                     {/* Primary Metric Badge */}
-                    <div className="absolute bottom-3 right-3 z-10">
-                      <span className="px-3 py-1 rounded-xl bg-black/85 backdrop-blur-md text-white border border-white/20 text-xs font-black flex items-center gap-1.5 shadow-lg">
-                        <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+                    <div className="absolute bottom-2.5 right-2.5 z-10">
+                      <span className="px-2.5 py-0.5 rounded-lg bg-black/85 backdrop-blur-md text-white border border-white/20 text-[11px] font-black flex items-center gap-1 shadow-md">
+                        <TrendingUp className="w-3 h-3 text-emerald-400" />
                         <span>{project.metrics[0]?.value}</span>
                       </span>
                     </div>
                   </div>
 
-                  {/* Project Details Content */}
-                  <div className="p-5 sm:p-6">
+                  {/* Compact Project Details Content */}
+                  <div className="p-4 sm:p-4.5">
                     {/* Client & Timeline */}
-                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-2">
-                      <span className="font-semibold text-slate-300 truncate max-w-[180px]">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1.5">
+                      <span className="font-semibold text-slate-300 truncate max-w-[170px]">
                         {project.client}
                       </span>
                       <span className="text-[10px] text-slate-400 font-mono">
@@ -171,29 +171,29 @@ export function CreativePortfolioSection() {
                     </div>
 
                     {/* Headline */}
-                    <h3 className="text-lg font-black text-white group-hover:text-amber-300 transition-colors leading-snug mb-2.5">
+                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors leading-snug mb-1.5">
                       {project.title}
                     </h3>
 
                     {/* Summary */}
-                    <p className="text-xs text-slate-300 leading-relaxed font-normal mb-4 line-clamp-2">
+                    <p className="text-[11px] text-slate-300 leading-relaxed font-normal mb-3 line-clamp-2">
                       {project.summary}
                     </p>
 
                     {/* 2-Metric Highlight Grid */}
-                    <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/10 mb-4">
+                    <div className="grid grid-cols-2 gap-1.5 pt-2.5 border-t border-white/10 mb-3">
                       {project.metrics.slice(0, 2).map((m, mIdx) => (
-                        <div key={mIdx} className="p-2.5 rounded-xl glass-subcard">
-                          <div className="text-[10px] text-slate-400 font-semibold truncate">{m.label}</div>
-                          <div className="text-sm font-black text-amber-300">{m.value}</div>
+                        <div key={mIdx} className="p-2 rounded-lg glass-subcard">
+                          <div className="text-[9px] text-slate-400 font-semibold truncate">{m.label}</div>
+                          <div className="text-xs sm:text-sm font-black text-amber-300">{m.value}</div>
                         </div>
                       ))}
                     </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1">
                       {project.tags.slice(0, 3).map((tag, tIdx) => (
-                        <span key={tIdx} className="text-[10px] font-medium text-slate-400 glass-subcard px-2 py-0.5 rounded-md">
+                        <span key={tIdx} className="text-[9px] font-medium text-slate-400 glass-subcard px-1.5 py-0.5 rounded">
                           {tag}
                         </span>
                       ))}
@@ -202,13 +202,13 @@ export function CreativePortfolioSection() {
                 </div>
 
                 {/* Footer Action: Dedicated Link to Case Study Page */}
-                <div className="p-5 sm:p-6 pt-0">
+                <div className="p-4 sm:p-4.5 pt-0">
                   <Link
                     href={`/case-studies/${project.slug}`}
-                    className="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-amber-400 text-slate-200 hover:text-slate-950 font-black text-xs uppercase tracking-wider transition-all duration-300 border border-white/10 hover:border-amber-400 flex items-center justify-between group/btn shadow-xs"
+                    className="w-full py-2.5 px-3 rounded-lg bg-white/5 hover:bg-amber-400 text-slate-200 hover:text-slate-950 font-bold text-[11px] uppercase tracking-wider transition-all duration-300 border border-white/10 hover:border-amber-400 flex items-center justify-between group/btn shadow-xs"
                   >
                     <span>Read Full Case Study</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
 
