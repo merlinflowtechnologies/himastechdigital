@@ -18,10 +18,10 @@ export function MobileBottomCta() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-400"></span>
           </span>
-          READY TO GROW?
+          GROWTH DESK ONLINE
         </span>
         <span className="text-slate-300 font-medium truncate max-w-[200px] text-[9.5px]">
-          Let&apos;s build your digital presence
+          Free Real Estate &amp; Marketing Consultation
         </span>
       </div>
 

@@ -22,7 +22,6 @@ import { ClientTestimonialsSection } from "@/components/ClientTestimonialsSectio
 import { AboutSection } from "@/components/AboutSection";
 import { MerlinflowSection } from "@/components/MerlinflowSection";
 import { FaqSection } from "@/components/FaqSection";
-import { PowerfulCtaSection } from "@/components/PowerfulCtaSection";
 import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
@@ -321,9 +320,6 @@ export default function Home() {
 
       {/* 13. Frequently Asked Questions */}
       <FaqSection />
-
-      {/* 13.5 Powerful Conversion CTA Banner */}
-      <PowerfulCtaSection />
 
       {/* 14. Contact & Free Marketing Audit Consultation */}
       <ContactSection />
