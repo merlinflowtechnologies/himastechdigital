@@ -5,18 +5,12 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Camera, 
-  Sparkles, 
   MapPin, 
   Calendar, 
-  Award, 
-  Building2, 
-  GraduationCap, 
-  Users, 
   Maximize2, 
   X,
   ArrowRight
 } from "lucide-react";
-import Link from "next/link";
 
 interface GalleryPhoto {
   id: string;
@@ -171,7 +165,7 @@ export function FounderGallerySection() {
         </div>
 
         {/* Gallery Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-4">
           <AnimatePresence mode="popLayout">
             {filteredPhotos.map((photo, idx) => (
               <motion.div
@@ -246,30 +240,6 @@ export function FounderGallerySection() {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
-
-        {/* User Photo Upload Prompt Helper Box */}
-        <div className="p-5 sm:p-6 rounded-2xl glass-subcard border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-400/15 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
-              <Camera className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-white">
-                Want to add more of your photos to this gallery?
-              </h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">
-                Simply place your image files in the <code className="text-amber-300 font-mono">public/</code> directory and add a tile entry in <code className="text-cyan-300 font-mono">FounderGallerySection.tsx</code>.
-              </p>
-            </div>
-          </div>
-
-          <Link
-            href="/#contact"
-            className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white font-bold text-xs uppercase tracking-wider transition-all shrink-0 cursor-pointer"
-          >
-            Connect With Kishore Patel
-          </Link>
         </div>
 
       </div>
