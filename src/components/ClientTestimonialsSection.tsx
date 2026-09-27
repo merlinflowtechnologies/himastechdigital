@@ -64,16 +64,6 @@ export function ClientTestimonialsSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 text-xs font-bold tracking-wider uppercase mb-4 shadow-sm"
-          >
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>100% Genuine & Documented Client Endorsements</span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

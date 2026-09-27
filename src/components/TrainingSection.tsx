@@ -13,11 +13,9 @@ import {
   Sparkles, 
   CheckCircle2, 
   ArrowRight, 
-  PhoneCall, 
   MessageCircle, 
   Calendar, 
   ShieldCheck, 
-  Award, 
   Clock, 
   Zap, 
   TrendingUp, 
@@ -518,45 +516,6 @@ export function TrainingSection() {
             </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Lead Trainer & Methodology Credentials Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl glass-card border border-amber-400/30 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
-              <Award className="w-8 h-8" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-0.5">
-                Executive Trainer & Director
-              </div>
-              <h4 className="text-lg sm:text-xl font-black text-white">
-                Led by Kishore Patel
-              </h4>
-              <p className="text-xs text-slate-300 font-medium">
-                Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist • 12+ Years Experience • 5,000+ Professionals Mentored
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-end">
-            <button
-              onClick={() => handleOpenBooking("Custom Corporate Training")}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm hover:scale-105 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-amber-500/20 uppercase tracking-wider"
-            >
-              <span>BOOK A TRAINING SESSION</span>
-              <ArrowRight className="w-4 h-4 text-slate-950" />
-            </button>
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20discuss%20training%20for%20our%20sales%20and%20marketing%20team."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
-              <span>Call / WhatsApp</span>
-            </a>
-          </div>
-        </div>
 
       </div>
 
