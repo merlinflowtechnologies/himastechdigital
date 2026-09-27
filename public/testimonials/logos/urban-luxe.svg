@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <rect width="240" height="60" rx="10" fill="#1A111E" fill-opacity="0.8"/>
+  <path d="M20 20V34C20 38 24 42 28 42C32 42 36 38 36 34V20H32V34C32 36 30 38 28 38C26 38 24 36 24 34V20H20Z" fill="#C084FC"/>
+  <line x1="18" y1="18" x2="38" y2="18" stroke="#E879F9" stroke-width="2"/>
+  <text x="48" y="32" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="14" font-weight="900" letter-spacing="2">URBAN LUXE</text>
+  <text x="48" y="44" fill="#E879F9" font-family="system-ui, sans-serif" font-size="8.5" font-weight="600" letter-spacing="2">DECOR &amp; LIVING</text>
+</svg>

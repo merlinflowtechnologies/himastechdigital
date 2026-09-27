@@ -35,7 +35,7 @@ interface ChatMessage {
 
 const MASTER_HIMASTECH_SUGGESTIONS: string[] = [
   // CEO & Company
-  "🏢 Who is Founder & CEO Adduri Sai Kishore?",
+  "🏢 Who is Kishore Patel (Founder & Lead Strategist)?",
   "🎯 What is Himastech's core revenue philosophy?",
   "📍 Where is your operational hub in Nagole, Hyderabad?",
   "🚀 What makes Himastech different from other agencies?",
@@ -86,7 +86,7 @@ const MASTER_HIMASTECH_SUGGESTIONS: string[] = [
   "🍽️ How does Restaurant OS handle digital QR & KOT sync?",
 
   // Contact & Social Proof
-  "📞 What is CEO Adduri Sai Kishore's direct WhatsApp?",
+  "📞 What is Kishore Patel's direct WhatsApp?",
   "⚡ How do I book a 30-minute growth strategy call?",
   "⭐ Where can I read verified client feedback and reviews?",
   "💬 How do we get started working together?"
@@ -237,14 +237,14 @@ export function AIChatbot() {
 
     // REJECTION RESPONSE HELPER FOR UNRELATED QUERIES
     const rejectionResponse = {
-      text: "⚠️ **Query Rejected: Outside Company Scope**\n\nI am the official AI Strategist for **Himastech** and **Merlinflow Technologies**. I can only assist with inquiries directly related to our company, digital marketing services, training academy, leadership, and enterprise software.\n\n👉 **Please enter a query related to our company.**\n\n*Examples of questions you can ask:*\n• **CEO & Leadership:** Who is the CEO of Himastech? (*Adduri Sai Kishore*)\n• **Marketing Services:** Meta & Google Ads, AI Search (GEO), Funnels & CRO\n• **Training Academy:** 5 Career Tracks, Roadmaps & Placement\n• **Free Growth Audit:** Complimentary 48-Hour Ad Stack Diagnostic\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n• **Contact Us:** Official WhatsApp (+91 6304989071) or Schedule a Strategy Call",
+      text: "⚠️ **Query Rejected: Outside Company Scope**\n\nI am the official AI Strategist for **Himastech** and **Merlinflow Technologies**. I can only assist with inquiries directly related to our company, digital marketing services, training academy, leadership, and enterprise software.\n\n👉 **Please enter a query related to our company.**\n\n*Examples of questions you can ask:*\n• **CEO & Leadership:** Who is the founder of Himastech? (*Kishore Patel*)\n• **Marketing Services:** Meta & Google Ads, AI Search (GEO), Funnels & CRO\n• **Training Academy:** 5 Career Tracks, Roadmaps & Placement\n• **Free Growth Audit:** Complimentary 48-Hour Ad Stack Diagnostic\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n• **Contact Us:** Official WhatsApp (+91 6304989071) or Schedule a Strategy Call",
       cta: { 
         label: "Chat on WhatsApp (+91 6304989071)", 
         href: "https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20have%20an%20inquiry%20regarding%20your%20company%20and%20services", 
         isExternal: true 
       },
       options: [
-        "🏢 Who is the CEO of Himastech?",
+        "🏢 Who is Kishore Patel?",
         "💼 What services do you offer?",
         "🎓 Tell me about Training Academy",
         "📊 Claim Free 48-Hour Audit"
@@ -273,7 +273,7 @@ export function AIChatbot() {
     const hasUnrelatedWord = words.some(w => explicitUnrelatedWords.includes(w));
     const hasBusinessContext =
       q.includes("himastech") || q.includes("himas tech") || q.includes("merlinflow") ||
-      q.includes("adduri") || q.includes("sai kishore") || q.includes("kishore") ||
+      q.includes("patel") || q.includes("kishore") ||
       q.includes("marketing") || q.includes("ad") || q.includes("ads") || q.includes("agency") ||
       q.includes("business") || q.includes("sales") || q.includes("revenue") || q.includes("leads") ||
       q.includes("roas") || q.includes("audit") || q.includes("training") || q.includes("course");
@@ -302,7 +302,7 @@ export function AIChatbot() {
       q.includes("reach out") ||
       hasPhrase("6304989071", "8374373753", "8247716878", "desk 1", "desk 2");
 
-    // 1. Contact Details / Phone / WhatsApp / Email / Address / Location (Handles "Contact Adduri Sai Kishore's Team")
+    // 1. Contact Details / Phone / WhatsApp / Email / Address / Location (Handles "Contact Kishore Patel's Team")
     if (isContactIntent) {
       if (isMerlinflow || q.includes("merlinflow") || q.includes("erp") || q.includes("desk 1") || q.includes("desk 2")) {
         return {
@@ -320,25 +320,26 @@ export function AIChatbot() {
         };
       }
 
-      const mentionsKishore = q.includes("adduri") || q.includes("sai kishore") || q.includes("kishore") || q.includes("ceo");
+      const mentionsKishore = q.includes("patel") || q.includes("kishore") || q.includes("ceo");
 
       return {
         text: mentionsKishore
-          ? "📞 **Contact Adduri Sai Kishore & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & CEO Adduri Sai Kishore and our senior growth directors are available on WhatsApp for direct campaign roadmaps, ad account audits, and enterprise partnerships."
-          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with CEO Adduri Sai Kishore's growth team for marketing audits, campaign consulting, and academy enrollments.",
+          ? "📞 **Contact Kishore Patel & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & Lead Strategist Kishore Patel and our senior growth directors are available on WhatsApp for direct campaign roadmaps, ad account audits, and enterprise partnerships."
+          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with Kishore Patel's growth team for marketing audits, campaign consulting, and academy enrollments.",
         cta: { 
           label: "Chat on WhatsApp (+91 6304989071)", 
-          href: "https://wa.me/916304989071?text=Hi%20Adduri%20Sai%20Kishore%20and%20Himastech%20Team%2C%20I%20would%20like%20to%20discuss%20our%20growth%20strategy", 
+          href: "https://wa.me/916304989071?text=Hi%20Kishore%20Patel%20and%20Himastech%20Team%2C%20I%20would%20like%20to%20discuss%20our%20growth%20strategy", 
           isExternal: true 
         },
         options: ["📊 Request Free 48-Hr Audit", "💼 What services do you offer?", "🎓 Explore Training Academy"]
       };
     }
 
-    // 2. CEO / Founder / Adduri Sai Kishore / Leadership Biography
+    // 2. Kishore Patel / Founder / Leadership Biography
     if (
-      hasPhrase("adduri", "sai kishore", "adduri sai kishore") ||
-      hasWord("ceo", "founder") ||
+      hasPhrase("kishore", "patel", "kishore patel") ||
+      hasWord("ceo", "founder", "trainer") ||
+      q.includes("who is kishore") ||
       q.includes("who is the ceo") ||
       q.includes("who is your ceo") ||
       q.includes("who is the founder") ||
@@ -351,12 +352,12 @@ export function AIChatbot() {
       q.includes("executive team")
     ) {
       return {
-        text: "🏢 **Himastech Executive Leadership:**\n\n• **Adduri Sai Kishore** — Chief Executive Officer (CEO) & Founder\n\nAdduri Sai Kishore is the visionary Founder & CEO of Himastech. He leads the agency's data-driven digital marketing operations, high-converting revenue funnels, and enterprise client growth.\n\nUnder his leadership, Himastech operates in strategic technology collaboration with **Merlinflow Technologies Private Limited** to deliver cutting-edge ad tech, AI search optimization (GEO), and enterprise-grade scalability.",
+        text: "🏢 **About Kishore Patel — Founder & Lead Growth Strategist:**\n\n• **Title:** Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist\n\n*“Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.”*\n\n**Experience Highlights:**\n• **12+ Years Marketing Experience:** Veteran growth architect across Meta, Google Ads, and modern acquisition funnels.\n• **Real Estate Marketing Expertise:** ₹120Cr+ inventory moved across luxury villas, open plots, and NRI buyer networks.\n• **Digital Marketing Training & Strategy:** Mentored over 5,000+ professionals, founders, and students.\n• **Sales Team Development:** Designing high-converting sales pipelines, speed-to-lead cadences, and closing scripts.",
         cta: { label: "Learn More in About Section", href: "#about" },
         options: [
           "💼 What services does Himastech offer?",
           "📊 Request Free 48-Hr Growth Audit",
-          "📞 Contact Adduri Sai Kishore's Team"
+          "📞 Contact Kishore Patel's Team"
         ]
       };
     }
@@ -371,10 +372,10 @@ export function AIChatbot() {
       q.includes("hows today")
     ) {
       return {
-        text: "😊 **My day has been wonderful, thank you for asking!**\n\nI've been busy helping business owners audit their ad funnels and sharing data-driven growth strategies engineered by Founder & CEO **Adduri Sai Kishore**.\n\nHow has your day been going so far? Tell me a little about yourself or what you're working on today!",
+        text: "😊 **My day has been wonderful, thank you for asking!**\n\nI've been busy helping business owners audit their ad funnels and sharing data-driven growth strategies engineered by Founder & Lead Strategist **Kishore Patel**.\n\nHow has your day been going so far? Tell me a little about yourself or what you're working on today!",
         cta: { label: "Explore Our Growth Services", href: "#services" },
         options: [
-          "🏢 Who is the CEO of Himastech?",
+          "🏢 Who is Kishore Patel?",
           "💼 What services do you offer?",
           "📊 Claim Free 48-Hour Audit"
         ]
@@ -417,10 +418,10 @@ export function AIChatbot() {
       q.includes("tell me something")
     ) {
       return {
-        text: "💬 **I'd love to chat!**\n\nWe can talk about anything from performance marketing strategies, how our Founder & CEO **Adduri Sai Kishore** scales brands to 4.8x ROAS, or career roadmaps in our Training Academy.\n\nWhat's on your mind today?",
+        text: "💬 **I'd love to chat!**\n\nWe can talk about anything from performance marketing strategies, how our Founder **Kishore Patel** scales real estate and business brands, or career roadmaps in our Training Academy.\n\nWhat's on your mind today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
-          "🏢 Who is the CEO of Himastech?",
+          "🏢 Who is Kishore Patel?",
           "💼 What services do you offer?",
           "📊 Request Free 48-Hr Audit",
           "📞 WhatsApp Strategy Desk"
@@ -443,10 +444,10 @@ export function AIChatbot() {
       q.includes("how have you been")
     ) {
       return {
-        text: "😊 **I'm doing fantastic, thank you!**\n\nI am here 24/7 assisting business founders, CMOs, and marketers with data-driven growth strategies, algorithmic ad funnels, and enterprise software under Founder & CEO **Adduri Sai Kishore**.\n\nHow are you doing today? Tell me a little about your business or what growth goals you have in mind!",
+        text: "😊 **I'm doing fantastic, thank you!**\n\nI am here 24/7 assisting business founders, CMOs, and real estate developers with data-driven growth strategies, high-ticket funnels, and sales systems under Founder & Lead Strategist **Kishore Patel**.\n\nHow are you doing today? Tell me a little about your business or what growth goals you have in mind!",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
-          "🏢 Who is the CEO of Himastech?",
+          "🏢 Who is Kishore Patel?",
           "💼 What services do you offer?",
           "📊 Request Free 48-Hr Audit",
           "📈 Calculate Projected ROAS"
@@ -463,7 +464,7 @@ export function AIChatbot() {
       q.includes("thank u")
     ) {
       return {
-        text: "🙏 **You're very welcome!**\n\nIt is our absolute pleasure to assist. Whether you need an ad stack audit, higher ROAS on Meta/Google, or industry-grade digital marketing training, CEO Adduri Sai Kishore's team is ready.\n\nLet us know whenever you want to schedule a strategy call or audit!",
+        text: "🙏 **You're very welcome!**\n\nIt is our absolute pleasure to assist. Whether you need an ad stack audit, higher ROAS on Meta/Google, or sales team development, Kishore Patel's team is ready.\n\nLet us know whenever you want to schedule a strategy call or audit!",
         cta: { label: "Schedule Strategy Call", href: "#contact" },
         options: [
           "📊 Request Free 48-Hr Audit",
@@ -484,11 +485,11 @@ export function AIChatbot() {
 
     if (isAcknowledgement) {
       return {
-        text: "👍 **Awesome!**\n\nWhat would you like to explore next? We can perform a deep forensic audit on your ad stack, simulate your projected ROAS, or connect you directly with Adduri Sai Kishore's growth desk.",
-        cta: { label: "Simulate Your ROI", href: "#roi-calculator" },
+        text: "👍 **Awesome!**\n\nWhat would you like to explore next? We can perform a deep forensic audit on your ad stack, review your projected ROAS, or connect you directly with Kishore Patel's growth desk.",
+        cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
           "📊 Claim Free 48-Hour Audit",
-          "💼 Explore 9 Channels",
+          "💼 Explore Services",
           "🎓 View Training Academy",
           "📞 WhatsApp Strategy Desk"
         ]
@@ -535,11 +536,11 @@ export function AIChatbot() {
       q.includes("run ads for")
     ) {
       return {
-        text: "🚀 **Scaling Predictable Revenue is Himastech's Core Specialty:**\n\nUnder Founder & CEO **Adduri Sai Kishore**, we turn digital marketing into a mathematical growth engine:\n\n• **Algorithmic Meta & Google Ads**: Engineered for sustainable scale, delivering an average **4.8x ROAS**.\n• **Bulletproof CAPI Tracking**: Server-side attribution to recover lost iOS & Android conversions.\n• **High-Converting Creative Sprints**: Direct-response UGC video hooks, angle testing, and sub-second landing page CRO.\n\nTell me about your business model (e.g. E-Commerce, Real Estate, Healthcare, B2B SaaS, or Local Services), and we can recommend a tailored scaling blueprint!",
+        text: "🚀 **Scaling Predictable Revenue is Himastech's Core Specialty:**\n\nUnder Founder & Lead Strategist **Kishore Patel**, we turn digital marketing into a mathematical growth engine:\n\n• **Algorithmic Meta & Google Ads**: Engineered for sustainable scale, delivering an average **4.8x ROAS**.\n• **Bulletproof CAPI Tracking**: Server-side attribution to recover lost iOS & Android conversions.\n• **High-Converting Creative Sprints**: Direct-response UGC video hooks, angle testing, and sub-second landing page CRO.\n\nTell me about your business model (e.g. Real Estate, Luxury Living, E-Commerce, Healthcare, or B2B), and we can recommend a tailored scaling blueprint!",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
           "📊 Request Free 48-Hr Audit",
-          "📈 Simulate Your ROI",
+          "💼 Explore Our Services",
           "📞 WhatsApp Strategy Desk"
         ]
       };
@@ -559,7 +560,7 @@ export function AIChatbot() {
       q.includes("onboarding")
     ) {
       return {
-        text: "🚀 **How to Get Started with Himastech:**\n\nPartnering with us is seamless, transparent, and completely risk-free:\n\n1️⃣ **Step 1 — Free 48-Hour Growth Audit**: Our senior media buyers run a deep forensic scan on your ad stack under mutual NDA.\n2️⃣ **Step 2 — Strategic Roadmap**: CEO Adduri Sai Kishore and our growth directors present tailored ROAS projections and creative angles.\n3️⃣ **Step 3 — 14-Day Sprint Launch**: We deploy tracking fixes, dynamic creatives, and algorithmic campaigns.\n\nFlexible month-to-month contracts with zero long-term lock-ins. You can also chat directly with CEO Adduri Sai Kishore's desk on WhatsApp at **+91 6304989071**.",
+        text: "🚀 **How to Get Started with Himastech:**\n\nPartnering with us is seamless, transparent, and completely risk-free:\n\n1️⃣ **Step 1 — Free 48-Hour Growth Audit**: Our senior media buyers run a deep forensic scan on your ad stack under mutual NDA.\n2️⃣ **Step 2 — Strategic Roadmap**: Kishore Patel and our growth directors present tailored ROAS projections and creative angles.\n3️⃣ **Step 3 — 14-Day Sprint Launch**: We deploy tracking fixes, dynamic creatives, and algorithmic campaigns.\n\nFlexible month-to-month contracts with zero long-term lock-ins. You can also chat directly with Kishore Patel's desk on WhatsApp at **+91 6304989071**.",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
           "📊 Claim Free 48-Hour Audit",
@@ -581,12 +582,12 @@ export function AIChatbot() {
       q.includes("great job")
     ) {
       return {
-        text: "✨ **Thank you so much!**\n\nOur entire team and Founder & CEO **Adduri Sai Kishore** are committed to delivering the absolute highest standard in performance marketing, transparent analytics, and enterprise software.\n\nWe would love to bring that same high standard to your brand's growth! How can we assist you today?",
+        text: "✨ **Thank you so much!**\n\nOur entire team and Founder **Kishore Patel** are committed to delivering the absolute highest standard in performance marketing, transparent analytics, and enterprise software.\n\nWe would love to bring that same high standard to your brand's growth! How can we assist you today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
           "📊 Claim Free 48-Hour Audit",
           "💼 What services do you offer?",
-          "🏢 Who is the CEO of Himastech?"
+          "🏢 Who is Kishore Patel?"
         ]
       };
     }
@@ -608,10 +609,10 @@ export function AIChatbot() {
       return {
         text: isMerlinflow
           ? "👋 Welcome to **Merlinflow Technologies**! I am your Enterprise Software Assistant. Ask me about our Cloud ERP suites (School IMS, Medical ERP, Restaurant OS, E-Commerce), schedule a 1-on-1 live demo, or connect with our solutions architects."
-          : "👋 Hello! Welcome to **Himastech**. I am your AI Growth & Strategy Assistant.\n\nI can assist you with:\n• **CEO & Leadership:** Adduri Sai Kishore (Founder & CEO)\n• **Services:** Meta & Google Ads, AI Search (GEO), CRO & Funnels (4.8x avg ROAS)\n• **Training Academy:** 5 Career Tracks & Placement\n• **Free 48-Hr Growth Audit:** Forensic diagnostic of your ad stack\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n\nHow can we help your business scale today?",
+          : "👋 Hello! Welcome to **Himastech**. I am your AI Growth & Strategy Assistant.\n\nI can assist you with:\n• **Leadership & Founder:** Kishore Patel (Trainer | Sales Strategist | Real Estate Specialist)\n• **Services:** Real Estate Marketing, Meta & Google Ads, AI Videos, Funnels & CRO\n• **Training Academy:** 5 Career Tracks & Placement\n• **Free 48-Hr Growth Audit:** Forensic diagnostic of your ad stack\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n\nHow can we help your business scale today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
-          "🏢 Who is the CEO of Himastech?",
+          "🏢 Who is Kishore Patel?",
           "💼 What services do you offer?",
           "📊 Request Free 48-Hr Audit",
           "🎓 Explore Training Academy"
@@ -638,9 +639,9 @@ export function AIChatbot() {
       q.includes("tell me about yourself")
     ) {
       return {
-        text: "🏢 **About Himastech:**\n\n• **Founded By:** Adduri Sai Kishore (CEO & Founder)\n• **Core Philosophy:** Digital marketing should be a predictable revenue generation engine, not a costly gamble.\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, Creative Science, Uncompromising Integrity (100% ad account ownership), and Compound Growth.",
+        text: "🏢 **About Himastech:**\n\n• **Founded By:** Kishore Patel (Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist)\n• **Core Philosophy:** Helping businesses understand digital marketing, generate opportunities, and build stronger sales systems.\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, Creative Science, Uncompromising Integrity (100% ad account ownership), and Compound Growth.",
         cta: { label: "Read Our Full Story", href: "#about" },
-        options: ["🏢 Who is the CEO?", "💼 9-Channel Marketing Arsenal", "📊 Claim Free 48-Hour Audit"]
+        options: ["🏢 Who is Kishore Patel?", "💼 Explore Services", "📊 Claim Free 48-Hour Audit"]
       };
     }
 
@@ -660,7 +661,7 @@ export function AIChatbot() {
       };
     }
 
-    // 6. Services / 9-Channel Marketing Arsenal
+    // 6. Services & Growth Solutions
     if (
       q.includes("service") ||
       q.includes("services") ||
@@ -690,9 +691,9 @@ export function AIChatbot() {
       q.includes("retention marketing")
     ) {
       return {
-        text: "💼 **Himastech 9-Channel Revenue Arsenal:**\n\n1. **Meta Ads (Facebook & Instagram)**: Broad AI targeting, CAPI server attribution & DCT creative testing.\n2. **Google Ads & Performance Max**: High-intent search sculpting, Shopping feed optimization, and YouTube VAC.\n3. **Generative Engine Optimization (GEO)**: Semantic ranking on ChatGPT, Perplexity AI, Claude & Google AI Overviews.\n4. **TikTok & Viral Shorts**: Spark Ads & native UGC creator matrix with 3-second hook formulas.\n5. **Retention & Lifecycle (Klaviyo / WhatsApp / SMS)**: Automated cart recovery, VIP flows, and repeat-buyer nurture.\n6. **CRO & Sub-Second Pages**: Next.js custom landing pages engineered for instant load and high conversion.\n7. **LinkedIn B2B & ABM**: Account-Based Marketing targeting C-suite decision-makers.\n8. **YouTube Direct Response**: High-trust video sales letters (VSLs) and Action Campaigns.\n9. **Programmatic & CTV / OTT**: Connected TV household retargeting and premium digital placements.",
-        cta: { label: "Explore the 9 Channels", href: "#channels" },
-        options: ["⚡ What ROAS can you achieve?", "📊 Claim Free 48-Hr Audit", "🏢 Who is the CEO?"]
+        text: "💼 **Himastech Digital Marketing & Lead Generation Services:**\n\n1. **Meta Ads (Facebook & Instagram)**: High-converting lead generation, custom audiencing & creative testing.\n2. **Google Ads & Performance Max**: High-intent search sculpting, verified inbound buyer leads.\n3. **Generative Engine Optimization (GEO) & SEO**: AI-ready semantic search ranking on Google, ChatGPT & Perplexity.\n4. **Real Estate Marketing Solutions**: Dedicated property campaigns, walk-through videos & site-visit pipelines.\n5. **AI Marketing & Automation**: Automated lead nurturing, WhatsApp CRM integration & instant sales routing.\n6. **Conversion Landing Pages**: Sub-second fast, high-converting digital landing pages.\n7. **Branding & Creative Design**: Premium digital identity, brochures, 3D renderings & social assets.",
+        cta: { label: "Explore Our Services", href: "#services" },
+        options: ["⚡ What ROAS can you achieve?", "📊 Claim Free 48-Hr Audit", "🏢 Who is the Founder?"]
       };
     }
 
@@ -710,8 +711,8 @@ export function AIChatbot() {
     ) {
       return {
         text: "🔍 **Generative Engine Optimization (GEO) & AI Search:**\n\nTraditional keyword SEO is no longer enough. We engineer your brand authority to become the cited recommendation across LLM answer engines:\n• **ChatGPT & Perplexity AI Citations**: Optimizing schema and entity relationships for conversational recommendations.\n• **Google AI Overviews & Gemini Panels**: Structuring content to capture top AI summary boxes.\n• **Sub-Second Core Web Vitals**: Flawless Next.js architecture maximizing LCP, INP, and CLS scores.\n• **Topical Authority Hubs**: In-depth pillar content clusters that dominate search rankings.\n• **Tier-1 Digital PR**: High-authority citations and backlink flywheels.",
-        cta: { label: "Explore SEO & GEO Services", href: "#channels" },
-        options: ["📊 Audit My Website SEO", "💼 Full 9-Channel Arsenal", "📞 Contact Strategy Desk"]
+        cta: { label: "Explore SEO & GEO Services", href: "#services" },
+        options: ["📊 Audit My Website SEO", "💼 Explore All Services", "📞 Contact Strategy Desk"]
       };
     }
 
@@ -738,7 +739,7 @@ export function AIChatbot() {
       return {
         text: "🎓 **Himastech Digital Marketing Academy (5 Elite Career Tracks):**\n\n1️⃣ **Paid Media & ROAS Acceleration** (8 Weeks • ₹8.5 LPA – ₹15 LPA avg salary): Meta CAPI, Google P-Max, live client ad spend.\n2️⃣ **SEO, GEO & AI Search Mastery** (6 Weeks • ₹7.5 LPA – ₹14 LPA avg salary): Core Web Vitals, Schema, ChatGPT & Perplexity indexing.\n3️⃣ **Social Media & Viral Content** (6 Weeks • ₹6.5 LPA – ₹12 LPA avg salary): 3-second hooks, CapCut, UGC creator seeding.\n4️⃣ **Growth Hacking & CRO** (8 Weeks • ₹9.0 LPA – ₹18 LPA avg salary): Sub-second landing pages, Klaviyo/SMS retention, A/B testing.\n5️⃣ **Full-Stack Executive Bootcamp** (12 Weeks • ₹12 LPA – ₹24 LPA avg salary): Complete 360° CMO & growth leadership training.\n\n✨ **Key Benefits:** Interactive curved roadmaps, real-time client ad budgets, 1-on-1 mentorship, and direct placement assistance.",
         cta: { label: "View Academy Roadmaps & Syllabus", href: "#training" },
-        options: ["📞 WhatsApp for Next Cohort Seats", "💼 Agency Services", "🏢 About CEO Adduri Sai Kishore"]
+        options: ["📞 WhatsApp for Next Cohort Seats", "💼 Agency Services", "🏢 About Kishore Patel"]
       };
     }
 
@@ -757,7 +758,7 @@ export function AIChatbot() {
       return {
         text: "📈 **Verified Client Results & Proven ROAS:**\n\n• **Prestige Luxury Estates (Real Estate):** 6.4x ROAS | ₹48Cr+ Inventory Sold\n• **UrbanRise Luxury Villas (Real Estate):** 5.8x ROAS | ₹32Cr Booked\n• **Lumina Glow Skincare (D2C E-Commerce):** 4.2x ROAS | 310% MRR Surge in 90 Days\n• **Aura Minimalist Apparel (Fashion E-Com):** 5.1x ROAS | 420% Revenue Scale\n• **CloudScale DevOps (B2B SaaS):** ₹18M Pipeline Closed | 48% CAC Reduction\n• **NexusFlow CRM (B2B Tech):** ₹24M Enterprise ARR | 3.4x Demo Volume\n\n⭐ **Agency Benchmark:** 4.8x Average ROAS across active client portfolios and a 94%+ client retention rate.",
         cta: { label: "View Detailed Case Studies", href: "#case-studies" },
-        options: ["📊 Claim Free 48-Hour Audit", "💰 How does pricing work?", "⚡ Simulate Projected ROI"]
+        options: ["📊 Claim Free 48-Hour Audit", "💰 How does pricing work?", "📞 WhatsApp Strategy Desk"]
       };
     }
 
@@ -777,7 +778,7 @@ export function AIChatbot() {
       return {
         text: "💰 **Pricing & Engagement Framework:**\n\n• **Performance-Aligned Structure**: Transparent base monthly retainer + performance milestone bonuses when agreed ROAS/revenue targets are surpassed.\n• **Zero Long-Term Lock-Ins**: Flexible month-to-month contracts because we earn our partnership through real revenue.\n• **Minimum Recommended Ad Spend**: Starting at ₹1,00,000 monthly ad spend to ensure statistical significance in algorithmic testing.\n• **Enterprise Proposals**: Custom-tailored multi-channel retainers available for enterprise brands and VC-backed startups.",
         cta: { label: "Request Custom Pricing Proposal", href: "#contact" },
-        options: ["📊 Book Free Account Audit", "📈 Calculate Projected ROAS", "📞 WhatsApp Strategy Desk"]
+        options: ["📊 Book Free Account Audit", "💼 Explore Our Services", "📞 WhatsApp Strategy Desk"]
       };
     }
 
@@ -828,31 +829,31 @@ export function AIChatbot() {
       q.includes("ratings")
     ) {
       return {
-        text: "⭐ **Client & Academy Testimonials:**\n\n• **100% Verified Feedback**: Sourced directly from founders, marketing heads, and academy graduates after administrative review.\n• **Proven Impact**: High praise for transparent ROAS dashboards, zero vanity metrics, and direct access to senior media buyers.\n• **Academy Placements**: Graduates placed in top growth marketing roles with verified portfolio projects.",
-        cta: { label: "Read Verified Client Reviews", href: "#feedback" },
-        options: ["📊 Claim Free 48-Hour Audit", "🎓 View Training Academy", "🏢 Who is the CEO?"]
+        text: "⭐ **Genuine Client Testimonials:**\n\n• **100% Genuine Client Feedback**: Verified reviews from real estate leaders, directors, and business founders across Hyderabad & India.\n• **Proven Impact**: High praise for transparent ROAS dashboards, zero vanity metrics, and direct access to senior media buyers.\n• **Client Relationships**: Long-standing growth marketing partnerships delivering measurable sales results.",
+        cta: { label: "View Client Testimonials", href: "#testimonials" },
+        options: ["📊 Claim Free 48-Hour Audit", "🎓 View Training Academy", "🏢 Who is the Founder?"]
       };
     }
 
-    // 14. ROI Calculator / Simulator
+    // 14. ROI Strategy & Revenue Forecasting
     if (
       q.includes("roi") ||
       q.includes("calculator") ||
       q.includes("simulate")
     ) {
       return {
-        text: "🧮 **Interactive ROI & Revenue Simulator:**\n\nCurious about the revenue potential of scaling your ad spend with Himastech?\n• Use our interactive on-page calculator to model ad spend vs projected revenue.\n• Based on historical performance averages across Real Estate, E-Commerce, B2B SaaS, and Local Services.\n• Get realistic forecasts for CAC, CPA, and blended ROAS before spending a single rupee.",
-        cta: { label: "Launch ROI Calculator", href: "#roi-calculator" },
-        options: ["📊 Request Free 48-Hr Audit", "💼 Explore 9 Channels", "📞 Contact Strategy Desk"]
+        text: "📈 **ROI & Predictable Growth Engineering:**\n\nCurious about the revenue potential of scaling your marketing with Himastech?\n• We engineer custom performance models tailored to your target CAC, CPA, and blended ROAS.\n• Based on historical real campaign averages across Real Estate, B2B, and E-Commerce.\n• Book a complimentary consultation to see an exact mathematical projection for your business.",
+        cta: { label: "Book Free Consultation", href: "#contact" },
+        options: ["📊 Request Free 48-Hr Audit", "💼 Explore Services", "📞 Contact Strategy Desk"]
       };
     }
 
     // 15. NATURAL CONVERSATIONAL ASSISTANCE (For general conversation building & friendly chat)
     return {
-      text: "I hear you! 😊 I'm always happy to chat and help out.\n\nWhether you're looking to scale your brand's revenue, curious about how our Founder & CEO **Adduri Sai Kishore** builds high-converting ad funnels (4.8x avg ROAS), or want to check out our 5-track Training Academy, I'm here for you.\n\nWhat would you like to explore together?",
+      text: "I hear you! 😊 I'm always happy to chat and help out.\n\nWhether you're looking to scale your real estate or business brand, curious about how our Founder **Kishore Patel** builds high-converting ad funnels & sales systems, or want to check out our Training Academy, I'm here for you.\n\nWhat would you like to explore together?",
       cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
       options: [
-        "🏢 Who is the CEO of Himastech?",
+        "🏢 Who is Kishore Patel?",
         "💼 What services do you offer?",
         "📊 Claim Free 48-Hour Audit",
         "📞 WhatsApp Strategy Desk (+91 6304989071)"

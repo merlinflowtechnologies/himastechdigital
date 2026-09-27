@@ -1,1186 +1,754 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
-  CheckCircle2, 
   GraduationCap, 
-  Briefcase, 
-  Award, 
-  Users, 
-  ArrowRight, 
-  Sparkles, 
-  Compass, 
-  Flag, 
   Target, 
-  Search, 
-  Share2, 
+  Building2, 
+  Bot, 
+  Users, 
+  Sparkles, 
+  CheckCircle2, 
+  ArrowRight, 
+  PhoneCall, 
+  MessageCircle, 
+  Calendar, 
+  ShieldCheck, 
+  Award, 
+  Clock, 
+  Zap, 
   TrendingUp, 
-  Crown,
-  Clock,
-  Layers,
-  Zap,
-  IndianRupee,
+  Layers, 
+  X, 
+  UserCheck, 
+  Laptop, 
   ChevronRight,
-  X,
   Send,
-  Phone,
-  Mail,
-  Building,
-  User,
-  ShieldCheck,
-  Calendar
+  Building
 } from "lucide-react";
-import { motion, AnimatePresence, useScroll } from "framer-motion";
 
-interface Milestone {
-  step: string;
-  phase: string;
-  milestone: string;
-  title: string;
-  desc: string;
-  topics: string[];
-  tools: string[];
-}
-
-interface TrainingTrack {
+interface TrainingModule {
   id: string;
+  category: string;
   title: string;
-  shortTitle: string;
-  icon: any;
   badge: string;
-  duration: string;
-  level: string;
-  avgSalary: string;
-  color: string;
-  glowColor: string;
+  shortDesc: string;
+  icon: any;
   accentGradient: string;
   borderColor: string;
+  iconBg: string;
   textColor: string;
-  description: string;
-  milestones: Milestone[];
+  curriculum: {
+    week: string;
+    topic: string;
+    deliverable: string;
+  }[];
+  keyOutcomes: string[];
+  idealFor: string;
 }
 
 export function TrainingSection() {
-  const trainingTracks: TrainingTrack[] = [
-    {
-      id: "performance",
-      title: "Performance Marketing & Paid Ads Acceleration",
-      shortTitle: "Paid Media & ROAS",
-      icon: Target,
-      badge: "Highest Demand Track",
-      duration: "8 Weeks",
-      level: "Beginner to Advanced",
-      avgSalary: "₹8.5 LPA - ₹15 LPA",
-      color: "cyan",
-      glowColor: "rgba(6, 182, 212, 0.4)",
-      accentGradient: "from-cyan-500 via-blue-500 to-indigo-600",
-      borderColor: "border-cyan-500/40",
-      textColor: "text-cyan-400",
-      description: "Master full-funnel media buying across Meta, Google P-Max, TikTok, and YouTube. Learn server-side CAPI telemetry, algorithmic bidding, and managing live ad spend.",
-      milestones: [
-        {
-          step: "01",
-          phase: "Weeks 1-2",
-          milestone: "Telemetry & Attribution Hub",
-          title: "Tracking Infrastructure & Unit Economics",
-          desc: "Set up bulletproof server-side tracking, GTM web/server containers, Meta CAPI, and master CAC, LTV, ROAS, and MER unit economics.",
-          topics: [
-            "Server-Side GTM & Meta Conversions API",
-            "GA4 Enhanced E-commerce Setup",
-            "Unit Economics & Contribution Margin",
-            "Avatar Research & Offer Angles",
-          ],
-          tools: ["GTM Server", "Meta CAPI", "GA4", "Triple Whale"],
-        },
-        {
-          step: "02",
-          phase: "Weeks 3-4",
-          milestone: "Paid Social Scale Junction",
-          title: "Meta & TikTok Dynamic Creative Testing",
-          desc: "Scale ad budgets using Advantage+ Shopping Campaigns, broad audience targeting, rapid Dynamic Creative Testing (DCT), and viral hook mechanics.",
-          topics: [
-            "Advantage+ Shopping & Broad Targeting",
-            "Dynamic Creative Testing 3:2:2",
-            "Short-Form UGC Scripting & Hooks",
-            "Budget Pacing & Scaling Rules",
-          ],
-          tools: ["Meta Ads Manager", "TikTok Ads", "Foreplay", "CapCut"],
-        },
-        {
-          step: "03",
-          phase: "Weeks 5-6",
-          milestone: "High-Intent Capture Turnpike",
-          title: "Google Ads, Performance Max & YouTube",
-          desc: "Capture bottom-of-funnel demand through Google Search sculpting, automated Performance Max feed optimization, and high-converting YouTube video ads.",
-          topics: [
-            "Alpha/Beta Search Structures & Negatives",
-            "P-Max Asset Group & Feed Tuning",
-            "YouTube Direct Action Campaigns",
-            "Google Merchant Center Feed Rules",
-          ],
-          tools: ["Google Ads", "Merchant Center", "Semrush", "YouTube"],
-        },
-        {
-          step: "04",
-          phase: "Weeks 7-8",
-          milestone: "Summit & Live Portfolio Capstone",
-          title: "Live Budget Management & Placement",
-          desc: "Deploy and manage real client ad budgets under mentorship, conduct comprehensive portfolio audits, and graduate directly into agency interviews.",
-          topics: [
-            "Live Client Budget Allocation & Scale",
-            "Creative Fatigue Resuscitation",
-            "Executive Client Reporting Decks",
-            "Direct Talent Placement Network",
-          ],
-          tools: ["Looker Studio", "Motion App", "Slack", "Supermetrics"],
-        },
-      ],
-    },
-    {
-      id: "seo-geo",
-      title: "SEO, GEO & Generative AI Search Mastery",
-      shortTitle: "SEO & AI Search (GEO)",
-      icon: Search,
-      badge: "Next-Gen Search",
-      duration: "6 Weeks",
-      level: "Intermediate",
-      avgSalary: "₹7.5 LPA - ₹14 LPA",
-      color: "emerald",
-      glowColor: "rgba(16, 185, 129, 0.4)",
-      accentGradient: "from-emerald-400 via-teal-500 to-cyan-600",
-      borderColor: "border-emerald-500/40",
-      textColor: "text-emerald-400",
-      description: "Pioneer search rankings for both classic Google Search and Generative AI engines (ChatGPT, Perplexity, Claude, Google AI Overviews).",
-      milestones: [
-        {
-          step: "01",
-          phase: "Weeks 1-2",
-          milestone: "Technical Foundation Bridge",
-          title: "Technical Architecture & Core Web Vitals",
-          desc: "Master site crawling diagnostics, semantic HTML hierarchy, schema markup engineering, and sub-second Core Web Vitals performance.",
-          topics: [
-            "Crawl Budget & Log File Diagnostics",
-            "Advanced JSON-LD Structured Data",
-            "Core Web Vitals (LCP, INP, CLS) Fixes",
-            "JavaScript SEO & SSR Rendering",
-          ],
-          tools: ["Screaming Frog", "GSC", "PageSpeed", "Schema.org"],
-        },
-        {
-          step: "02",
-          phase: "Weeks 3-4",
-          milestone: "Topical Authority Interchange",
-          title: "Semantic Keyword Clustering & Topic Hubs",
-          desc: "Design impenetrable topical authority clusters that dominate competitive search landscapes and earn automated entity association in Google's Knowledge Graph.",
-          topics: [
-            "Entity-Based Keyword Research",
-            "Topical Authority Hub-and-Spoke Maps",
-            "Information Gain & Content Gaps",
-            "Internal PageRank Architecture",
-          ],
-          tools: ["Ahrefs", "Semrush", "SurferSEO", "MarketMuse"],
-        },
-        {
-          step: "03",
-          phase: "Weeks 4-5",
-          milestone: "Generative Engine Ridge",
-          title: "Generative Engine Optimization (GEO) & LLMs",
-          desc: "Optimize brand citations and knowledge representations to become the primary recommended answer in ChatGPT Search, Perplexity AI, and Google AI Overviews.",
-          topics: [
-            "LLM Vector Embeddings & Citations",
-            "Perplexity & ChatGPT Source Attribution",
-            "Brand Graph Knowledge Verification",
-            "AI Programmatic Content Workflows",
-          ],
-          tools: ["ChatGPT Search", "Perplexity AI", "Claude API", "Python"],
-        },
-        {
-          step: "04",
-          phase: "Week 6",
-          milestone: "Authority Peak Summit",
-          title: "Digital PR, Link Flywheels & Capstone",
-          desc: "Execute data-driven Digital PR campaigns, build organic backlink flywheels from tier-1 media, and deliver a live enterprise audit report.",
-          topics: [
-            "Data-Led Digital PR Studies",
-            "White-Hat Link Earning Flywheels",
-            "Enterprise SEO Audit Presentation",
-            "Certification & Portfolio Defense",
-          ],
-          tools: ["BuzzStream", "HARO", "Hunter.io", "Ahrefs"],
-        },
-      ],
-    },
-    {
-      id: "social-viral",
-      title: "Social Media, Viral Content & Creator Strategy",
-      shortTitle: "Social & Viral Content",
-      icon: Share2,
-      badge: "High Engagement",
-      duration: "6 Weeks",
-      level: "All Experience Levels",
-      avgSalary: "₹6.5 LPA - ₹12 LPA",
-      color: "pink",
-      glowColor: "rgba(236, 72, 153, 0.4)",
-      accentGradient: "from-pink-500 via-rose-500 to-purple-600",
-      borderColor: "border-pink-500/40",
-      textColor: "text-pink-400",
-      description: "Master viral video engineering, short-form storytelling across TikTok/Reels, UGC creator management, and building hyper-engaged community flywheels.",
-      milestones: [
-        {
-          step: "01",
-          phase: "Weeks 1-2",
-          milestone: "Viral Hook Laboratory",
-          title: "Attention Psychology & Hook Architecture",
-          desc: "Deconstruct viral algorithms, master visual/audio pattern interrupts, and write 3-second hooks that drive 80%+ 3-second retention rates.",
-          topics: [
-            "Watch-Time & Completion Physics",
-            "50+ High-Converting Hook Formulas",
-            "Trending Audio Timing & Pacing",
-            "Brand Identity & Visual Standards",
-          ],
-          tools: ["TikTok Center", "IG Trends", "Notion", "Miro"],
-        },
-        {
-          step: "02",
-          phase: "Weeks 3-4",
-          milestone: "Content Factory Turnpike",
-          title: "High-Volume Short-Form Production",
-          desc: "Streamline batch video shooting, dynamic kinetic captioning, B-roll pacing, and multi-platform distribution across Reels, Shorts, and TikTok.",
-          topics: [
-            "Solo Smartphone Studio & Lighting",
-            "Fast-Paced Sound Design & Captions",
-            "Batch Filming (10+ Videos / Day)",
-            "Omnichannel Video Repurposing",
-          ],
-          tools: ["CapCut Pro", "Premiere", "Descript", "OpusClip"],
-        },
-        {
-          step: "03",
-          phase: "Weeks 4-5",
-          milestone: "Creator & Affiliate Junction",
-          title: "UGC Pipelines & Influencer Seeding",
-          desc: "Recruit, brief, and negotiate with micro and macro UGC creators, orchestrate viral product seedings, and set up TikTok Shop affiliate networks.",
-          topics: [
-            "UGC Creator Briefing & Storyboards",
-            "Influencer Outreach & Usage Rights",
-            "TikTok Shop Affiliate Program Setup",
-            "Whitelisting & Spark Ad Amplification",
-          ],
-          tools: ["TikTok Shop", "Insense", "Grin", "Billo"],
-        },
-        {
-          step: "04",
-          phase: "Week 6",
-          milestone: "Viral Launch Summit",
-          title: "Community Growth & Live Campaign Capstone",
-          desc: "Launch an omnichannel viral growth campaign, build an active community channel, and present an organic social ROI portfolio.",
-          topics: [
-            "Community Building & Direct Channels",
-            "Crisis Management & Comment Conversion",
-            "Organic-to-Paid Scaling Flywheel",
-            "Capstone Campaign Defense & Review",
-          ],
-          tools: ["Discord", "Sprout Social", "Later", "ManyChat"],
-        },
-      ],
-    },
-    {
-      id: "growth-cro",
-      title: "Growth Hacking, CRO & Retention Funnels",
-      shortTitle: "Growth & CRO Hub",
-      icon: TrendingUp,
-      badge: "Highest ROI Focus",
-      duration: "8 Weeks",
-      level: "Intermediate to Advanced",
-      avgSalary: "₹9.0 LPA - ₹18 LPA",
-      color: "purple",
-      glowColor: "rgba(168, 85, 247, 0.4)",
-      accentGradient: "from-purple-500 via-indigo-500 to-cyan-500",
-      borderColor: "border-purple-500/40",
-      textColor: "text-purple-400",
-      description: "Transform traffic into exponential revenue through scientific conversion rate optimization (CRO), multivariate testing, and lifecycle retention automation.",
-      milestones: [
-        {
-          step: "01",
-          phase: "Weeks 1-2",
-          milestone: "Landing Page Lab",
-          title: "High-Converting Page Architecture & Speed",
-          desc: "Build landing pages engineered for instant cognitive clarity, zero scroll friction, sub-second load speeds, and maximum form completion.",
-          topics: [
-            "Direct-Response Information Hierarchy",
-            "Frictionless Mobile Checkout Flows",
-            "Sub-Second High-Speed Construction",
-            "Trust Signal & Social Proof Layouts",
-          ],
-          tools: ["Figma", "Webflow / Replo", "PageSpeed", "Unbounce"],
-        },
-        {
-          step: "02",
-          phase: "Weeks 3-4",
-          milestone: "Experimentation Turnpike",
-          title: "CRO Analytics, Heatmaps & A/B Testing",
-          desc: "Run statistically significant multivariate experiments, diagnose drop-off funnels using session recordings, and eliminate user hesitation.",
-          topics: [
-            "Heatmap & Scroll Depth Diagnostics",
-            "Statistical Significance Calculation",
-            "Multivariate Copy & Visual A/B Tests",
-            "Micro-Conversion Tracking Audits",
-          ],
-          tools: ["Hotjar / Clarity", "VWO / Optimizely", "PostHog", "GA4"],
-        },
-        {
-          step: "03",
-          phase: "Weeks 5-6",
-          milestone: "Retention Engine Junction",
-          title: "Automated Lifecycle Flows (Email & SMS)",
-          desc: "Build high-LTV automated messaging sequences that recover abandoned carts, nurture post-purchase loyalty, and drive repeat subscriptions.",
-          topics: [
-            "Klaviyo Advanced Segmentation Rules",
-            "Cart Abandonment Recovery Series",
-            "Predictive Churn Winback Automations",
-            "Dynamic Product VIP Rewards",
-          ],
-          tools: ["Klaviyo", "Attentive SMS", "HubSpot", "Zapier"],
-        },
-        {
-          step: "04",
-          phase: "Weeks 7-8",
-          milestone: "LTV Expansion Summit",
-          title: "Product-Led Growth & Live Optimization",
-          desc: "Engineer viral referral loops, subscription tier upsells, and present a live client conversion uplift audit to complete certification.",
-          topics: [
-            "In-App Referral & Viral Loops",
-            "1-Click Post-Purchase Upsells",
-            "Growth Audit Capstone Presentation",
-            "Placement into High-Growth Startups",
-          ],
-          tools: ["Rebuy", "ReferralCandy", "ChartMogul", "Looker"],
-        },
-      ],
-    },
-    {
-      id: "executive",
-      title: "Full-Stack Digital Marketing Executive Bootcamp",
-      shortTitle: "Full-Stack Masterclass",
-      icon: Crown,
-      badge: "Complete 360° Mastery",
-      duration: "12 Weeks",
-      level: "All-in-One Comprehensive",
-      avgSalary: "₹12 LPA - ₹24 LPA",
-      color: "amber",
-      glowColor: "rgba(245, 158, 11, 0.4)",
-      accentGradient: "from-amber-400 via-orange-500 to-purple-600",
-      borderColor: "border-amber-500/40",
-      textColor: "text-amber-400",
-      description: "The complete end-to-end program combining Paid Media, SEO/GEO, Social Viral Growth, CRO, and Fractional CMO leadership skills.",
-      milestones: [
-        {
-          step: "01",
-          phase: "Weeks 1-3",
-          milestone: "Market Strategy & Telemetry",
-          title: "Market Economics, Tracking & Strategy",
-          desc: "Master comprehensive brand positioning, competitive intelligence, full-funnel attribution tracking, and executive growth financial modeling.",
-          topics: [
-            "360° Growth & Unit Economics",
-            "Server-Side Data Warehouse Setup",
-            "Brand Moat & Value Proposition",
-            "Media Budget Forecasting Models",
-          ],
-          tools: ["GTM Server", "GA4", "Looker Studio", "BigQuery"],
-        },
-        {
-          step: "02",
-          phase: "Weeks 4-6",
-          milestone: "Omnichannel Acquisition",
-          title: "Paid Media & Search Dominance",
-          desc: "Execute multi-channel paid acquisition across Meta, Google, TikTok, and LinkedIn while establishing dominant SEO & GEO authority.",
-          topics: [
-            "Multi-Platform Advertising Synergy",
-            "Generative Engine SEO & Content",
-            "Direct Response Copy & Video",
-            "Cross-Channel Retargeting Grids",
-          ],
-          tools: ["Meta Ads", "Google Ads", "Ahrefs", "Semrush"],
-        },
-        {
-          step: "03",
-          phase: "Weeks 7-9",
-          milestone: "Conversion & Retention Flywheel",
-          title: "CRO Funnels, Email/SMS & Virality",
-          desc: "Unite landing page optimization, A/B testing engines, automated retention flows, and UGC creator partnerships into an unstoppable flywheel.",
-          topics: [
-            "Multivariate Landing Page Optimization",
-            "Automated Lifecycle Flow Ecosystems",
-            "UGC Creator Management Engines",
-            "Subscription & LTV Economics",
-          ],
-          tools: ["Klaviyo", "VWO", "Hotjar", "CapCut"],
-        },
-        {
-          step: "04",
-          phase: "Weeks 10-12",
-          milestone: "CMO Leadership Summit",
-          title: "Fractional CMO & Live Client Capstone",
-          desc: "Lead live enterprise growth strategy, manage distributed marketing teams, pitch executive stakeholder boards, and secure leadership roles.",
-          topics: [
-            "Fractional CMO Growth Playbooks",
-            "Distributed Team Orchestration",
-            "Enterprise Brand Growth Defense",
-            "Executive Career Placement Network",
-          ],
-          tools: ["Asana", "Slack", "Pitch Decks", "Miro"],
-        },
-      ],
-    },
-  ];
-
-  const [selectedTrack, setSelectedTrack] = useState<TrainingTrack>(trainingTracks[0]);
+  const [activeTab, setActiveTab] = useState<string>("digital-marketing");
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState<string>("Digital Marketing Training");
   const [mounted, setMounted] = useState(false);
-  const roadmapContainerRef = useRef<HTMLDivElement>(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Modals
-  const [showStudentModal, setShowStudentModal] = useState(false);
-  const [showAgencyModal, setShowAgencyModal] = useState(false);
-
-  // Form states
-  const [studentSubmitted, setStudentSubmitted] = useState(false);
-  const [studentSubmitting, setStudentSubmitting] = useState(false);
-  const [studentForm, setStudentForm] = useState({ name: "", email: "", phone: "", experience: "Beginner (0-1 yr)", goal: "" });
-
-  const [agencySubmitted, setAgencySubmitted] = useState(false);
-  const [agencySubmitting, setAgencySubmitting] = useState(false);
-  const [agencyForm, setAgencyForm] = useState({ company: "", email: "", phone: "", rolesNeeded: "Media Buyer (Meta/Google)", spendRange: "₹1L - ₹5L/mo" });
+  const [bookingForm, setBookingForm] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    teamSize: "5 - 15 members",
+    program: "Digital Marketing Training",
+    notes: ""
+  });
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleStudentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStudentSubmitting(true);
-    setTimeout(() => {
-      setStudentSubmitting(false);
-      setStudentSubmitted(true);
-    }, 600);
+  const programs: TrainingModule[] = [
+    {
+      id: "digital-marketing",
+      category: "Program 01",
+      title: "Digital Marketing Training",
+      badge: "Core Growth Engine",
+      shortDesc: "Equip your marketing department with cutting-edge media buying skills, server-side CAPI telemetry, and repeatable lead acquisition funnels.",
+      icon: Target,
+      accentGradient: "from-amber-500/20 via-amber-500/5 to-transparent",
+      borderColor: "border-amber-400/30",
+      iconBg: "bg-amber-400/10 text-amber-400 border border-amber-400/20",
+      textColor: "text-amber-400",
+      curriculum: [
+        {
+          week: "Module 01",
+          topic: "Meta & Google Ads Architecture",
+          deliverable: "Custom campaign blueprint, audience segmentation, and budget allocation models."
+        },
+        {
+          week: "Module 02",
+          topic: "Server-Side CAPI & Data Attribution",
+          deliverable: "Bulletproof tracking setup recovering 20-30% lost conversions from iOS/ad-blockers."
+        },
+        {
+          week: "Module 03",
+          topic: "High-Converting Creative Testing (DCT)",
+          deliverable: "Dynamic creative matrices, 3-second hook testing, and ad fatigue mitigation."
+        },
+        {
+          week: "Module 04",
+          topic: "Funnel Optimization & Live Dashboards",
+          deliverable: "Sub-second CRO landing page integration and automated ROI reporting."
+        }
+      ],
+      keyOutcomes: [
+        "In-house team stops burning ad budget on boosted posts",
+        "Predictable cost-per-lead (CPL) benchmarks established",
+        "Clear 100% ad account transparency with zero agency lock-in",
+        "Live campaign management with verified attribution metrics"
+      ],
+      idealFor: "In-house marketing teams, marketing heads, and founders wanting total ad control."
+    },
+    {
+      id: "real-estate-sales",
+      category: "Program 02",
+      title: "Real Estate Sales Training",
+      badge: "High-Ticket Closing",
+      shortDesc: "Master the psychology of selling high-value properties. Transform incoming digital enquiries into confirmed, high-intent site visits and bookings.",
+      icon: Building2,
+      accentGradient: "from-cyan-500/20 via-cyan-500/5 to-transparent",
+      borderColor: "border-cyan-400/30",
+      iconBg: "bg-cyan-400/10 text-cyan-400 border border-cyan-400/20",
+      textColor: "text-cyan-400",
+      curriculum: [
+        {
+          week: "Module 01",
+          topic: "Speed-to-Lead Response Workflows",
+          deliverable: "Sub-5-minute contact cadences and automated WhatsApp nurture sequences."
+        },
+        {
+          week: "Module 02",
+          topic: "Telephonic Lead Qualification Mastery",
+          deliverable: "Custom objection handling scripts for budget, location, and approval timelines."
+        },
+        {
+          week: "Module 03",
+          topic: "Site Visit Conversion & Walk-in Protocols",
+          deliverable: "Experiential property tour playbooks that turn casual visitors into token depositors."
+        },
+        {
+          week: "Module 04",
+          topic: "NRI & High-Ticket Closing Psychology",
+          deliverable: "Virtual presentation frameworks tailored for overseas and HNI property investors."
+        }
+      ],
+      keyOutcomes: [
+        "Elevate lead-to-site-visit conversion rates from 4% to 18%+",
+        "Eliminate lead leakage with ironclad CRM follow-up protocols",
+        "Equip sales callers with confidence against tough price negotiations",
+        "Accelerate transaction velocity across luxury villas, plots & flats"
+      ],
+      idealFor: "Real estate sales teams, tele-callers, site relationship managers, and developers."
+    },
+    {
+      id: "ai-tools",
+      category: "Program 03",
+      title: "AI Tools Training",
+      badge: "10x Productivity",
+      shortDesc: "Harness generative AI tools to automate creative production, write viral direct-response hooks, deploy AI video reels, and score leads automatically.",
+      icon: Bot,
+      accentGradient: "from-purple-500/20 via-purple-500/5 to-transparent",
+      borderColor: "border-purple-400/30",
+      iconBg: "bg-purple-400/10 text-purple-400 border border-purple-400/20",
+      textColor: "text-purple-400",
+      curriculum: [
+        {
+          week: "Module 01",
+          topic: "Generative AI Creative & Copy Prompts",
+          deliverable: "Battle-tested prompt libraries for high-CTR ad headlines, hooks, and sales scripts."
+        },
+        {
+          week: "Module 02",
+          topic: "AI Video Production & Studio Avatars",
+          deliverable: "Automating 4K drone walkthroughs, avatar reels, and multilingual video campaigns."
+        },
+        {
+          week: "Module 03",
+          topic: "AI Lead Scoring & Intelligent Qualification",
+          deliverable: "Deploying AI bots that pre-qualify buyer budgets 24/7 on WhatsApp & web chat."
+        },
+        {
+          week: "Module 04",
+          topic: "Workflow Automation & CRM Intelligence",
+          deliverable: "Zapier/Make integrations connecting ad forms directly to automated sales cadences."
+        }
+      ],
+      keyOutcomes: [
+        "Cut creative and video production turnaround times by 70%",
+        "Generate 30+ multilingual ad variants in under 2 hours",
+        "Automate 24/7 lead qualification without expanding headcount",
+        "Stay years ahead of competitors still relying on manual agency workflows"
+      ],
+      idealFor: "Modern sales forces, content teams, creative designers, and growth managers."
+    },
+    {
+      id: "team-building",
+      category: "Program 04",
+      title: "Team Building & Recruitment",
+      badge: "Talent Architecture",
+      shortDesc: "Build, evaluate, and scale a self-sustaining digital sales force. From hiring pre-vetted media buyers to structuring incentive-driven sales teams.",
+      icon: Users,
+      accentGradient: "from-emerald-500/20 via-emerald-500/5 to-transparent",
+      borderColor: "border-emerald-400/30",
+      iconBg: "bg-emerald-400/10 text-emerald-400 border border-emerald-400/20",
+      textColor: "text-emerald-400",
+      curriculum: [
+        {
+          week: "Module 01",
+          topic: "Talent Profiling & Technical Vetting",
+          deliverable: "Pre-employment assessment scorecards for media buyers, callers, and managers."
+        },
+        {
+          week: "Module 02",
+          topic: "Sales & Marketing Department Alignment",
+          deliverable: "Shared KPI dashboards eliminating friction between lead gen and sales closing."
+        },
+        {
+          week: "Module 03",
+          topic: "Incentive Structures & Daily Scorecards",
+          deliverable: "Performance-driven commission matrices tied to site visits and bookings."
+        },
+        {
+          week: "Module 04",
+          topic: "90-Day Ramp & Ongoing Audits",
+          deliverable: "Standard Operating Procedures (SOPs) and monthly leadership review rubrics."
+        }
+      ],
+      keyOutcomes: [
+        "Hire pre-trained digital talent with verified case histories",
+        "Bridge the communication gap between marketing and sales closers",
+        "Implement clear daily KPI accountability and pipeline tracking",
+        "Establish an in-house digital growth machine that thrives independently"
+      ],
+      idealFor: "Managing directors, founders, HR directors, and corporate growth leadership."
+    }
+  ];
+
+  const activeProgramData = programs.find((p) => p.id === activeTab) || programs[0];
+
+  const handleOpenBooking = (programTitle?: string) => {
+    if (programTitle) {
+      setSelectedProgram(programTitle);
+      setBookingForm((prev) => ({ ...prev, program: programTitle }));
+    }
+    setShowBookingModal(true);
   };
 
-  const handleAgencySubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setAgencySubmitting(true);
+    setIsSubmitting(true);
+    
+    // Simulate API registration
     setTimeout(() => {
-      setAgencySubmitting(false);
-      setAgencySubmitted(true);
-    }, 600);
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }, 900);
   };
-
-  // Scroll-Driven Road Filling Animation
-  const { scrollYProgress } = useScroll({
-    target: roadmapContainerRef,
-    offset: ["start 80%", "end 70%"],
-  });
 
   return (
-    <section id="training" className="flex flex-col w-full py-20 border-t border-slate-200/80 relative overflow-hidden bg-transparent z-10">
-      {/* Dynamic ambient lighting based on selected track */}
-      <div 
-        className="absolute top-1/4 right-0 w-[30rem] h-[30rem] rounded-full blur-[160px] pointer-events-none transition-all duration-700 opacity-10"
-        style={{ background: selectedTrack.glowColor }}
-      />
-      <div 
-        className="absolute bottom-1/4 left-0 w-[30rem] h-[30rem] rounded-full blur-[160px] pointer-events-none transition-all duration-700 opacity-10"
-        style={{ background: selectedTrack.glowColor }}
-      />
+    <section id="training" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-50 text-purple-700 mb-3 text-xs font-bold border border-purple-200 uppercase tracking-wider shadow-xs">
-            <GraduationCap className="h-3.5 w-3.5" /> Specialized Career Tracks & Academy
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 mb-3 tracking-tight">
-            Choose Your <br className="hidden sm:block" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600">
-              Digital Marketing Mastery Track
-            </span>
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Digital marketing is not one-size-fits-all. Select a specialized discipline below to view its custom curved progression roadmap, core tools, and live capstone journey.
-          </p>
-        </div>
+      {/* Background ambient lighting */}
+      <div className="absolute top-10 left-1/3 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-        {/* 3 Academy Value Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-          {[
-            {
-              icon: <Briefcase className="h-5 w-5 text-blue-600" />,
-              title: "Live Budget Execution",
-              desc: "Train directly inside live ad accounts with real spend, not theoretical slides or outdated tutorials.",
-              border: "hover:border-blue-300",
-            },
-            {
-              icon: <Award className="h-5 w-5 text-purple-600" />,
-              title: "Industry Gold Certifications",
-              desc: "Graduate with certified credentials across Meta Blueprint, Google Skillshop, and HubSpot.",
-              border: "hover:border-purple-300",
-            },
-            {
-              icon: <Users className="h-5 w-5 text-pink-600" />,
-              title: "Direct Placement Network",
-              desc: "Connect instantly with top agencies, VC-backed startups, and brands hiring pre-vetted marketing specialists.",
-              border: "hover:border-pink-300",
-            },
-          ].map((pillar, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.08 }}
-              className={`glass-card rounded-xl p-4.5 text-center transition-all duration-300 border border-slate-200/90 shadow-md hover:shadow-xl hover:-translate-y-1 ${pillar.border}`}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-300 text-xs font-bold tracking-wider uppercase mb-4 shadow-sm"
+          >
+            <GraduationCap className="w-4 h-4 text-amber-400" />
+            <span>Corporate & Team Enablement Academy</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4"
+          >
+            Transform Your Team Into a{" "}
+            <span className="text-gold-gradient">Digital Sales Force.</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto"
+          >
+            Stop relying solely on external agencies. Led by <strong className="text-white">Kishore Patel</strong> (12+ years experience, 5,000+ leaders trained), we upskill your in-house talent into an unstoppable revenue-generating machine.
+          </motion.p>
+
+          {/* Quick Primary CTA Button in Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 flex flex-wrap items-center justify-center gap-4"
+          >
+            <button
+              onClick={() => handleOpenBooking("Corporate Training Session")}
+              className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-amber-500/20 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 cursor-pointer uppercase tracking-wider"
             >
-              <div className="w-10 h-10 rounded-lg glass-subcard flex items-center justify-center mx-auto mb-3 shadow-xs">
-                {pillar.icon}
-              </div>
-              <h3 className="text-sm font-bold text-slate-900 mb-1.5">{pillar.title}</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">{pillar.desc}</p>
-            </motion.div>
-          ))}
+              <Calendar className="w-4 h-4 text-slate-950" />
+              <span>BOOK A TRAINING SESSION</span>
+              <ArrowRight className="w-4 h-4 text-slate-950" />
+            </button>
+            <a
+              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20book%20a%20training%20session%20for%20our%20team."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span>WhatsApp Strategy Desk</span>
+            </a>
+          </motion.div>
         </div>
 
-        {/* ----------------- INTERACTIVE TRACK SELECTOR ----------------- */}
-        <div className="mb-12">
-          <div className="text-center mb-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-              Select a Specialization Track to Load Roadmap
-            </span>
-          </div>
+        {/* 4 Interactive Program Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12 sm:mb-16">
+          {programs.map((prog, idx) => {
+            const IconComponent = prog.icon;
+            const isSelected = activeTab === prog.id;
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
-            {trainingTracks.map((track) => {
-              const isSelected = selectedTrack.id === track.id;
-              const IconComp = track.icon;
-              return (
-                <button
-                  key={track.id}
-                  onClick={() => setSelectedTrack(track)}
-                  className={`relative p-3.5 sm:p-4 rounded-xl text-left transition-all duration-300 flex flex-col justify-between cursor-pointer border overflow-hidden ${
-                    isSelected
-                      ? `bg-blue-50/90 border-blue-500/80 shadow-md scale-[1.02]`
-                      : `glass-subcard border-slate-200/80 hover:border-blue-400/50 hover:bg-white/80 opacity-90 hover:opacity-100 hover:shadow-md`
-                  }`}
-                >
-                  {/* Subtle Corner Glow when selected */}
-                  {isSelected && (
-                    <div className={`absolute -top-10 -right-10 w-24 h-24 rounded-full bg-gradient-to-br ${track.accentGradient} opacity-15 blur-xl pointer-events-none`} />
-                  )}
+            return (
+              <motion.div
+                key={prog.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                onClick={() => setActiveTab(prog.id)}
+                className={`p-6 rounded-2xl bg-[#0b0e17] border transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
+                  isSelected 
+                    ? `border-amber-400/60 shadow-[0_0_30px_rgba(245,158,11,0.15)] ring-1 ring-amber-400/30 -translate-y-1` 
+                    : `border-white/10 hover:border-white/20 hover:-translate-y-0.5`
+                }`}
+              >
+                {/* Glow pill behind active card */}
+                {isSelected && (
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
+                )}
 
-                  <div className="relative z-10 w-full">
-                    <div className="flex items-center justify-between gap-1.5 mb-2.5">
-                      <div className={`p-2 rounded-lg ${isSelected ? "bg-blue-600 text-white border border-blue-700" : "glass-subcard text-slate-700"}`}>
-                        <IconComp className="w-4 h-4" />
-                      </div>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? "bg-blue-100 text-blue-800 border border-blue-200" : "glass-subcard text-slate-600"}`}>
-                        {track.duration}
-                      </span>
+                <div>
+                  {/* Top Bar with Icon & Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`w-12 h-12 rounded-xl ${prog.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent className="w-6 h-6" />
                     </div>
-
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 mb-1 leading-snug">
-                      {track.shortTitle}
-                    </h4>
-
-                    <span className="text-[10px] text-slate-500 font-medium line-clamp-1">
-                      {track.level}
+                    <span className="text-[10px] font-bold text-slate-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                      {prog.badge}
                     </span>
                   </div>
-                </button>
-              );
-            })}
-          </div>
+
+                  {/* Program Number & Title */}
+                  <div className="text-[11px] font-bold text-amber-400/80 uppercase tracking-wider mb-1">
+                    {prog.category}
+                  </div>
+                  <h3 className="text-lg font-black text-white mb-2 leading-snug group-hover:text-amber-300 transition-colors">
+                    {prog.title}
+                  </h3>
+
+                  {/* Summary */}
+                  <p className="text-xs text-slate-300 leading-relaxed font-medium mb-4">
+                    {prog.shortDesc}
+                  </p>
+                </div>
+
+                {/* Bottom Trigger Indicator */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className={`text-xs font-bold ${isSelected ? "text-amber-300" : "text-slate-400 group-hover:text-slate-200"}`}>
+                    {isSelected ? "Active Curriculum ↓" : "View Curriculum"}
+                  </span>
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+                    isSelected ? "bg-amber-400 text-slate-950 font-bold" : "bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white"
+                  }`}>
+                    <ChevronRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* ----------------- ROADMAP HEADER BANNER ----------------- */}
+        {/* Selected Program Detailed Curriculum & Outcomes Deep-Dive Panel */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={selectedTrack.id}
+            key={activeProgramData.id}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200/90 max-w-6xl mx-auto mb-12 relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+            transition={{ duration: 0.4 }}
+            className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#0a0d15] border border-white/15 shadow-2xl relative overflow-hidden mb-16"
           >
-            <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${selectedTrack.accentGradient} opacity-15 rounded-full blur-2xl pointer-events-none`} />
+            {/* Ambient inner glow */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-amber-500/10 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-              <div className="max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2 mb-2.5">
-                  <span className={`text-xs font-bold px-3 py-0.5 rounded-full bg-gradient-to-r ${selectedTrack.accentGradient} text-white shadow-xs`}>
-                    {selectedTrack.badge}
-                  </span>
-                  <span className="text-xs font-medium text-slate-700 glass-subcard px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-slate-500" /> {selectedTrack.duration} Intensive
-                  </span>
-                  <span className="text-xs font-medium text-slate-700 glass-subcard px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                    <Layers className="w-3 h-3 text-slate-500" /> {selectedTrack.level}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative z-10">
+              
+              {/* Left Column: Curriculum Modules (7 Cols) */}
+              <div className="lg:col-span-7">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    Syllabus Breakdown • {activeProgramData.title}
                   </span>
                 </div>
-
-                <h3 className="text-lg sm:text-xl font-black text-slate-950 mb-2">
-                  {selectedTrack.title}
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {selectedTrack.description}
+                <h4 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">
+                  High-Impact Practical Curriculum
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-medium">
+                  {activeProgramData.shortDesc}
                 </p>
-              </div>
 
-              {/* Fast stats pill box */}
-              <div className="flex lg:flex-col items-center sm:items-start justify-between sm:justify-start gap-3 p-3.5 rounded-xl glass-subcard shrink-0 shadow-xs">
-                <div>
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Target Placement Salary</span>
-                  <span className="text-sm font-extrabold text-emerald-700 flex items-center gap-0.5">
-                    <IndianRupee className="w-3.5 h-3.5 -mr-0.5" />{selectedTrack.avgSalary}
-                  </span>
-                </div>
-                <div className="lg:pt-2 lg:border-t lg:border-slate-200">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Cohort Availability</span>
-                  <span className="text-xs font-bold text-blue-700 flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-blue-600" /> Next Batch: 25 Seats Only
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* ----------------- VERTICAL ROADMAP (OPTIMIZED FOR DESKTOP & MOBILE) ----------------- */}
-        <div ref={roadmapContainerRef} className="max-w-5xl mx-auto mb-16 relative">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200 mb-2">
-              <Compass className="w-3.5 h-3.5" /> Progressive Mastery Roadmap
-            </div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-950">
-              {selectedTrack.duration} Curated Progression Journey
-            </h3>
-            <p className="text-xs text-slate-500 mt-1 max-w-xl mx-auto">
-              Follow the 4 milestone checkpoints sequentially as you master the curriculum and deploy live ad budgets.
-            </p>
-          </div>
-
-          {/* Road Visual Container */}
-          <div className="relative">
-            {/* Desktop Center Curved Highway */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-48 pointer-events-none z-0">
-              <svg 
-                className="w-full h-full overflow-visible" 
-                viewBox="0 0 200 1100" 
-                fill="none" 
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient id={`vertRoadGradient-${selectedTrack.id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#0284c7" stopOpacity="0.95" />
-                    <stop offset="35%" stopColor="#9333ea" stopOpacity="0.95" />
-                    <stop offset="70%" stopColor="#db2777" stopOpacity="0.95" />
-                    <stop offset="100%" stopColor="#059669" stopOpacity="0.95" />
-                  </linearGradient>
-                </defs>
-
-                <path
-                  d="M 100,20 C 20,160 180,300 100,440 C 20,580 180,720 100,860 C 20,960 180,1040 100,1080"
-                  stroke="#e2e8f0"
-                  strokeWidth="18"
-                  strokeLinecap="round"
-                />
-                <motion.path
-                  d="M 100,20 C 20,160 180,300 100,440 C 20,580 180,720 100,860 C 20,960 180,1040 100,1080"
-                  stroke={`url(#vertRoadGradient-${selectedTrack.id})`}
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  style={{ pathLength: scrollYProgress }}
-                />
-              </svg>
-            </div>
-
-            {/* Mobile Left-Aligned Glowing Spine Line (100% Reliable & Fully Visible on Mobile) */}
-            <div className="md:hidden absolute left-4 sm:left-6 top-4 bottom-4 w-1 pointer-events-none z-0">
-              <div className="w-full h-full bg-slate-200 rounded-full" />
-              <motion.div 
-                className="absolute top-0 left-0 w-full bg-gradient-to-b from-cyan-500 via-purple-500 to-emerald-500 rounded-full shadow-[0_0_12px_rgba(6,182,212,0.8)]"
-                style={{ height: "100%", originY: 0, scaleY: scrollYProgress }}
-              />
-            </div>
-
-            {/* Vertical Milestone Cards Alternating Left / Right on Desktop, Left-Rail on Mobile */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedTrack.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6 sm:space-y-10 relative z-10"
-              >
-                {selectedTrack.milestones.map((milestone, idx) => {
-                  const isEven = idx % 2 === 0;
-                  return (
-                    <motion.div
-                      key={milestone.step}
-                      initial={{ opacity: 0.4, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, margin: "-40px" }}
-                      transition={{ duration: 0.4, delay: idx * 0.06 }}
-                      className={`flex flex-col md:flex-row items-center ${
-                        isEven ? "md:flex-row-reverse" : ""
-                      } gap-4 md:gap-12 relative`}
+                {/* Modules Accordion / List */}
+                <div className="space-y-3">
+                  {activeProgramData.curriculum.map((item, idx) => (
+                    <div 
+                      key={idx}
+                      className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all duration-300 group"
                     >
-                      {/* Left or Right Card */}
-                      <div className="w-full md:w-1/2 pl-12 sm:pl-16 md:pl-0">
-                        <div className="glass-card rounded-2xl p-4 sm:p-6 border border-slate-200 hover:border-blue-300 transition-all duration-300 group relative overflow-hidden shadow-xs hover:shadow-md bg-white/95">
-                          {/* Card Ambient Glow */}
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent rounded-full blur-xl pointer-events-none group-hover:opacity-100 transition-opacity" />
-
-                          {/* Phase Capsule & Step */}
-                          <div className="flex items-center justify-between gap-2 mb-2.5">
-                            <span className={`text-[10px] sm:text-[11px] font-bold px-3 py-0.5 rounded-full bg-gradient-to-r ${selectedTrack.accentGradient} text-white shadow-xs`}>
-                              {milestone.phase}
-                            </span>
-                            <span className="text-[10px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
-                              {milestone.milestone}
-                            </span>
-                          </div>
-
-                          {/* Title */}
-                          <h4 className="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-1.5 leading-snug group-hover:text-blue-600 transition-colors">
-                            {milestone.title}
-                          </h4>
-
-                          {/* Description */}
-                          <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                            {milestone.desc}
-                          </p>
-
-                          {/* Key Topics List */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-2.5 border-t border-slate-100 mb-3">
-                            {milestone.topics.map((topic, tIdx) => (
-                              <div key={tIdx} className="flex items-start gap-1.5 text-[11px] sm:text-xs text-slate-600">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                                <span className="leading-tight">{topic}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Tools taught pills */}
-                          <div className="pt-2.5 border-t border-slate-100 flex flex-wrap items-center gap-1.5">
-                            <span className="text-[10px] text-slate-500 font-semibold mr-1">Tools:</span>
-                            {milestone.tools.map((tool, toolIdx) => (
-                              <span 
-                                key={toolIdx} 
-                                className="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-slate-700 font-mono"
-                              >
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
+                      <div className="flex items-start justify-between gap-3 mb-1.5">
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-[10px] font-black text-slate-950 bg-amber-400 px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                            {item.week}
+                          </span>
+                          <span className="text-sm font-extrabold text-white group-hover:text-amber-300 transition-colors">
+                            {item.topic}
+                          </span>
                         </div>
                       </div>
-
-                      {/* Milestone Number Badge (Centered on Desktop Highway, Left-Pinned on Mobile Line) */}
-                      <div className="absolute left-0 sm:left-2 md:left-1/2 top-4 md:top-1/2 -translate-y-0 md:-translate-y-1/2 -translate-x-0 md:-translate-x-1/2 flex items-center justify-center z-20">
-                        <div 
-                          style={{ boxShadow: `0 0 12px ${selectedTrack.glowColor}` }}
-                          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center shrink-0 group hover:scale-110 transition-transform shadow-sm"
-                        >
-                          <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr ${selectedTrack.accentGradient} flex items-center justify-center text-white font-black text-[10px] sm:text-xs`}>
-                            {milestone.step}
-                          </div>
-                        </div>
+                      <div className="text-xs text-slate-300 font-medium pl-1 leading-relaxed">
+                        <strong className="text-slate-400 font-semibold">Core Deliverable: </strong>
+                        {item.deliverable}
                       </div>
-
-                      {/* Empty Placeholder for symmetrical desktop grid balance */}
-                      <div className="hidden md:block w-1/2" />
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Vertical Finish Line / Graduation Flag Banner */}
-            <div className="mt-10 sm:mt-12 text-center relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold shadow-xs">
-                <Flag className="w-4 h-4 text-emerald-600 animate-bounce" /> {selectedTrack.title} Certified Graduation & Placement Summit
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ----------------- DUAL EQUAL-SIZE APPLICATION & HIRING CTA CARDS ----------------- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto items-stretch">
-          
-          {/* Card 1: For Students / Career Switchers */}
-          <div className="glass-card rounded-2xl p-6 sm:p-8 border border-purple-200/90 relative overflow-hidden flex flex-col justify-between group shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
-            <div className="absolute top-0 right-0 w-44 h-44 bg-purple-500/10 rounded-bl-full blur-xl pointer-events-none" />
-            
-            <div>
-              <span className="text-xs font-bold text-purple-700 uppercase tracking-wider block mb-2">
-                FOR STUDENTS & GROWTH MARKETERS
-              </span>
-              <h4 className="text-xl sm:text-2xl font-black text-slate-950 mb-2.5 leading-tight">
-                Enroll in {selectedTrack.shortTitle}
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                Master real-world campaigns under senior mentorship. Limited to 25 seats per cohort with live portfolio building and direct hiring introductions.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setShowStudentModal(true)}
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-brand-purple to-pink-600 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-purple-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-xs border border-white/20"
-            >
-              <span>Apply for {selectedTrack.shortTitle} Cohort</span> 
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Card 2: For Brands & Agencies Looking to Hire */}
-          <div className="glass-card rounded-2xl p-6 sm:p-8 border border-blue-200/90 relative overflow-hidden flex flex-col justify-between group shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
-            <div className="absolute top-0 right-0 w-44 h-44 bg-blue-500/10 rounded-bl-full blur-xl pointer-events-none" />
-            
-            <div>
-              <span className="text-xs font-bold text-blue-700 uppercase tracking-wider block mb-2">
-                FOR AGENCIES & SCALE-UPS
-              </span>
-              <h4 className="text-xl sm:text-2xl font-black text-slate-950 mb-2.5 leading-tight">
-                Hire Pre-Trained Specialists
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                Skip 3-month onboarding ramps. Hire pre-vetted specialists certified in {selectedTrack.shortTitle} with live account experience.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setShowAgencyModal(true)}
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer shadow-xs border border-white/20"
-            >
-              <span>Request Trained Graduate Roster</span> 
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* MODAL 1: STUDENT ENROLLMENT & WHAT COMES NEXT BLUEPRINT (Portal to body) */}
-      {/* ========================================================================= */}
-      {mounted && showStudentModal && createPortal(
-        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="relative w-full max-w-2xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-purple-50 via-white to-pink-50">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm sm:text-base font-black text-slate-950">
-                    Apply for {selectedTrack.shortTitle} Cohort
-                  </h3>
-                  <p className="text-[11px] text-slate-500 font-medium">What Comes Next: 4-Phase Admission & Live Mentorship Journey</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowStudentModal(false)}
-                className="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="p-6 overflow-y-auto space-y-5">
-              {/* 4-Phase What Comes Next Flow */}
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-purple-700 block mb-2">
-                  YOUR 4-PHASE ONBOARDING & CAREER ROADMAP
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {[
-                    { phase: "1. Diagnostic Profile Assessment", desc: "Our academic committee evaluates your skill baseline within 12 hours.", tag: "Within 12h" },
-                    { phase: "2. Live Ad Sandbox Provisioning", desc: "Gain credentialed access to live Meta CAPI, Google Ads, and analytics stacks.", tag: "Day 1" },
-                    { phase: "3. Weekly Sprints & Account Audits", desc: "Manage real media spend with 1-on-1 feedback from senior media buyers.", tag: "Weeks 1-8" },
-                    { phase: "4. Direct Agency Placement Summit", desc: "Defend your portfolio directly in front of partner agency hiring directors.", tag: "Graduation" },
-                  ].map((st, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-purple-50/50 border border-purple-100 text-left">
-                      <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="text-xs font-bold text-slate-900">{st.phase}</span>
-                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-purple-200/70 text-purple-800">{st.tag}</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 leading-snug">{st.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Form View */}
-              {!studentSubmitted ? (
-                <form onSubmit={handleStudentSubmit} className="space-y-3.5 pt-2 border-t border-slate-100">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Right Column: Key Outcomes, Ideal Audience & Instant CTA (5 Cols) */}
+              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-[#0f1422] border border-white/10 shadow-lg">
+                <div>
+                  <div className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4 text-cyan-400" />
+                    <span>Tangible Business Outcomes</span>
+                  </div>
+
+                  <h5 className="text-lg font-black text-white mb-4">
+                    What Your Team Achieves
+                  </h5>
+
+                  <ul className="space-y-3 mb-6">
+                    {activeProgramData.keyOutcomes.map((outcome, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 font-medium leading-relaxed">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span>{outcome}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Ideal For Badge */}
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 mb-6">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      Ideal Candidate Profile
+                    </div>
+                    <div className="text-xs font-semibold text-slate-200">
+                      {activeProgramData.idealFor}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Action Section */}
+                <div className="pt-4 border-t border-white/10 space-y-3">
+                  <button
+                    onClick={() => handleOpenBooking(activeProgramData.title)}
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-102 transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                  >
+                    <Calendar className="w-4 h-4 text-slate-950" />
+                    <span>BOOK THIS TRAINING SESSION</span>
+                    <ArrowRight className="w-4 h-4 text-slate-950" />
+                  </button>
+
+                  <div className="flex items-center justify-between text-[11px] text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-amber-400" />
+                      Customizable 1-Day to 4-Week Formats
+                    </span>
+                    <span className="text-cyan-400 font-semibold">On-site or Virtual</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Lead Trainer & Methodology Credentials Banner */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-[#0b0e17] to-cyan-500/10 border border-white/15 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
+              <Award className="w-8 h-8" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-0.5">
+                Executive Trainer & Director
+              </div>
+              <h4 className="text-lg sm:text-xl font-black text-white">
+                Led by Kishore Patel
+              </h4>
+              <p className="text-xs text-slate-300 font-medium">
+                Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist • 12+ Years Experience • 5,000+ Professionals Mentored
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-end">
+            <button
+              onClick={() => handleOpenBooking("Custom Corporate Training")}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm hover:scale-105 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-amber-500/20 uppercase tracking-wider"
+            >
+              <span>BOOK A TRAINING SESSION</span>
+              <ArrowRight className="w-4 h-4 text-slate-950" />
+            </button>
+            <a
+              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20discuss%20training%20for%20our%20sales%20and%20marketing%20team."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
+              <span>Call / WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ========================================================================= */}
+      {/* INTERACTIVE MODAL: BOOK A TRAINING SESSION (Portaled to body) */}
+      {/* ========================================================================= */}
+      {mounted && showBookingModal && createPortal(
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-5 bg-slate-950/85 backdrop-blur-md overflow-y-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="relative w-full max-w-xl bg-[#0b0f19] rounded-3xl border border-white/20 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col text-white"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gradient-to-r from-amber-500/10 via-transparent to-cyan-500/10">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-black text-white">
+                    Book a Training Session
+                  </h3>
+                  <p className="text-[11px] text-amber-400 font-medium">
+                    Led by Kishore Patel & Himastech Growth Specialists
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setShowBookingModal(false);
+                  setFormSubmitted(false);
+                }}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 flex items-center justify-center transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-4">
+              {!formSubmitted ? (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  
+                  {/* Selected Program Indicator */}
+                  <div className="p-3 rounded-xl bg-amber-400/10 border border-amber-400/25 flex items-center justify-between">
                     <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Full Name *</label>
+                      <div className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">Target Focus</div>
+                      <div className="text-xs font-bold text-white">{bookingForm.program}</div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                      Corporate Masterclass
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Your Full Name *</label>
                       <input
                         type="text"
                         required
-                        value={studentForm.name}
-                        onChange={(e) => setStudentForm({ ...studentForm, name: e.target.value })}
-                        placeholder="e.g. Student Name"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-purple-500 focus:outline-none"
+                        value={bookingForm.name}
+                        onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
+                        placeholder="e.g. Ramesh Varma"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Email Address *</label>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Company / Developer Name *</label>
                       <input
-                        type="email"
+                        type="text"
                         required
-                        value={studentForm.email}
-                        onChange={(e) => setStudentForm({ ...studentForm, email: e.target.value })}
-                        placeholder="student@example.com"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-purple-500 focus:outline-none"
+                        value={bookingForm.company}
+                        onChange={(e) => setBookingForm({ ...bookingForm, company: e.target.value })}
+                        placeholder="e.g. Sky Infra Developers"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">WhatsApp / Phone *</label>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Phone / WhatsApp Number *</label>
                       <input
                         type="tel"
                         required
-                        value={studentForm.phone}
-                        onChange={(e) => setStudentForm({ ...studentForm, phone: e.target.value })}
+                        value={bookingForm.phone}
+                        onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                         placeholder="+91 98765 43210"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-purple-500 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Experience Level *</label>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Corporate Email Address *</label>
+                      <input
+                        type="email"
+                        required
+                        value={bookingForm.email}
+                        onChange={(e) => setBookingForm({ ...bookingForm, email: e.target.value })}
+                        placeholder="team@company.com"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Select Training Program *</label>
                       <select
-                        value={studentForm.experience}
-                        onChange={(e) => setStudentForm({ ...studentForm, experience: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-purple-500 focus:outline-none"
+                        value={bookingForm.program}
+                        onChange={(e) => setBookingForm({ ...bookingForm, program: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141926] border border-white/15 text-xs text-white focus:border-amber-400 focus:outline-none cursor-pointer"
                       >
-                        <option value="Beginner (0-1 yr)">Beginner / Student (0-1 yr)</option>
-                        <option value="Junior Marketer (1-3 yrs)">Junior Marketer (1-3 yrs)</option>
-                        <option value="Freelancer / Agency Owner">Freelancer / Agency Owner</option>
-                        <option value="Career Switcher">Career Switcher</option>
+                        <option value="Digital Marketing Training">Digital Marketing Training</option>
+                        <option value="Real Estate Sales Training">Real Estate Sales Training</option>
+                        <option value="AI Tools Training">AI Tools Training</option>
+                        <option value="Team Building & Recruitment">Team Building & Recruitment</option>
+                        <option value="All-Inclusive Growth Bootcamp">All-Inclusive Growth Bootcamp</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold text-slate-300 block mb-1">Estimated Team Size *</label>
+                      <select
+                        value={bookingForm.teamSize}
+                        onChange={(e) => setBookingForm({ ...bookingForm, teamSize: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141926] border border-white/15 text-xs text-white focus:border-amber-400 focus:outline-none cursor-pointer"
+                      >
+                        <option value="1 - 5 key members">1 - 5 key members</option>
+                        <option value="5 - 15 members">5 - 15 members</option>
+                        <option value="15 - 30 members">15 - 30 members</option>
+                        <option value="30+ enterprise sales force">30+ enterprise sales force</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-900 block mb-1">Your Career Goal / What you want to achieve *</label>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">Key Challenges or Specific Goals (Optional)</label>
                     <textarea
-                      required
                       rows={2}
-                      value={studentForm.goal}
-                      onChange={(e) => setStudentForm({ ...studentForm, goal: e.target.value })}
-                      placeholder="e.g. Master Meta & Google ads to land a Senior Media Buyer role at a top digital agency..."
-                      className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-purple-500 focus:outline-none resize-none"
+                      value={bookingForm.notes}
+                      onChange={(e) => setBookingForm({ ...bookingForm, notes: e.target.value })}
+                      placeholder="e.g. Need our sales callers to convert more Meta ad leads into site visits for our villa project in Kollur..."
+                      className="w-full p-3 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    disabled={studentSubmitting}
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 text-white font-bold text-xs sm:text-sm hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm hover:scale-102 transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider shadow-lg shadow-amber-500/20"
                   >
-                    {studentSubmitting ? "Submitting Application..." : "Submit Admission Application →"}
+                    {isSubmitting ? "Securing Session..." : "CONFIRM & BOOK TRAINING SESSION →"}
                   </button>
                 </form>
               ) : (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                <div className="py-8 text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h4 className="text-lg font-bold text-slate-900">Application Registered Successfully!</h4>
-                  <p className="text-xs text-slate-600 max-w-md mx-auto">
-                    Thank you <strong>{studentForm.name}</strong>. Our admissions counselor will review your profile and reach out on WhatsApp/Phone at <strong>{studentForm.phone}</strong> within 12 hours with your cohort onboarding syllabus.
+                  <h4 className="text-xl font-bold text-white">Training Session Request Received!</h4>
+                  <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Thank you <strong>{bookingForm.name}</strong> from <strong>{bookingForm.company}</strong>. Kishore Patel's executive desk will contact you via WhatsApp/Phone at <strong>{bookingForm.phone}</strong> within 4 hours to coordinate scheduling and curriculum customization.
                   </p>
-                  <button
-                    onClick={() => {
-                      setStudentSubmitted(false);
-                      setShowStudentModal(false);
-                    }}
-                    className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"
-                  >
-                    Done
-                  </button>
+                  <div className="pt-2">
+                    <button
+                      onClick={() => {
+                        setFormSubmitted(false);
+                        setShowBookingModal(false);
+                      }}
+                      className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/15 cursor-pointer"
+                    >
+                      Done
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
 
-            <div className="px-6 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
-              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Meta Blueprint & Google Partner Accredited</span>
-              <button onClick={() => setShowStudentModal(false)} className="font-bold text-slate-700 hover:text-slate-900">Close</button>
-            </div>
-          </motion.div>
-        </div>,
-        document.body
-      )}
-
-      {/* ========================================================================= */}
-      {/* MODAL 2: AGENCY HIRING ROSTER & WHAT COMES NEXT BLUEPRINT (Portal to body) */}
-      {/* ========================================================================= */}
-      {mounted && showAgencyModal && createPortal(
-        <div className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="relative w-full max-w-2xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-blue-50 via-white to-indigo-50">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center">
-                  <Briefcase className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm sm:text-base font-black text-slate-950">
-                    Request Pre-Trained Talent Roster
-                  </h3>
-                  <p className="text-[11px] text-slate-500 font-medium">What Comes Next: 4-Step Agency Talent Matching Protocol</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowAgencyModal(false)}
-                className="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
+            {/* Footer */}
+            <div className="px-6 py-3.5 border-t border-white/10 bg-[#090c14] flex items-center justify-between text-xs text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                Confidentiality & Tailored On-Site / Remote Delivery
+              </span>
+              <a
+                href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20have%20an%20urgent%20training%20booking%20inquiry."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-400 font-bold hover:underline"
               >
-                <X className="w-4 h-4" />
-              </button>
+                Instant WhatsApp Desk →
+              </a>
             </div>
 
-            <div className="p-6 overflow-y-auto space-y-5">
-              {/* 4-Step Agency Matching Roadmap */}
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-blue-700 block mb-2">
-                  OUR ZERO-FRICTION TALENT PLACEMENT WORKFLOW
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {[
-                    { step: "1. Media Buying Scope Intake", desc: "We map your required channels (Meta, Google, TikTok, GEO) and ad budget scale.", tag: "Instant" },
-                    { step: "2. Receive 3 Vetted Portfolios", desc: "Get direct access to live case audits, ROAS performance metrics, and video intros.", tag: "Within 24h" },
-                    { step: "3. Direct Technical Interview", desc: "Schedule 1-click interviews with pre-qualified talent ready to drive immediate ROI.", tag: "48h Ramp" },
-                    { step: "4. 90-Day Placement Guarantee", desc: "Hire confidently with zero placement recruiter fees and our 90-day retention warranty.", tag: "Guaranteed" },
-                  ].map((st, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-blue-50/50 border border-blue-100 text-left">
-                      <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="text-xs font-bold text-slate-900">{st.step}</span>
-                        <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-blue-200/70 text-blue-800">{st.tag}</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 leading-snug">{st.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Form View */}
-              {!agencySubmitted ? (
-                <form onSubmit={handleAgencySubmit} className="space-y-3.5 pt-2 border-t border-slate-100">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Company / Agency Name *</label>
-                      <input
-                        type="text"
-                        required
-                        value={agencyForm.company}
-                        onChange={(e) => setAgencyForm({ ...agencyForm, company: e.target.value })}
-                        placeholder="e.g. Apex Media Group"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-blue-500 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Work Email *</label>
-                      <input
-                        type="email"
-                        required
-                        value={agencyForm.email}
-                        onChange={(e) => setAgencyForm({ ...agencyForm, email: e.target.value })}
-                        placeholder="hiring@apexmedia.com"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-blue-500 focus:outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Role / Specialization Needed *</label>
-                      <select
-                        value={agencyForm.rolesNeeded}
-                        onChange={(e) => setAgencyForm({ ...agencyForm, rolesNeeded: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-blue-500 focus:outline-none"
-                      >
-                        <option value="Media Buyer (Meta/Google)">Media Buyer (Meta & Google ROAS)</option>
-                        <option value="SEO & AI Search Specialist">SEO & AI Search (GEO) Specialist</option>
-                        <option value="Short-Form Video UGC Producer">Short-Form Video UGC Producer</option>
-                        <option value="Full-Stack Growth Marketer">Full-Stack Growth Marketer / Lead</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold text-slate-900 block mb-1">Monthly Ad Spend Managed *</label>
-                      <select
-                        value={agencyForm.spendRange}
-                        onChange={(e) => setAgencyForm({ ...agencyForm, spendRange: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:border-blue-500 focus:outline-none"
-                      >
-                        <option value="₹50k - ₹2L/mo">₹50,000 - ₹2,00,000 / month</option>
-                        <option value="₹2L - ₹10L/mo">₹2,00,000 - ₹10,00,000 / month</option>
-                        <option value="₹10L+/mo">₹10,00,000+ / month (Enterprise)</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={agencySubmitting}
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-600 text-white font-bold text-xs sm:text-sm hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    {agencySubmitting ? "Generating Candidate Roster..." : "Request Vetted Specialist Roster →"}
-                  </button>
-                </form>
-              ) : (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900">Roster Request Dispatched!</h4>
-                  <p className="text-xs text-slate-600 max-w-md mx-auto">
-                    Thank you <strong>{agencyForm.company}</strong>. Our placement desk is matching 3 certified specialists with proven account records in <strong>{agencyForm.rolesNeeded}</strong> and will email their profiles to <strong>{agencyForm.email}</strong> within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setAgencySubmitted(false);
-                      setShowAgencyModal(false);
-                    }}
-                    className="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold"
-                  >
-                    Done
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div className="px-6 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
-              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> 100% Pre-Vetted Live Ad Account Experience</span>
-              <button onClick={() => setShowAgencyModal(false)} className="font-bold text-slate-700 hover:text-slate-900">Close</button>
-            </div>
           </motion.div>
         </div>,
         document.body
       )}
+
     </section>
   );
 }

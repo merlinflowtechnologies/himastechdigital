@@ -12,8 +12,8 @@ export function JsonLd() {
     description: "Enterprise performance marketing agency and talent academy helping brands scale predictably with Meta Ads, Google Ads, and Generative Engine Optimization (GEO).",
     founder: {
       "@type": "Person",
-      name: "Adduri Sai Kishore",
-      jobTitle: "Founder & Chief Executive Officer (CEO)",
+      name: "Kishore Patel",
+      jobTitle: "Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist",
     },
     parentOrganization: {
       "@type": "Organization",

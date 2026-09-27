@@ -1,63 +1,121 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { 
+  Share2,
   Search, 
   Target, 
-  FileText, 
-  Heart, 
-  Settings, 
+  TrendingUp,
+  Laptop,
+  Layout,
+  Palette,
+  Video,
+  FileText,
+  MessageCircle,
+  Mail,
+  Cpu,
   CheckCircle2, 
   ArrowRight, 
   Zap, 
-  TrendingUp,
-  Tv,
-  Users,
-  Smartphone,
-  ShoppingBag,
   X,
-  Clock,
   Sparkles,
   ShieldCheck,
-  Cpu,
-  Layers
+  Clock,
+  Layers,
+  PhoneCall,
+  ChevronLeft,
+  ChevronRight,
+  MoveHorizontal
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-interface ServiceStrategy {
-  badge: string;
-  title: string;
-  shortTitle: string;
-  description: string;
-  impact: string;
-  icon: any;
-  accent: string;
-  border: string;
-  gradientText: string;
-  playbook: {
-    step: string;
-    title: string;
-    detail: string;
-  }[];
-  techStack: string[];
-  deliverables: {
-    timeline: string;
-    reporting: string;
-    teamPod: string;
-    guarantee: string;
-  };
-  features: string[];
-}
+import { allServices, ServiceItem } from "@/data/servicesData";
 
 export function ServicesSection() {
-  const [selectedService, setSelectedService] = useState<ServiceStrategy | null>(null);
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [mounted, setMounted] = useState(false);
+
+  // Drag Carousel State & Controls
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftState, setScrollLeftState] = useState(0);
+  const isDraggingRef = useRef(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const updateScrollState = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    setCanScrollLeft(scrollLeft > 15);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll > 0) {
+      setScrollProgress(Math.min(100, Math.max(0, (scrollLeft / maxScroll) * 100)));
+    }
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    setIsMouseDown(true);
+    isDraggingRef.current = false;
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeftState(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isMouseDown || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 6) {
+      isDraggingRef.current = true;
+    }
+    sliderRef.current.scrollLeft = scrollLeftState - walk;
+    updateScrollState();
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsMouseDown(false);
+    setTimeout(() => {
+      isDraggingRef.current = false;
+    }, 60);
+  };
+
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isMouseDown) {
+        setIsMouseDown(false);
+        setTimeout(() => {
+          isDraggingRef.current = false;
+        }, 60);
+      }
+    };
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+    return () => window.removeEventListener("mouseup", handleGlobalMouseUp);
+  }, [isMouseDown]);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!sliderRef.current) return;
+    const scrollAmount = Math.min(sliderRef.current.clientWidth * 0.75, 420);
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth"
+    });
+  };
 
   // Close modal on Escape key and lock body scroll
   useEffect(() => {
@@ -81,508 +139,251 @@ export function ServicesSection() {
     };
   }, [selectedService]);
 
-  const services: ServiceStrategy[] = [
-    {
-      badge: "Organic Dominance",
-      title: "Search Marketing & SEO / GEO",
-      shortTitle: "SEO & Generative AI Search",
-      description: "Continuous technical, semantic, and structural optimization to rank on search engines and generative AI answers.",
-      impact: "Avg +240% Traffic",
-      icon: Search,
-      accent: "from-cyan-500/20 to-blue-500/5",
-      border: "hover:border-cyan-500/40",
-      gradientText: "from-cyan-400 via-teal-300 to-emerald-400",
-      features: [
-        "Technical SEO & Speed Optimization",
-        "Generative Engine Optimization (GEO)",
-        "Hyper-Local SEO & Google Maps 3-Pack",
-        "App Store Optimization (ASO)"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Technical Architecture & Core Web Vitals Audit",
-          detail: "Eliminate crawl errors, optimize sub-second load performance (LCP, INP, CLS), and engineer advanced JSON-LD structured data."
-        },
-        {
-          step: "02",
-          title: "Topical Authority & Semantic Keyword Clustering",
-          detail: "Design hub-and-spoke topic clusters that claim total entity authority in Google's Knowledge Graph."
-        },
-        {
-          step: "03",
-          title: "Generative Engine Optimization (GEO)",
-          detail: "Train brand citations and vector knowledge to become the primary recommended answer in ChatGPT, Perplexity, and Google AI Overviews."
-        },
-        {
-          step: "04",
-          title: "High-Authority Digital PR & Backlink Flywheel",
-          detail: "Earn authoritative white-hat editorial backlinks from tier-1 industry publications."
-        }
-      ],
-      techStack: ["Ahrefs", "Semrush", "Screaming Frog", "Perplexity AI", "GSC", "Schema.org"],
-      deliverables: {
-        timeline: "4-6 Months Compounding Growth",
-        reporting: "Bi-Weekly Keyword & Ranking Audits",
-        teamPod: "Senior SEO Lead + Technical Dev + Content Strategist",
-        guarantee: "100% White-Hat & Google Algorithm Proof"
-      }
-    },
-    {
-      badge: "High ROAS Scale",
-      title: "Paid Media & Demand Gen",
-      shortTitle: "Paid Media (Meta, Google, TikTok)",
-      description: "Laser-targeted Meta, Google, and TikTok campaigns engineered to acquire high-intent buyers at low acquisition costs.",
-      impact: "Avg 4.85x ROAS",
-      icon: Target,
-      accent: "from-purple-500/20 to-pink-500/5",
-      border: "hover:border-purple-500/40",
-      gradientText: "from-purple-400 via-pink-400 to-rose-400",
-      features: [
-        "Meta Advantage+ & Broad AI Targeting",
-        "Google Search & Performance Max",
-        "TikTok Spark Direct-Response Ads",
-        "High-Impact Retargeting Funnels"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Full-Funnel Account Restructuring & Server CAPI",
-          detail: "Rebuild ad account structures for machine learning with bulletproof server-side Meta Conversions API and GA4 tracking."
-        },
-        {
-          step: "02",
-          title: "Dynamic Creative Testing (DCT 3:2:2)",
-          detail: "Rapidly test 30+ creative angles, visual hooks, and direct-response formats every single week."
-        },
-        {
-          step: "03",
-          title: "Google Search & Performance Max Tuning",
-          detail: "Capture bottom-of-funnel intent through Alpha/Beta search campaigns and optimized Merchant Center feeds."
-        },
-        {
-          step: "04",
-          title: "Algorithmic Budget Scaling & Dayparting",
-          detail: "Scale ad spend with automated pacing rules, margin-first bidding, and cross-channel retargeting."
-        }
-      ],
-      techStack: ["Meta Ads Manager", "Google Ads", "TikTok Ads", "Triple Whale", "GTM Server", "Looker Studio"],
-      deliverables: {
-        timeline: "14-Day Rapid Calibration & Live Scale",
-        reporting: "Live Real-Time Dashboard + Weekly Strategy Call",
-        teamPod: "Dedicated Senior Media Buyer + Creative Strategist",
-        guarantee: "100% Client Ownership of Ad Accounts & Data"
-      }
-    },
-    {
-      badge: "Brand Authority",
-      title: "Content & Direct Video",
-      shortTitle: "UGC Video & Direct-Response Creative",
-      description: "Viral UGC video hooks, thought-leadership content, and reputation management to establish unrivaled category authority.",
-      impact: "3.2x Brand Recall",
-      icon: FileText,
-      accent: "from-pink-500/20 to-rose-500/5",
-      border: "hover:border-pink-500/40",
-      gradientText: "from-pink-400 via-rose-400 to-purple-400",
-      features: [
-        "Native Creator UGC Video Production",
-        "Direct-Response Sales Copywriting",
-        "Strategic Influencer Partnerships",
-        "Online Reputation Management (ORM)"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Attention Psychology & Hook Architecture",
-          detail: "Script high-retention 3-second pattern interrupts and visual hooks that stop user scrolling instantly."
-        },
-        {
-          step: "02",
-          title: "High-Volume UGC Creator Batch Filming",
-          detail: "Source, direct, and produce 20+ authentic user-generated video assets per month across diverse creator personas."
-        },
-        {
-          step: "03",
-          title: "Dynamic Kinetic Editing & Captioning",
-          detail: "Fast-paced sound design, jump-cut pacing, and high-contrast kinetic captions built specifically for mobile screens."
-        },
-        {
-          step: "04",
-          title: "Omnichannel Repurposing Engine",
-          detail: "Format and optimize winning creative angles for Reels, TikTok, YouTube Shorts, and Meta Advantage+ catalogs."
-        }
-      ],
-      techStack: ["CapCut Pro", "Adobe Premiere", "Foreplay.co", "Motion App", "Descript", "Miro"],
-      deliverables: {
-        timeline: "7-Day Turnaround per Creative Batch",
-        reporting: "Weekly Creative Fatigue & Hook Rate Analysis",
-        teamPod: "Creative Director + 2 Video Editors + Copywriter",
-        guarantee: "Full Commercial Usage & Raw Asset Rights"
-      }
-    },
-    {
-      badge: "LTV Maximization",
-      title: "Retention & Lifecycle Email",
-      shortTitle: "Email & SMS Retention Flows",
-      description: "Automated lifecycle email & SMS workflows, VIP loyalty tiers, and referral systems to maximize customer lifetime value.",
-      impact: "+38% Repeat Rate",
-      icon: Heart,
-      accent: "from-emerald-500/20 to-teal-500/5",
-      border: "hover:border-emerald-500/40",
-      gradientText: "from-emerald-400 via-teal-300 to-cyan-400",
-      features: [
-        "Automated Klaviyo & HubSpot Flows",
-        "Two-Way SMS Marketing & Nurturing",
-        "VIP Loyalty & Customer Tiers",
-        "Affiliate & Referral Engine Growth"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Deep Customer Journey & Drop-Off Audit",
-          detail: "Map every touchpoint from first click to repeat order, identifying checkout drop-offs and dormant subscribers."
-        },
-        {
-          step: "02",
-          title: "Core Automation Flow Engineering",
-          detail: "Build high-converting Welcome Series, Abandoned Cart Recoveries, Post-Purchase Nurtures, and VIP Win-Backs."
-        },
-        {
-          step: "03",
-          title: "Two-Way Conversational SMS Marketing",
-          detail: "Deploy high-intent SMS alerts, time-sensitive flash sales, and conversational replenishment reminders."
-        },
-        {
-          step: "04",
-          title: "Predictive Cohort Segmentation & LTV Multipliers",
-          detail: "Segment audiences by RFM (Recency, Frequency, Monetary) to increase 90-day repeat purchase rates."
-        }
-      ],
-      techStack: ["Klaviyo", "Attentive SMS", "HubSpot", "Postscript", "Zapier", "ChartMogul"],
-      deliverables: {
-        timeline: "10-Day Complete Flow Deployment",
-        reporting: "Weekly Campaign Broadcast & Revenue Attribution",
-        teamPod: "Retention Strategist + Email UX Designer + Copywriter",
-        guarantee: "Zero Spam Score & 99%+ Deliverability"
-      }
-    },
-    {
-      badge: "Conversion Architecture",
-      title: "Infrastructure & CRO Funnels",
-      shortTitle: "Landing Pages & CRO Architecture",
-      description: "Sub-second landing pages built to convert cold visitors with server-side CAPI data tags for 100% accurate attribution.",
-      impact: "Up to +180% CVR",
-      icon: Settings,
-      accent: "from-blue-500/20 to-indigo-500/5",
-      border: "hover:border-blue-500/40",
-      gradientText: "from-blue-400 via-cyan-400 to-indigo-400",
-      features: [
-        "Custom Next.js & Tailwind Landing Pages",
-        "Continuous Multivariate CRO Testing",
-        "Server-Side Meta CAPI & GA4 Tracking",
-        "Go-To-Market (GTM) Budget Modeling"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Heatmap & Session Recording Diagnostics",
-          detail: "Analyze user click friction, scroll drop-offs, and form abandonment to engineer cognitive clarity."
-        },
-        {
-          step: "02",
-          title: "Sub-Second High-Speed Page Construction",
-          detail: "Develop clean, modern Next.js landing pages engineered for instant load speeds (<1.2s) on mobile devices."
-        },
-        {
-          step: "03",
-          title: "Multivariate A/B Testing Matrix",
-          detail: "Continuously test headlines, hero angles, social proof placement, and frictionless 1-click checkout flows."
-        },
-        {
-          step: "04",
-          title: "Server-Side Data Telemetry Integration",
-          detail: "Deploy server-side GTM containers and Meta CAPI to eliminate browser ad blocker data loss."
-        }
-      ],
-      techStack: ["Next.js", "TailwindCSS", "VWO", "Hotjar", "GA4", "GTM Server"],
-      deliverables: {
-        timeline: "Sub-Second Speed Guarantee (<1.2s Load Time)",
-        reporting: "Statistical Significance Conversion Test Reports",
-        teamPod: "Full-Stack CRO Developer + UI/UX Designer",
-        guarantee: "Guaranteed Conversion Rate Uplift"
-      }
-    },
-    {
-      badge: "Omnichannel Reach",
-      title: "Programmatic & CTV Video",
-      shortTitle: "Programmatic DSP & Connected TV",
-      description: "Reach premium streaming audiences across Hulu, Roku, YouTube TV, and DSP networks with precision demographic targeting.",
-      impact: "+52% Brand Lift",
-      icon: Tv,
-      accent: "from-amber-500/20 to-orange-500/5",
-      border: "hover:border-amber-500/40",
-      gradientText: "from-amber-400 via-orange-400 to-rose-400",
-      features: [
-        "Connected TV (CTV) & OTT Ad Placements",
-        "Real-Time DSP Bidding & Geo-Fencing",
-        "Cross-Device Household Retargeting",
-        "Brand Lift & Multi-Touch Attribution"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Cross-Device Household Identity Graphing",
-          detail: "Map target consumer households across mobile, desktop, and smart TVs for coordinated cross-device messaging."
-        },
-        {
-          step: "02",
-          title: "Premium Streaming Network Placements",
-          detail: "Deliver non-skippable HD video ads across Hulu, Roku, Disney+, YouTube TV, and Max."
-        },
-        {
-          step: "03",
-          title: "Dynamic Geo-Fencing & High-Intent Bidding",
-          detail: "Trigger real-time programmatic ad impressions when prospects enter designated competitor or commercial zones."
-        },
-        {
-          step: "04",
-          title: "Multi-Touch Brand Lift & Offline Attribution",
-          detail: "Track incremental website visits, digital conversions, and foot-traffic lift post-ad exposure."
-        }
-      ],
-      techStack: ["The Trade Desk", "Amazon DSP", "DV360", "Roku OneView", "LiveRamp"],
-      deliverables: {
-        timeline: "48-Hour Rapid DSP Campaign Setup",
-        reporting: "View-Through Attribution & Brand Lift Metrics",
-        teamPod: "Programmatic Media Director + Data Strategist",
-        guarantee: "100% Brand-Safe, Fraud-Filtered Inventory"
-      }
-    },
-    {
-      badge: "Creator Performance",
-      title: "Influencer & Whitelisting",
-      shortTitle: "Influencer Seeding & Whitelisting",
-      description: "Run dark-post whitelisted ads directly through authentic influencer social handles for maximum social proof and CTR.",
-      impact: "2.4x Higher CTR",
-      icon: Users,
-      accent: "from-rose-500/20 to-pink-500/5",
-      border: "hover:border-rose-500/40",
-      gradientText: "from-rose-400 via-pink-400 to-purple-400",
-      features: [
-        "Creator Scouting & Contract Handling",
-        "Meta & TikTok Handle Whitelisting",
-        "High-Volume Hook & Angle Iterations",
-        "Direct D2C Product Seeding"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Creator Vetting & Audience Authenticity Audit",
-          detail: "Audit influencer follower demographics, fake follower ratios, and genuine engagement authenticity."
-        },
-        {
-          step: "02",
-          title: "Product Seeding & Storyboard Briefs",
-          detail: "Send curated product packages with conversion-engineered briefing guides that feel natural and authentic."
-        },
-        {
-          step: "03",
-          title: "Paid Handle Whitelisting Access",
-          detail: "Secure direct advertiser permissions to run dark ads directly from the creator's verified social profile."
-        },
-        {
-          step: "04",
-          title: "Spark Ad Scaling & Spark Funnels",
-          detail: "Scale top-performing creator posts with paid media budgets, driving higher CTRs and lower blended CAC."
-        }
-      ],
-      techStack: ["Insense", "Grin", "TikTok Creator Marketplace", "Meta Partnership Ads", "Miro"],
-      deliverables: {
-        timeline: "15-Day Creator Pipeline & Content Ingestion",
-        reporting: "Bi-Weekly Creator ROAS & Engagement Scorecards",
-        teamPod: "Influencer Coordinator + Talent Scout + Media Buyer",
-        guarantee: "Full Contractual Ad Usage & Whitelisting Rights"
-      }
-    },
-    {
-      badge: "Mobile Scaling",
-      title: "App Growth & Acquisition",
-      shortTitle: "Mobile App Installs & ASA Scaling",
-      description: "Dominate the app ecosystem with Apple Search Ads (ASA), Google App Campaigns, and custom mobile attribution (MMP).",
-      impact: "-35% Cost / Install",
-      icon: Smartphone,
-      accent: "from-indigo-500/20 to-cyan-500/5",
-      border: "hover:border-indigo-500/40",
-      gradientText: "from-indigo-400 via-cyan-400 to-blue-400",
-      features: [
-        "Apple Search Ads (ASA) Custom Bids",
-        "Google App Campaigns for Installs",
-        "In-App Event & Subscription Scaling",
-        "AppsFlyer & Adjust MMP Attribution"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Apple Search Ads (ASA) Custom Product Pages",
-          detail: "Target high-intent App Store search queries with tailored screenshot pages mapped to exact user intent."
-        },
-        {
-          step: "02",
-          title: "Google App Campaigns (ACi & ACe) Scaling",
-          detail: "Run machine-learning optimized app install and in-app re-engagement campaigns across Search, YouTube, and Play."
-        },
-        {
-          step: "03",
-          title: "Mobile Measurement Partner (MMP) Telemetry",
-          detail: "Configure deep-linking, deferred routing, and clean install attribution via AppsFlyer or Adjust."
-        },
-        {
-          step: "04",
-          title: "Paywall & Subscription Tier CRO",
-          detail: "Optimize onboarding quiz funnels and paywall pricing tiers to maximize trial-to-paid conversion rates."
-        }
-      ],
-      techStack: ["Apple Search Ads", "Google Play Console", "AppsFlyer", "Adjust", "RevenueCat", "Branch.io"],
-      deliverables: {
-        timeline: "7-Day MMP Integration & Campaign Launch",
-        reporting: "Weekly CPI, CPA, and Retention Cohort Tracking",
-        teamPod: "Mobile Growth Lead + Mobile Telemetry Engineer",
-        guarantee: "SKAdNetwork & Privacy-Compliant Tracking"
-      }
-    },
-    {
-      badge: "Marketplace Growth",
-      title: "E-Commerce & Amazon Ads",
-      shortTitle: "Amazon Ads & Marketplace Scaling",
-      description: "Scale sales across Amazon Ads, Shopify Plus, and multi-channel marketplaces with automated catalog feeds and bid algorithms.",
-      impact: "5.8x Amazon ROAS",
-      icon: ShoppingBag,
-      accent: "from-teal-500/20 to-emerald-500/5",
-      border: "hover:border-teal-500/40",
-      gradientText: "from-teal-400 via-emerald-400 to-cyan-400",
-      features: [
-        "Amazon Sponsored Products & Brands",
-        "Shopify Plus Funnel Optimization",
-        "Dynamic Product Catalog Feeds (DPA)",
-        "Amazon DSP Audience Retargeting"
-      ],
-      playbook: [
-        {
-          step: "01",
-          title: "Catalog Audit & Buy Box Defense",
-          detail: "Audit listing titles, bullet points, A+ content, and backend search terms while defending top search rankings."
-        },
-        {
-          step: "02",
-          title: "Sponsored Products, Brands & Video Ads",
-          detail: "Dominate high-converting category search results with video in-feed ads and competitor conquesting."
-        },
-        {
-          step: "03",
-          title: "Amazon DSP Audience Retargeting",
-          detail: "Retarget cart abandoners and past purchasers across Amazon-owned properties to drive repeat subscribe-and-save."
-        },
-        {
-          step: "04",
-          title: "Multi-Channel Catalog Feed Automation",
-          detail: "Sync real-time stock levels, pricing, and custom product labels across Shopify, Amazon, and Google Shopping."
-        }
-      ],
-      techStack: ["Amazon Ads Console", "Shopify Plus", "Helium 10", "Perpetua", "Pacvue", "Jungle Scout"],
-      deliverables: {
-        timeline: "3-5 Day Catalog Ingestion & Launch",
-        reporting: "Daily TACoS & ACoS Efficiency Dashboards",
-        teamPod: "Amazon Advertising Specialist + Catalog Manager",
-        guarantee: "Total Buy Box Protection & Positive TACoS"
-      }
-    },
-  ];
+  const services = allServices;
 
   return (
-    <section id="services" className="flex flex-col w-full py-24 bg-transparent border-t border-slate-200/80 relative overflow-hidden z-10">
+    <section id="services" className="flex flex-col w-full py-20 lg:py-28 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+      
+      {/* Background Volumetric Flares */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 text-xs uppercase tracking-wider font-extrabold mb-3 shadow-sm">
-            <Zap className="w-3.5 h-3.5 text-cyan-600" /> Full-Spectrum Growth Solutions
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 mb-4 tracking-tight">
-            Engineered To <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-indigo-600 to-pink-600">Multiply Revenue</span>
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium">
-            From precision paid acquisition and AI search optimization to conversion funnels, programmatic media, and retention.
-          </p>
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs uppercase tracking-widest font-black mb-3.5 shadow-xs"
+          >
+            <Zap className="w-3.5 h-3.5 text-amber-400" />
+            <span>Complete Digital Marketing</span>
+          </motion.div>
+
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] mb-4"
+          >
+            Everything Your Business <br className="hidden sm:block" />
+            <span className="text-gold-gradient">Needs to Grow Online.</span>
+          </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium max-w-2xl mx-auto"
+          >
+            From high-conversion paid acquisition and AI-powered search optimization to sub-second websites, viral videos, and automated lead nurturing funnels.
+          </motion.p>
         </div>
 
-        {/* Services 3x3 Grid - Sleek & Compact */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {/* Interactive Draggable Carousel Controller Bar */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-semibold shadow-xs">
+              <MoveHorizontal className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+              <span>Drag or swipe horizontally to explore all 12 services</span>
+            </span>
+            <span className="hidden sm:inline-flex items-center text-xs font-bold text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+              12 Capabilities
+            </span>
+          </div>
+
+          {/* Navigation Chevron Buttons */}
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            <button
+              onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
+              aria-label="Previous service"
+              className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
+                canScrollLeft
+                  ? "bg-white/5 hover:bg-amber-400/20 text-slate-200 hover:text-amber-300 border-white/15 hover:border-amber-400/40 shadow-sm active:scale-95"
+                  : "bg-white/5 text-slate-600 border-white/5 cursor-not-allowed opacity-40"
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              disabled={!canScrollRight}
+              aria-label="Next service"
+              className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-200 cursor-pointer ${
+                canScrollRight
+                  ? "bg-white/5 hover:bg-amber-400/20 text-slate-200 hover:text-amber-300 border-white/15 hover:border-amber-400/40 shadow-sm active:scale-95"
+                  : "bg-white/5 text-slate-600 border-white/5 cursor-not-allowed opacity-40"
+              }`}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* 12 Services Draggable Horizontal Showcase Track */}
+        <div 
+          ref={sliderRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={handleMouseUpOrLeave}
+          onScroll={updateScrollState}
+          className={`flex gap-5 sm:gap-6 overflow-x-auto py-3 px-1 no-scrollbar select-none scroll-smooth mb-6 touch-pan-x ${
+            isMouseDown ? "snap-none cursor-grabbing" : "snap-x snap-mandatory cursor-grab"
+          }`}
+        >
           {services.map((service, index) => {
             const IconComp = service.icon;
+            const numStr = String(index + 1).padStart(2, "0");
             return (
-              <motion.div 
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                whileHover={{ y: -4 }}
-                className={`glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden border border-slate-200/90 transition-all duration-300 ${service.border} group flex flex-col justify-between shadow-md hover:shadow-2xl hover:-translate-y-1.5`}
+                onClick={() => {
+                  if (!isDraggingRef.current) {
+                    setSelectedService(service);
+                  }
+                }}
+                className="w-[305px] sm:w-[345px] md:w-[375px] shrink-0 snap-start glass-card rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-amber-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden cursor-pointer"
               >
-                <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${service.accent} rounded-bl-full blur-xl pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity`} />
+                {/* Subtle Hover Gradient Accent */}
+                <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${service.accent} rounded-bl-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none`} />
 
                 <div>
-                  {/* Header row */}
-                  <div className="flex items-center justify-between gap-2 mb-3.5">
-                    <div className="w-10 h-10 rounded-xl glass-subcard flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-xs">
-                      <IconComp className="h-5 w-5 text-cyan-600" />
+                  {/* Top Row: Icon, Service Index, Impact Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform text-amber-400">
+                        <IconComp className="h-5 w-5" />
+                      </div>
+                      <span className="text-xs font-black text-amber-400/50 group-hover:text-amber-400/80 transition-colors font-mono">
+                        #{numStr}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                      <TrendingUp className="w-3 h-3 text-emerald-600" /> {service.impact}
+
+                    <span className="text-[10px] font-black text-emerald-300 bg-emerald-500/20 border border-emerald-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-2xs">
+                      <TrendingUp className="w-3 h-3 text-emerald-400" /> {service.impact}
                     </span>
                   </div>
 
-                  <div className="mb-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-700 block mb-0.5">
+                  {/* Title & Category Badge */}
+                  <div className="mb-2.5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400/90 block mb-1">
                       {service.badge}
                     </span>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-cyan-600 transition-colors duration-300 leading-snug">
+                    <h3 className="text-base sm:text-lg font-black text-white group-hover:text-amber-300 transition-colors leading-snug">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-2">
+                  {/* Description */}
+                  <p className="text-slate-300 text-xs leading-relaxed mb-4 line-clamp-3">
                     {service.description}
                   </p>
 
-                  {/* Features */}
-                  <div className="pt-3 border-t border-slate-100">
-                    <ul className="space-y-1.5">
+                  {/* Features List */}
+                  <div className="pt-3.5 border-t border-white/10">
+                    <ul className="space-y-2">
                       {service.features.map((feature, fIndex) => (
-                        <li key={fIndex} className="flex items-start gap-1.5 text-xs text-slate-700 font-medium">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-cyan-600 shrink-0 mt-0.5" />
-                          <span className="leading-tight line-clamp-1">{feature}</span>
+                        <li key={fIndex} className="flex items-start gap-2 text-xs text-slate-300 font-medium">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                          <span className="leading-tight truncate">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* Interactive Modal Action Trigger */}
-                <div className="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between">
+                {/* Bottom Action Footer */}
+                <div className="pt-4 mt-5 border-t border-white/10 flex items-center justify-between">
                   <button
-                    onClick={() => setSelectedService(service)}
-                    className="text-xs font-bold text-cyan-700 hover:text-cyan-950 flex items-center gap-1.5 transition-colors group/link cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (!isDraggingRef.current) setSelectedService(service);
+                    }}
+                    className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 transition-colors group/link cursor-pointer"
                   >
-                    Explore Strategy <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                    <span>View Playbook</span>
+                    <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
                   </button>
-                  <span className="text-[10px] text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
-                    Bespoke SLA
-                  </span>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    onClick={(e) => {
+                      if (isDraggingRef.current) e.preventDefault();
+                    }}
+                    className="text-[10px] text-cyan-300 hover:text-cyan-200 font-bold bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-md border border-white/10 transition-colors"
+                  >
+                    Full Details →
+                  </Link>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
+
+        {/* Dynamic Glowing Progress Indicator Bar */}
+        <div className="flex flex-col items-center justify-center gap-2 mb-14">
+          <div className="w-64 sm:w-80 h-1.5 bg-white/10 rounded-full overflow-hidden relative shadow-inner">
+            <div 
+              className="h-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-full transition-all duration-150"
+              style={{ width: `${Math.max(12, scrollProgress)}%` }}
+            />
+          </div>
+          <span className="text-[11px] font-medium text-slate-400 flex items-center gap-1.5">
+            <span>←</span> Drag or swipe horizontally to see all 12 services <span>→</span>
+          </span>
+        </div>
+
+        {/* Primary Bottom Action Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="p-6 sm:p-8 rounded-3xl glass-card-gold text-white relative overflow-hidden shadow-2xl border border-amber-400/30"
+        >
+          <div className="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-amber-500/15 via-yellow-500/10 to-transparent pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-3 border border-amber-400/40">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Complete Growth Partner
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-2 leading-tight">
+                Ready To Scale Your Entire Digital Marketing Engine?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                Get a custom multi-channel growth audit covering paid ads, SEO, website speed, and automated conversion systems tailored to your revenue targets.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3.5 w-full lg:w-auto shrink-0">
+              <Link
+                href="#contact"
+                className="px-7 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-slate-950" />
+                <span>GET COMPLETE MARKETING PROPOSAL</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20would%20like%20to%20get%20a%20Complete%20Digital%20Marketing%20Proposal%20for%20our%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+              >
+                <PhoneCall className="w-4 h-4 fill-white" />
+                <span>WHATSAPP OUR TEAM</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
 
       {/* ----------------- INTERACTIVE STRATEGY DEEP-DIVE MODAL ----------------- */}
@@ -591,155 +392,139 @@ export function ServicesSection() {
           onClick={(e) => {
             if (e.target === e.currentTarget) setSelectedService(null);
           }}
-          className="fixed inset-0 z-[9999999] flex items-center justify-center p-2.5 sm:p-4 bg-slate-950/85 backdrop-blur-md overflow-hidden"
+          className="fixed inset-0 z-[9999999] flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-xl overflow-y-auto"
         >
           {/* Modal Dialog Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="glass-modal rounded-2xl sm:rounded-3xl max-w-lg w-full relative z-10 max-h-[88vh] sm:max-h-[85vh] flex flex-col overflow-hidden my-auto"
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-3xl rounded-3xl bg-[#090d16] border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden relative my-auto max-h-[90vh] flex flex-col text-slate-100"
           >
-            {/* Modal Header */}
-            <div className="px-4 py-3 sm:px-5 sm:py-3.5 border-b border-slate-200/80 relative shrink-0 glass-subcard flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 pr-6">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-slate-200 flex items-center justify-center shrink-0 shadow-2xs">
-                  {selectedService && <selectedService.icon className="w-4 h-4 text-cyan-700" />}
+            {/* Header */}
+            <div className="p-5 sm:p-6 border-b border-white/10 bg-white/5 flex items-start justify-between relative">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
+                  <selectedService.icon className="w-6 h-6" />
                 </div>
-
                 <div>
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-[8px] font-black uppercase tracking-wider text-cyan-800 bg-cyan-100/70 px-1.5 py-0.2 rounded border border-cyan-200">
-                      {selectedService.badge}
-                    </span>
-                    <span className="text-[8px] font-black text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded flex items-center gap-0.5">
-                      <TrendingUp className="w-2.5 h-2.5 text-emerald-600" /> {selectedService.impact}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xs sm:text-sm font-black text-slate-950 leading-tight">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-400 block mb-0.5">
+                    {selectedService.badge}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
                     {selectedService.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Prominent Close Button */}
               <button
                 onClick={() => setSelectedService(null)}
-                aria-label="Close strategy modal"
-                className="w-7 h-7 rounded-full glass-subcard hover:bg-white text-slate-700 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors cursor-pointer"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Modal Scrollable Body */}
-            <div className="p-3 sm:p-4 overflow-y-auto space-y-2.5 text-left">
-              {/* Description */}
-              <p className="text-[11px] text-slate-600 leading-snug">
-                {selectedService.description}
-              </p>
-
-              {/* Section 1: 4-Step Execution Framework (Compact 2x2 Grid) */}
+            {/* Scrollable Body */}
+            <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
+              
+              {/* Overview */}
               <div>
-                <div className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  <Sparkles className="w-3 h-3 text-cyan-600" />
-                  4-Step Execution Playbook
-                </div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
+                  Strategy Overview
+                </h4>
+                <p className="text-sm text-slate-200 leading-relaxed font-medium">
+                  {selectedService.description}
+                </p>
+              </div>
 
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                  {selectedService.playbook.map((phase) => (
-                    <div 
-                      key={phase.step}
-                      className="p-2 sm:p-2.5 rounded-xl glass-subcard flex flex-col justify-between shadow-2xs hover:shadow-sm transition-shadow"
-                    >
+              {/* 4-Step Playbook */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-1.5">
+                  <Layers className="w-4 h-4 text-amber-400" /> Tactical Execution Playbook
+                </h4>
+                <div className="space-y-2.5">
+                  {selectedService.playbook.map((step, sIdx) => (
+                    <div key={sIdx} className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
+                      <span className="w-7 h-7 rounded-lg bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-black flex items-center justify-center shrink-0">
+                        {step.step}
+                      </span>
                       <div>
-                        <div className="flex items-center justify-between gap-1 mb-0.5">
-                          <span className="text-[8px] font-black text-cyan-800 bg-cyan-100/70 px-1.5 py-0.2 rounded border border-cyan-200">
-                            Phase {phase.step}
-                          </span>
-                          <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
-                        </div>
-                        <h4 className="text-[10px] sm:text-[11px] font-bold text-slate-900 mb-0.5 leading-tight line-clamp-1">
-                          {phase.title}
-                        </h4>
-                        <p className="text-[9px] text-slate-600 leading-tight line-clamp-2">
-                          {phase.detail}
-                        </p>
+                        <div className="text-xs font-bold text-white mb-0.5">{step.title}</div>
+                        <p className="text-[11px] text-slate-400 leading-relaxed">{step.detail}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Section 2: Core Tech Stack & Tools */}
-              <div className="p-2 sm:p-2.5 rounded-xl glass-subcard shadow-2xs">
-                <div className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-slate-700 mb-1">
-                  <Cpu className="w-2.5 h-2.5 text-purple-600" />
-                  Core Tech Stack & Telemetry
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  {selectedService.techStack.map((tool, tIdx) => (
-                    <span 
-                      key={tIdx}
-                      className="text-[8px] sm:text-[9px] px-1.5 py-0.2 rounded glass-subcard text-slate-800 font-mono font-bold"
-                    >
-                      {tool}
+              {/* Tech Stack */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2.5">
+                  Production Tech Stack
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedService.techStack.map((tech, tIdx) => (
+                    <span key={tIdx} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-cyan-300">
+                      {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Section 3: Expected Deliverables & SLA Guarantees */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-                <div className="p-1.5 rounded-xl glass-subcard shadow-2xs">
-                  <span className="text-[7px] text-slate-500 uppercase tracking-wider block font-bold">Speed / SLA</span>
-                  <span className="text-[8px] sm:text-[9px] font-bold text-cyan-700 mt-0.5 block leading-tight">{selectedService.deliverables.timeline}</span>
+              {/* Deliverables Matrix */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] text-slate-400 font-semibold uppercase">Deployment Timeline</div>
+                  <div className="text-xs font-bold text-white mt-0.5">{selectedService.deliverables.timeline}</div>
                 </div>
-                <div className="p-1.5 rounded-xl glass-subcard shadow-2xs">
-                  <span className="text-[7px] text-slate-500 uppercase tracking-wider block font-bold">Reporting</span>
-                  <span className="text-[8px] sm:text-[9px] font-bold text-purple-700 mt-0.5 block leading-tight">{selectedService.deliverables.reporting}</span>
+                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] text-slate-400 font-semibold uppercase">Reporting Cadence</div>
+                  <div className="text-xs font-bold text-white mt-0.5">{selectedService.deliverables.reporting}</div>
                 </div>
-                <div className="p-1.5 rounded-xl glass-subcard shadow-2xs">
-                  <span className="text-[7px] text-slate-500 uppercase tracking-wider block font-bold">Growth Pod</span>
-                  <span className="text-[8px] sm:text-[9px] font-bold text-pink-700 mt-0.5 block leading-tight">{selectedService.deliverables.teamPod}</span>
+                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] text-slate-400 font-semibold uppercase">Dedicated Pod</div>
+                  <div className="text-xs font-bold text-white mt-0.5">{selectedService.deliverables.teamPod}</div>
                 </div>
-                <div className="p-1.5 rounded-xl glass-subcard shadow-2xs">
-                  <span className="text-[7px] text-slate-500 uppercase tracking-wider block font-bold">Guarantee</span>
-                  <span className="text-[8px] sm:text-[9px] font-bold text-emerald-700 mt-0.5 block leading-tight">{selectedService.deliverables.guarantee}</span>
+                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] text-slate-400 font-semibold uppercase">Quality Guarantee</div>
+                  <div className="text-xs font-bold text-emerald-400 mt-0.5">{selectedService.deliverables.guarantee}</div>
                 </div>
+              </div>
+
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 sm:p-5 border-t border-white/10 bg-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-slate-400 font-medium">
+                Want this strategy installed for your business?
+              </span>
+              <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+                <Link
+                  href={`/services/${selectedService.slug}`}
+                  onClick={() => setSelectedService(null)}
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <span>Full Service Page</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="#contact"
+                  onClick={() => setSelectedService(null)}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md"
+                >
+                  <span>Request Proposal</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
 
-            {/* Modal Bottom Footer Action Buttons */}
-            <div className="p-2 sm:p-2.5 bg-slate-50 border-t border-slate-200 shrink-0 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-              <Link
-                href="#contact"
-                onClick={() => setSelectedService(null)}
-                className="py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-pink-500 text-white font-bold text-[10px] sm:text-[11px] flex items-center justify-center gap-1 shadow-2xs hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer border border-white/30"
-              >
-                <Sparkles className="w-3 h-3" /> Book Strategy Audit <ArrowRight className="w-3 h-3" />
-              </Link>
-
-              <a
-                href={`https://wa.me/916304989071?text=${encodeURIComponent(
-                  `Hi Himastech, I would like to explore your strategy playbook for ${selectedService.title}.`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 border border-emerald-700 text-white font-bold text-[10px] sm:text-[11px] flex items-center justify-center gap-1 shadow-2xs hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
-              >
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/>
-                </svg>
-                WhatsApp Desk (+91 6304989071)
-              </a>
-            </div>
           </motion.div>
         </div>,
         document.body
       )}
+
     </section>
   );
 }

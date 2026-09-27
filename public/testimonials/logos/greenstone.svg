@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <rect width="240" height="60" rx="10" fill="#062117" fill-opacity="0.8"/>
+  <path d="M28 16L38 24L38 40L28 46L18 40L18 24L28 16Z" stroke="#10B981" stroke-width="2.5" fill="none"/>
+  <path d="M28 22L34 27V37L28 41L22 37V27L28 22Z" fill="#10B981"/>
+  <text x="48" y="32" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13.5" font-weight="900" letter-spacing="1.2">GREENSTONE</text>
+  <text x="48" y="44" fill="#6EE7B7" font-family="system-ui, sans-serif" font-size="8.5" font-weight="600" letter-spacing="1.8">INFRA PROJECTS</text>
+</svg>

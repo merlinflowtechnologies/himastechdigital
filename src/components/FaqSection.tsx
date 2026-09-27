@@ -48,48 +48,84 @@ export function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-20 bg-transparent border-t border-slate-200/80 relative overflow-hidden z-10">
-      {/* Background glow */}
-      <div className="absolute top-1/3 -left-60 w-80 h-80 bg-brand-blue/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/3 -right-60 w-80 h-80 bg-brand-purple/5 rounded-full blur-[130px] pointer-events-none" />
+    <section id="faq" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+      {/* Background ambient glow */}
+      <div className="absolute top-1/3 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-subcard border-blue-300/40 text-blue-700 text-xs uppercase tracking-wider font-bold mb-3 shadow-xs">
-            <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight mb-2.5">
-            Got Questions? <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">We've Got Answers.</span>
-          </h2>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Everything you need to know about our data-driven marketing frameworks and deliverables.
-          </p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/25 text-cyan-300 text-xs uppercase tracking-wider font-bold mb-4 shadow-sm"
+          >
+            <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Frequently Asked Questions</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3"
+          >
+            Got Questions?{" "}
+            <span className="text-electric-gradient">
+              We&apos;ve Got Answers.
+            </span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto font-medium"
+          >
+            Everything you need to know about our data-driven marketing frameworks, lead pipelines, and deliverables.
+          </motion.p>
         </div>
 
         {/* Compact FAQ Accordion Cards */}
-        <div className="space-y-2.5">
+        <div className="space-y-3.5">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="glass-card rounded-2xl overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                className={`rounded-2xl overflow-hidden transition-all duration-300 border ${
+                  isOpen 
+                    ? "bg-[#0d1322]/95 border-cyan-500/40 shadow-[0_0_25px_rgba(6,182,212,0.15)]" 
+                    : "glass-card border-white/10 hover:border-white/20 hover:bg-[#0b0f19]/90"
+                }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   aria-expanded={isOpen}
-                  className="w-full py-3.5 px-4 sm:px-5 text-left flex items-center justify-between gap-3.5 focus:outline-none cursor-pointer"
+                  className="w-full py-4 px-5 sm:px-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer group"
                 >
                   <div>
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider block mb-0.5">
+                    <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest block mb-1">
                       {faq.category}
                     </span>
-                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                    <h3 className={`text-sm sm:text-base font-bold leading-snug transition-colors ${
+                      isOpen ? "text-white" : "text-slate-200 group-hover:text-cyan-200"
+                    }`}>
                       {faq.question}
                     </h3>
                   </div>
-                  <div className={`p-1.5 rounded-lg glass-subcard shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-blue-600 border-blue-300/80" : "text-slate-400"}`}>
-                    <ChevronDown className="w-3.5 h-3.5" />
+                  <div className={`p-2 rounded-xl shrink-0 transition-all duration-300 ${
+                    isOpen 
+                      ? "rotate-180 text-cyan-400 bg-cyan-400/10 border border-cyan-400/30 shadow-[0_0_12px_rgba(6,182,212,0.25)]" 
+                      : "text-slate-400 bg-white/5 border border-white/10 group-hover:text-white group-hover:border-white/20"
+                  }`}>
+                    <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
@@ -102,30 +138,38 @@ export function FaqSection() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 sm:px-5 pb-3.5 pt-1.5 text-xs text-slate-600 leading-relaxed border-t border-slate-200/50">
+                      <div className="px-5 sm:px-6 pb-5 pt-2 text-sm text-slate-300 leading-relaxed border-t border-white/10">
                         {faq.answer}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Compact Bottom Support Banner */}
-        <div className="mt-8 text-center p-5 sm:p-6 rounded-2xl glass-card flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 text-center p-6 sm:p-8 rounded-3xl glass-card border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl backdrop-blur-xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
           <div className="text-left">
-            <h4 className="text-xs sm:text-sm font-bold text-slate-900">Have a specific question about your marketing stack?</h4>
-            <p className="text-[11px] text-slate-500 mt-0.5">Our senior media strategists are available for a 1-on-1 audit call.</p>
+            <h4 className="text-base sm:text-lg font-bold text-white">Have a specific question about your marketing stack?</h4>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">Our senior media strategists are available for a 1-on-1 strategy call.</p>
           </div>
           <Link
             href="#contact"
-            className="px-4 py-2 rounded-xl glass-subcard hover:bg-white text-slate-900 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer shrink-0 shadow-xs"
+            className="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-105"
           >
-            <MessageSquare className="w-3.5 h-3.5 text-blue-600" /> Book Direct Call
+            <MessageSquare className="w-4 h-4 text-slate-950" />
+            <span>Book Strategy Call</span>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

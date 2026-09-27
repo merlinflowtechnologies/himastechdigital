@@ -1,195 +1,295 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, PenTool, Rocket, Repeat, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { 
+  Search, 
+  Target, 
+  Palette, 
+  Rocket, 
+  Activity, 
+  TrendingUp, 
+  Sparkles, 
+  CheckCircle2, 
+  ArrowRight, 
+  PhoneCall,
+  ChevronRight,
+  ShieldCheck
+} from "lucide-react";
+import Link from "next/link";
 
 export function ProcessSection() {
   const steps = [
     {
-      step: "01",
-      icon: <Search className="w-4 h-4 text-cyan-400" />,
-      title: "Data Audit & Attribution Blueprint",
-      tagline: "Uncovering Blind Spots",
-      description: "Dissect historic ad performance, pixel telemetry, GA4 event pipelines, and drop-offs to engineer bulletproof server-side CAPI tracking.",
+      stepNumber: "01",
+      stepBadge: "STEP 01",
+      name: "DISCOVER",
+      summary: "Understand the business, audience and goals.",
+      description: "We dive deep into your market positioning, analyze competitor ad funnels, profile high-intent buyer personas, and map out clear revenue targets.",
+      icon: Search,
+      accent: "from-amber-500/20 via-yellow-500/10 to-transparent",
+      badgeColor: "bg-amber-400/15 text-amber-300 border-amber-400/30",
+      iconColor: "text-amber-400",
       deliverables: [
-        "Full Ad Account & Creative Audit",
-        "Server-Side CAPI & GA4 Setup",
-        "Competitor Ad & Keyword Intel",
-      ],
-      glow: "from-cyan-500/25 via-blue-500/10 to-transparent",
-      accentBorder: "group-hover:border-cyan-500/60",
-      accentBadge: "bg-cyan-500/15 text-cyan-300 border-cyan-500/30",
-      particleColor: "bg-cyan-400",
-      floatDelay: 0,
+        "Business Goals & Revenue Alignment",
+        "Competitor Ad & Keyword Intel Audit",
+        "Ideal Buyer Persona (HNI/B2B) Mapping",
+        "Current Funnel & Telemetry Diagnostics"
+      ]
     },
     {
-      step: "02",
-      icon: <PenTool className="w-4 h-4 text-purple-400" />,
-      title: "High-Converting Creative & Funnel",
-      tagline: "Hook-Heavy Creative",
-      description: "Craft high-converting direct-response video ads, UGC hooks, dynamic static carousels, and sub-second landing pages engineered to maximize CVR.",
+      stepNumber: "02",
+      stepBadge: "STEP 02",
+      name: "STRATEGIZE",
+      summary: "Create a customized digital marketing strategy.",
+      description: "No generic templates. We build an omnichannel growth blueprint calibrated to your specific audience across paid ads, SEO, and conversion funnels.",
+      icon: Target,
+      accent: "from-cyan-500/20 via-blue-500/10 to-transparent",
+      badgeColor: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30",
+      iconColor: "text-cyan-400",
       deliverables: [
-        "Direct-Response Video & UGC Hooks",
-        "High-Speed Custom Landing Pages",
-        "Multivariate A/B Split Copywriting",
-      ],
-      glow: "from-purple-500/25 via-pink-500/10 to-transparent",
-      accentBorder: "group-hover:border-purple-500/60",
-      accentBadge: "bg-purple-500/15 text-purple-300 border-purple-500/30",
-      particleColor: "bg-purple-400",
-      floatDelay: 0.5,
+        "Custom Multi-Channel Growth Plan",
+        "Attract • Engage • Convert Funnel Map",
+        "Budget Allocation & ROAS Forecast",
+        "Server-Side CAPI Tracking Architecture"
+      ]
     },
     {
-      step: "03",
-      icon: <Rocket className="w-4 h-4 text-pink-400" />,
-      title: "Algorithmic Media Scaling",
-      tagline: "Omnichannel Execution",
-      description: "Deploy multi-stage paid campaigns across Meta, Google P-Max, TikTok, and YouTube using automated bidding rules and predictive budget scaling.",
+      stepNumber: "03",
+      stepBadge: "STEP 03",
+      name: "CREATE",
+      summary: "Develop content, creatives, videos and campaigns.",
+      description: "Our direct-response studio crafts scroll-stopping visual creatives, produces cinematic 4K video hooks, writes high-converting copy, and builds sub-second landing pages.",
+      icon: Palette,
+      accent: "from-amber-500/20 via-orange-500/10 to-transparent",
+      badgeColor: "bg-amber-400/15 text-amber-300 border-amber-400/30",
+      iconColor: "text-amber-400",
       deliverables: [
-        "Dynamic Lookalike & Broad AI Targeting",
-        "Dayparting & Algorithmic Bid Scaling",
-        "Real-Time CPA & ROAS Optimization",
-      ],
-      glow: "from-pink-500/25 via-rose-500/10 to-transparent",
-      accentBorder: "group-hover:border-pink-500/60",
-      accentBadge: "bg-pink-500/15 text-pink-300 border-pink-500/30",
-      particleColor: "bg-pink-400",
-      floatDelay: 1,
+        "Scroll-Stopping Direct-Response Ad Creatives",
+        "4K Cinematic Videos & Viral Short Hooks",
+        "Sub-Second Mobile Landing Pages",
+        "Interactive WhatsApp Automation Chatbots"
+      ]
     },
     {
-      step: "04",
-      icon: <Repeat className="w-4 h-4 text-emerald-400" />,
-      title: "Retention & Lifetime Value Engine",
-      tagline: "Multiplying Traffic Value",
-      description: "Automate Klaviyo lifecycle flows, SMS sequences, and VIP loyalty retargeting to boost repeat customer purchase rates and long-term LTV.",
+      stepNumber: "04",
+      stepBadge: "STEP 04",
+      name: "LAUNCH",
+      summary: "Launch targeted digital campaigns.",
+      description: "We deploy synchronized campaigns across Meta, Google Search, Performance Max, YouTube, and hyper-local geo-fences with real-time conversion tracking live.",
+      icon: Rocket,
+      accent: "from-cyan-500/20 via-sky-500/10 to-transparent",
+      badgeColor: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30",
+      iconColor: "text-cyan-400",
       deliverables: [
-        "Automated Lifecycle Email & SMS Nurtures",
-        "Post-Purchase 1-Click Upsell Systems",
-        "Cohort LTV & Retention Analytics",
-      ],
-      glow: "from-emerald-500/25 via-teal-500/10 to-transparent",
-      accentBorder: "group-hover:border-emerald-500/60",
-      accentBadge: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-      particleColor: "bg-emerald-400",
-      floatDelay: 1.5,
+        "Advantage+ AI & Broad Audience Setup",
+        "High-Intent Google Search & P-Max Launch",
+        "Hyper-Local Kokapet & City Geo-Fencing",
+        "Real-Time Telemetry Reporting Dashboard"
+      ]
     },
+    {
+      stepNumber: "05",
+      stepBadge: "STEP 05",
+      name: "OPTIMIZE",
+      summary: "Monitor and improve performance.",
+      description: "Continuous 24/7 campaign analysis: algorithmic bid pacing, killing fatigue ads, lowering cost per qualified lead, and optimizing conversion rates.",
+      icon: Activity,
+      accent: "from-amber-500/20 via-yellow-500/10 to-transparent",
+      badgeColor: "bg-amber-400/15 text-amber-300 border-amber-400/30",
+      iconColor: "text-amber-400",
+      deliverables: [
+        "24/7 Algorithmic Bid & Budget Pacing",
+        "A/B Split Testing for Hooks & Headlines",
+        "Lead Quality & Phone OTP Verification",
+        "Weekly Executive Performance Audits"
+      ]
+    },
+    {
+      stepNumber: "06",
+      stepBadge: "STEP 06",
+      name: "GROW",
+      summary: "Scale strategies that are working.",
+      description: "Once proven, we pump aggressive budget into winning campaigns, expand into lookalike audiences, and compound your monthly revenue and market authority.",
+      icon: TrendingUp,
+      accent: "from-cyan-500/20 via-emerald-500/10 to-transparent",
+      badgeColor: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30",
+      iconColor: "text-cyan-400",
+      deliverables: [
+        "Aggressive Horizontal & Vertical Ad Scaling",
+        "New Micro-Market & City Expansion",
+        "High-Ticket Closing Scripts & CRM Sync",
+        "Compounding Client Retention & Retargeting"
+      ]
+    }
   ];
 
   return (
-    <section id="process" className="py-16 sm:py-20 bg-transparent border-t border-slate-200/80 relative overflow-hidden z-10">
-      {/* Dynamic Ambient Moving Glow Orbs */}
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.15, 1],
-          opacity: [0.12, 0.22, 0.12],
-          x: [0, 30, 0],
-          y: [0, -20, 0]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/3 left-10 w-96 h-96 bg-purple-300/20 rounded-full blur-[140px] pointer-events-none" 
-      />
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-          x: [0, -30, 0],
-          y: [0, 25, 0]
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-300/20 rounded-full blur-[140px] pointer-events-none" 
-      />
+    <section id="process" className="py-20 lg:py-28 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+      
+      {/* Dynamic Ambient Glow Flares */}
+      <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-subcard border-purple-300/40 text-purple-800 text-xs uppercase tracking-wider font-extrabold mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 animate-spin text-purple-600" /> Proprietary Methodology
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight mb-3">
-            The Himastech <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-600">Revenue Engine</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-            A continuous 4-phase framework designed to eliminate marketing guesswork, maximize ad efficiency, and compound monthly revenue.
-          </p>
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 text-xs uppercase tracking-widest font-black mb-3.5 shadow-xs"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>6-Stage Revenue Framework</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15] mb-4"
+          >
+            Your Growth <span className="text-gold-gradient">Journey</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium max-w-2xl mx-auto"
+          >
+            A systematic, predictable roadmap engineered to understand your audience, launch high-converting creative funnels, and scale revenue predictably.
+          </motion.p>
         </div>
 
-        {/* Compact Cards Grid with Sequential Flow Connecting Badges */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 relative">
-          {steps.map((item, idx) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className={`glass-card rounded-2xl p-4.5 sm:p-5 relative overflow-hidden transition-all duration-300 ${item.accentBorder} group flex flex-col justify-between shadow-md hover:shadow-xl`}
-            >
-              {/* Animated Floating Gradient Flare */}
-              <motion.div 
-                animate={{
-                  opacity: [0.2, 0.4, 0.2],
-                  scale: [1, 1.08, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: item.floatDelay,
-                }}
-                className={`absolute -top-10 -right-10 w-36 h-36 bg-gradient-to-bl ${item.glow} rounded-full blur-2xl pointer-events-none group-hover:opacity-60 transition-opacity`} 
-              />
+        {/* 6-Step Journey Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 relative mb-14">
+          {steps.map((item, idx) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={item.stepNumber}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
+                whileHover={{ y: -5 }}
+                className="glass-card rounded-3xl p-6 sm:p-7 relative overflow-hidden transition-all duration-300 border border-white/10 hover:border-amber-400/40 group flex flex-col justify-between shadow-[0_12px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.85)]"
+              >
+                {/* Subtle Hover Gradient Flare */}
+                <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${item.accent} rounded-bl-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
 
-              <div>
-                {/* Header: Icon, Animated Step Node & Next Arrow */}
-                <div className="flex items-center justify-between mb-3.5 relative z-10">
-                  <div className="w-8 h-8 rounded-lg glass-subcard flex items-center justify-center group-hover:scale-110 shadow-2xs transition-all">
-                    {item.icon}
+                <div>
+                  {/* Step Top Bar: Icon + Step Badge + Step Number */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-110 transition-transform">
+                      <IconComponent className={`w-5 h-5 ${item.iconColor}`} />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${item.badgeColor}`}>
+                        {item.stepBadge}
+                      </span>
+                      <span className="text-2xl font-black text-slate-600 group-hover:text-amber-400/60 transition-colors">
+                        {item.stepNumber}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xl font-black text-slate-300 group-hover:text-slate-600 transition-colors">
-                      {item.step}
-                    </span>
-                    {idx < steps.length - 1 && (
-                      <ArrowRight className="hidden lg:block w-3.5 h-3.5 text-slate-400 group-hover:text-cyan-600 transition-colors" />
-                    )}
+                  {/* Step Name & Summary */}
+                  <div className="mb-3">
+                    <h3 className="text-xl font-black text-white group-hover:text-amber-300 transition-colors tracking-tight leading-snug">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs font-bold text-amber-400/90 mt-1 uppercase tracking-wide">
+                      {item.summary}
+                    </p>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs text-slate-300 leading-relaxed mb-5 font-normal">
+                    {item.description}
+                  </p>
+
+                  {/* Deliverables Checklist */}
+                  <div className="pt-3.5 border-t border-white/10 space-y-2">
+                    <div className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                      Phase Deliverables:
+                    </div>
+                    {item.deliverables.map((del, dIdx) => (
+                      <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-300 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{del}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Tagline */}
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.accentBadge} inline-block mb-2 shadow-2xs`}>
-                  {item.tagline}
-                </span>
+                {/* Footer Link Indicator */}
+                <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold text-slate-400">
+                    Himastech Growth Framework
+                  </span>
+                  <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10 transition-colors">
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
 
-                {/* Title */}
-                <h3 className="text-sm font-bold text-slate-900 mb-2 leading-snug group-hover:text-cyan-600 transition-colors">
-                  {item.title}
-                </h3>
-
-                {/* Description (Compact) */}
-                <p className="text-[11px] text-slate-600 leading-relaxed mb-3.5 line-clamp-3">
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Key Deliverables (Compact Checklist) */}
-              <div className="pt-2.5 border-t border-slate-200/50 relative z-10">
-                <h4 className="text-[10px] uppercase font-bold text-slate-500 mb-2 tracking-wider">Key Outputs:</h4>
-                <ul className="space-y-1.5">
-                  {item.deliverables.map((del, dIdx) => (
-                    <li key={dIdx} className="flex items-start gap-1.5 text-[11px] text-slate-700 font-medium">
-                      <CheckCircle2 className="w-3 h-3 text-cyan-600 shrink-0 mt-0.5" />
-                      <span className="leading-tight line-clamp-1">{del}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Primary Bottom Action Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="p-6 sm:p-8 rounded-3xl glass-card-gold text-white relative overflow-hidden shadow-2xl border border-amber-400/30"
+        >
+          <div className="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-amber-500/15 via-yellow-500/10 to-transparent pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-3 border border-amber-400/40">
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-400" /> Start With Confidence
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-2 leading-tight">
+                Ready To Embark On Your Growth Journey?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                Book your discovery consultation today. Our senior digital growth strategists will audit your brand, analyze your competition, and design your Step 01 roadmap.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3.5 w-full lg:w-auto shrink-0">
+              <Link
+                href="#contact"
+                className="px-7 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-slate-950" />
+                <span>START YOUR GROWTH JOURNEY</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20would%20like%20to%20start%20our%20Growth%20Journey."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+              >
+                <PhoneCall className="w-4 h-4 fill-white" />
+                <span>WHATSAPP OUR STRATEGISTS</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
 }
-
