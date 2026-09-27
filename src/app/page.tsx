@@ -36,7 +36,7 @@ export default function Home() {
       {/* Hero Section • HIMASTECH — Digital Realty Marketing */}
       <section id="home" className="relative min-h-[90vh] lg:min-h-[96vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden z-10">
         
-        {/* Background Ambient Backdrop */}
+        {/* Background Ambient City Backdrop */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <Image 
             src="/realty-hero.jpg" 
@@ -44,10 +44,10 @@ export default function Home() {
             fill 
             priority 
             sizes="100vw"
-            className="object-cover object-center opacity-15 sm:opacity-20"
+            className="object-cover object-center opacity-20 sm:opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#07090e]/80 via-[#07090e]/92 to-[#07090e]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,#07090e_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07090e]/70 via-[#07090e]/85 to-[#07090e]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,#07090e_75%)]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -61,29 +61,18 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0d1322]/90 border border-white/10 text-slate-200 mb-2.5 text-xs shadow-lg backdrop-blur-md"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0d1322]/90 border border-white/10 text-slate-200 mb-3 text-xs shadow-lg backdrop-blur-md"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
                 </span>
                 <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-300 to-yellow-500 tracking-wider text-[11px] sm:text-xs uppercase">
-                  HIMASTECH — Digital Realty Marketing • Digital + AI Solutions
+                  HIMASTECH — DIGITAL REALTY MARKETING • DIGITAL + AI SOLUTIONS
                 </span>
-                <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black border border-amber-400/30">
-                  REAL ESTATE &amp; GROWTH
+                <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black border border-amber-400/30">
+                  REAL ESTATE &amp; BUSINESS GROWTH
                 </span>
-              </motion.div>
-
-              {/* Founder Authority Pill */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.08 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-subcard text-amber-300 text-xs font-bold mb-3.5 border border-amber-400/30"
-              >
-                <Award className="w-3.5 h-3.5 text-amber-400" />
-                <span>Founded &amp; Led by Kishore Patel • 12+ Years Real Estate &amp; Growth Experience</span>
               </motion.div>
 
               {/* Main Headline */}
@@ -91,11 +80,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-3xl sm:text-4xl lg:text-[2.85rem] font-black tracking-tight mb-3.5 leading-[1.14] text-white"
+                className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight mb-4 leading-[1.12] text-white"
               >
-                <span>BUILD YOUR BRAND. </span>
+                <span>BUILD YOUR BRAND . </span>
                 <span className="text-gold-gradient block sm:inline">
-                  GENERATE LEADS. 
+                  GENERATE LEADS . 
                 </span>
                 <span className="block mt-1">GROW WITH DIGITAL + AI.</span>
               </motion.h1>
@@ -105,12 +94,12 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.18 }}
-                className="p-4 sm:p-4.5 rounded-2xl bg-[#0c1220]/80 backdrop-blur-md border-l-4 border-l-amber-400 border border-white/10 shadow-xl mb-4 w-full"
+                className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-[#0c1220] to-cyan-500/10 border-l-4 border-l-amber-400 border border-white/10 shadow-xl mb-4 w-full"
               >
-                <p className="text-sm sm:text-base lg:text-lg text-white font-bold leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-white font-bold leading-relaxed">
                   Himastech helps <span className="text-amber-300 font-black underline decoration-amber-400/60 decoration-2 underline-offset-4">real-estate companies and businesses</span> build their digital brand, generate leads and improve their marketing using <span className="text-cyan-300 font-black">digital + AI solutions</span>.
                 </p>
-                <p className="text-xs text-slate-300 mt-1.5 font-medium">
+                <p className="text-xs text-slate-300 mt-2 font-medium">
                   Specialized performance systems for real estate builders, luxury villas, commercial towers, and growing enterprises in Hyderabad &amp; global NRI corridors.
                 </p>
               </motion.div>
@@ -120,18 +109,18 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.22 }}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full mb-5 text-xs"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full mb-6 text-xs"
               >
-                <div className="px-3 py-1.5 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-amber-400/40 transition-colors">
-                  <Building2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-amber-400/40 transition-colors">
+                  <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Build Digital Brand</span>
                 </div>
-                <div className="px-3 py-1.5 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-emerald-400/40 transition-colors">
-                  <Target className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-emerald-400/40 transition-colors">
+                  <Target className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Generate HNI Leads</span>
                 </div>
-                <div className="px-3 py-1.5 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-cyan-400/40 transition-colors">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-cyan-400/40 transition-colors">
+                  <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Digital + AI Solutions</span>
                 </div>
               </motion.div>
@@ -141,12 +130,12 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.26 }}
-                className="flex flex-wrap gap-3 items-center w-full"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start items-center w-full sm:w-auto"
               >
                 {/* Primary CTA */}
                 <Link
                   href="#contact"
-                  className="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm hover:shadow-[0_0_30px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider shadow-md"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm hover:shadow-[0_0_30px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider shadow-md"
                 >
                   <Sparkles className="w-4 h-4 text-slate-950" /> 
                   <span>BOOK FREE CONSULTATION</span> 
@@ -158,26 +147,17 @@ export default function Home() {
                   href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20let's%20talk%20about%20our%20business."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" /> 
                   <span>WHATSAPP HIMASTECH</span> 
                 </a>
-
-                {/* Link to Founder Moments Gallery */}
-                <Link
-                  href="#gallery"
-                  className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Camera className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Founder Gallery</span>
-                </Link>
               </motion.div>
 
               {/* Proof / Trust Metrics */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-7 pt-5 border-t border-white/10 text-xs text-slate-300 font-semibold w-full">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-white/10 text-xs text-slate-300 font-semibold w-full">
                 <span className="flex items-center gap-1.5 text-white">
-                  <ShieldCheck className="w-4 h-4 text-amber-400" /> ₹480Cr+ Real Estate Sold
+                  <ShieldCheck className="w-4 h-4 text-amber-400" /> ₹120Cr+ Real Estate Sold
                 </span>
                 <span className="text-slate-600">•</span>
                 <span className="flex items-center gap-1.5 text-white">
@@ -191,7 +171,7 @@ export default function Home() {
 
             </div>
 
-            {/* Right Column: Executive Founder Card UI (5 Cols) */}
+            {/* Right Column: Himastech Founder Photo & Executive Card (5 Cols) */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -199,9 +179,9 @@ export default function Home() {
               className="lg:col-span-5 flex flex-col gap-3 relative"
             >
               {/* Executive CEO Showcase Card */}
-              <div className="glass-card rounded-3xl p-4 sm:p-5 relative overflow-hidden border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+              <div className="glass-card rounded-3xl p-4 sm:p-5 relative overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl">
                 {/* Ambient glow behind card */}
-                <div className="absolute -top-16 -right-16 w-48 h-48 bg-gradient-to-br from-amber-400/25 to-yellow-500/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute -top-16 -right-16 w-48 h-48 bg-gradient-to-br from-amber-400/20 to-yellow-500/10 rounded-full blur-2xl pointer-events-none" />
                 <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-gradient-to-tr from-cyan-400/20 to-blue-500/10 rounded-full blur-2xl pointer-events-none" />
 
                 <div className="relative z-10">
@@ -214,47 +194,42 @@ export default function Home() {
                       </span>
                     </div>
                     <span className="text-[10px] font-black text-amber-300 bg-amber-400/20 px-2.5 py-0.5 rounded-full border border-amber-400/30 flex items-center gap-1">
-                      <Award className="w-3 h-3 text-amber-400" /> 12+ Years Exp
+                      <Award className="w-3.5 h-3.5 text-amber-400" />
                     </span>
                   </div>
 
                   {/* CEO Photo Frame */}
-                  <div className="relative h-80 sm:h-[390px] rounded-2xl overflow-hidden border border-white/10 shadow-md group">
+                  <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-md group">
                     <Image
                       src="/saik.jpeg"
                       alt="Kishore Patel - Founder of Himastech Digital Realty Marketing"
                       fill
                       priority
                       quality={98}
-                      className="object-cover object-[center_12%] group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover object-[center_10%] group-hover:scale-105 transition-transform duration-700"
                     />
                     {/* Dark gradient for text legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-[#07090e]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-[#07090e]/30 to-transparent" />
                     
                     {/* Badge at top of photo */}
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md text-white text-[10px] font-bold border border-white/20 flex items-center gap-1.5 shadow-md">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[10px] font-bold border border-white/20 flex items-center gap-1.5 shadow-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                         Founder &amp; Lead Strategist
                       </span>
                     </div>
 
                     {/* CEO Details Bottom Overlay */}
                     <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <div className="text-lg sm:text-xl font-black tracking-tight text-white leading-tight">
+                      <div className="text-base sm:text-lg font-black tracking-tight text-white leading-tight mb-0.5">
                         Kishore Patel
                       </div>
                       <div className="text-xs font-bold text-amber-400 mb-1 leading-tight">
                         Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist
                       </div>
-                      <div className="flex flex-wrap gap-2 text-[10px] font-semibold text-slate-300 mt-2">
-                        <span className="bg-black/60 px-2.5 py-0.5 rounded-md backdrop-blur-sm border border-white/10">
-                          📍 Hyderabad, India
-                        </span>
-                        <span className="bg-black/60 px-2.5 py-0.5 rounded-md backdrop-blur-sm border border-white/10">
-                          🏢 Himastech &amp; Merlinflow
-                        </span>
-                      </div>
+                      <p className="text-[11px] text-slate-300 font-medium leading-relaxed line-clamp-2">
+                        Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.
+                      </p>
                     </div>
                   </div>
 
