@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ZoomIn, Camera } from "lucide-react";
+import { X, ZoomIn, Camera, ChevronLeft, ChevronRight } from "lucide-react";
 
 export function FounderGallerySection() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [hasDragged, setHasDragged] = useState(false);
 
-  // All 19 Photos from public/gallery/ (Awards, Stage Felicitations, Boardrooms & Team Sessions)
+  // All 19 Photos from public/gallery/
   const photos = [
     { src: "/gallery/cimg3.jpeg", alt: "Award Presentation with Celebrity Guest" },
     { src: "/gallery/cimg2.jpeg", alt: "BBG Group Award Felicitation on Stage" },
@@ -31,6 +36,37 @@ export function FounderGallerySection() {
     { src: "/gallery/img17.jpeg", alt: "Agency Milestones & Workshop Celebration" },
   ];
 
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 360;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setHasDragged(false);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 5) setHasDragged(true);
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
   return (
     <section id="gallery" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
       
@@ -40,53 +76,91 @@ export function FounderGallerySection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Clean Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs uppercase tracking-widest font-black mb-3.5 shadow-sm"
-          >
-            <Camera className="w-3.5 h-3.5 text-amber-400" />
-            <span>Moments &amp; Milestones ({photos.length} Photos)</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15]"
-          >
-            Photo <span className="text-gold-gradient">Gallery.</span>
-          </motion.h2>
-        </div>
-
-        {/* Clean Normal Photo Grid (All 19 Photos, Zero Texts on/below Cards) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {photos.map((photo, idx) => (
+        {/* Section Header with Left/Right Controls and Swipe Hint */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+          <div>
             <motion.div
-              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs uppercase tracking-widest font-black mb-3 shadow-sm"
+            >
+              <Camera className="w-3.5 h-3.5 text-amber-400" />
+              <span>Moments &amp; Milestones ({photos.length} Photos)</span>
+            </motion.div>
+
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15]"
+            >
+              Photo <span className="text-gold-gradient">Gallery.</span>
+            </motion.h2>
+
+            {/* Horizontal Swipe Indicator Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold mt-3">
+              <span className="text-amber-400">←</span>
+              <span>Drag or swipe horizontally to see all photos</span>
+              <span className="text-amber-400">→</span>
+            </div>
+          </div>
+
+          {/* Navigation Arrow Buttons */}
+          <div className="flex items-center gap-2 self-start md:self-end">
+            <button
+              onClick={() => scroll("left")}
+              aria-label="Scroll left"
+              className="w-11 h-11 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-amber-400/50 flex items-center justify-center transition-colors cursor-pointer shadow-md"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              aria-label="Scroll right"
+              className="w-11 h-11 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-amber-400/50 flex items-center justify-center transition-colors cursor-pointer shadow-md"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Horizontal Draggable / Swipeable Photo Carousel Track */}
+        <div 
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className={`flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth no-scrollbar select-none cursor-grab active:cursor-grabbing -mx-4 px-4 sm:mx-0 sm:px-0`}
+        >
+          {photos.map((photo, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (idx % 6) * 0.05 }}
-              onClick={() => setActivePhoto(photo.src)}
-              className="relative h-72 sm:h-80 md:h-84 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-white/10 group shadow-xl bg-[#0c1020]"
+              onClick={() => {
+                if (!hasDragged) {
+                  setActivePhoto(photo.src);
+                }
+              }}
+              className="w-[280px] sm:w-[320px] md:w-[350px] h-72 sm:h-80 md:h-96 shrink-0 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-white/10 group shadow-2xl bg-[#0c1020] relative"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
+                sizes="(max-width: 768px) 280px, 350px"
+                className="object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out pointer-events-none"
               />
               
               {/* Subtle hover overlay with zoom icon */}
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-amber-400 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform shadow-xl">
+                <div className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-amber-400 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform shadow-2xl">
                   <ZoomIn className="w-5 h-5" />
                 </div>
               </div>
@@ -96,7 +170,7 @@ export function FounderGallerySection() {
 
       </div>
 
-      {/* Pure Full-Screen Lightbox Modal (Zero Text, Just High-Res Photo with Close Button) */}
+      {/* Pure Full-Screen Lightbox Modal */}
       <AnimatePresence>
         {activePhoto && (
           <div 
