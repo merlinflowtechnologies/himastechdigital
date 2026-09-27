@@ -49,6 +49,7 @@ export function Navbar() {
   ];
 
   const moreLinks = [
+    { name: "Founder & Moments Gallery", href: "/#gallery", desc: "Leadership, site visits & workshops" },
     { name: "Case Studies & Portfolio", href: "/#portfolio", desc: "Real estate & brand growth results" },
     { name: "Live Dashboard", href: "/#dashboard", desc: "Real campaign metrics & KPIs" },
     { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & photos" },
@@ -63,6 +64,7 @@ export function Navbar() {
     { name: "★ Real Estate Marketing (Flagship)", href: "/real-estate", isFlagship: true },
     { name: "Services (12 Specialized)", href: "/services" },
     { name: "Training Academy (Real Estate & Media)", href: "/training", isSpecial: true },
+    { name: "Founder Moments Gallery", href: "/#gallery" },
     { name: "AI Marketing", href: "/#ai-marketing" },
     { name: "Case Studies & Portfolio", href: "/#portfolio" },
     { name: "Live Dashboard", href: "/#dashboard" },
