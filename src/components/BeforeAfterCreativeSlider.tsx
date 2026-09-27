@@ -100,7 +100,7 @@ export function BeforeAfterCreativeSlider() {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-400 mb-4 text-xs font-extrabold uppercase tracking-widest shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Creative & Conversion Evolution</span>
+            <span>Interactive Campaign Transformation</span>
           </motion.div>
 
           <motion.h2

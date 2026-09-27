@@ -1,12 +1,68 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { TrendingUp, IndianRupee, Users, Building2, Sparkles, Award } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { TrendingUp, IndianRupee, Users, Building2, Sparkles } from "lucide-react";
+
+function AnimatedCounter({ 
+  target, 
+  prefix = "", 
+  suffix = "", 
+  decimals = 0,
+  duration = 2
+}: { 
+  target: number; 
+  prefix?: string; 
+  suffix?: string; 
+  decimals?: number;
+  duration?: number;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      // easeOutExpo for ultra smooth luxury feel
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = ease * target;
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, target, duration]);
+
+  const formatted = decimals > 0 
+    ? count.toFixed(decimals) 
+    : Math.floor(count).toLocaleString("en-IN");
+
+  return (
+    <span ref={ref}>
+      {prefix}{formatted}{suffix}
+    </span>
+  );
+}
 
 export function StatsBar() {
   const stats = [
     {
-      value: "₹120Cr+",
+      numericTarget: 120,
+      prefix: "₹",
+      suffix: "Cr+",
+      decimals: 0,
       label: "Real Estate Marketed",
       sublabel: "Luxury villas, high-rises & commercial off-plan inventory",
       badge: "Realty Benchmark",
@@ -16,7 +72,10 @@ export function StatsBar() {
       valueColor: "text-gold-gradient",
     },
     {
-      value: "8.4x",
+      numericTarget: 8.4,
+      prefix: "",
+      suffix: "x",
+      decimals: 1,
       label: "Average Campaign ROAS",
       sublabel: "Hyper-local Meta & Google CAPI verified acquisition",
       badge: "Performance Standard",
@@ -26,7 +85,10 @@ export function StatsBar() {
       valueColor: "text-electric-gradient",
     },
     {
-      value: "150,000+",
+      numericTarget: 150000,
+      prefix: "",
+      suffix: "+",
+      decimals: 0,
       label: "Verified Buyer Inquiries",
       sublabel: "Pre-screened HNI & NRI buyers with phone OTP",
       badge: "Verified Inquiries",
@@ -36,7 +98,10 @@ export function StatsBar() {
       valueColor: "text-gold-gradient",
     },
     {
-      value: "45+",
+      numericTarget: 45,
+      prefix: "",
+      suffix: "+",
+      decimals: 0,
       label: "Luxury Projects Scaled",
       sublabel: "Kokapet, Financial District, Gachibowli & prime hubs",
       badge: "Track Record",
@@ -90,7 +155,12 @@ export function StatsBar() {
 
               <div className="relative z-10">
                 <div className={`text-3xl lg:text-4xl font-black tracking-tight mb-1.5 ${stat.valueColor}`}>
-                  {stat.value}
+                  <AnimatedCounter 
+                    target={stat.numericTarget}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                  />
                 </div>
                 <div className="text-sm font-bold text-white mb-1">
                   {stat.label}

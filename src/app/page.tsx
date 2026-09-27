@@ -12,6 +12,7 @@ import { PartnersMarquee } from "@/components/PartnersMarquee";
 import { StatsBar } from "@/components/StatsBar";
 import { MarketingDashboardSection } from "@/components/MarketingDashboardSection";
 import { RealEstateMarketingSection } from "@/components/RealEstateMarketingSection";
+import { BeforeAfterCreativeSlider } from "@/components/BeforeAfterCreativeSlider";
 import { AIMarketingSection } from "@/components/AIMarketingSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { WhoWeHelpSection } from "@/components/WhoWeHelpSection";
@@ -225,6 +226,9 @@ export default function Home() {
 
       {/* 3. Real Estate Marketing • 12 Core Capabilities */}
       <RealEstateMarketingSection />
+
+      {/* 4. Interactive Before/After Creative & Campaign Transformation Slider */}
+      <BeforeAfterCreativeSlider />
 
       {/* 5. AI Marketing • AI + Marketing = Your New Growth Engine */}
       <AIMarketingSection />
