@@ -285,8 +285,8 @@ export function WhoWeHelpSection() {
                 transition={{ duration: 0.3, delay: idx * 0.04 }}
                 className={`p-3.5 sm:p-4 rounded-2xl flex flex-col items-center text-center transition-all duration-300 cursor-pointer group relative overflow-hidden border ${
                   isSelected
-                    ? "bg-[#0f1422] border-amber-400/80 shadow-[0_0_25px_rgba(245,158,11,0.2)] -translate-y-1"
-                    : "bg-[#0b0e17] border-white/10 hover:border-white/20 hover:bg-white/5"
+                    ? "glass-card-gold border-amber-400/80 shadow-[0_0_25px_rgba(245,158,11,0.25)] -translate-y-1"
+                    : "glass-card hover:border-white/25 hover:bg-white/10 hover:-translate-y-0.5"
                 }`}
               >
                 {/* Active Indicator Top Pill */}
@@ -326,7 +326,7 @@ export function WhoWeHelpSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#0b0e17] border border-white/15 shadow-2xl relative overflow-hidden mb-16"
+            className="p-6 sm:p-8 lg:p-10 rounded-3xl glass-card border border-white/20 shadow-2xl relative overflow-hidden mb-16"
           >
             {/* Ambient inner glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-500/10 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -360,7 +360,7 @@ export function WhoWeHelpSection() {
                 {/* Challenge vs Solution Comparison */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Challenge */}
-                  <div className="p-4 rounded-2xl bg-white/5 border border-red-500/20">
+                  <div className="p-4 rounded-2xl glass-subcard border-red-500/30">
                     <div className="text-[11px] font-bold text-red-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
                       The Common Problem
@@ -371,7 +371,7 @@ export function WhoWeHelpSection() {
                   </div>
 
                   {/* Himastech Growth Solution */}
-                  <div className="p-4 rounded-2xl bg-white/5 border border-emerald-500/20">
+                  <div className="p-4 rounded-2xl glass-subcard border-emerald-500/30">
                     <div className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       The Himastech Solution
@@ -402,7 +402,7 @@ export function WhoWeHelpSection() {
               </div>
 
               {/* Right Column: High-Impact Metric Card & 1-Click Connection (5 Cols) */}
-              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-[#0f1422] border border-white/10 shadow-xl relative overflow-hidden">
+              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-2xl glass-card border border-white/20 shadow-xl relative overflow-hidden">
                 
                 {/* Metric Badge */}
                 <div className="mb-6">
@@ -423,7 +423,7 @@ export function WhoWeHelpSection() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10 mb-6 text-xs text-slate-300 leading-relaxed">
+                <div className="p-4 rounded-xl glass-subcard mb-6 text-xs text-slate-300 leading-relaxed">
                   <strong className="text-white font-semibold">Led by Kishore Patel: </strong>
                   Get a comprehensive 30-day go-to-market blueprint designed specifically for {activeSegment.title.toLowerCase()}.
                 </div>
@@ -465,7 +465,7 @@ export function WhoWeHelpSection() {
               <div
                 key={segment.id}
                 onClick={() => setSelectedId(segment.id)}
-                className="p-4 rounded-xl bg-[#090d16] border border-white/10 hover:border-amber-400/40 transition-all duration-300 group cursor-pointer flex items-center gap-3"
+                className="p-4 rounded-xl glass-card glass-card-hover border border-white/10 hover:border-amber-400/40 transition-all duration-300 group cursor-pointer flex items-center gap-3"
               >
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-400/10 transition-colors shrink-0">
                   <Icon className="w-4 h-4" />

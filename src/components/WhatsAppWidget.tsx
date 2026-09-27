@@ -36,7 +36,7 @@ export function WhatsAppWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-72 sm:w-84 rounded-2xl bg-[#0d141e]/95 backdrop-blur-xl border border-emerald-500/30 p-4 shadow-[0_10px_40px_rgba(37,211,102,0.25)] relative overflow-hidden"
+            className="mb-3 w-72 sm:w-84 rounded-2xl glass-modal border border-emerald-500/30 p-4 shadow-[0_10px_40px_rgba(37,211,102,0.25)] relative overflow-hidden"
           >
             {/* Ambient Green Flare */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -69,7 +69,7 @@ export function WhatsAppWidget() {
             </div>
 
             {/* Chat Bubble Message */}
-            <div className="rounded-xl bg-white/5 border border-white/10 p-3 mb-3 text-xs text-slate-200 leading-relaxed">
+            <div className="rounded-xl glass-subcard border border-white/10 p-3 mb-3 text-xs text-slate-200 leading-relaxed">
               {isMerlinflow
                 ? "👋 Hey! Looking to schedule a software demo or discuss custom ERP deployments? Connect with our technical directors directly."
                 : "👋 Hey! Looking to scale your ad ROAS or explore digital marketing training? Let's talk directly on WhatsApp."}

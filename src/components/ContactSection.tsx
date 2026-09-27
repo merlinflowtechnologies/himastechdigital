@@ -113,7 +113,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-3xl p-6 sm:p-8 bg-[#0b0f19] border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full"
+              className="rounded-3xl p-6 sm:p-8 glass-card border border-white/15 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full"
             >
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-400/30 text-cyan-300 text-xs uppercase tracking-wider font-bold mb-4">
@@ -135,7 +135,7 @@ export function ContactSection() {
                   {/* 1. CALL US */}
                   <a
                     href="tel:+916304989071"
-                    className="rounded-2xl p-4 bg-white/5 border border-white/10 hover:border-amber-400/40 hover:bg-white/10 transition-all duration-300 flex items-center justify-between group cursor-pointer shadow-xs hover:-translate-y-0.5"
+                    className="rounded-2xl p-4 glass-subcard hover:border-amber-400/40 hover:bg-white/10 transition-all duration-300 flex items-center justify-between group cursor-pointer shadow-xs hover:-translate-y-0.5"
                   >
                     <div className="flex items-center gap-3.5">
                       <div className="w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/25 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-xs">
@@ -189,7 +189,7 @@ export function ContactSection() {
                   {/* 3. EMAIL */}
                   <a
                     href="mailto:info@himastech.com"
-                    className="rounded-2xl p-4 bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-white/10 transition-all duration-300 flex items-center justify-between group cursor-pointer shadow-xs hover:-translate-y-0.5"
+                    className="rounded-2xl p-4 glass-subcard hover:border-cyan-400/40 hover:bg-white/10 transition-all duration-300 flex items-center justify-between group cursor-pointer shadow-xs hover:-translate-y-0.5"
                   >
                     <div className="flex items-center gap-3.5">
                       <div className="w-11 h-11 rounded-xl bg-cyan-400/10 border border-cyan-400/25 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-xs">
@@ -211,7 +211,7 @@ export function ContactSection() {
                   </a>
 
                   {/* 4. HYDERABAD, TELANGANA */}
-                  <div className="rounded-2xl p-4 bg-white/5 border border-white/10 flex items-center gap-3.5 shadow-xs">
+                  <div className="rounded-2xl p-4 glass-subcard flex items-center gap-3.5 shadow-xs">
                     <div className="w-11 h-11 rounded-xl bg-purple-400/10 border border-purple-400/25 text-purple-400 flex items-center justify-center shrink-0 shadow-xs">
                       <MapPin className="w-5 h-5 text-purple-400" />
                     </div>
@@ -254,7 +254,7 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-3xl p-6 sm:p-8 bg-[#0b0f19] border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full"
+              className="rounded-3xl p-6 sm:p-8 glass-card border border-white/15 shadow-2xl relative overflow-hidden flex flex-col justify-between h-full"
             >
               <AnimatePresence mode="wait">
                 {!isSuccess ? (

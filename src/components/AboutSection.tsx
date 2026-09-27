@@ -238,7 +238,7 @@ export function AboutSection() {
             className="lg:col-span-7 flex flex-col justify-center space-y-6"
           >
             {/* Mission Statement Callout */}
-            <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-amber-400/10 via-amber-400/5 to-transparent border border-amber-400/25 shadow-lg">
+            <div className="relative p-6 sm:p-7 rounded-2xl glass-card-gold border border-amber-400/30 shadow-lg">
               <div className="text-amber-400 text-3xl font-serif leading-none mb-2">“</div>
               <p className="text-base sm:text-lg text-white font-bold leading-relaxed mb-3">
                 Digital marketing should never be a guessing game or an unpredictable cost center. It must operate as a mathematical, repeatable sales machine that builds authentic brand equity while filling your pipeline with ready-to-buy prospects.
@@ -278,7 +278,7 @@ export function AboutSection() {
                 {corePillars.map((pillar, idx) => (
                   <div 
                     key={idx} 
-                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all duration-300"
+                    className="p-3.5 rounded-xl glass-subcard hover:border-amber-400/40 transition-all duration-300"
                   >
                     <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center mb-2.5">
                       {pillar.icon}
@@ -325,7 +325,7 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`p-6 rounded-2xl bg-gradient-to-b ${item.accent} bg-[#0b0e17] border relative group hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between`}
+                className={`p-6 rounded-2xl bg-gradient-to-b ${item.accent} glass-card glass-card-hover border relative group hover:-translate-y-1.5 transition-all duration-300 shadow-xl flex flex-col justify-between`}
               >
                 <div>
                   {/* Top Bar with Icon & Tag */}
@@ -373,7 +373,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/15 via-[#0b0e17] to-cyan-500/15 border border-white/15 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl glass-card-gold border border-amber-400/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="space-y-1.5 text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">

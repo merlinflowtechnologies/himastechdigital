@@ -122,7 +122,7 @@ export function ClientTestimonialsSection() {
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                   activeCategory === cat
                     ? "bg-amber-400 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20 font-black"
-                    : "bg-[#0b0e17] text-slate-300 border-white/10 hover:border-white/20 hover:text-white"
+                    : "glass-card text-slate-300 hover:border-white/25 hover:text-white"
                 }`}
               >
                 {cat}
@@ -142,7 +142,7 @@ export function ClientTestimonialsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="p-6 sm:p-7 rounded-3xl bg-[#0b0e17] border border-white/10 hover:border-amber-400/40 transition-all duration-300 shadow-xl flex flex-col justify-between group relative overflow-hidden hover:-translate-y-1"
+                className="glass-card glass-card-hover p-6 sm:p-7 rounded-3xl hover:border-amber-400/50 transition-all duration-300 shadow-xl flex flex-col justify-between group relative overflow-hidden"
               >
                 {/* Top Subtle Amber Glow on Hover */}
                 <div className="absolute top-0 right-0 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl group-hover:opacity-100 opacity-40 transition-opacity pointer-events-none" />
@@ -151,7 +151,7 @@ export function ClientTestimonialsSection() {
                   {/* Top Bar: Authentic Company Logo + Rating & Verification */}
                   <div className="flex items-center justify-between gap-3 mb-5 pb-4 border-b border-white/10">
                     {/* Real Client Company Logo */}
-                    <div className="relative h-11 w-44 rounded-xl overflow-hidden bg-white/5 border border-white/10 p-1 flex items-center justify-center shrink-0">
+                    <div className="relative h-11 w-44 rounded-xl overflow-hidden glass-subcard p-1 flex items-center justify-center shrink-0">
                       <Image
                         src={item.companyLogo}
                         alt={`${item.company} Logo`}
@@ -287,7 +287,7 @@ export function ClientTestimonialsSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative w-full max-w-lg bg-[#0b0f19] rounded-3xl border border-white/20 shadow-2xl overflow-hidden my-auto p-6 sm:p-7 text-white"
+            className="relative w-full max-w-lg glass-modal rounded-3xl border border-white/25 shadow-2xl overflow-hidden my-auto p-6 sm:p-7 text-white"
           >
             <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
               <div>

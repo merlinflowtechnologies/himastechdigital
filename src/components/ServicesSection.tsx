@@ -234,7 +234,7 @@ export function ServicesSection() {
           onMouseUp={handleMouseUpOrLeave}
           onMouseLeave={handleMouseUpOrLeave}
           onScroll={updateScrollState}
-          className={`flex gap-5 sm:gap-6 overflow-x-auto py-3 px-1 no-scrollbar select-none scroll-smooth mb-6 touch-pan-x ${
+          className={`flex gap-5 sm:gap-6 overflow-x-auto py-3 px-1 no-scrollbar select-none mb-6 touch-pan-x ${
             isMouseDown ? "snap-none cursor-grabbing" : "snap-x snap-mandatory cursor-grab"
           }`}
         >
@@ -249,7 +249,7 @@ export function ServicesSection() {
                     setSelectedService(service);
                   }
                 }}
-                className="w-[305px] sm:w-[345px] md:w-[375px] shrink-0 snap-start glass-card rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-amber-400/40 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden cursor-pointer"
+                className="w-[305px] sm:w-[345px] md:w-[375px] shrink-0 snap-start glass-card glass-card-hover rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-amber-400/50 shadow-[0_12px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(245,158,11,0.2)] flex flex-col justify-between group relative overflow-hidden cursor-pointer"
               >
                 {/* Subtle Hover Gradient Accent */}
                 <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${service.accent} rounded-bl-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none`} />

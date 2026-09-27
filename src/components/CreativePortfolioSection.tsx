@@ -127,7 +127,7 @@ export function CreativePortfolioSection() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 whileHover={{ y: -6 }}
-                className="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/40 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)] transition-all duration-300 flex flex-col justify-between group"
+                className="glass-card glass-card-hover rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Project Image Frame */}
@@ -183,7 +183,7 @@ export function CreativePortfolioSection() {
                     {/* 2-Metric Highlight Grid */}
                     <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/10 mb-4">
                       {project.metrics.slice(0, 2).map((m, mIdx) => (
-                        <div key={mIdx} className="p-2.5 rounded-xl bg-white/5 border border-white/10">
+                        <div key={mIdx} className="p-2.5 rounded-xl glass-subcard">
                           <div className="text-[10px] text-slate-400 font-semibold truncate">{m.label}</div>
                           <div className="text-sm font-black text-amber-300">{m.value}</div>
                         </div>
@@ -193,7 +193,7 @@ export function CreativePortfolioSection() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags.slice(0, 3).map((tag, tIdx) => (
-                        <span key={tIdx} className="text-[10px] font-medium text-slate-400 bg-white/5 px-2 py-0.5 rounded-md border border-white/5">
+                        <span key={tIdx} className="text-[10px] font-medium text-slate-400 glass-subcard px-2 py-0.5 rounded-md">
                           {tag}
                         </span>
                       ))}

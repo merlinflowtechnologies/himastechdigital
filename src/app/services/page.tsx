@@ -63,7 +63,7 @@ export default function ServicesHubPage() {
               <Link
                 key={service.id}
                 href={`/services/${service.slug}`}
-                className="glass-card rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-amber-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:shadow-2xl relative overflow-hidden"
+                className="glass-card glass-card-hover rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-amber-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:shadow-2xl relative overflow-hidden"
               >
                 {/* Corner Gradient Glow */}
                 <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${service.accent} rounded-bl-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none`} />

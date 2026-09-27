@@ -345,10 +345,10 @@ export function TrainingSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 onClick={() => setActiveTab(prog.id)}
-                className={`p-6 rounded-2xl bg-[#0b0e17] border transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
+                className={`p-6 rounded-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
                   isSelected 
-                    ? `border-amber-400/60 shadow-[0_0_30px_rgba(245,158,11,0.15)] ring-1 ring-amber-400/30 -translate-y-1` 
-                    : `border-white/10 hover:border-white/20 hover:-translate-y-0.5`
+                    ? `glass-card-gold border-amber-400/80 shadow-[0_0_30px_rgba(245,158,11,0.25)] ring-1 ring-amber-400/40 -translate-y-1` 
+                    : `glass-card glass-card-hover border-white/10 hover:border-white/25 hover:-translate-y-0.5`
                 }`}
               >
                 {/* Glow pill behind active card */}
@@ -405,7 +405,7 @@ export function TrainingSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#0a0d15] border border-white/15 shadow-2xl relative overflow-hidden mb-16"
+            className="p-6 sm:p-8 lg:p-10 rounded-3xl glass-card border border-white/20 shadow-2xl relative overflow-hidden mb-16"
           >
             {/* Ambient inner glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-amber-500/10 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -432,7 +432,7 @@ export function TrainingSection() {
                   {activeProgramData.curriculum.map((item, idx) => (
                     <div 
                       key={idx}
-                      className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all duration-300 group"
+                      className="p-4 rounded-2xl glass-subcard hover:border-amber-400/40 transition-all duration-300 group"
                     >
                       <div className="flex items-start justify-between gap-3 mb-1.5">
                         <div className="flex items-center gap-2.5">
@@ -454,7 +454,7 @@ export function TrainingSection() {
               </div>
 
               {/* Right Column: Key Outcomes, Ideal Audience & Instant CTA (5 Cols) */}
-              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-[#0f1422] border border-white/10 shadow-lg">
+              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl glass-card border border-white/20 shadow-lg">
                 <div>
                   <div className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2 mb-3">
                     <Sparkles className="w-4 h-4 text-cyan-400" />
@@ -475,7 +475,7 @@ export function TrainingSection() {
                   </ul>
 
                   {/* Ideal For Badge */}
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 mb-6">
+                  <div className="p-3.5 rounded-xl glass-subcard mb-6">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
                       Ideal Candidate Profile
                     </div>
@@ -512,7 +512,7 @@ export function TrainingSection() {
         </AnimatePresence>
 
         {/* Lead Trainer & Methodology Credentials Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-[#0b0e17] to-cyan-500/10 border border-white/15 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-3xl glass-card border border-amber-400/30 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
               <Award className="w-8 h-8" />
@@ -561,7 +561,7 @@ export function TrainingSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="relative w-full max-w-xl bg-[#0b0f19] rounded-3xl border border-white/20 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col text-white"
+            className="relative w-full max-w-xl glass-modal rounded-3xl border border-white/25 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col text-white"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gradient-to-r from-amber-500/10 via-transparent to-cyan-500/10">

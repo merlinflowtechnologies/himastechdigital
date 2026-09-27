@@ -178,7 +178,7 @@ export function ProcessSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
                 whileHover={{ y: -5 }}
-                className="glass-card rounded-3xl p-6 sm:p-7 relative overflow-hidden transition-all duration-300 border border-white/10 hover:border-amber-400/40 group flex flex-col justify-between shadow-[0_12px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.85)]"
+                className="glass-card glass-card-hover rounded-3xl p-6 sm:p-7 relative overflow-hidden transition-all duration-300 border border-white/10 hover:border-amber-400/40 group flex flex-col justify-between shadow-[0_12px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.85)]"
               >
                 {/* Subtle Hover Gradient Flare */}
                 <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${item.accent} rounded-bl-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />

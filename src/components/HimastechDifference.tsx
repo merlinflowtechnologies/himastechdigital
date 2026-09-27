@@ -143,7 +143,7 @@ export function HimastechDifference() {
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-2 items-center">
               {pipelineSteps.map((step, idx) => (
                 <div key={idx} className="flex items-center">
-                  <div className="w-full text-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/40 transition-all hover:scale-105 shadow-2xs group">
+                  <div className="w-full text-center p-3 rounded-2xl glass-subcard hover:border-amber-400/40 transition-all hover:scale-105 shadow-2xs group">
                     <div className="text-[10px] font-black text-slate-400 mb-0.5">{step.num}</div>
                     <div className={`text-xs sm:text-sm font-black tracking-tight ${step.text} group-hover:scale-105 transition-transform`}>
                       {step.name}
@@ -175,7 +175,7 @@ export function HimastechDifference() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="glass-card rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/10 hover:border-amber-400/40 shadow-[0_20px_45px_rgba(0,0,0,0.7)] transition-all duration-300 flex flex-col justify-between group"
+                className="glass-card glass-card-hover rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-[0_20px_45px_rgba(0,0,0,0.7)] transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Background Ambient Flare */}
                 <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl ${pillar.accent} rounded-bl-full pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity`} />

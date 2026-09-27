@@ -323,7 +323,7 @@ export default function MerlinflowPortfolioPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
                 whileHover={{ y: -5 }}
-                className={`glass-card rounded-3xl p-6 sm:p-7 border border-white/10 transition-all duration-300 ${product.border} relative overflow-hidden flex flex-col justify-between group shadow-xl hover:shadow-2xl scroll-mt-28`}
+                className={`glass-card glass-card-hover rounded-3xl p-6 sm:p-7 border border-white/10 transition-all duration-300 ${product.border} relative overflow-hidden flex flex-col justify-between group shadow-xl hover:shadow-2xl scroll-mt-28`}
               >
                 <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${product.color} rounded-bl-full blur-xl pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity`} />
 

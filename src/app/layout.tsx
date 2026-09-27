@@ -123,7 +123,7 @@ export default function RootLayout({
       </head>
       <body className={`${plusJakartaSans.variable} font-sans antialiased min-h-screen flex flex-col relative bg-[#07090e] text-slate-100 selection:bg-amber-400 selection:text-black`}>
         <Navbar />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

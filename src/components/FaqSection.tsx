@@ -101,8 +101,8 @@ export function FaqSection() {
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 className={`rounded-2xl overflow-hidden transition-all duration-300 border ${
                   isOpen 
-                    ? "bg-[#0d1322]/95 border-cyan-500/40 shadow-[0_0_25px_rgba(6,182,212,0.15)]" 
-                    : "glass-card border-white/10 hover:border-white/20 hover:bg-[#0b0f19]/90"
+                    ? "glass-card-cyan border-cyan-400/50 shadow-[0_0_25px_rgba(6,182,212,0.2)]" 
+                    : "glass-card glass-card-hover border-white/10 hover:border-white/20"
                 }`}
               >
                 <button

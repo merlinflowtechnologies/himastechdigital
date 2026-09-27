@@ -156,7 +156,7 @@ export function AIMarketingSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={{ y: -5 }}
-                className={`glass-card rounded-3xl p-6 sm:p-7 border border-white/10 hover:border-cyan-400/40 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
+                className={`glass-card glass-card-hover rounded-3xl p-6 sm:p-7 border border-white/10 hover:border-cyan-400/50 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
                   idx === 4 ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
               >

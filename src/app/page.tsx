@@ -112,15 +112,15 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.22 }}
                 className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full mb-6 text-xs"
               >
-                <div className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2 shadow-xs">
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-amber-400/40 transition-colors">
                   <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Build Digital Brand</span>
                 </div>
-                <div className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2 shadow-xs">
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-emerald-400/40 transition-colors">
                   <Target className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Generate HNI Leads</span>
                 </div>
-                <div className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2 shadow-xs">
+                <div className="px-3 py-2 rounded-xl glass-subcard flex items-center gap-2 shadow-xs hover:border-cyan-400/40 transition-colors">
                   <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
                   <span className="text-slate-200 font-bold">Digital + AI Solutions</span>
                 </div>
@@ -235,11 +235,11 @@ export default function Home() {
 
                   {/* Trust Micro-Metrics Row */}
                   <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
-                    <div className="px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                    <div className="px-3 py-2 rounded-xl glass-subcard">
                       <div className="text-[10px] text-slate-400 font-medium">Experience</div>
                       <div className="text-xs font-bold text-amber-300">12+ Years Industry</div>
                     </div>
-                    <div className="px-3 py-2 rounded-xl bg-white/5 border border-white/10">
+                    <div className="px-3 py-2 rounded-xl glass-subcard">
                       <div className="text-[10px] text-slate-400 font-medium">Realty Portfolio</div>
                       <div className="text-xs font-bold text-cyan-300">₹120Cr+ Inventory</div>
                     </div>
@@ -251,7 +251,7 @@ export default function Home() {
               {/* Below Photo: Prominent About Us Nav Link */}
               <Link
                 href="#about"
-                className="w-full p-3.5 sm:p-4 rounded-2xl glass-card hover:bg-white/10 text-slate-200 hover:text-white transition-all duration-300 flex items-center justify-between group/about border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
+                className="w-full p-3.5 sm:p-4 rounded-2xl glass-card glass-card-hover text-slate-200 hover:text-white transition-all duration-300 flex items-center justify-between group/about border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center group-hover/about:bg-amber-400 group-hover/about:text-slate-950 transition-colors shadow-2xs border border-amber-400/20">

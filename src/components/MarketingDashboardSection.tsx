@@ -248,7 +248,7 @@ export function MarketingDashboardSection() {
           </div>
 
           {/* Timeframe Toggles */}
-          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-[#0d1322] border border-white/15 self-start md:self-auto shrink-0 shadow-lg">
+          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl glass-subcard self-start md:self-auto shrink-0 shadow-lg">
             <button
               onClick={() => setTimeframe("all")}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
@@ -293,7 +293,7 @@ export function MarketingDashboardSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="p-5 rounded-2xl bg-[#0b0f19] border border-cyan-400/25 relative overflow-hidden group hover:border-cyan-400/60 transition-all shadow-xl hover:-translate-y-1"
+            className="p-5 rounded-2xl glass-card glass-card-hover border border-cyan-400/30 relative overflow-hidden group hover:border-cyan-400/60 transition-all shadow-xl hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
@@ -319,7 +319,7 @@ export function MarketingDashboardSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.05 }}
-            className="p-5 rounded-2xl bg-[#0b0f19] border border-amber-400/30 relative overflow-hidden group hover:border-amber-400/60 transition-all shadow-xl hover:-translate-y-1"
+            className="p-5 rounded-2xl glass-card glass-card-hover border border-amber-400/35 relative overflow-hidden group hover:border-amber-400/70 transition-all shadow-xl hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
@@ -345,7 +345,7 @@ export function MarketingDashboardSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.1 }}
-            className="p-5 rounded-2xl bg-[#0b0f19] border border-emerald-400/25 relative overflow-hidden group hover:border-emerald-400/60 transition-all shadow-xl hover:-translate-y-1"
+            className="p-5 rounded-2xl glass-card glass-card-hover border border-emerald-400/30 relative overflow-hidden group hover:border-emerald-400/60 transition-all shadow-xl hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
@@ -371,7 +371,7 @@ export function MarketingDashboardSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.15 }}
-            className="p-5 rounded-2xl bg-[#0b0f19] border border-purple-400/25 relative overflow-hidden group hover:border-purple-400/60 transition-all shadow-xl hover:-translate-y-1"
+            className="p-5 rounded-2xl glass-card glass-card-hover border border-purple-400/30 relative overflow-hidden group hover:border-purple-400/60 transition-all shadow-xl hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-xl pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
@@ -397,7 +397,7 @@ export function MarketingDashboardSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.2 }}
-            className="p-5 rounded-2xl bg-[#0b0f19] border border-sky-400/30 relative overflow-hidden group hover:border-sky-400/60 transition-all shadow-xl hover:-translate-y-1"
+            className="p-5 rounded-2xl glass-card glass-card-hover border border-sky-400/35 relative overflow-hidden group hover:border-sky-400/60 transition-all shadow-xl hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-sky-500/10 rounded-full blur-xl pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
@@ -422,7 +422,7 @@ export function MarketingDashboardSection() {
         {/* ========================================================================= */}
         {/* INTERACTIVE CAMPAIGN DRILL-DOWN TABLE (REAL CAMPAIGN DATA ONLY) */}
         {/* ========================================================================= */}
-        <div className="rounded-3xl bg-[#0b0f19] border border-white/10 p-6 sm:p-8 shadow-2xl mb-12">
+        <div className="rounded-3xl glass-card p-6 sm:p-8 shadow-2xl mb-12 relative overflow-hidden">
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/10 mb-6 gap-4">
             <div>
@@ -532,7 +532,7 @@ export function MarketingDashboardSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           
           {/* Left: Real-Time Optimization Activity Log */}
-          <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-[#0b0f19] border border-white/10 shadow-xl">
+          <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl glass-card shadow-xl relative overflow-hidden">
             <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
@@ -575,7 +575,7 @@ export function MarketingDashboardSection() {
                   time: "4h ago"
                 }
               ].map((log, idx) => (
-                <div key={idx} className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start justify-between gap-3 text-xs">
+                <div key={idx} className="p-3.5 rounded-2xl glass-subcard flex items-start justify-between gap-3 text-xs">
                   <div className="space-y-1">
                     <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-bold border ${log.badgeColor}`}>
                       {log.badge}
@@ -593,7 +593,7 @@ export function MarketingDashboardSection() {
           </div>
 
           {/* Right: Ad Spend & Yield Breakdown */}
-          <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-[#0b0f19] border border-white/10 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-5 p-6 sm:p-7 rounded-3xl glass-card shadow-xl flex flex-col justify-between relative overflow-hidden">
             <div>
               <div className="pb-4 border-b border-white/10 mb-5">
                 <h4 className="text-sm font-black text-white uppercase tracking-wider">

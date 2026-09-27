@@ -210,19 +210,19 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
               {/* SLA Metrics Grid */}
               <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-amber-400/20">
-                <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                <div className="glass-subcard p-3 rounded-xl border border-white/10">
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Deployment</div>
                   <div className="text-xs font-bold text-white mt-0.5">{service.deliverables.timeline}</div>
                 </div>
-                <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                <div className="glass-subcard p-3 rounded-xl border border-white/10">
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Reporting</div>
                   <div className="text-xs font-bold text-white mt-0.5">{service.deliverables.reporting}</div>
                 </div>
-                <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                <div className="glass-subcard p-3 rounded-xl border border-white/10">
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Dedicated Pod</div>
                   <div className="text-xs font-bold text-white mt-0.5">{service.deliverables.teamPod}</div>
                 </div>
-                <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                <div className="glass-subcard p-3 rounded-xl border border-white/10">
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Quality Guarantee</div>
                   <div className="text-xs font-bold text-emerald-400 mt-0.5">{service.deliverables.guarantee}</div>
                 </div>
@@ -267,7 +267,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             {service.strategicBenefits.map((benefit, bIdx) => (
               <div
                 key={bIdx}
-                className="glass-card rounded-2xl p-5 border border-white/10 hover:border-amber-400/40 transition-colors flex flex-col justify-between"
+                className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between"
               >
                 <div>
                   <span className="text-xs font-mono font-bold text-amber-400/70 mb-2 block">
@@ -301,7 +301,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             {service.playbook.map((step, sIdx) => (
               <div
                 key={sIdx}
-                className="p-5 rounded-2xl glass-card border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between relative group"
+                className="glass-card glass-card-hover p-5 rounded-2xl border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between relative group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="w-8 h-8 rounded-lg bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-black flex items-center justify-center shadow-xs">
@@ -357,7 +357,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <Link
                   key={other.id}
                   href={`/services/${other.slug}`}
-                  className="glass-card rounded-2xl p-5 border border-white/10 hover:border-amber-400/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group shadow-md hover:shadow-2xl relative overflow-hidden"
+                  className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10 hover:border-amber-400/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group shadow-md hover:shadow-2xl relative overflow-hidden"
                 >
                   {/* Subtle Corner Glow Accent */}
                   <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-bl ${other.accent} rounded-bl-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none`} />

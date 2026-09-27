@@ -203,7 +203,7 @@ export function RealEstateMarketingSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: (idx % 4) * 0.05 }}
                 whileHover={{ y: -4 }}
-                className="glass-card rounded-2xl p-5 border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] hover:border-amber-400/40 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+                className="glass-card glass-card-hover rounded-2xl p-5 border border-white/10 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.8)] hover:border-amber-400/50 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
               >
                 {/* Subtle Hover Gradient Accent */}
                 <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-bl ${item.color} rounded-bl-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />

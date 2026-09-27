@@ -146,11 +146,11 @@ export function Navbar() {
               <AnimatePresence>
                 {servicesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.96 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[600px] sm:w-[640px] rounded-2xl bg-[#090d18]/98 backdrop-blur-3xl border border-amber-400/30 p-3.5 shadow-[0_25px_60px_rgba(0,0,0,0.95)] z-50 overflow-hidden"
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[90vw] max-w-[620px] rounded-2xl glass-modal border border-amber-400/35 p-3.5 shadow-[0_25px_60px_rgba(0,0,0,0.95)] z-50 overflow-hidden"
                   >
                     {/* Dropdown Header */}
                     <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/10 px-2">
@@ -312,15 +312,16 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#07090e]/98 backdrop-blur-2xl border-b border-white/10 overflow-hidden shadow-2xl max-h-[85vh] overflow-y-auto"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden glass-modal border-b border-white/15 overflow-hidden shadow-2xl max-h-[85vh] overflow-y-auto"
           >
             <div className="px-5 pt-4 pb-8 space-y-2 max-w-lg mx-auto">
               
               {/* Brand Header Inside Mobile Drawer */}
-              <div className="flex items-center gap-3 p-3 mb-2 rounded-xl bg-white/5 border border-white/10">
+              <div className="flex items-center gap-3 p-3 mb-2 rounded-xl glass-card border border-white/10">
                 <Image
                   src="/logo-icon.png"
                   alt="Himastech Logo Icon"
@@ -348,10 +349,10 @@ export function Navbar() {
               </Link>
 
               {/* Mobile Services Accordion (12 Services) */}
-              <div className="rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+              <div className="rounded-xl border border-white/10 glass-card overflow-hidden">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-sm font-bold text-white cursor-pointer"
+                  className="w-full flex items-center justify-between px-4 py-3 text-sm font-bold text-white cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <span className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-amber-400" />
@@ -363,10 +364,11 @@ export function Navbar() {
                 <AnimatePresence>
                   {mobileServicesOpen && (
                     <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="border-t border-white/10 px-3 py-2 space-y-1 bg-[#090d16]"
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      className="border-t border-white/10 px-3 py-2 space-y-1 bg-black/40"
                     >
                       <Link
                         href="/services"
