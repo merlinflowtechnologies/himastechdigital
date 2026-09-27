@@ -10,7 +10,6 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { HimastechDifference } from "@/components/HimastechDifference";
 import { PartnersMarquee } from "@/components/PartnersMarquee";
 import { StatsBar } from "@/components/StatsBar";
-import { MarketingDashboardSection } from "@/components/MarketingDashboardSection";
 import { RealEstateMarketingSection } from "@/components/RealEstateMarketingSection";
 import { BeforeAfterCreativeSlider } from "@/components/BeforeAfterCreativeSlider";
 import { AIMarketingSection } from "@/components/AIMarketingSection";
@@ -286,9 +285,6 @@ export default function Home() {
 
       {/* 2. Agency Proof Metrics */}
       <StatsBar />
-
-      {/* 2.5 Live Performance & Campaign Telemetry Dashboard */}
-      <MarketingDashboardSection />
 
       {/* 3. Real Estate Marketing • 12 Core Capabilities */}
       <RealEstateMarketingSection />

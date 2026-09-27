@@ -9,13 +9,8 @@ import {
   ArrowRight, 
   RotateCcw, 
   Phone, 
-  CheckCircle2, 
-  Target, 
-  GraduationCap, 
-  Calendar,
-  MessageSquare,
-  Building,
-  IndianRupee
+  Building2,
+  Sparkles
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -34,71 +29,32 @@ interface ChatMessage {
 }
 
 const MASTER_HIMASTECH_SUGGESTIONS: string[] = [
-  // CEO & Company
+  // Real Estate Flagship & High-Intent Leads
+  "🏡 How does Himastech generate high-intent Real Estate leads?",
   "🏢 Who is Kishore Patel (Founder & Lead Strategist)?",
-  "🎯 What is Himastech's core revenue philosophy?",
-  "📍 Where is your operational hub in Nagole, Hyderabad?",
-  "🚀 What makes Himastech different from other agencies?",
-
-  // Channels & Strategies
-  "⚡ How does Himastech achieve a 4.8x average ROAS?",
-  "📱 How do your Meta (FB & IG) ad funnels work?",
-  "🔍 What is your Google Ads & Performance Max strategy?",
-  "🤖 What is Generative Engine Optimization (GEO)?",
-  "🎥 Tell me about TikTok & viral UGC creator ads",
-  "📺 How does your YouTube Direct Response video strategy work?",
-  "💼 How do you run LinkedIn B2B Account-Based Marketing?",
-  "🔄 Tell me about your Klaviyo & WhatsApp retention flows",
-  "⚡ How do sub-second Next.js landing pages boost conversions?",
-
-  // Training Academy
-  "🎓 What are the 5 Career Tracks in your Academy?",
-  "💰 Tell me about the Paid Media & ROAS Acceleration track",
-  "📈 What is the Growth Hacking & CRO bootcamp?",
-  "💼 Do you provide live client ad budgets and 100% placement?",
-  "📅 When does the next Training Academy cohort start?",
-
-  // Free 48-Hour Growth Audit
+  "💼 What are the 12 core digital marketing services you offer?",
+  "🎓 Tell me about the Real Estate Marketing Training Academy",
+  "⚡ What ROAS and results do you achieve for property builders?",
+  "📱 How do your Meta (Facebook & Instagram) ads work for real estate?",
+  "🔍 What is your Google Ads & High-Intent Search strategy?",
   "📊 What is included in the Free 48-Hour Growth Audit?",
-  "🛡️ Is the 48-Hour Ad Stack Audit covered by mutual NDA?",
-  "🔍 How do you diagnose broken Meta CAPI tracking?",
-
-  // Client Results & Case Studies
-  "📈 How did you generate ₹48Cr+ for Prestige Estates?",
-  "🛍️ How did Lumina Glow Skincare scale 310% MRR in 90 days?",
-  "🚀 What results did you achieve for B2B SaaS CloudScale?",
-  "⭐ What is your agency client retention rate?",
-
-  // Methodology & Process
-  "⚙️ Walk me through your 4-Step Revenue Multiplication Engine",
-  "🧪 What is Dynamic Creative Testing (DCT)?",
-  "🧮 Can I simulate my projected ROAS with your calculator?",
-
-  // Pricing & Collaboration
+  "📞 What is Kishore Patel's direct WhatsApp & phone number?",
+  "🤖 What is Generative Engine Optimization (GEO) & AI Search?",
+  "🎥 Tell me about cinematic property walkthroughs & video ads",
+  "📍 Where is your operational hub in Nagole, Hyderabad?",
+  "🤝 How do we start working together on our property campaigns?",
+  "🚀 Tell me about Merlinflow Cloud ERP suites for Real Estate",
   "💰 How does your performance-aligned pricing work?",
-  "🤝 Are there any long-term contract lock-ins?",
-  "💵 What is the minimum recommended monthly ad spend?",
-
-  // Enterprise Software
-  "🚀 Tell me about Merlinflow Cloud ERP suites",
-  "🏫 Tell me about the School & College IMS software",
-  "🏥 How does the Medical & Hospital ERP work?",
-  "🍽️ How does Restaurant OS handle digital QR & KOT sync?",
-
-  // Contact & Social Proof
-  "📞 What is Kishore Patel's direct WhatsApp?",
-  "⚡ How do I book a 30-minute growth strategy call?",
-  "⭐ Where can I read verified client feedback and reviews?",
-  "💬 How do we get started working together?"
+  "⭐ Where can I read verified client feedback and reviews?"
 ];
 
 const MASTER_MERLINFLOW_SUGGESTIONS: string[] = [
   "📞 What are the direct WhatsApp desk numbers?",
   "🚀 Schedule a Guided 1-on-1 Software Demo",
+  "🏢 What modules are in the Real Estate Brokerage ERP?",
   "🏫 Tell me about the School & College IMS features",
   "🏥 How does Medical & Hospital ERP track batch expiries?",
   "🍽️ How does Restaurant OS handle digital QR & KOT sync?",
-  "🏢 What modules are in the Real Estate Brokerage ERP?",
   "🛍️ How does the E-Commerce Cloud OS prevent COD fraud?",
   "💼 Tell me about Corporate HRMS & Biometric Payroll",
   "💰 What is the pricing and cloud deployment model?",
@@ -106,11 +62,11 @@ const MASTER_MERLINFLOW_SUGGESTIONS: string[] = [
 ];
 
 const INITIAL_HIMASTECH_OPTIONS: string[] = [
-  "⚡ How fast can you scale our ROAS?",
-  "📊 What is included in the Free 48-Hr Audit?",
-  "🎓 Tell me about the 5 Training Tracks",
-  "🏢 Who is the CEO of Himastech?",
-  "💼 What services do you offer?",
+  "🏡 Real Estate Marketing Solutions",
+  "🏢 Who is Kishore Patel?",
+  "💼 12 Core Digital Services",
+  "🎓 Real Estate Training Academy",
+  "📊 Free 48-Hour Growth Audit"
 ];
 
 function selectDynamicSuggestions(
@@ -128,13 +84,13 @@ function selectDynamicSuggestions(
   const isSimilarToQuery = (s: string) => {
     const sNorm = normalize(s);
     if (qLower.includes("ceo") && sNorm.includes("ceo")) return true;
+    if (qLower.includes("kishore") && sNorm.includes("kishore")) return true;
     if (qLower.includes("roas") && sNorm.includes("roas")) return true;
     if (qLower.includes("audit") && sNorm.includes("audit")) return true;
     if (qLower.includes("training") && sNorm.includes("training")) return true;
     if (qLower.includes("pricing") && sNorm.includes("pricing")) return true;
     if (qLower.includes("merlinflow") && sNorm.includes("merlinflow")) return true;
-    if (qLower.includes("prestige") && sNorm.includes("prestige")) return true;
-    if (qLower.includes("lumina") && sNorm.includes("lumina")) return true;
+    if (qLower.includes("real estate") && sNorm.includes("real estate")) return true;
     if (qLower.includes("geo") && sNorm.includes("geo")) return true;
     if (qLower.includes("contact") && sNorm.includes("whatsapp")) return true;
     return false;
@@ -187,14 +143,14 @@ export function AIChatbot() {
       id: "1",
       sender: "bot",
       text: isMerlinflow
-        ? "👋 Welcome to **Merlinflow Technologies**! I can answer questions about our SaaS ERP suites (School IMS, Medical ERP, Restaurant OS, E-Commerce), schedule a 1-on-1 live product demo, or connect you with our engineering directors."
-        : "👋 Welcome to **Himastech**! I am your AI Growth & Strategy Assistant. How can I help multiply your revenue today?",
+        ? "👋 Welcome to **Merlinflow Technologies**! I can answer questions about our SaaS ERP suites (Real Estate Brokerage ERP, School IMS, Medical ERP, Restaurant OS, E-Commerce), schedule a 1-on-1 live product demo, or connect you with our engineering directors."
+        : "👋 Welcome to **Himastech — Digital Realty Marketing & AI Solutions**!\n\nI am your AI Growth & Strategy Assistant. How can I assist you with real estate lead generation, Kishore Patel's consulting, or training today?",
       timestamp: "Just now",
       options: isMerlinflow
         ? [
             "📞 What are the direct WhatsApp numbers?",
             "🚀 Schedule a Guided Software Demo",
-            "🏢 Explore School IMS, Medical & Restaurant ERP",
+            "🏢 Real Estate Brokerage ERP & School IMS",
             "💰 Custom Pricing & Cloud Migration",
             "🔄 More Topics"
           ]
@@ -211,7 +167,7 @@ export function AIChatbot() {
       ? [
           "📞 What are the direct WhatsApp numbers?",
           "🚀 Schedule a Guided Software Demo",
-          "🏢 Explore School IMS, Medical & Restaurant ERP",
+          "🏢 Real Estate Brokerage ERP & School IMS",
           "💰 Custom Pricing & Cloud Migration"
         ]
       : INITIAL_HIMASTECH_OPTIONS
@@ -237,21 +193,21 @@ export function AIChatbot() {
 
     // REJECTION RESPONSE HELPER FOR UNRELATED QUERIES
     const rejectionResponse = {
-      text: "⚠️ **Query Rejected: Outside Company Scope**\n\nI am the official AI Strategist for **Himastech** and **Merlinflow Technologies**. I can only assist with inquiries directly related to our company, digital marketing services, training academy, leadership, and enterprise software.\n\n👉 **Please enter a query related to our company.**\n\n*Examples of questions you can ask:*\n• **CEO & Leadership:** Who is the founder of Himastech? (*Kishore Patel*)\n• **Marketing Services:** Meta & Google Ads, AI Search (GEO), Funnels & CRO\n• **Training Academy:** 5 Career Tracks, Roadmaps & Placement\n• **Free Growth Audit:** Complimentary 48-Hour Ad Stack Diagnostic\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n• **Contact Us:** Official WhatsApp (+91 6304989071) or Schedule a Strategy Call",
+      text: "⚠️ **Query Outside Company Scope**\n\nI am the official AI Strategist for **Himastech** and **Merlinflow Technologies**. I can only assist with inquiries directly related to our agency, real estate marketing, digital services, training academy, and enterprise software.\n\n👉 **Topics you can explore:**\n• **Real Estate Marketing:** High-intent buyer leads, Meta/Google ads, site visits\n• **Founder & Leadership:** Kishore Patel (12+ years experience, Lead Strategist)\n• **12 Core Digital Services:** Performance ads, SEO/GEO, web development, CRM\n• **Training Academy:** Real estate & digital marketing practical courses\n• **Free 48-Hour Growth Audit:** Complimentary forensic ad stack diagnostic\n• **Contact Us:** Official WhatsApp (+91 6304989071)",
       cta: { 
         label: "Chat on WhatsApp (+91 6304989071)", 
         href: "https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20have%20an%20inquiry%20regarding%20your%20company%20and%20services", 
         isExternal: true 
       },
       options: [
+        "🏡 Real Estate Marketing Solutions",
         "🏢 Who is Kishore Patel?",
-        "💼 What services do you offer?",
-        "🎓 Tell me about Training Academy",
-        "📊 Claim Free 48-Hour Audit"
+        "💼 12 Core Digital Services",
+        "🎓 Real Estate Training Academy"
       ]
     };
 
-    // 0. EXPLICIT UNRELATED DOMAINS FILTER (Strictly rejects out-of-the-box off-topic subjects)
+    // 0. EXPLICIT UNRELATED DOMAINS FILTER
     const explicitUnrelatedWords = [
       // Sports & Gaming
       "cricket", "football", "soccer", "tennis", "basketball", "badminton", "chess", "hockey", "ipl", "fifa",
@@ -273,10 +229,11 @@ export function AIChatbot() {
     const hasUnrelatedWord = words.some(w => explicitUnrelatedWords.includes(w));
     const hasBusinessContext =
       q.includes("himastech") || q.includes("himas tech") || q.includes("merlinflow") ||
-      q.includes("patel") || q.includes("kishore") ||
+      q.includes("patel") || q.includes("kishore") || q.includes("real estate") || q.includes("realty") ||
       q.includes("marketing") || q.includes("ad") || q.includes("ads") || q.includes("agency") ||
       q.includes("business") || q.includes("sales") || q.includes("revenue") || q.includes("leads") ||
-      q.includes("roas") || q.includes("audit") || q.includes("training") || q.includes("course");
+      q.includes("roas") || q.includes("audit") || q.includes("training") || q.includes("course") ||
+      q.includes("villa") || q.includes("plot") || q.includes("flat");
 
     if (hasUnrelatedWord && !hasBusinessContext) {
       return rejectionResponse;
@@ -302,9 +259,9 @@ export function AIChatbot() {
       q.includes("reach out") ||
       hasPhrase("6304989071", "8374373753", "8247716878", "desk 1", "desk 2");
 
-    // 1. Contact Details / Phone / WhatsApp / Email / Address / Location (Handles "Contact Kishore Patel's Team")
+    // 1. Contact Details / Phone / WhatsApp / Email / Address / Location
     if (isContactIntent) {
-      if (isMerlinflow || q.includes("merlinflow") || q.includes("erp") || q.includes("desk 1") || q.includes("desk 2")) {
+      if (isMerlinflow || q.includes("merlinflow") || q.includes("desk 1") || q.includes("desk 2")) {
         return {
           text: "📞 **Merlinflow Technologies Official Desks:**\n\n• **Direct Solutions Desk 1:** +91 8374373753\n• **Direct Solutions Desk 2:** +91 8247716878\n• **Official Email:** info@merlinflow.in\n• **Website:** https://www.merlinflow.in/\n• **Operational Hub:** Hyderabad, India\n\nOur solutions architects are available on WhatsApp for live demo walkthroughs and custom module proposals.",
           cta: { 
@@ -324,21 +281,62 @@ export function AIChatbot() {
 
       return {
         text: mentionsKishore
-          ? "📞 **Contact Kishore Patel & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & Lead Strategist Kishore Patel and our senior growth directors are available on WhatsApp for direct campaign roadmaps, ad account audits, and enterprise partnerships."
-          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with Kishore Patel's growth team for marketing audits, campaign consulting, and academy enrollments.",
+          ? "📞 **Contact Kishore Patel & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & Lead Strategist Kishore Patel and our senior growth directors are available on WhatsApp for direct campaign roadmaps, real estate marketing audits, and enterprise partnerships."
+          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with Kishore Patel's team for marketing audits, campaign consulting, and academy enrollments.",
         cta: { 
           label: "Chat on WhatsApp (+91 6304989071)", 
           href: "https://wa.me/916304989071?text=Hi%20Kishore%20Patel%20and%20Himastech%20Team%2C%20I%20would%20like%20to%20discuss%20our%20growth%20strategy", 
           isExternal: true 
         },
-        options: ["📊 Request Free 48-Hr Audit", "💼 What services do you offer?", "🎓 Explore Training Academy"]
+        options: ["🏡 Real Estate Marketing Solutions", "📊 Request Free 48-Hr Audit", "💼 12 Core Digital Services", "🎓 Real Estate Training Academy"]
+      };
+    }
+
+    // 1b. Real Estate Marketing (Dedicated Flagship Handler)
+    if (
+      q.includes("real estate") ||
+      q.includes("realestate") ||
+      q.includes("realty") ||
+      q.includes("property") ||
+      q.includes("plots") ||
+      q.includes("plot") ||
+      q.includes("villas") ||
+      q.includes("villa") ||
+      q.includes("apartments") ||
+      q.includes("apartment") ||
+      q.includes("flat") ||
+      q.includes("flats") ||
+      q.includes("builders") ||
+      q.includes("builder") ||
+      q.includes("developer") ||
+      q.includes("developers") ||
+      q.includes("site visit") ||
+      q.includes("site visits") ||
+      q.includes("walkthrough") ||
+      q.includes("open plots") ||
+      q.includes("hmda") ||
+      q.includes("dtcp")
+    ) {
+      return {
+        text: "🏡 **Himastech Digital Realty Marketing Solutions:**\n\nReal Estate Marketing is our primary flagship specialty led by Founder & Lead Strategist **Kishore Patel** (12+ years expertise, ₹120Cr+ inventory moved).\n\n• **Verified Inbound Buyer Leads**: Multi-tier Meta (FB/IG) and Google Search ad campaigns targeting serious local HNIs and NRI investors.\n• **Sub-5 Minute Speed-to-Lead**: Integrated WhatsApp CRM automation connecting interested buyers directly with your sales managers before leads go cold.\n• **Cinematic Visual Walkthroughs**: Drone videography, luxury villa walkthroughs, and 3D floor plan reels that drive high emotional intent.\n• **High Site-Visit Conversion**: Qualified site visit generation for open plots, gated communities, and luxury residential projects.\n• **Proven Track Record**: 5.8x – 6.4x verified ROAS for top developers across Hyderabad and South India.",
+        cta: { 
+          label: "Discuss Real Estate Project (+91 6304989071)", 
+          href: "https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20discuss%20marketing%20for%20our%20real%20estate%20project", 
+          isExternal: true 
+        },
+        options: [
+          "📊 Claim Free 48-Hour Audit",
+          "🏢 Who is Kishore Patel?",
+          "💼 12 Core Digital Services",
+          "🎓 Real Estate Training Academy"
+        ]
       };
     }
 
     // 2. Kishore Patel / Founder / Leadership Biography
     if (
-      hasPhrase("kishore", "patel", "kishore patel") ||
-      hasWord("ceo", "founder", "trainer") ||
+      hasPhrase("kishore", "patel", "kishore patel", "sai kishore") ||
+      hasWord("ceo", "founder", "trainer", "leader") ||
       q.includes("who is kishore") ||
       q.includes("who is the ceo") ||
       q.includes("who is your ceo") ||
@@ -352,17 +350,18 @@ export function AIChatbot() {
       q.includes("executive team")
     ) {
       return {
-        text: "🏢 **About Kishore Patel — Founder & Lead Growth Strategist:**\n\n• **Title:** Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist\n\n*“Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.”*\n\n**Experience Highlights:**\n• **12+ Years Marketing Experience:** Veteran growth architect across Meta, Google Ads, and modern acquisition funnels.\n• **Real Estate Marketing Expertise:** ₹120Cr+ inventory moved across luxury villas, open plots, and NRI buyer networks.\n• **Digital Marketing Training & Strategy:** Mentored over 5,000+ professionals, founders, and students.\n• **Sales Team Development:** Designing high-converting sales pipelines, speed-to-lead cadences, and closing scripts.",
-        cta: { label: "Learn More in About Section", href: "#about" },
+        text: "🏢 **About Kishore Patel — Founder & Lead Strategist:**\n\n• **Role:** Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist\n\n*“Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.”*\n\n**Key Accomplishments & Authority:**\n• **12+ Years Industry Experience:** Veteran growth architect across Meta Ads, Google Ads, and modern acquisition funnels.\n• **Real Estate Marketing Specialist:** ₹120Cr+ inventory moved across luxury villas, open plotted layouts, and NRI buyer networks.\n• **Digital Marketing Trainer & Mentor:** Trained over 5,000+ professionals, business founders, and career aspirants.\n• **Sales Systems Architect:** Designing automated speed-to-lead pipelines, high-converting WhatsApp cadences, and sales closing scripts.",
+        cta: { label: "Learn More About Kishore Patel", href: "#about" },
         options: [
-          "💼 What services does Himastech offer?",
+          "🏡 Real Estate Marketing Solutions",
+          "💼 12 Core Digital Services",
           "📊 Request Free 48-Hr Growth Audit",
           "📞 Contact Kishore Patel's Team"
         ]
       };
     }
 
-    // 3. Conversational: Day & Well-being ("how was your day", "who was your day", "how is your day")
+    // 3. Conversational: Day & Well-being
     if (
       q.includes("was your day") ||
       q.includes("is your day") ||
@@ -372,17 +371,18 @@ export function AIChatbot() {
       q.includes("hows today")
     ) {
       return {
-        text: "😊 **My day has been wonderful, thank you for asking!**\n\nI've been busy helping business owners audit their ad funnels and sharing data-driven growth strategies engineered by Founder & Lead Strategist **Kishore Patel**.\n\nHow has your day been going so far? Tell me a little about yourself or what you're working on today!",
+        text: "😊 **My day has been fantastic, thank you for asking!**\n\nI've been busy helping real estate developers and business founders audit their ad campaigns and sharing growth strategies engineered by Founder & Lead Strategist **Kishore Patel**.\n\nHow is your day going? Tell me a little about your business or what projects you are currently focusing on!",
         cta: { label: "Explore Our Growth Services", href: "#services" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "🏢 Who is Kishore Patel?",
-          "💼 What services do you offer?",
+          "💼 12 Core Digital Services",
           "📊 Claim Free 48-Hour Audit"
         ]
       };
     }
 
-    // 3b. Conversational: User feeling / Mood ("i am good", "im fine", "doing well")
+    // 3b. Conversational: User feeling / Mood
     if (
       q.includes("i am good") ||
       q.includes("im good") ||
@@ -395,18 +395,18 @@ export function AIChatbot() {
       q.includes("pretty good")
     ) {
       return {
-        text: "😄 **Glad to hear that!**\n\nWhat brings you to Himastech today? Are you looking to scale your business revenue with paid ads, exploring career opportunities in our Training Academy, or just checking out our website?",
+        text: "😄 **Glad to hear that!**\n\nWhat brings you to Himastech today? Are you looking to generate high-intent leads for your real estate project or business, exploring our Training Academy, or looking for an ad audit?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
-          "💼 What services do you offer?",
-          "🏢 Who is the CEO?",
-          "🎓 Explore Training Academy",
-          "📊 Request Free 48-Hr Audit"
+          "🏡 Real Estate Marketing Solutions",
+          "💼 12 Core Digital Services",
+          "🏢 Who is Kishore Patel?",
+          "🎓 Real Estate Training Academy"
         ]
       };
     }
 
-    // 3c. Conversational: Let's chat / Talk ("can we chat", "let's talk", "tell me something")
+    // 3c. Conversational: Let's chat / Talk
     if (
       q.includes("can we chat") ||
       q.includes("can we talk") ||
@@ -418,12 +418,12 @@ export function AIChatbot() {
       q.includes("tell me something")
     ) {
       return {
-        text: "💬 **I'd love to chat!**\n\nWe can talk about anything from performance marketing strategies, how our Founder **Kishore Patel** scales real estate and business brands, or career roadmaps in our Training Academy.\n\nWhat's on your mind today?",
+        text: "💬 **I'd love to chat!**\n\nWe can talk about real estate buyer acquisition, how our Founder **Kishore Patel** scales property projects and businesses, or roadmaps in our Training Academy.\n\nWhat's on your mind today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "🏢 Who is Kishore Patel?",
-          "💼 What services do you offer?",
-          "📊 Request Free 48-Hr Audit",
+          "💼 12 Core Digital Services",
           "📞 WhatsApp Strategy Desk"
         ]
       };
@@ -444,13 +444,13 @@ export function AIChatbot() {
       q.includes("how have you been")
     ) {
       return {
-        text: "😊 **I'm doing fantastic, thank you!**\n\nI am here 24/7 assisting business founders, CMOs, and real estate developers with data-driven growth strategies, high-ticket funnels, and sales systems under Founder & Lead Strategist **Kishore Patel**.\n\nHow are you doing today? Tell me a little about your business or what growth goals you have in mind!",
+        text: "😊 **I'm doing great, thank you!**\n\nI am here 24/7 assisting real estate developers, builders, and business owners with data-driven growth strategies, high-ticket funnels, and sales systems under Founder & Lead Strategist **Kishore Patel**.\n\nHow are you doing today? What growth goals are you looking to achieve?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "🏢 Who is Kishore Patel?",
-          "💼 What services do you offer?",
-          "📊 Request Free 48-Hr Audit",
-          "📈 Calculate Projected ROAS"
+          "💼 12 Core Digital Services",
+          "📊 Request Free 48-Hr Audit"
         ]
       };
     }
@@ -464,17 +464,18 @@ export function AIChatbot() {
       q.includes("thank u")
     ) {
       return {
-        text: "🙏 **You're very welcome!**\n\nIt is our absolute pleasure to assist. Whether you need an ad stack audit, higher ROAS on Meta/Google, or sales team development, Kishore Patel's team is ready.\n\nLet us know whenever you want to schedule a strategy call or audit!",
+        text: "🙏 **You're very welcome!**\n\nIt is our pleasure to assist. Whether you need a real estate campaign roadmap, higher ROAS on Meta/Google, or sales team development, Kishore Patel's team is ready.\n\nLet us know whenever you want to schedule a strategy call or free audit!",
         cta: { label: "Schedule Strategy Call", href: "#contact" },
         options: [
           "📊 Request Free 48-Hr Audit",
-          "💼 What services do you offer?",
+          "🏡 Real Estate Marketing Solutions",
+          "💼 12 Core Digital Services",
           "📞 WhatsApp Strategy Desk"
         ]
       };
     }
 
-    // 5. Conversational: Acknowledgements ("ok", "sure", "cool", "great", "nice", etc.)
+    // 5. Conversational: Acknowledgements ("ok", "sure", "cool", etc.)
     const isAcknowledgement =
       ["ok", "okay", "sure", "cool", "great", "nice", "awesome", "perfect", "good", "fine", "understood", "got it", "yes", "yeah", "yep", "alright", "done", "super"].includes(raw) ||
       q.includes("sounds good") ||
@@ -485,12 +486,12 @@ export function AIChatbot() {
 
     if (isAcknowledgement) {
       return {
-        text: "👍 **Awesome!**\n\nWhat would you like to explore next? We can perform a deep forensic audit on your ad stack, review your projected ROAS, or connect you directly with Kishore Patel's growth desk.",
+        text: "👍 **Awesome!**\n\nWhat would you like to explore next? We can perform a deep forensic audit on your ad stack, review real estate lead generation strategies, or connect you directly with Kishore Patel's desk.",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "📊 Claim Free 48-Hour Audit",
-          "💼 Explore Services",
-          "🎓 View Training Academy",
+          "💼 12 Core Digital Services",
           "📞 WhatsApp Strategy Desk"
         ]
       };
@@ -508,13 +509,13 @@ export function AIChatbot() {
       q.includes("guide me")
     ) {
       return {
-        text: "🤝 **Absolutely! I'm here to help you.**\n\nAs Himastech's official AI Strategist, I can guide you through:\n• **Performance Marketing**: Scaling Meta & Google ads to high ROAS\n• **Forensic Ad Audit**: 48-Hour diagnostic of tracking leaks and ad waste\n• **Generative Engine Optimization (GEO)**: Ranking your brand in AI search engines\n• **Training Academy**: Hands-on agency roadmaps & placement\n\nTell me a little about your brand, or what challenge you're facing right now!",
+        text: "🤝 **Absolutely! I'm here to help you.**\n\nAs Himastech's official AI Strategist, I can guide you through:\n• **Real Estate Marketing**: Scaling Meta & Google ads to generate verified buyer visits\n• **Forensic Ad Audit**: Complimentary 48-Hour diagnostic of tracking leaks and ad waste\n• **Generative Engine Optimization (GEO)**: Ranking your brand in AI search engines\n• **Training Academy**: Hands-on agency roadmaps & direct mentorship with Kishore Patel\n\nTell me about your business or current campaign goals!",
         cta: { label: "Request Free 48-Hr Audit", href: "#contact" },
         options: [
-          "💼 What services do you offer?",
+          "🏡 Real Estate Marketing Solutions",
+          "💼 12 Core Digital Services",
           "📊 Claim Free 48-Hour Audit",
-          "📈 Calculate Projected ROAS",
-          "🏢 Who is the CEO?"
+          "🏢 Who is Kishore Patel?"
         ]
       };
     }
@@ -536,11 +537,12 @@ export function AIChatbot() {
       q.includes("run ads for")
     ) {
       return {
-        text: "🚀 **Scaling Predictable Revenue is Himastech's Core Specialty:**\n\nUnder Founder & Lead Strategist **Kishore Patel**, we turn digital marketing into a mathematical growth engine:\n\n• **Algorithmic Meta & Google Ads**: Engineered for sustainable scale, delivering an average **4.8x ROAS**.\n• **Bulletproof CAPI Tracking**: Server-side attribution to recover lost iOS & Android conversions.\n• **High-Converting Creative Sprints**: Direct-response UGC video hooks, angle testing, and sub-second landing page CRO.\n\nTell me about your business model (e.g. Real Estate, Luxury Living, E-Commerce, Healthcare, or B2B), and we can recommend a tailored scaling blueprint!",
+        text: "🚀 **Scaling Predictable Revenue is Himastech's Core Specialty:**\n\nUnder Founder & Lead Strategist **Kishore Patel**, we turn digital marketing into a mathematical growth engine:\n\n• **Algorithmic Meta & Google Ads**: Engineered for sustainable scale, delivering an average **4.8x – 6.4x ROAS**.\n• **Bulletproof CAPI Tracking**: Server-side attribution to recover lost iOS & Android conversions.\n• **High-Converting Creative Sprints**: Direct-response property video walkthroughs, UGC hooks, and sub-second landing pages.\n\nTell me about your business model (e.g. Real Estate Developer, Luxury Villas, Open Plots, E-Commerce, or B2B), and we'll outline a tailored scaling blueprint!",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "📊 Request Free 48-Hr Audit",
-          "💼 Explore Our Services",
+          "💼 12 Core Digital Services",
           "📞 WhatsApp Strategy Desk"
         ]
       };
@@ -560,12 +562,12 @@ export function AIChatbot() {
       q.includes("onboarding")
     ) {
       return {
-        text: "🚀 **How to Get Started with Himastech:**\n\nPartnering with us is seamless, transparent, and completely risk-free:\n\n1️⃣ **Step 1 — Free 48-Hour Growth Audit**: Our senior media buyers run a deep forensic scan on your ad stack under mutual NDA.\n2️⃣ **Step 2 — Strategic Roadmap**: Kishore Patel and our growth directors present tailored ROAS projections and creative angles.\n3️⃣ **Step 3 — 14-Day Sprint Launch**: We deploy tracking fixes, dynamic creatives, and algorithmic campaigns.\n\nFlexible month-to-month contracts with zero long-term lock-ins. You can also chat directly with Kishore Patel's desk on WhatsApp at **+91 6304989071**.",
+        text: "🚀 **How to Get Started with Himastech:**\n\nPartnering with us is seamless, transparent, and completely risk-free:\n\n1️⃣ **Step 1 — Free 48-Hour Growth Audit**: Our senior media buyers run a deep forensic scan on your ad stack under mutual NDA.\n2️⃣ **Step 2 — Strategic Roadmap**: Kishore Patel and our growth directors present tailored ROAS projections, target buyer personas, and creative angles.\n3️⃣ **Step 3 — 14-Day Sprint Launch**: We deploy tracking fixes, dynamic creatives, speed-to-lead CRM routing, and algorithmic campaigns.\n\nFlexible month-to-month contracts with zero long-term lock-ins. You can also chat directly with Kishore Patel's desk on WhatsApp at **+91 6304989071**.",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
           "📊 Claim Free 48-Hour Audit",
           "📞 WhatsApp Strategy Desk (+91 6304989071)",
-          "💼 View Marketing Services"
+          "🏡 Real Estate Marketing Solutions"
         ]
       };
     }
@@ -582,11 +584,12 @@ export function AIChatbot() {
       q.includes("great job")
     ) {
       return {
-        text: "✨ **Thank you so much!**\n\nOur entire team and Founder **Kishore Patel** are committed to delivering the absolute highest standard in performance marketing, transparent analytics, and enterprise software.\n\nWe would love to bring that same high standard to your brand's growth! How can we assist you today?",
+        text: "✨ **Thank you so much!**\n\nOur entire team and Founder **Kishore Patel** are committed to delivering the absolute highest standard in performance marketing, real estate lead generation, and transparent analytics.\n\nWe would love to bring that same high standard to your brand's growth! How can we assist you today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "📊 Claim Free 48-Hour Audit",
-          "💼 What services do you offer?",
+          "💼 12 Core Digital Services",
           "🏢 Who is Kishore Patel?"
         ]
       };
@@ -608,19 +611,19 @@ export function AIChatbot() {
     if (isGreeting) {
       return {
         text: isMerlinflow
-          ? "👋 Welcome to **Merlinflow Technologies**! I am your Enterprise Software Assistant. Ask me about our Cloud ERP suites (School IMS, Medical ERP, Restaurant OS, E-Commerce), schedule a 1-on-1 live demo, or connect with our solutions architects."
-          : "👋 Hello! Welcome to **Himastech**. I am your AI Growth & Strategy Assistant.\n\nI can assist you with:\n• **Leadership & Founder:** Kishore Patel (Trainer | Sales Strategist | Real Estate Specialist)\n• **Services:** Real Estate Marketing, Meta & Google Ads, AI Videos, Funnels & CRO\n• **Training Academy:** 5 Career Tracks & Placement\n• **Free 48-Hr Growth Audit:** Forensic diagnostic of your ad stack\n• **Enterprise Software:** Merlinflow Cloud ERP Suites\n\nHow can we help your business scale today?",
+          ? "👋 Welcome to **Merlinflow Technologies**! I am your Enterprise Software Assistant. Ask me about our Cloud ERP suites (Real Estate Brokerage ERP, School IMS, Medical ERP, Restaurant OS), schedule a live demo, or connect with our solutions architects."
+          : "👋 Hello! Welcome to **Himastech — Digital Realty Marketing & AI Solutions**.\n\nI can assist you with:\n• **Real Estate Marketing:** High-intent buyer leads, NRI campaigns, site-visit pipelines\n• **Founder & Leadership:** Kishore Patel (Trainer | Sales Strategist | Real Estate Specialist)\n• **12 Core Digital Services:** Performance Ads, SEO/GEO, Landing Pages, CRM\n• **Training Academy:** Real Estate & Digital Marketing Mastery Programs\n• **Free 48-Hour Growth Audit:** Complimentary forensic diagnostic of your ad stack\n\nHow can we help your business scale today?",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
         options: [
+          "🏡 Real Estate Marketing Solutions",
           "🏢 Who is Kishore Patel?",
-          "💼 What services do you offer?",
-          "📊 Request Free 48-Hr Audit",
-          "🎓 Explore Training Academy"
+          "💼 12 Core Digital Services",
+          "🎓 Real Estate Training Academy"
         ]
       };
     }
 
-    // 4. About Company / About Himastech / Agency Details
+    // 11. About Company / About Himastech / Agency Details
     if (
       q.includes("company") ||
       q.includes("agency") ||
@@ -639,13 +642,13 @@ export function AIChatbot() {
       q.includes("tell me about yourself")
     ) {
       return {
-        text: "🏢 **About Himastech:**\n\n• **Founded By:** Kishore Patel (Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist)\n• **Core Philosophy:** Helping businesses understand digital marketing, generate opportunities, and build stronger sales systems.\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, Creative Science, Uncompromising Integrity (100% ad account ownership), and Compound Growth.",
+        text: "🏢 **About Himastech — Digital Realty Marketing & AI Solutions:**\n\n• **Founder & Lead Strategist:** Kishore Patel (Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist)\n• **Core Mission:** Helping real estate developers and businesses build their brand, generate qualified leads, and improve sales using digital + AI solutions.\n• **Operational Hub:** Nagole, Hyderabad, Telangana, India\n• **Direct Contact:** +91 6304989071 | info@himastech.com\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, 100% Ad Account Transparency, Creative Science, and Measurable Revenue.",
         cta: { label: "Read Our Full Story", href: "#about" },
-        options: ["🏢 Who is Kishore Patel?", "💼 Explore Services", "📊 Claim Free 48-Hour Audit"]
+        options: ["🏡 Real Estate Marketing Solutions", "🏢 Who is Kishore Patel?", "💼 12 Core Digital Services", "📊 Claim Free 48-Hour Audit"]
       };
     }
 
-    // 5. Free 48-Hour Growth Audit
+    // 12. Free 48-Hour Growth Audit
     if (
       q.includes("audit") ||
       q.includes("teardown") ||
@@ -657,11 +660,11 @@ export function AIChatbot() {
       return {
         text: "📊 **Complimentary 48-Hour Growth & Ad Stack Audit (Under Mutual NDA):**\n\nOur senior media buyers perform a deep forensic diagnostic of your entire marketing stack:\n✓ **Server-Side Tracking Audit**: Identifying lost iOS/Android conversions & Meta CAPI telemetry gaps.\n✓ **Creative Fatigue Index**: Pinpointing decaying ad creatives and high-converting hook opportunities.\n✓ **Audience Cannibalization**: Eliminating budget wasted on overlapping ad sets.\n✓ **Landing Page Drop-off Teardown**: Uncovering friction points in forms, page speeds, and checkout steps.\n\n100% Free with zero obligation.",
         cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
-        options: ["📞 WhatsApp Strategy Desk", "⚡ Calculate Projected ROAS", "💼 View Marketing Services"]
+        options: ["📞 WhatsApp Strategy Desk", "🏡 Real Estate Marketing Solutions", "💼 12 Core Digital Services"]
       };
     }
 
-    // 6. Services & Growth Solutions
+    // 13. 12 Core Services & Growth Solutions
     if (
       q.includes("service") ||
       q.includes("services") ||
@@ -691,13 +694,13 @@ export function AIChatbot() {
       q.includes("retention marketing")
     ) {
       return {
-        text: "💼 **Himastech Digital Marketing & Lead Generation Services:**\n\n1. **Meta Ads (Facebook & Instagram)**: High-converting lead generation, custom audiencing & creative testing.\n2. **Google Ads & Performance Max**: High-intent search sculpting, verified inbound buyer leads.\n3. **Generative Engine Optimization (GEO) & SEO**: AI-ready semantic search ranking on Google, ChatGPT & Perplexity.\n4. **Real Estate Marketing Solutions**: Dedicated property campaigns, walk-through videos & site-visit pipelines.\n5. **AI Marketing & Automation**: Automated lead nurturing, WhatsApp CRM integration & instant sales routing.\n6. **Conversion Landing Pages**: Sub-second fast, high-converting digital landing pages.\n7. **Branding & Creative Design**: Premium digital identity, brochures, 3D renderings & social assets.",
-        cta: { label: "Explore Our Services", href: "#services" },
-        options: ["⚡ What ROAS can you achieve?", "📊 Claim Free 48-Hr Audit", "🏢 Who is the Founder?"]
+        text: "💼 **Himastech 12 Core Digital & Realty Services:**\n\n1. **Real Estate Marketing Solutions**: Dedicated property campaigns, walk-through videos & verified site-visit pipelines.\n2. **Performance Marketing & Paid Media**: Algorithmic Meta & Google Ads scaling, high ROAS bidding.\n3. **SEO & Generative Engine Optimization (GEO)**: Semantic ranking on Google, ChatGPT & Perplexity AI.\n4. **Social Media Marketing**: Brand building, viral reels, and social community growth.\n5. **Web Development & Landing Pages**: Sub-second fast Next.js landing pages built for high conversion.\n6. **Creative Strategy & Branding**: Luxury digital identities, project brochures, and ad creatives.\n7. **WhatsApp & Email Marketing Automation**: Automated lead nurturing & sub-5 minute sales routing.\n8. **Cinematic Video Production**: 4K drone shoots, project walkthroughs & direct-response video ads.\n9. **Influencer & Creator Marketing**: Local property influencers & authentic UGC creator seeding.\n10. **Marketing Automation & CRM**: Speed-to-lead workflow pipelines, telecaller scoring & CRM sync.\n11. **Local SEO & Google Business Profile (GMB)**: Hyper-local buyer discovery and Google Maps dominance.\n12. **Analytics & Conversion Optimization (CRO)**: Server-side CAPI telemetry, A/B testing, and audit reporting.",
+        cta: { label: "Explore Services on Website", href: "#services" },
+        options: ["🏡 Real Estate Marketing Details", "⚡ What ROAS can you achieve?", "📊 Claim Free 48-Hr Audit", "🏢 Who is Kishore Patel?"]
       };
     }
 
-    // 7. Generative Engine Optimization (GEO) & AI Search / SEO
+    // 14. Generative Engine Optimization (GEO) & AI Search / SEO
     if (
       q.includes("seo") ||
       q.includes("geo") ||
@@ -716,7 +719,7 @@ export function AIChatbot() {
       };
     }
 
-    // 8. Training Academy / Courses / Syllabus / Roadmaps / Placements
+    // 15. Training Academy / Real Estate & Digital Marketing Mastery
     if (
       q.includes("training") ||
       q.includes("course") ||
@@ -737,13 +740,13 @@ export function AIChatbot() {
       q.includes("enroll")
     ) {
       return {
-        text: "🎓 **Himastech Digital Marketing Academy (5 Elite Career Tracks):**\n\n1️⃣ **Paid Media & ROAS Acceleration** (8 Weeks • ₹8.5 LPA – ₹15 LPA avg salary): Meta CAPI, Google P-Max, live client ad spend.\n2️⃣ **SEO, GEO & AI Search Mastery** (6 Weeks • ₹7.5 LPA – ₹14 LPA avg salary): Core Web Vitals, Schema, ChatGPT & Perplexity indexing.\n3️⃣ **Social Media & Viral Content** (6 Weeks • ₹6.5 LPA – ₹12 LPA avg salary): 3-second hooks, CapCut, UGC creator seeding.\n4️⃣ **Growth Hacking & CRO** (8 Weeks • ₹9.0 LPA – ₹18 LPA avg salary): Sub-second landing pages, Klaviyo/SMS retention, A/B testing.\n5️⃣ **Full-Stack Executive Bootcamp** (12 Weeks • ₹12 LPA – ₹24 LPA avg salary): Complete 360° CMO & growth leadership training.\n\n✨ **Key Benefits:** Interactive curved roadmaps, real-time client ad budgets, 1-on-1 mentorship, and direct placement assistance.",
-        cta: { label: "View Academy Roadmaps & Syllabus", href: "#training" },
-        options: ["📞 WhatsApp for Next Cohort Seats", "💼 Agency Services", "🏢 About Kishore Patel"]
+        text: "🎓 **Himastech Real Estate & Digital Marketing Academy:**\n\nDirectly taught & mentored by veteran strategist **Kishore Patel** (12+ years experience, 5,000+ mentored professionals):\n\n1️⃣ **Real Estate Marketing Mastery**: High-ticket property funnels, Meta/Google ads for villas/plots, NRI targeting & site-visit systems.\n2️⃣ **Paid Media & ROAS Acceleration**: Meta CAPI server-side attribution, Google P-Max, and algorithmic scaling.\n3️⃣ **SEO, GEO & AI Search Mastery**: Core Web Vitals, Schema markup, ChatGPT & Perplexity AI indexing.\n4️⃣ **Social Media & Viral Content**: 3-second hook frameworks, CapCut/Premiere workflows, UGC creator seeding.\n5️⃣ **Full-Stack Growth & CRM Leadership**: Sub-second Next.js pages, WhatsApp CRM automation, speed-to-lead cadences.\n\n✨ **Key Highlights:** Live client ad budgets (real ad accounts), 1-on-1 mentorship from Kishore Patel, and direct agency/developer placement support.",
+        cta: { label: "View Academy Curriculum", href: "#training" },
+        options: ["📞 WhatsApp for Next Cohort Seats", "🏡 Real Estate Marketing Details", "🏢 About Kishore Patel"]
       };
     }
 
-    // 9. Results / Case Studies / ROAS / Metrics / Portfolio
+    // 16. Results / Case Studies / ROAS / Metrics / Portfolio
     if (
       q.includes("roas") ||
       q.includes("case study") ||
@@ -756,13 +759,13 @@ export function AIChatbot() {
       hasPhrase("prestige", "urbanrise", "lumina", "aura", "cloudscale", "nexusflow")
     ) {
       return {
-        text: "📈 **Verified Client Results & Proven ROAS:**\n\n• **Prestige Luxury Estates (Real Estate):** 6.4x ROAS | ₹48Cr+ Inventory Sold\n• **UrbanRise Luxury Villas (Real Estate):** 5.8x ROAS | ₹32Cr Booked\n• **Lumina Glow Skincare (D2C E-Commerce):** 4.2x ROAS | 310% MRR Surge in 90 Days\n• **Aura Minimalist Apparel (Fashion E-Com):** 5.1x ROAS | 420% Revenue Scale\n• **CloudScale DevOps (B2B SaaS):** ₹18M Pipeline Closed | 48% CAC Reduction\n• **NexusFlow CRM (B2B Tech):** ₹24M Enterprise ARR | 3.4x Demo Volume\n\n⭐ **Agency Benchmark:** 4.8x Average ROAS across active client portfolios and a 94%+ client retention rate.",
+        text: "📈 **Verified Client Results & Proven ROAS:**\n\n• **Prestige Luxury Estates (Real Estate):** 6.4x ROAS | ₹48Cr+ Inventory Sold\n• **UrbanRise Luxury Villas (Real Estate):** 5.8x ROAS | ₹32Cr Booked\n• **Open Plotted Communities:** 2,400+ Verified Site Visits Generated\n• **Lumina Glow Skincare (D2C E-Commerce):** 4.2x ROAS | 310% MRR Surge in 90 Days\n• **Aura Minimalist Apparel (Fashion E-Com):** 5.1x ROAS | 420% Revenue Scale\n• **CloudScale DevOps (B2B SaaS):** ₹18M Pipeline Closed | 48% CAC Reduction\n\n⭐ **Agency Benchmark:** 4.8x – 6.4x Average ROAS across active client portfolios and a 94%+ client retention rate.",
         cta: { label: "View Detailed Case Studies", href: "#case-studies" },
-        options: ["📊 Claim Free 48-Hour Audit", "💰 How does pricing work?", "📞 WhatsApp Strategy Desk"]
+        options: ["📊 Claim Free 48-Hour Audit", "🏡 Real Estate Marketing Solutions", "📞 WhatsApp Strategy Desk"]
       };
     }
 
-    // 10. Pricing / Budget / Retainer / Fees / Cost / Charges
+    // 17. Pricing / Budget / Retainer / Fees / Cost / Charges
     if (
       q.includes("pricing") ||
       q.includes("retainer") ||
@@ -776,13 +779,13 @@ export function AIChatbot() {
       q.includes("packages")
     ) {
       return {
-        text: "💰 **Pricing & Engagement Framework:**\n\n• **Performance-Aligned Structure**: Transparent base monthly retainer + performance milestone bonuses when agreed ROAS/revenue targets are surpassed.\n• **Zero Long-Term Lock-Ins**: Flexible month-to-month contracts because we earn our partnership through real revenue.\n• **Minimum Recommended Ad Spend**: Starting at ₹1,00,000 monthly ad spend to ensure statistical significance in algorithmic testing.\n• **Enterprise Proposals**: Custom-tailored multi-channel retainers available for enterprise brands and VC-backed startups.",
+        text: "💰 **Pricing & Engagement Framework:**\n\n• **Performance-Aligned Structure**: Transparent base monthly retainer + performance milestone bonuses when agreed ROAS/lead targets are surpassed.\n• **Zero Long-Term Lock-Ins**: Flexible month-to-month contracts because we earn our partnership through real revenue.\n• **Minimum Recommended Ad Spend**: Starting at ₹1,00,000 monthly ad spend to ensure statistical significance in algorithmic testing.\n• **Custom Real Estate & Enterprise Packages**: Tailored packages for builders, developers, and growing business brands.",
         cta: { label: "Request Custom Pricing Proposal", href: "#contact" },
-        options: ["📊 Book Free Account Audit", "💼 Explore Our Services", "📞 WhatsApp Strategy Desk"]
+        options: ["📊 Book Free Account Audit", "🏡 Real Estate Marketing Details", "📞 WhatsApp Strategy Desk"]
       };
     }
 
-    // 11. Process / 4-Step Revenue Engine / Methodology
+    // 18. Process / 4-Step Revenue Engine / Methodology
     if (
       q.includes("process") ||
       q.includes("how it works") ||
@@ -792,13 +795,13 @@ export function AIChatbot() {
       q.includes("workflow")
     ) {
       return {
-        text: "⚙️ **The 4-Step Revenue Multiplication Engine:**\n\n1️⃣ **Deep Forensic Audit (Day 1-7)**: Fix broken CAPI telemetry, resolve tracking blindspots, and establish baseline unit economics.\n2️⃣ **High-Velocity Creative Sprint (Day 8-14)**: Produce 10+ direct response UGC hooks and develop high-converting landing page variants.\n3️⃣ **Algorithmic Media Buying (Day 15-30)**: Deploy Broad AI targeting, Google P-Max feeds, and Dynamic Creative Testing (DCT).\n4️⃣ **Compounding Scale & Retention (Day 30+)**: Deploy Klaviyo/SMS retention sequences and ongoing multivariate CRO.",
+        text: "⚙️ **The 4-Step Revenue Multiplication Engine:**\n\n1️⃣ **Deep Forensic Audit (Day 1-7)**: Fix broken CAPI telemetry, resolve tracking blindspots, and establish baseline unit economics.\n2️⃣ **High-Velocity Creative Sprint (Day 8-14)**: Produce 10+ direct response UGC hooks and develop high-converting landing page variants.\n3️⃣ **Algorithmic Media Buying (Day 15-30)**: Deploy Broad AI targeting, Google Search & P-Max feeds, and Dynamic Creative Testing (DCT).\n4️⃣ **Compounding Scale & Retention (Day 30+)**: Deploy speed-to-lead WhatsApp automation, CRM pipeline routing, and ongoing CRO.",
         cta: { label: "View Our 4-Step Process", href: "#process" },
-        options: ["📊 Claim Free 48-Hr Audit", "📈 View Client Case Studies", "📞 Call +91 6304989071"]
+        options: ["📊 Claim Free 48-Hr Audit", "🏡 Real Estate Marketing Details", "📞 Call +91 6304989071"]
       };
     }
 
-    // 12. Merlinflow Technologies / Cloud ERP / SaaS Suites
+    // 19. Merlinflow Technologies / Cloud ERP / SaaS Suites
     if (
       q.includes("merlinflow") ||
       q.includes("merlin") ||
@@ -818,7 +821,7 @@ export function AIChatbot() {
       };
     }
 
-    // 13. Reviews / Feedback / Testimonials / Ratings
+    // 20. Reviews / Feedback / Testimonials / Ratings
     if (
       q.includes("review") ||
       q.includes("reviews") ||
@@ -829,33 +832,20 @@ export function AIChatbot() {
       q.includes("ratings")
     ) {
       return {
-        text: "⭐ **Genuine Client Testimonials:**\n\n• **100% Genuine Client Feedback**: Verified reviews from real estate leaders, directors, and business founders across Hyderabad & India.\n• **Proven Impact**: High praise for transparent ROAS dashboards, zero vanity metrics, and direct access to senior media buyers.\n• **Client Relationships**: Long-standing growth marketing partnerships delivering measurable sales results.",
+        text: "⭐ **Genuine Client Testimonials:**\n\n• **100% Genuine Client Feedback**: Verified reviews from real estate builders, directors, and business founders across Hyderabad & India.\n• **Proven Impact**: High praise for transparent ROAS dashboards, zero vanity metrics, and direct access to Kishore Patel & senior media buyers.\n• **Client Relationships**: Long-standing growth marketing partnerships delivering measurable sales results.",
         cta: { label: "View Client Testimonials", href: "#testimonials" },
-        options: ["📊 Claim Free 48-Hour Audit", "🎓 View Training Academy", "🏢 Who is the Founder?"]
+        options: ["📊 Claim Free 48-Hour Audit", "🏡 Real Estate Marketing Details", "🏢 Who is the Founder?"]
       };
     }
 
-    // 14. ROI Strategy & Revenue Forecasting
-    if (
-      q.includes("roi") ||
-      q.includes("calculator") ||
-      q.includes("simulate")
-    ) {
-      return {
-        text: "📈 **ROI & Predictable Growth Engineering:**\n\nCurious about the revenue potential of scaling your marketing with Himastech?\n• We engineer custom performance models tailored to your target CAC, CPA, and blended ROAS.\n• Based on historical real campaign averages across Real Estate, B2B, and E-Commerce.\n• Book a complimentary consultation to see an exact mathematical projection for your business.",
-        cta: { label: "Book Free Consultation", href: "#contact" },
-        options: ["📊 Request Free 48-Hr Audit", "💼 Explore Services", "📞 Contact Strategy Desk"]
-      };
-    }
-
-    // 15. NATURAL CONVERSATIONAL ASSISTANCE (For general conversation building & friendly chat)
+    // 21. Natural Conversational Fallback
     return {
-      text: "I hear you! 😊 I'm always happy to chat and help out.\n\nWhether you're looking to scale your real estate or business brand, curious about how our Founder **Kishore Patel** builds high-converting ad funnels & sales systems, or want to check out our Training Academy, I'm here for you.\n\nWhat would you like to explore together?",
+      text: "I hear you! 😊 I'm always happy to assist.\n\nWhether you're looking to generate high-intent buyer leads for your real estate projects, curious about how our Founder **Kishore Patel** builds high-converting ad funnels & sales systems, or want to check out our Training Academy, I'm here for you.\n\nWhat would you like to explore together?",
       cta: { label: "Claim Free 48-Hour Audit", href: "#contact" },
       options: [
+        "🏡 Real Estate Marketing Solutions",
         "🏢 Who is Kishore Patel?",
-        "💼 What services do you offer?",
-        "📊 Claim Free 48-Hour Audit",
+        "💼 12 Core Digital Services",
         "📞 WhatsApp Strategy Desk (+91 6304989071)"
       ]
     };
@@ -901,7 +891,7 @@ export function AIChatbot() {
 
       setIsTyping(false);
       setMessages((prev) => [...prev, botMessage]);
-    }, 600);
+    }, 500);
   };
 
   const handleCycleMoreSuggestions = (messageId: string) => {
@@ -947,7 +937,7 @@ export function AIChatbot() {
       ? [
           "📞 What are the direct WhatsApp numbers?",
           "🚀 Schedule a Guided Software Demo",
-          "🏢 Explore School IMS, Medical & Restaurant ERP",
+          "🏢 Real Estate Brokerage ERP & School IMS",
           "💰 Custom Pricing & Cloud Migration",
         ]
       : INITIAL_HIMASTECH_OPTIONS;
@@ -964,30 +954,30 @@ export function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mb-3 w-[92vw] sm:w-[400px] h-[550px] max-h-[85vh] rounded-3xl glass-modal flex flex-col shadow-2xl relative overflow-hidden"
+            className="mb-3 w-[92vw] sm:w-[410px] h-[580px] max-h-[85vh] rounded-3xl bg-[#090d16]/96 backdrop-blur-2xl border border-white/15 flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.95)] ring-1 ring-amber-500/20 relative overflow-hidden text-slate-100"
           >
-            {/* Top ambient glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-20 bg-gradient-to-b from-blue-500/15 to-transparent blur-xl pointer-events-none" />
+            {/* Top ambient gold & cyan glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-gradient-to-r from-amber-500/15 via-transparent to-cyan-500/15 blur-2xl pointer-events-none" />
 
             {/* Chatbot Header */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200/50 glass-subcard relative z-10">
+            <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#0c1220]/90 backdrop-blur-md relative z-10">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-brand-purple flex items-center justify-center text-white shadow-xs">
-                    <Bot className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500/20 via-[#0f172a] to-cyan-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 shadow-md">
+                    <Bot className="w-5 h-5 text-amber-400" />
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white animate-pulse" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#090d16] animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-950 flex items-center gap-1.5">
+                  <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
                     {isMerlinflow ? "Merlinflow AI Assistant" : "Himastech AI Strategist"}
-                    <span className="text-[10px] px-1.5 py-0.2 rounded glass-subcard text-blue-700 font-mono border border-blue-300/60">
-                      100% Accurate
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-400/10 text-amber-300 font-mono border border-amber-400/30">
+                      Official
                     </span>
                   </h3>
-                  <span className="text-[11px] text-emerald-600 font-medium flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                    {isMerlinflow ? "Live Desk • +91 8374373753 / 8247716878" : "Live Desk • +91 6304989071"}
+                  <span className="text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    {isMerlinflow ? "Live Desk • +91 8374373753" : "Live Desk • +91 6304989071"}
                   </span>
                 </div>
               </div>
@@ -996,14 +986,14 @@ export function AIChatbot() {
                 <button
                   onClick={handleResetChat}
                   title="Reset conversation"
-                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
+                  <RotateCcw className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
                   title="Minimize chat"
-                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -1011,41 +1001,41 @@ export function AIChatbot() {
             </div>
 
             {/* Message History Stream */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 no-scrollbar text-xs">
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 no-scrollbar text-xs bg-[#07090e]/60">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
                   className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}
                 >
                   <div
-                    className={`max-w-[88%] rounded-2xl p-3 sm:p-3.5 leading-relaxed shadow-xs ${
+                    className={`max-w-[88%] rounded-2xl p-3.5 sm:p-4 leading-relaxed shadow-lg ${
                       msg.sender === "user"
-                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-tr-none font-medium shadow-sm"
-                        : "glass-subcard text-slate-800 rounded-tl-none border-slate-200/60"
+                        ? "bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-slate-950 font-bold rounded-tr-none shadow-amber-500/20"
+                        : "bg-[#0d1424]/90 text-slate-200 rounded-tl-none border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
                     }`}
                   >
-                    <div className="whitespace-pre-line space-y-1">
+                    <div className="whitespace-pre-line space-y-1.5 [&_strong]:text-white [&_strong]:font-bold">
                       {msg.text}
                     </div>
 
                     {/* Direct CTA Link Button */}
                     {msg.cta && (
-                      <div className="mt-3 pt-2.5 border-t border-slate-200/60">
+                      <div className="mt-3 pt-2.5 border-t border-white/10">
                         {msg.cta.isExternal ? (
                           <a
                             href={msg.cta.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-[11px] border border-emerald-200 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 font-bold text-[11px] border border-emerald-500/30 transition-colors shadow-sm"
                           >
-                            <Phone className="w-3 h-3 text-emerald-600" />
+                            <Phone className="w-3 h-3 text-emerald-400" />
                             {msg.cta.label} <ArrowRight className="w-3 h-3" />
                           </a>
                         ) : (
                           <Link
                             href={msg.cta.href}
                             onClick={() => setIsOpen(false)}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-[11px] border border-blue-200 transition-colors"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 font-bold text-[11px] border border-amber-500/30 transition-colors shadow-sm"
                           >
                             {msg.cta.label} <ArrowRight className="w-3 h-3" />
                           </Link>
@@ -1063,10 +1053,10 @@ export function AIChatbot() {
                           <button
                             key={oIdx}
                             onClick={() => handleOptionClick(opt, msg.id)}
-                            className={`text-[11px] px-2.5 py-1 rounded-full border transition-all text-left cursor-pointer shadow-2xs ${
+                            className={`text-[11px] px-3 py-1 rounded-full border transition-all text-left cursor-pointer shadow-xs ${
                               isCycle
-                                ? "glass-subcard border-purple-300 text-purple-700 font-semibold hover:bg-purple-100/60"
-                                : "glass-subcard hover:bg-blue-50/80 border-slate-200/70 hover:border-blue-300 text-slate-700 hover:text-blue-700"
+                                ? "bg-cyan-500/10 hover:bg-cyan-500/20 border-cyan-400/40 text-cyan-300 font-semibold"
+                                : "bg-white/5 hover:bg-amber-500/15 border-white/10 hover:border-amber-400/40 text-slate-300 hover:text-amber-300"
                             }`}
                           >
                             {opt}
@@ -1076,16 +1066,16 @@ export function AIChatbot() {
                     </div>
                   )}
 
-                  <span className="text-[9px] text-slate-400 mt-1 px-1">{msg.timestamp}</span>
+                  <span className="text-[9px] text-slate-500 mt-1 px-1">{msg.timestamp}</span>
                 </div>
               ))}
 
               {/* Typing Indicator */}
               {isTyping && (
-                <div className="flex items-center gap-1.5 p-3 rounded-2xl glass-subcard w-20 rounded-tl-none">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-pink-600 animate-bounce [animation-delay:0.4s]" />
+                <div className="flex items-center gap-1.5 p-3 rounded-2xl bg-[#0d1424]/90 border border-white/10 w-20 rounded-tl-none shadow-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:0.2s]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-bounce [animation-delay:0.4s]" />
                 </div>
               )}
 
@@ -1093,41 +1083,39 @@ export function AIChatbot() {
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 border-t border-slate-200/50 glass-subcard relative z-10">
-              <div className="flex items-center gap-2 rounded-xl bg-white/80 border border-slate-200/80 px-3 py-1.5 focus-within:border-blue-500 transition-colors shadow-2xs">
+            <div className="p-3 border-t border-white/10 bg-[#090d16]/95 relative z-10">
+              <div className="flex items-center gap-2 rounded-xl bg-[#0e1626] border border-white/15 px-3.5 py-2 focus-within:border-amber-400/70 focus-within:ring-1 focus-within:ring-amber-400/30 transition-all shadow-inner">
                 <input
                   type="text"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={isMerlinflow ? "Ask about School IMS, Medical ERP, demos..." : "Ask about phone, ROAS, training, audit..."}
-                  className="flex-1 bg-transparent text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none"
+                  placeholder={isMerlinflow ? "Ask about School IMS, Medical ERP, demos..." : "Ask about Real Estate leads, Kishore Patel, training..."}
+                  className="flex-1 bg-transparent text-xs text-white placeholder:text-slate-400 focus:outline-none"
                 />
                 <button
                   onClick={() => handleSendMessage()}
                   disabled={!inputText.trim()}
                   className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                     inputText.trim()
-                      ? "bg-blue-600 text-white hover:bg-blue-700 shadow-xs"
-                      : "text-slate-400 cursor-not-allowed"
+                      ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-bold hover:brightness-110 shadow-xs"
+                      : "text-slate-600 cursor-not-allowed"
                   }`}
                   aria-label="Send message"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </div>
-              <div className="flex items-center justify-between text-[10px] text-slate-500 mt-1.5 px-1">
-                <span>
-                  {isMerlinflow
-                    ? "⚡ Merlinflow WhatsApp: +91 8374373753 / 8247716878"
-                    : "⚡ Call / WhatsApp: +91 6304989071"}
+              <div className="flex items-center justify-between text-[10px] text-slate-400 mt-2 px-1">
+                <span className="flex items-center gap-1 text-slate-300">
+                  <span className="text-amber-400 font-bold">⚡ WhatsApp / Call:</span> +91 6304989071
                 </span>
                 {isMerlinflow ? (
-                  <a href="#demo" onClick={() => setIsOpen(false)} className="text-emerald-600 hover:underline font-bold">
+                  <a href="#demo" onClick={() => setIsOpen(false)} className="text-cyan-400 hover:underline font-bold">
                     Live Demo →
                   </a>
                 ) : (
-                  <Link href="#contact" onClick={() => setIsOpen(false)} className="text-blue-600 hover:underline font-medium">
+                  <Link href="#contact" onClick={() => setIsOpen(false)} className="text-amber-400 hover:text-amber-300 hover:underline font-semibold">
                     Free 48h Audit →
                   </Link>
                 )}
@@ -1143,20 +1131,20 @@ export function AIChatbot() {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
-          className="w-13 h-13 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-pink-600 text-white flex items-center justify-center shadow-lg hover:shadow-xl border-2 border-white relative cursor-pointer transition-all duration-300 group"
+          className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#0a0e1a] via-[#111827] to-[#1c2638] text-amber-400 flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.8)] hover:shadow-[0_10px_35px_rgba(245,158,11,0.35)] border-2 border-amber-400/50 hover:border-amber-400 relative cursor-pointer transition-all duration-300 group"
           aria-label="Toggle AI Growth Assistant"
         >
           {/* Subtle Outer Ping Ring */}
-          <span className="absolute inset-0 rounded-full border border-blue-400 animate-ping opacity-25 pointer-events-none" />
+          <span className="absolute inset-0 rounded-full border border-amber-400/60 animate-ping opacity-25 pointer-events-none" />
 
           {isOpen ? (
             <X className="w-5 h-5 text-white" />
           ) : (
-            <Bot className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
+            <Bot className="w-6 h-6 text-amber-300 group-hover:rotate-12 transition-transform" />
           )}
 
           {/* AI Active Indicator */}
-          <span className="absolute top-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center">
+          <span className="absolute top-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#07090e] flex items-center justify-center">
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
           </span>
         </motion.button>

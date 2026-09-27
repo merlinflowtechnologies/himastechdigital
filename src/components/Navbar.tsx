@@ -51,7 +51,6 @@ export function Navbar() {
   const moreLinks = [
     { name: "Founder & Moments Gallery", href: "/#gallery", desc: "Leadership, site visits & workshops" },
     { name: "Case Studies & Portfolio", href: "/#portfolio", desc: "Real estate & brand growth results" },
-    { name: "Live Dashboard", href: "/#dashboard", desc: "Real campaign metrics & KPIs" },
     { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & photos" },
     { name: "Who We Help", href: "/#who-we-help", desc: "8 specialized industry sectors" },
     { name: "6-Step Process", href: "/#process", desc: "Our proven revenue multiplication engine" },
@@ -67,7 +66,6 @@ export function Navbar() {
     { name: "Founder Moments Gallery", href: "/#gallery" },
     { name: "AI Marketing", href: "/#ai-marketing" },
     { name: "Case Studies & Portfolio", href: "/#portfolio" },
-    { name: "Live Dashboard", href: "/#dashboard" },
     { name: "Merlinflow Tech Alliance", href: "/merlinflow", isSpecial: true },
     { name: "Client Testimonials", href: "/#testimonials" },
     { name: "Who We Help", href: "/#who-we-help" },
@@ -433,13 +431,6 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 Case Studies &amp; Portfolio
-              </Link>
-              <Link
-                href="/#dashboard"
-                className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
-              >
-                Live Dashboard
               </Link>
               <Link
                 href="/#process"

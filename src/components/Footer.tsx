@@ -161,11 +161,11 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li>
                 <Link 
-                  href="/#dashboard" 
-                  onClick={(e) => handleScrollTo(e, "/#dashboard")}
-                  className="hover:text-cyan-300 transition-colors block py-0.5 text-cyan-400 font-bold"
+                  href="/#gallery" 
+                  onClick={(e) => handleScrollTo(e, "/#gallery")}
+                  className="hover:text-amber-300 transition-colors block py-0.5 text-amber-400 font-bold"
                 >
-                  Live Marketing Dashboard
+                  Founder &amp; Moments Gallery
                 </Link>
               </li>
               <li>
