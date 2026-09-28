@@ -31,7 +31,7 @@ export async function submitContactForm(formData: FormData) {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Origin": "https://www.himastechdigi.com",
-        "Referer": "https://www.himastechdigi.com/contact"
+        "Referer": "https://www.himastechdigi.com"
       },
       body: params.toString()
     });
@@ -76,7 +76,7 @@ export async function submitReviewAction(data: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Origin": "https://www.himastechdigi.com",
-        "Referer": "https://www.himastechdigi.com/testimonials"
+        "Referer": "https://www.himastechdigi.com"
       },
       body: params.toString()
     });
