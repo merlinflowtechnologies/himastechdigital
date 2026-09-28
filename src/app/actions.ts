@@ -1,5 +1,8 @@
 "use server";
 
+import { randomUUID } from "crypto";
+import { getSupabaseAdmin } from "@/lib/supabase";
+
 export async function submitContactForm(formData: FormData) {
   const name = formData.get("name")?.toString();
   const businessName = formData.get("businessName")?.toString() || formData.get("company")?.toString();
@@ -46,8 +49,6 @@ export async function submitContactForm(formData: FormData) {
   }
 }
 
-import { getSupabaseAdmin } from "@/lib/supabase";
-
 export async function submitReviewAction(data: {
   name: string;
   designation: string;
@@ -60,13 +61,13 @@ export async function submitReviewAction(data: {
     return { success: false, error: "Please fill in all required fields." };
   }
 
+  let approveLink = "";
+  let rejectLink = "";
+
   try {
     const supabase = getSupabaseAdmin();
-    let approveLink = "";
-    let rejectLink = "";
-
     if (supabase) {
-      const approvalToken = crypto.randomUUID();
+      const approvalToken = randomUUID();
       const { data: inserted, error: insertError } = await supabase
         .from("reviews")
         .insert({
@@ -82,12 +83,18 @@ export async function submitReviewAction(data: {
         .select("id")
         .single();
 
-      if (!insertError && inserted?.id) {
+      if (insertError) {
+        console.error("Supabase insert error:", insertError);
+      } else if (inserted?.id) {
         approveLink = `https://www.himastechdigi.com/api/reviews/approve?id=${inserted.id}&token=${approvalToken}`;
         rejectLink = `https://www.himastechdigi.com/api/reviews/reject?id=${inserted.id}&token=${approvalToken}`;
       }
     }
+  } catch (dbErr) {
+    console.error("Database error during review submission:", dbErr);
+  }
 
+  try {
     const params = new URLSearchParams();
     params.append("_subject", `★ New Client Endorsement: ${data.name} (${data.company})`);
     params.append("name", data.name);
@@ -105,7 +112,7 @@ export async function submitReviewAction(data: {
     params.append("_template", "table");
     params.append("_captcha", "false");
 
-    await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
+    const emailRes = await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -116,10 +123,13 @@ export async function submitReviewAction(data: {
       body: params.toString()
     });
 
+    const emailData = await emailRes.json().catch(() => ({}));
+    console.log("FormSubmit review dispatch status:", emailRes.status, emailData);
+
     return { success: true, message: "Review received and submitted for verification!" };
   } catch (error) {
-    console.error("Error submitting review:", error);
-    return { success: true, message: "Review received for verification!" };
+    console.error("Error sending review email notification:", error);
+    return { success: true, message: "Review received and submitted for verification!" };
   }
 }
 
