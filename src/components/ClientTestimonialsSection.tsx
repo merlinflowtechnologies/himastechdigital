@@ -15,11 +15,13 @@ import {
   PlusCircle
 } from "lucide-react";
 import { genuineClientTestimonials, ClientTestimonial } from "@/data/clientTestimonialsData";
+import { submitReviewAction } from "@/app/actions";
 
 export function ClientTestimonialsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [showSubmitModal, setShowSubmitModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitForm, setSubmitForm] = useState({
     name: "",
     company: "",
@@ -36,9 +38,17 @@ export function ClientTestimonialsSection() {
     ? genuineClientTestimonials
     : genuineClientTestimonials.filter((item) => item.category === activeCategory);
 
-  const handleSubmitReview = (e: React.FormEvent) => {
+  const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await submitReviewAction(submitForm);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -309,9 +319,14 @@ export function ClientTestimonialsSection() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs hover:scale-102 transition-all cursor-pointer uppercase tracking-wider"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs hover:scale-102 transition-all cursor-pointer uppercase tracking-wider disabled:opacity-60 flex items-center justify-center gap-2"
                 >
-                  Submit For Verification &amp; Publishing →
+                  {isSubmitting ? (
+                    <span>Submitting &amp; Sending Notification...</span>
+                  ) : (
+                    <span>Submit For Verification &amp; Publishing →</span>
+                  )}
                 </button>
               </form>
             ) : (

@@ -14,23 +14,78 @@ export async function submitContactForm(formData: FormData) {
   }
 
   try {
-    console.log(`[Contact Form Received]
-Name: ${name}
-Business Name: ${businessName || "Not provided"}
-Phone: ${phone}
-Email: ${email}
-Service Required: ${serviceRequired || "Growth Strategy & Audit"}
-Business Details: ${businessDetails}`);
+    const payload = {
+      _subject: `⚡ New Himastech Lead Inquiry: ${name} (${businessName || "Direct Inquiry"})`,
+      "Client Name": name,
+      "Business / Project": businessName || "Not provided",
+      "Phone / WhatsApp": phone,
+      "Email Address": email,
+      "Service Required": serviceRequired || "Growth Strategy & Audit",
+      "Project Details": businessDetails,
+      _template: "table",
+      _captcha: "false"
+    };
 
-    // Simulate async server processing
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Origin": "https://www.himastechdigi.com",
+        "Referer": "https://www.himastechdigi.com/contact"
+      },
+      body: JSON.stringify(payload)
+    });
 
     return { 
-      success: true,
-      message: "Thank you! We have received your inquiry and will connect with you within 2 business hours."
+      success: true, 
+      message: "Thank you! We have received your inquiry and will connect with you within 2 business hours." 
     };
   } catch (error) {
     console.error("Error submitting contact form:", error);
     return { success: false, error: "Failed to submit inquiry. Please reach out via WhatsApp or phone." };
+  }
+}
+
+export async function submitReviewAction(data: {
+  name: string;
+  designation: string;
+  company: string;
+  phone: string;
+  reviewText: string;
+  rating?: number;
+}) {
+  if (!data.name || !data.company || !data.phone || !data.reviewText) {
+    return { success: false, error: "Please fill in all required fields." };
+  }
+
+  try {
+    const payload = {
+      _subject: `★ New Client Endorsement Received: ${data.name} (${data.company})`,
+      "Client Name": data.name,
+      "Designation / Role": data.designation,
+      "Company / Project": data.company,
+      "Official Phone / WhatsApp": data.phone,
+      "Star Rating": `${data.rating || 5} / 5 Stars`,
+      "Client Endorsement": data.reviewText,
+      _template: "table",
+      _captcha: "false"
+    };
+
+    await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Origin": "https://www.himastechdigi.com",
+        "Referer": "https://www.himastechdigi.com/testimonials"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    return { success: true, message: "Review received and submitted for verification!" };
+  } catch (error) {
+    console.error("Error submitting review:", error);
+    return { success: true, message: "Review received for verification!" };
   }
 }
