@@ -315,23 +315,34 @@ export function ClientTestimonialsSection() {
                 </button>
               </form>
             ) : (
-              <div className="py-8 text-center space-y-3">
+              <div className="py-8 text-center space-y-3.5">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h4 className="text-base font-bold text-white">Review Received for Verification!</h4>
-                <p className="text-xs text-slate-300 max-w-sm mx-auto">
-                  Thank you <strong>{submitForm.name}</strong> from <strong>{submitForm.company}</strong>. To uphold our strict non-invented client policy, our director desk will verify your details before publishing.
+                <h4 className="text-base font-bold text-white">Review Submitted Successfully!</h4>
+                <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
+                  Thank you, <strong className="text-amber-300">{submitForm.name || "valued partner"}</strong>. Your endorsement has been received and will be verified by our team before publishing.
                 </p>
-                <button
-                  onClick={() => {
-                    setShowSubmitModal(false);
-                    setSubmitted(false);
-                  }}
-                  className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold cursor-pointer"
-                >
-                  Close
-                </button>
+                <div className="pt-2">
+                  <button
+                    onClick={() => {
+                      setShowSubmitModal(false);
+                      setSubmitted(false);
+                      setSubmitForm({
+                        name: "",
+                        company: "",
+                        designation: "",
+                        project: "",
+                        phone: "",
+                        reviewText: "",
+                        rating: 5
+                      });
+                    }}
+                    className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all cursor-pointer"
+                  >
+                    Done
+                  </button>
+                </div>
               </div>
             )}
           </motion.div>
