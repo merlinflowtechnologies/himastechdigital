@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -15,13 +15,14 @@ import {
   PlusCircle
 } from "lucide-react";
 import { genuineClientTestimonials, ClientTestimonial } from "@/data/clientTestimonialsData";
-import { submitReviewAction } from "@/app/actions";
+import { submitReviewAction, getApprovedReviews } from "@/app/actions";
 
 export function ClientTestimonialsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [showSubmitModal, setShowSubmitModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [dynamicReviews, setDynamicReviews] = useState<ClientTestimonial[]>([]);
   const [submitForm, setSubmitForm] = useState({
     name: "",
     company: "",
@@ -32,11 +33,37 @@ export function ClientTestimonialsSection() {
     rating: 5
   });
 
+  useEffect(() => {
+    getApprovedReviews().then((reviews) => {
+      if (reviews && reviews.length > 0) {
+        const formatted: ClientTestimonial[] = reviews.map((r: { id: string; name: string; designation?: string; company: string; rating?: number; created_at: string; message: string }) => ({
+          id: r.id,
+          name: r.name,
+          designation: r.designation || "Verified Client",
+          company: r.company,
+          companyLogo: "/testimonials/logos/merlinflow.svg",
+          projectTitle: "Strategic Digital & Sales Growth",
+          category: "Technology" as const,
+          rating: r.rating || 5,
+          date: new Date(r.created_at).toLocaleDateString("en-US", { month: "short", year: "numeric" }),
+          verified: true,
+          verifiedBadgeText: "Verified Client • Approved Endorsement",
+          testimonial: r.message,
+          highlightMetric: "Verified Client Review",
+          location: "Hyderabad"
+        }));
+        setDynamicReviews(formatted);
+      }
+    });
+  }, []);
+
   const categories = ["All", "Real Estate", "Technology", "Branding & Social", "High-Ticket Ads"];
 
+  const allTestimonials = [...dynamicReviews, ...genuineClientTestimonials];
+
   const filteredTestimonials = activeCategory === "All"
-    ? genuineClientTestimonials
-    : genuineClientTestimonials.filter((item) => item.category === activeCategory);
+    ? allTestimonials
+    : allTestimonials.filter((item) => item.category === activeCategory);
 
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -46,6 +46,8 @@ export async function submitContactForm(formData: FormData) {
   }
 }
 
+import { getSupabaseAdmin } from "@/lib/supabase";
+
 export async function submitReviewAction(data: {
   name: string;
   designation: string;
@@ -59,6 +61,33 @@ export async function submitReviewAction(data: {
   }
 
   try {
+    const supabase = getSupabaseAdmin();
+    let approveLink = "";
+    let rejectLink = "";
+
+    if (supabase) {
+      const approvalToken = crypto.randomUUID();
+      const { data: inserted, error: insertError } = await supabase
+        .from("reviews")
+        .insert({
+          name: data.name,
+          company: data.company,
+          designation: data.designation || "Client",
+          phone: data.phone,
+          rating: data.rating || 5,
+          message: data.reviewText,
+          status: "pending",
+          approval_token: approvalToken,
+        })
+        .select("id")
+        .single();
+
+      if (!insertError && inserted?.id) {
+        approveLink = `https://www.himastechdigi.com/api/reviews/approve?id=${inserted.id}&token=${approvalToken}`;
+        rejectLink = `https://www.himastechdigi.com/api/reviews/reject?id=${inserted.id}&token=${approvalToken}`;
+      }
+    }
+
     const params = new URLSearchParams();
     params.append("_subject", `★ New Client Endorsement: ${data.name} (${data.company})`);
     params.append("name", data.name);
@@ -67,6 +96,12 @@ export async function submitReviewAction(data: {
     params.append("phone", data.phone);
     params.append("rating", `${data.rating || 5} / 5 Stars`);
     params.append("message", data.reviewText);
+
+    if (approveLink) {
+      params.append("CLICK_TO_APPROVE", approveLink);
+      params.append("CLICK_TO_REJECT", rejectLink);
+    }
+
     params.append("_template", "table");
     params.append("_captcha", "false");
 
@@ -85,5 +120,26 @@ export async function submitReviewAction(data: {
   } catch (error) {
     console.error("Error submitting review:", error);
     return { success: true, message: "Review received for verification!" };
+  }
+}
+
+export async function getApprovedReviews() {
+  const supabase = getSupabaseAdmin();
+  if (!supabase) return [];
+  try {
+    const { data, error } = await supabase
+      .from("reviews")
+      .select("*")
+      .eq("status", "approved")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching approved reviews:", error);
+      return [];
+    }
+    return data || [];
+  } catch (err) {
+    console.error("Error connecting to Supabase for reviews:", err);
+    return [];
   }
 }
