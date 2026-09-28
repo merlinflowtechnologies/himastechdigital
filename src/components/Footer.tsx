@@ -19,19 +19,12 @@ import {
   Compass,
   CheckCircle2
 } from "lucide-react";
+import { handleNavAnchorClick } from "@/lib/navigation";
 
 export function Footer() {
-  // Smooth scroll handler for same-page section navigation
+  // Smooth scroll handler for section navigation
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("/#")) {
-      const targetId = href.replace("/#", "");
-      const elem = document.getElementById(targetId);
-      if (elem) {
-        e.preventDefault();
-        elem.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", href);
-      }
-    }
+    handleNavAnchorClick(e, href);
   };
 
   // Exact Requested Quick Links List
@@ -121,7 +114,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(245,158,11,0.35)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] hover:scale-105 transition-all group cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5 text-slate-950" />
-              <span>BOOK FREE CONSULTATION</span>
+              <span>GET FREE AUDIT</span>
               <ArrowRight className="w-3.5 h-3.5 text-slate-950 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -264,7 +257,7 @@ export function Footer() {
               {/* Email */}
               <li>
                 <a 
-                  href="mailto:info@himastech.com" 
+                  href="mailto:info@himastechdigi.com" 
                   className="flex items-center gap-3 p-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-white/10 transition-all group"
                 >
                   <div className="w-9 h-9 rounded-xl bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -272,7 +265,7 @@ export function Footer() {
                   </div>
                   <div>
                     <span className="block text-[10px] text-cyan-400 font-bold uppercase tracking-wider">Email</span>
-                    <span className="text-white font-bold group-hover:text-cyan-300 transition-colors">info@himastech.com</span>
+                    <span className="text-white font-bold group-hover:text-cyan-300 transition-colors">info@himastechdigi.com</span>
                   </div>
                 </a>
               </li>

@@ -66,7 +66,7 @@ export const allServices: ServiceItem[] = [
       },
       {
         title: "DM Conversational Selling",
-        description: "Convert comments, story replies, and reactions into warm sales consultations with our trained community management playbooks."
+        description: "Convert comments, story replies, and reactions into warm sales leads and buyer inquiries with our trained community management playbooks."
       },
       {
         title: "Brand Equity & Social Proof",
@@ -98,7 +98,7 @@ export const allServices: ServiceItem[] = [
       {
         step: "03",
         title: "Community Management & Conversational DM Selling",
-        detail: "Turn post comments and Story replies into qualified sales conversations and booked consultation calls."
+        detail: "Turn post comments and Story replies into qualified sales conversations and scheduled buyer discovery calls."
       },
       {
         step: "04",
@@ -322,7 +322,7 @@ export const allServices: ServiceItem[] = [
     title: "Website Development",
     shortTitle: "Next.js Web Development",
     description: "Ultra-fast Next.js websites engineered with premium dark luxury aesthetics, mobile-first responsiveness, and high-conversion architecture.",
-    fullOverview: "A slow or generic website kills high-ticket conversions. Himastech builds bespoke, lightning-fast digital experiences using Next.js, React, and Tailwind CSS. Featuring sub-second load times, glassmorphism aesthetics, dynamic micro-animations, and direct CRM integrations, our websites convert casual visitors into verified booked consultations.",
+    fullOverview: "A slow or generic website kills high-ticket conversions. Himastech builds bespoke, lightning-fast digital experiences using Next.js, React, and Tailwind CSS. Featuring sub-second load times, glassmorphism aesthetics, dynamic micro-animations, and direct CRM integrations, our websites convert casual visitors into verified buyer inquiries.",
     strategicBenefits: [
       {
         title: "Sub-Second Speed (Core Web Vitals)",
@@ -706,7 +706,7 @@ export const allServices: ServiceItem[] = [
       {
         step: "04",
         title: "Automated Calendar Site Visit & Demo Booking",
-        detail: "Enable prospects to book site visits or consultation slots directly inside the WhatsApp conversation."
+        detail: "Enable prospects to book site visits or strategy calls directly inside the WhatsApp conversation."
       }
     ],
     techStack: ["WhatsApp Business API", "Interakt", "Wati", "Zapier", "Webhooks"],

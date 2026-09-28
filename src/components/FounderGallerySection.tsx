@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn, Camera, ChevronLeft, ChevronRight } from "lucide-react";
@@ -9,6 +9,7 @@ export function FounderGallerySection() {
   const [activePhoto, setActivePhoto] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hasDragged, setHasDragged] = useState(false);
@@ -28,7 +29,7 @@ export function FounderGallerySection() {
     { src: "/gallery/img4.jpeg", alt: "Interactive Team Advisory Meeting" },
     { src: "/gallery/img6.jpeg", alt: "Corporate Strategy Discussion" },
     { src: "/gallery/img7.jpeg", alt: "Live Mentorship & Coaching Session" },
-    { src: "/gallery/img9.jpeg", alt: "Team Consultation & Review" },
+    { src: "/gallery/img9.jpeg", alt: "Team Strategy & Review" },
     { src: "/gallery/img11.jpeg", alt: "Sales Team Architecture Workshop" },
     { src: "/gallery/img13.jpeg", alt: "Strategic Planning Discussion" },
     { src: "/gallery/img14.jpeg", alt: "Project Review & Execution Session" },
@@ -67,8 +68,37 @@ export function FounderGallerySection() {
     setIsDragging(false);
   };
 
+  // Continuous smooth auto-scroll effect
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let scrollAcc = container.scrollLeft;
+    const speed = 2.4; // Fast, fluid continuous auto-scroll
+
+    const step = () => {
+      if (!isHovered && !isDragging && !activePhoto) {
+        scrollAcc += speed;
+        if (scrollAcc >= container.scrollWidth - container.clientWidth - 2) {
+          scrollAcc = 0;
+        }
+        container.scrollLeft = Math.floor(scrollAcc);
+      } else {
+        scrollAcc = container.scrollLeft;
+      }
+      animationFrameId = requestAnimationFrame(step);
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isHovered, isDragging, activePhoto]);
+
   return (
-    <section id="gallery" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="gallery" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
@@ -127,13 +157,19 @@ export function FounderGallerySection() {
           </div>
         </div>
 
-        {/* Horizontal Draggable / Swipeable Photo Carousel Track */}
+        {/* Horizontal Draggable / Auto-Scrolling Photo Track */}
         <div 
           ref={scrollContainerRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            handleMouseUp();
+          }}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
           className={`flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth no-scrollbar select-none cursor-grab active:cursor-grabbing -mx-4 px-4 sm:mx-0 sm:px-0`}
         >
           {photos.map((photo, idx) => (

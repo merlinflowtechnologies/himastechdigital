@@ -193,7 +193,7 @@ export default function TermsAndConditionsPage() {
       title: "Term of Engagement & 30-Day Cancellation Notice",
       content: (
         <p>
-          Services operate on a rolling month-to-month basis with zero lock-in hostage contracts. Either party may terminate the active engagement for convenience by providing at least thirty (30) calendar days written notice via registered email to info@himastech.com.
+          Services operate on a rolling month-to-month basis with zero lock-in hostage contracts. Either party may terminate the active engagement for convenience by providing at least thirty (30) calendar days written notice via registered email to info@himastechdigi.com.
         </p>
       ),
     },
@@ -272,7 +272,7 @@ export default function TermsAndConditionsPage() {
             <p className="font-bold text-slate-950">Himastech Digital Marketing</p>
             <p className="text-slate-600">Strategic Alliance Partner: Merlinflow Technologies Pvt Ltd</p>
             <p className="pt-1"><strong>Operational HQ:</strong> Nagole, Hyderabad, Telangana 500068, India</p>
-            <p><strong>Official Email:</strong> <a href="mailto:info@himastech.com" className="text-blue-600 underline font-semibold">info@himastech.com</a></p>
+            <p><strong>Official Email:</strong> <a href="mailto:info@himastechdigi.com" className="text-blue-600 underline font-semibold">info@himastechdigi.com</a></p>
             <p><strong>Direct Hotline / WhatsApp:</strong> <a href="tel:+916304989071" className="text-emerald-700 underline font-semibold">+91 6304989071</a></p>
           </div>
         </div>

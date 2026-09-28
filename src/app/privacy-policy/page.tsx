@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
       title: "Identity of the Data Fiduciary & Controller",
       content: (
         <p>
-          The primary Data Fiduciary under the Indian Digital Personal Data Protection (DPDP) Act 2023 and Data Controller under the EU GDPR is <strong>Himastech Digital Marketing</strong>, headquartered in Nagole, Hyderabad, Telangana, India. Our appointed Data Protection Officer can be reached directly at <a href="mailto:info@himastech.com" className="text-blue-600 underline font-semibold">info@himastech.com</a>.
+          The primary Data Fiduciary under the Indian Digital Personal Data Protection (DPDP) Act 2023 and Data Controller under the EU GDPR is <strong>Himastech Digital Marketing</strong>, headquartered in Nagole, Hyderabad, Telangana, India. Our appointed Data Protection Officer can be reached directly at <a href="mailto:info@himastechdigi.com" className="text-blue-600 underline font-semibold">info@himastechdigi.com</a>.
         </p>
       ),
     },
@@ -274,7 +274,7 @@ export default function PrivacyPolicyPage() {
             <p className="font-bold text-slate-950">Grievance &amp; Data Protection Officer</p>
             <p className="text-slate-600">Himastech Digital Marketing (Alliance Partner: Merlinflow Technologies Pvt Ltd)</p>
             <p className="pt-1"><strong>Physical Address:</strong> Nagole, Hyderabad, Telangana 500068, India</p>
-            <p><strong>Official Email:</strong> <a href="mailto:info@himastech.com" className="text-blue-600 underline font-semibold">info@himastech.com</a></p>
+            <p><strong>Official Email:</strong> <a href="mailto:info@himastechdigi.com" className="text-blue-600 underline font-semibold">info@himastechdigi.com</a></p>
             <p><strong>Telephone / WhatsApp:</strong> <a href="tel:+916304989071" className="text-emerald-700 underline font-semibold">+91 6304989071</a></p>
             <p className="text-slate-500 text-xs pt-1">Turnaround Time: All formal grievances are reviewed and resolved within thirty (30) calendar days.</p>
           </div>
@@ -411,7 +411,7 @@ export default function PrivacyPolicyPage() {
               Terms &amp; Conditions
             </Link>
             <a
-              href="mailto:info@himastech.com"
+              href="mailto:info@himastechdigi.com"
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs hover:opacity-95 transition-all shadow-md"
             >
               Email Privacy Desk

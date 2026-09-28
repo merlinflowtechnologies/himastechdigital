@@ -83,7 +83,7 @@ export function CreativePortfolioSection() {
   };
 
   return (
-    <section id="portfolio" className="py-20 lg:py-28 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+    <section id="portfolio" className="py-20 lg:py-28 bg-transparent border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       <div id="case-studies" className="scroll-mt-28" />
       
       {/* Ambient Flares */}
@@ -311,18 +311,9 @@ export function CreativePortfolioSection() {
                 className="px-7 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>GET FREE MARKETING CONSULTATION</span>
+                <span>GET FREE MARKETING AUDIT</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20reviewed%20your%20Creative%20Portfolio%20and%20would%20like%20to%20discuss%20a%20campaign."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WHATSAPP US</span>
-              </a>
             </div>
           </div>
         </motion.div>

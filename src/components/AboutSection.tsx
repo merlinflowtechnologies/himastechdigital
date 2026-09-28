@@ -85,7 +85,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="about" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -208,21 +208,18 @@ export function AboutSection() {
 
                 {/* Bottom Quick Action Bar */}
                 <div className="p-4 bg-[#0a0d14] border-t border-white/10 grid grid-cols-2 gap-3">
-                  <a
-                    href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20consult%20with%20you%20regarding%20digital%20marketing%20and%20sales%20strategy."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-md hover:shadow-emerald-500/25 cursor-pointer"
+                  <Link
+                    href="#contact"
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black transition-all shadow-md cursor-pointer uppercase tracking-wider"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp Kishore</span>
-                  </a>
+                    <span>Connect Directly</span>
+                  </Link>
                   <Link
                     href="#contact"
                     className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/15 transition-all cursor-pointer"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Book Strategy Call</span>
+                    <span>Request Audit</span>
                   </Link>
                 </div>
               </div>
@@ -384,26 +381,17 @@ export function AboutSection() {
               Ready to Upgrade Your Digital Marketing & Sales Systems?
             </h4>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Whether you are a real estate builder aiming to sell out your project or a business looking for high-impact marketing strategy and team training, schedule a consultation today.
+              Whether you are a real estate builder aiming to sell out your project or a business looking for high-impact marketing strategy and team training, connect with our growth team today.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20discuss%20our%20project%20marketing%20strategy."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <MessageCircle className="w-4 h-4 text-slate-950" />
-              <span>Chat on WhatsApp</span>
-            </a>
             <Link
               href="#contact"
-              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
             >
-              <span>Get Free Marketing Consultation</span>
-              <ChevronRight className="w-4 h-4 text-slate-300" />
+              <span>Get Free Marketing Audit</span>
+              <ChevronRight className="w-4 h-4 text-slate-950" />
             </Link>
           </div>
         </motion.div>

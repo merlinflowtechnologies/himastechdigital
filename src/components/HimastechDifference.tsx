@@ -80,7 +80,7 @@ export function HimastechDifference() {
   ];
 
   return (
-    <section id="difference" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+    <section id="difference" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Ambient background glows */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -270,15 +270,6 @@ export function HimastechDifference() {
                 <span>Request Growth Audit</span>
                 <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20Digital%20Growth%20System."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wide transition-all border border-white/20 flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <PhoneCall className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Talk To Strategist</span>
-              </a>
             </div>
           </div>
         </motion.div>

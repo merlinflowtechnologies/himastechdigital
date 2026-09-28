@@ -295,16 +295,6 @@ export default function RealEstatePage() {
               <span>GET PROJECT MARKETING BLUEPRINT</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20want%20to%20discuss%20Digital%20Marketing%20for%20our%20Real%20Estate%20Project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-md cursor-pointer"
-            >
-              <PhoneCall className="w-4 h-4 fill-white" />
-              <span>WHATSAPP REAL ESTATE DESK</span>
-            </a>
           </div>
 
         </div>
@@ -529,7 +519,7 @@ export default function RealEstatePage() {
                 Ready to Sell Out Your Property Development?
               </h3>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
-                Schedule an exclusive consultation with Kishore Patel and our real estate growth pod. We will analyze your project pricing, competitor ad funnels, micro-market positioning, and projected lead acquisition costs.
+                Schedule an exclusive project growth audit with Kishore Patel and our real estate growth pod. We will analyze your project pricing, competitor ad funnels, micro-market positioning, and projected lead acquisition costs.
               </p>
             </div>
 
@@ -539,18 +529,9 @@ export default function RealEstatePage() {
                 className="px-7 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>BOOK PROJECT AUDIT</span>
+                <span>GET PROJECT AUDIT</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20would%20like%20to%20schedule%20a%20Project%20Marketing%20Audit."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WHATSAPP KISHORE PATEL</span>
-              </a>
             </div>
           </div>
         </div>

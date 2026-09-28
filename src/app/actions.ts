@@ -19,7 +19,7 @@ Name: ${name}
 Business Name: ${businessName || "Not provided"}
 Phone: ${phone}
 Email: ${email}
-Service Required: ${serviceRequired || "General Consultation"}
+Service Required: ${serviceRequired || "Growth Strategy & Audit"}
 Business Details: ${businessDetails}`);
 
     // Simulate async server processing

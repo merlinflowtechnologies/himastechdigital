@@ -462,13 +462,11 @@ export default function MerlinflowPortfolioPage() {
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 flex-wrap">
                   <a
-                    href="https://wa.me/918374373753?text=Hi%20Merlinflow%2C%20I%20would%20like%20to%20book%20a%20product%20demo%20for%20your%20SaaS%20ERP%20solutions."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-emerald-200 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20 transition-colors"
+                    href="tel:+918374373753"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-300 hover:text-cyan-200 bg-cyan-500/10 px-3 py-1.5 rounded-lg border border-cyan-500/20 transition-colors"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>WhatsApp: +91 8374373753</span>
+                    <Phone className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Desk 1: +91 8374373753</span>
                   </a>
                   <a
                     href="tel:+918247716878"

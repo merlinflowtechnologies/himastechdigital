@@ -48,7 +48,7 @@ export function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="faq" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       {/* Background ambient glow */}
       <div className="absolute top-1/3 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-[150px] pointer-events-none" />

@@ -50,7 +50,7 @@ export function ClientTestimonialsSection() {
   };
 
   return (
-    <section id="testimonials" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="testimonials" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Anchor for legacy #feedback / #reviews links */}
       <div id="feedback" className="scroll-mt-28" />
@@ -255,15 +255,13 @@ export function ClientTestimonialsSection() {
               <PlusCircle className="w-4 h-4 text-amber-400" />
               <span>Submit Verified Review</span>
             </button>
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20verify%20client%20references%20and%20discuss%20our%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
+            <Link
+              href="#contact"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer uppercase tracking-wider"
             >
-              <MessageCircle className="w-4 h-4 text-slate-950" />
-              <span>Verify References on WhatsApp</span>
-            </a>
+              <span>Connect With Our Team</span>
+              <ArrowRight className="w-4 h-4 text-slate-950" />
+            </Link>
           </div>
         </div>
 

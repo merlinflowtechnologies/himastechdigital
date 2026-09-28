@@ -149,18 +149,9 @@ export default function ServicesHubPage() {
                 className="px-7 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>BOOK FREE AUDIT</span>
+                <span>GET FREE AUDIT</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20would%20like%20to%20book%20a%20Free%20Marketing%20Audit%20for%20our%20business."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WHATSAPP OUR TEAM</span>
-              </a>
             </div>
           </div>
         </div>

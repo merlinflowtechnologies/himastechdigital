@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -170,6 +170,62 @@ export function SocialMediaActivitySection() {
     return counts;
   });
   const [isMuted, setIsMuted] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [hasDragged, setHasDragged] = useState(false);
+
+  // Mouse drag to scroll handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setHasDragged(false);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 5) setHasDragged(true);
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Continuous smooth fast auto-scroll effect (pauses on hover, drag, or modal view)
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let scrollAcc = container.scrollLeft;
+    const speed = 2.0; // Fast, fluid 60fps auto-scroll
+
+    const step = () => {
+      if (!isHovered && !isDragging && !activeVideoPost) {
+        scrollAcc += speed;
+        if (scrollAcc >= container.scrollWidth - container.clientWidth - 2) {
+          scrollAcc = 0;
+        }
+        container.scrollLeft = Math.floor(scrollAcc);
+      } else {
+        scrollAcc = container.scrollLeft;
+      }
+      animationFrameId = requestAnimationFrame(step);
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isHovered, isDragging, activeVideoPost]);
 
   const handleLike = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -192,7 +248,7 @@ export function SocialMediaActivitySection() {
   };
 
   return (
-    <section id="social-activity" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="social-activity" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-1/4 w-[480px] h-[480px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
@@ -266,10 +322,22 @@ export function SocialMediaActivitySection() {
           </div>
         </div>
 
-        {/* Carousel Reel Track */}
+        {/* Carousel Reel Track with Auto-Scroll */}
         <div 
           ref={scrollContainerRef}
-          className="flex gap-5 sm:gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            setIsDragging(false);
+          }}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+          className={`flex gap-5 sm:gap-6 overflow-x-auto pb-4 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 select-none ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
         >
           {SOCIAL_POSTS.map((post, idx) => {
             const isLiked = likedPosts[post.id];
@@ -282,7 +350,7 @@ export function SocialMediaActivitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="w-[285px] sm:w-[305px] md:w-[315px] shrink-0 snap-start rounded-2xl bg-[#0c1220] border border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-all duration-300"
+                className="w-[285px] sm:w-[305px] md:w-[315px] shrink-0 rounded-2xl bg-[#0c1220] border border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between group hover:border-amber-400/40 transition-all duration-300"
               >
                 {/* 1. Card Top Bar (Instagram Header) */}
                 <div className="p-3 border-b border-white/10 bg-[#090d16] flex items-center justify-between gap-2">
@@ -319,7 +387,9 @@ export function SocialMediaActivitySection() {
 
                 {/* 2. Reel Video / Media Container */}
                 <div 
-                  onClick={() => setActiveVideoPost(post)}
+                  onClick={() => {
+                    if (!hasDragged) setActiveVideoPost(post);
+                  }}
                   className="relative h-72 sm:h-80 w-full overflow-hidden cursor-pointer bg-black group/media"
                 >
                   <Image

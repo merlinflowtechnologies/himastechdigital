@@ -49,7 +49,7 @@ export function MerlinflowSection() {
   ];
 
   return (
-    <section id="merlinflow" className="flex flex-col w-full py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="merlinflow" className="flex flex-col w-full py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       {/* Ambient background glow accents */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-gradient-to-tr from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -183,7 +183,7 @@ export function MerlinflowSection() {
                 href="#contact"
                 className="py-2.5 px-5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-bold text-xs transition-all hover:scale-105 cursor-pointer shadow-sm"
               >
-                Book Free Consultation
+                Request Enterprise Demo
               </Link>
             </div>
           </div>

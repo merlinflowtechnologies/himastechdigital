@@ -124,7 +124,7 @@ export function WhoWeHelpSection() {
       deliverables: [
         "Google Maps & Local SEO 3-Pack Dominance",
         "Geo-Fenced Meta Ads (3-5 km Targeted Radius)",
-        "WhatsApp Direct Booking & Consultation Offers",
+        "WhatsApp Direct Booking & Inquiry Channels",
         "Reputation Management & 5-Star Review Growth",
         "High-Converting Local Mobile Landing Pages"
       ],
@@ -208,10 +208,10 @@ export function WhoWeHelpSection() {
       metric: "₹50L+",
       metricLabel: "Average Deal Scope",
       challenge: "Treated as a commodity, prospective clients shopping around purely on price, and difficulty explaining complex, high-value consulting services.",
-      solution: "Authority positioning systems, thought-leadership video content, LinkedIn account-based prospecting, and high-trust consultation scheduling funnels.",
+      solution: "Authority positioning systems, thought-leadership video content, LinkedIn account-based prospecting, and high-trust client acquisition funnels.",
       deliverables: [
         "Executive Authority & Thought-Leadership Content",
-        "High-Ticket Client Consultation Booking Engines",
+        "High-Ticket Client Acquisition & Meeting Scheduling Engines",
         "LinkedIn B2B Prospecting & Network Growth",
         "Client Case Studies & Institutional Whitepapers",
         "Automated Pre-Call Qualification Questionnaires"
@@ -227,7 +227,7 @@ export function WhoWeHelpSection() {
   const ActiveIcon = activeSegment.icon;
 
   return (
-    <section id="who-we-help" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="who-we-help" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 -left-48 w-[450px] h-[450px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -430,23 +430,20 @@ export function WhoWeHelpSection() {
 
                 {/* CTAs */}
                 <div className="space-y-3">
-                  <a
-                    href={`https://wa.me/916304989071?text=${encodeURIComponent(activeSegment.whatsappMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="#contact"
                     className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-102 transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
                   >
-                    <MessageCircle className="w-4 h-4 text-slate-950" />
                     <span>GET {activeSegment.title.toUpperCase()} BLUEPRINT</span>
                     <ArrowRight className="w-4 h-4 text-slate-950" />
-                  </a>
+                  </Link>
 
                   <Link
                     href="#contact"
                     className="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Request Free Marketing Consultation</span>
+                    <span>Request Free Marketing Proposal</span>
                   </Link>
                 </div>
 

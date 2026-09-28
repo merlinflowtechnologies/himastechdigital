@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Sparkles, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Sparkles, ChevronDown, ArrowRight, MessageCircle } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { allServices } from "@/data/servicesData";
+import { handleNavAnchorClick } from "@/lib/navigation";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -213,7 +214,10 @@ export function Navbar() {
                       </span>
                       <Link
                         href="/#contact"
-                        onClick={() => setServicesOpen(false)}
+                        onClick={(e) => {
+                          setServicesOpen(false);
+                          handleNavAnchorClick(e, "/#contact");
+                        }}
                         className="text-[10px] font-black uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 px-3 py-1 rounded-full transition-colors shrink-0"
                       >
                         Get Free Audit
@@ -228,6 +232,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavAnchorClick(e, link.href)}
                 className={`relative text-xs font-bold transition-all px-2.5 py-1 rounded-full whitespace-nowrap ${
                   link.isSpecial
                     ? "text-cyan-300 hover:text-cyan-200 bg-cyan-950/70 border border-cyan-400/40 shadow-xs flex items-center gap-1.5"
@@ -271,7 +276,10 @@ export function Navbar() {
                         <Link
                           key={item.name}
                           href={item.href}
-                          onClick={() => setMoreOpen(false)}
+                          onClick={(e) => {
+                            setMoreOpen(false);
+                            handleNavAnchorClick(e, item.href);
+                          }}
                           className="block p-2.5 rounded-xl hover:bg-white/10 transition-colors group"
                         >
                           <div className="text-xs font-bold text-white group-hover:text-amber-300 transition-colors">
@@ -289,15 +297,17 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* ================= Action Button ================= */}
+          {/* ================= WhatsApp Nav Action Button ================= */}
           <div className="hidden sm:flex items-center shrink-0">
-            <Link
-              href="/#contact"
-              className="px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 text-xs font-black tracking-wider transition-all hover:shadow-[0_0_25px_rgba(245,158,11,0.55)] hover:scale-105 flex items-center gap-1.5 whitespace-nowrap shadow-md uppercase cursor-pointer"
+            <a
+              href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20let's%20talk%20about%20our%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-black tracking-wider transition-all hover:shadow-[0_0_25px_rgba(37,211,102,0.5)] hover:scale-105 flex items-center gap-1.5 whitespace-nowrap shadow-md uppercase cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-slate-950 shrink-0" /> 
-              <span><span className="hidden xl:inline">BOOK </span>FREE CONSULTATION</span>
-            </Link>
+              <MessageCircle className="w-3.5 h-3.5 fill-white shrink-0" />
+              <span>WhatsApp Us</span>
+            </a>
           </div>
 
           {/* ================= Mobile Hamburger ================= */}
@@ -423,56 +433,80 @@ export function Navbar() {
               <Link
                 href="/#gallery"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#gallery");
+                }}
               >
                 Founder &amp; Moments Gallery
               </Link>
               <Link
                 href="/#social-activity"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#social-activity");
+                }}
               >
                 Social Media Activity
               </Link>
               <Link
                 href="/#ai-marketing"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#ai-marketing");
+                }}
               >
                 AI Marketing
               </Link>
               <Link
                 href="/#portfolio"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#portfolio");
+                }}
               >
                 Case Studies &amp; Portfolio
               </Link>
               <Link
                 href="/#process"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#process");
+                }}
               >
                 Our 6-Step Process
               </Link>
               <Link
                 href="/#testimonials"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#testimonials");
+                }}
               >
                 Testimonials
               </Link>
               <Link
                 href="/#who-we-help"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#who-we-help");
+                }}
               >
                 Who We Help
               </Link>
               <Link
                 href="/#about"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#about");
+                }}
               >
                 About Founder
               </Link>
@@ -486,18 +520,35 @@ export function Navbar() {
               <Link
                 href="/#faq"
                 className="block px-4 py-3 rounded-xl text-sm font-bold transition-all text-slate-100 hover:text-white hover:bg-white/5"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleNavAnchorClick(e, "/#faq");
+                }}
               >
                 FAQs
               </Link>
 
-              <div className="pt-4">
-                <Link
-                  href="/#contact"
-                  className="block text-center px-4 py-3.5 rounded-xl text-sm font-black bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 shadow-[0_0_25px_rgba(245,158,11,0.4)] uppercase tracking-wider"
+              {/* Mobile Actions: WhatsApp Redirect & Growth Audit */}
+              <div className="pt-3 space-y-2">
+                <a
+                  href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20let's%20talk%20about%20our%20business."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center px-4 py-3.5 rounded-xl text-sm font-black bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-[0_0_25px_rgba(37,211,102,0.4)] uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
                   onClick={() => setIsOpen(false)}
                 >
-                  Book Free Consultation
+                  <MessageCircle className="w-4 h-4 fill-white shrink-0" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+                <Link
+                  href="/#contact"
+                  className="block text-center px-4 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/15 text-white border border-white/15 uppercase tracking-wider transition-colors"
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleNavAnchorClick(e, "/#contact");
+                  }}
+                >
+                  Contact &amp; Growth Audit
                 </Link>
               </div>
             </div>

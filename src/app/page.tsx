@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, Sparkles, Zap, ShieldCheck, Activity, BarChart3, MessageCircle, Building2, TrendingUp, MapPin, User, Award, Target, Camera } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, Zap, ShieldCheck, Activity, BarChart3, Building2, TrendingUp, MapPin, User, Award, Target, Camera } from "lucide-react";
 import { motion } from "framer-motion";
+import { scrollToSection } from "@/lib/navigation";
 
 import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { TrustStrip } from "@/components/TrustStrip";
@@ -26,14 +28,28 @@ import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
+  useEffect(() => {
+    const handleHash = () => {
+      if (typeof window !== "undefined" && window.location.hash) {
+        const id = window.location.hash.replace("#", "");
+        setTimeout(() => {
+          scrollToSection(id);
+        }, 100);
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
+
   return (
     <div className="flex flex-col w-full text-slate-100 bg-[#07090e] overflow-x-hidden relative">
       {/* Global Animated Background System */}
       <BackgroundEffects />
 
       {/* Hero Section • HIMASTECH — Digital Realty Marketing */}
-      {/* Hero Section • HIMASTECH — Digital Realty Marketing */}
-      <section id="home" className="relative min-h-[90vh] lg:min-h-[96vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden z-10">
+      <section id="home" className="relative min-h-[90vh] lg:min-h-[96vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 sm:pb-24 overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
         
         {/* Background Ambient City Backdrop */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -137,20 +153,18 @@ export default function Home() {
                   className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm hover:shadow-[0_0_30px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider shadow-md"
                 >
                   <Sparkles className="w-4 h-4 text-slate-950" /> 
-                  <span>BOOK FREE CONSULTATION</span> 
+                  <span>GET FREE GROWTH AUDIT</span> 
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 {/* Secondary CTA */}
-                <a
-                  href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20let's%20talk%20about%20our%20business."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider"
+                <Link
+                  href="#services"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 group cursor-pointer uppercase tracking-wider"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" /> 
-                  <span>WHATSAPP HIMASTECH</span> 
-                </a>
+                  <span>EXPLORE SERVICES</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform text-amber-400" />
+                </Link>
               </motion.div>
 
               {/* Proof / Trust Metrics */}

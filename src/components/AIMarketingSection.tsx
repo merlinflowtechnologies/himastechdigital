@@ -99,7 +99,7 @@ export function AIMarketingSection() {
   ];
 
   return (
-    <section id="ai-marketing" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+    <section id="ai-marketing" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background Volumetric Glows */}
       <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[170px] pointer-events-none" />
@@ -311,15 +311,6 @@ export function AIMarketingSection() {
                 <span>EXPLORE AI MARKETING</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20would%20like%20to%20explore%20your%20AI%20Marketing%20solutions."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer shadow-md"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>TALK WITH AI STRATEGIST</span>
-              </a>
             </div>
           </div>
         </motion.div>

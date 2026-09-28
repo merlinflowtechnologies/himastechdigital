@@ -25,7 +25,7 @@ export function JsonLd() {
         "@type": "ContactPoint",
         telephone: "+91-6304989071",
         contactType: "customer service",
-        email: "info@himastech.com",
+        email: "info@himastechdigi.com",
         areaServed: ["IN", "US", "AE", "GB"],
         availableLanguage: ["English", "Telugu", "Hindi"],
       },
@@ -44,7 +44,7 @@ export function JsonLd() {
     name: "Himastech Digital Marketing",
     image: `${baseUrl}/og-image.png`,
     telephone: "+916304989071",
-    email: "info@himastech.com",
+    email: "info@himastechdigi.com",
     url: baseUrl,
     priceRange: "₹₹₹",
     address: {

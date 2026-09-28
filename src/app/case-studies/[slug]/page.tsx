@@ -300,20 +300,11 @@ export default async function CaseStudyPage({
               </p>
               <Link
                 href="/#contact"
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md hover:scale-105 transition-all mb-2.5"
+                className="w-full py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md hover:scale-105 transition-all"
               >
                 <span>Request Growth Audit</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
-                href={`https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20just%20read%20the%20${encodeURIComponent(project.title)}%20case%20study%20and%20would%20like%20to%20discuss%20a%20similar%20campaign.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WhatsApp Our Team</span>
-              </a>
             </div>
 
           </div>

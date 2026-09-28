@@ -366,15 +366,6 @@ export default function TrainingPage() {
               <span>ENROLL IN REAL ESTATE MASTERY</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Real%20Estate%20Training%20Program."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-md cursor-pointer"
-            >
-              <PhoneCall className="w-4 h-4 fill-white" />
-              <span>WHATSAPP ACADEMY COUNSELOR</span>
-            </a>
           </div>
 
         </div>
@@ -457,15 +448,13 @@ export default function TrainingPage() {
                   <Sparkles className="w-4 h-4" />
                   <span>APPLY FOR ADMISSION</span>
                 </button>
-                <a
-                  href={`https://wa.me/916304989071?text=Hi%20Himastech%2C%20please%20send%20the%20complete%20syllabus%20for%20${encodeURIComponent(currentTrack.title)}.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => handleOpenModal(currentTrack.title)}
                   className="px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Download Syllabus</span>
-                </a>
+                  <span>Request Full Syllabus</span>
+                </button>
               </div>
             </div>
 
@@ -577,15 +566,12 @@ export default function TrainingPage() {
             </div>
 
             <div className="shrink-0">
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Kishore%2C%20I%20am%20interested%20in%20joining%20the%20Real%20Estate%20Marketing%20Training%20Program."
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#contact"
                 className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-sm"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Talk to Kishore Patel</span>
-              </a>
+                <span>Contact Faculty</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -614,15 +600,6 @@ export default function TrainingPage() {
                 <span>ENROLL IN NEXT BATCH</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20would%20like%20to%20register%20for%20the%20Training%20Program."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WHATSAPP ADMISSIONS DESK</span>
-              </a>
             </div>
           </div>
         </div>

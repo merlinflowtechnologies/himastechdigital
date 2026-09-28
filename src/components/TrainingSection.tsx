@@ -260,7 +260,7 @@ export function TrainingSection() {
   };
 
   return (
-    <section id="training" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="training" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background ambient lighting */}
       <div className="absolute top-10 left-1/3 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -322,18 +322,15 @@ export function TrainingSection() {
               className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-amber-500/20 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 cursor-pointer uppercase tracking-wider"
             >
               <Calendar className="w-4 h-4 text-slate-950" />
-              <span>BOOK A TRAINING SESSION</span>
+              <span>ENROLL IN TRAINING SESSION</span>
               <ArrowRight className="w-4 h-4 text-slate-950" />
             </button>
-            <a
-              href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20book%20a%20training%20session%20for%20our%20team."
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="#contact"
               className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>WhatsApp Strategy Desk</span>
-            </a>
+              <span>Request Syllabus &amp; Info</span>
+            </Link>
           </motion.div>
         </div>
 
@@ -701,14 +698,13 @@ export function TrainingSection() {
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 Confidentiality & Tailored On-Site / Remote Delivery
               </span>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20have%20an%20urgent%20training%20booking%20inquiry."
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="#contact"
+                onClick={() => setShowBookingModal(false)}
                 className="text-amber-400 font-bold hover:underline"
               >
-                Instant WhatsApp Desk →
-              </a>
+                Contact Strategy Team →
+              </Link>
             </div>
 
           </motion.div>

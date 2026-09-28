@@ -17,8 +17,6 @@ import {
 } from "lucide-react";
 
 export function PowerfulCtaSection() {
-  const whatsappUrl = "https://wa.me/916304989071?text=Hi%20Himastech%2C%20I'm%20ready%20to%20grow.%20Our%20competitors%20are%20already%20building%20their%20digital%20presence%E2%80%94let's%20build%20ours.%20I%20would%20like%20to%20book%20a%20free%20consultation.";
-
   const clientAvatars = [
     { src: "/testimonials/rajeshwar-rao.jpg", alt: "Rajeshwar Rao" },
     { src: "/testimonials/sai-kishore.jpg", alt: "Adduri Sai Kishore" },
@@ -69,7 +67,7 @@ export function PowerfulCtaSection() {
             Stop losing qualified buyers and high-ticket site visits to competing builders and agencies. Partner directly with Kishore Patel and Himastech to deploy hyper-local ad engines, Meta CAPI tracking, and high-conversion sales systems.
           </p>
 
-          {/* Action Buttons Row (Primary & Secondary CTA) */}
+          {/* Action Buttons Row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-10 w-full sm:w-auto">
             
             {/* Primary Action Button */}
@@ -78,20 +76,18 @@ export function PowerfulCtaSection() {
               className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_35px_rgba(245,158,11,0.55)] hover:shadow-[0_0_50px_rgba(245,158,11,0.8)] hover:scale-105 transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-slate-950" />
-              <span>BOOK FREE CONSULTATION</span>
+              <span>GET FREE GROWTH AUDIT</span>
               <ArrowRight className="w-4 h-4 text-slate-950 group-hover:translate-x-1.5 transition-transform" />
             </Link>
 
             {/* Secondary Action Button */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.65)] hover:scale-105 transition-all flex items-center justify-center gap-2.5 group cursor-pointer"
+            <Link
+              href="#services"
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-white/10 hover:bg-white/15 text-white font-black text-xs sm:text-sm uppercase tracking-wider border border-white/20 hover:scale-105 transition-all flex items-center justify-center gap-2.5 group cursor-pointer shadow-md"
             >
-              <MessageCircle className="w-5 h-5 fill-white shrink-0" />
-              <span>WHATSAPP HIMASTECH</span>
-            </a>
+              <span>EXPLORE ALL SERVICES</span>
+              <ArrowRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1.5 transition-transform" />
+            </Link>
 
           </div>
 

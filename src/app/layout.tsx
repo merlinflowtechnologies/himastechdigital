@@ -3,10 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { AIChatbot } from "@/components/AIChatbot";
 import { JsonLd } from "@/components/JsonLd";
-import { MobileBottomCta } from "@/components/MobileBottomCta";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -128,10 +126,8 @@ export default function RootLayout({
         </main>
         <Footer />
 
-        {/* Global Floating Communication & Mobile Bottom CTA */}
-        <WhatsAppWidget />
+        {/* Global AI Chatbot Assistant */}
         <AIChatbot />
-        <MobileBottomCta />
       </body>
     </html>
   );

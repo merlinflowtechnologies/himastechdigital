@@ -76,7 +76,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10">
+    <section id="contact" className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
       
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[160px] pointer-events-none" />
@@ -188,7 +188,7 @@ export function ContactSection() {
 
                   {/* 3. EMAIL */}
                   <a
-                    href="mailto:info@himastech.com"
+                    href="mailto:info@himastechdigi.com"
                     className="rounded-2xl p-4 glass-subcard hover:border-cyan-400/40 hover:bg-white/10 transition-all duration-300 flex items-center justify-between group cursor-pointer shadow-xs hover:-translate-y-0.5"
                   >
                     <div className="flex items-center gap-3.5">
@@ -200,7 +200,7 @@ export function ContactSection() {
                           Email
                         </div>
                         <div className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
-                          info@himastech.com
+                          info@himastechdigi.com
                         </div>
                         <div className="text-[10.5px] text-slate-400 font-medium">
                           Proposals &amp; Official Inquiries
@@ -393,7 +393,7 @@ export function ContactSection() {
                         ) : (
                           <>
                             <Sparkles className="w-4 h-4 text-slate-950" />
-                            <span>BOOK FREE CONSULTATION</span>
+                            <span>GET FREE GROWTH AUDIT</span>
                             <ArrowRight className="h-4 w-4 text-slate-950 group-hover:translate-x-1.5 transition-transform" />
                           </>
                         )}

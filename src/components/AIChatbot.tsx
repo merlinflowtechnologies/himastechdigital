@@ -195,9 +195,9 @@ export function AIChatbot() {
     const rejectionResponse = {
       text: "⚠️ **Query Outside Company Scope**\n\nI am the official AI Strategist for **Himastech** and **Merlinflow Technologies**. I can only assist with inquiries directly related to our agency, real estate marketing, digital services, training academy, and enterprise software.\n\n👉 **Topics you can explore:**\n• **Real Estate Marketing:** High-intent buyer leads, Meta/Google ads, site visits\n• **Founder & Leadership:** Kishore Patel (12+ years experience, Lead Strategist)\n• **12 Core Digital Services:** Performance ads, SEO/GEO, web development, CRM\n• **Training Academy:** Real estate & digital marketing practical courses\n• **Free 48-Hour Growth Audit:** Complimentary forensic ad stack diagnostic\n• **Contact Us:** Official WhatsApp (+91 6304989071)",
       cta: { 
-        label: "Chat on WhatsApp (+91 6304989071)", 
-        href: "https://wa.me/916304989071?text=Hi%20Himastech%2C%20I%20have%20an%20inquiry%20regarding%20your%20company%20and%20services", 
-        isExternal: true 
+        label: "Contact Growth Desk", 
+        href: "/#contact", 
+        isExternal: false 
       },
       options: [
         "🏡 Real Estate Marketing Solutions",
@@ -263,15 +263,15 @@ export function AIChatbot() {
     if (isContactIntent) {
       if (isMerlinflow || q.includes("merlinflow") || q.includes("desk 1") || q.includes("desk 2")) {
         return {
-          text: "📞 **Merlinflow Technologies Official Desks:**\n\n• **Direct Solutions Desk 1:** +91 8374373753\n• **Direct Solutions Desk 2:** +91 8247716878\n• **Official Email:** info@merlinflow.in\n• **Website:** https://www.merlinflow.in/\n• **Operational Hub:** Hyderabad, India\n\nOur solutions architects are available on WhatsApp for live demo walkthroughs and custom module proposals.",
+          text: "📞 **Merlinflow Technologies Official Desks:**\n\n• **Direct Solutions Desk 1:** +91 8374373753\n• **Direct Solutions Desk 2:** +91 8247716878\n• **Official Email:** info@merlinflow.in\n• **Website:** https://www.merlinflow.in/\n• **Operational Hub:** Hyderabad, India\n\nOur solutions architects are available for live demo walkthroughs and custom module proposals.",
           cta: { 
-            label: "Chat with Desk 1 (+91 8374373753)", 
-            href: "https://wa.me/918374373753?text=Hi%20Merlinflow%2C%20I%20would%20like%20to%20discuss%20our%20enterprise%20software%20requirements", 
+            label: "Call Desk 1 (+91 8374373753)", 
+            href: "tel:+918374373753", 
             isExternal: true 
           },
           options: [
-            "⚡ Chat with Desk 2 (+91 8247716878)", 
-            "🚀 Book Live Software Demo", 
+            "⚡ Call Desk 2 (+91 8247716878)", 
+            "🚀 Request Software Demo", 
             "🏢 Himastech Marketing Contact"
           ]
         };
@@ -281,12 +281,12 @@ export function AIChatbot() {
 
       return {
         text: mentionsKishore
-          ? "📞 **Contact Kishore Patel & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & Lead Strategist Kishore Patel and our senior growth directors are available on WhatsApp for direct campaign roadmaps, real estate marketing audits, and enterprise partnerships."
-          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastech.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with Kishore Patel's team for marketing audits, campaign consulting, and academy enrollments.",
+          ? "📞 **Contact Kishore Patel & Himastech Growth Desk:**\n\n• **Direct Strategy Call:** +91 6304989071\n• **Official WhatsApp Desk:** +91 6304989071\n• **Executive Email:** info@himastechdigi.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nFounder & Lead Strategist Kishore Patel and our senior growth directors are available on WhatsApp for direct campaign roadmaps, real estate marketing audits, and enterprise partnerships."
+          : "📞 **Himastech Official Contact Details:**\n\n• **Strategy Desk & Phone:** +91 6304989071\n• **WhatsApp Direct Desk:** +91 6304989071\n• **Official Email:** info@himastechdigi.com\n• **Operational Center:** Nagole, Hyderabad, Telangana, India\n\nConnect directly with Kishore Patel's team for marketing audits, campaign consulting, and academy enrollments.",
         cta: { 
-          label: "Chat on WhatsApp (+91 6304989071)", 
-          href: "https://wa.me/916304989071?text=Hi%20Kishore%20Patel%20and%20Himastech%20Team%2C%20I%20would%20like%20to%20discuss%20our%20growth%20strategy", 
-          isExternal: true 
+          label: "Contact Himastech Growth Desk", 
+          href: "/#contact", 
+          isExternal: false 
         },
         options: ["🏡 Real Estate Marketing Solutions", "📊 Request Free 48-Hr Audit", "💼 12 Core Digital Services", "🎓 Real Estate Training Academy"]
       };
@@ -320,9 +320,9 @@ export function AIChatbot() {
       return {
         text: "🏡 **Himastech Digital Realty Marketing Solutions:**\n\nReal Estate Marketing is our primary flagship specialty led by Founder & Lead Strategist **Kishore Patel** (12+ years expertise, ₹120Cr+ inventory moved).\n\n• **Verified Inbound Buyer Leads**: Multi-tier Meta (FB/IG) and Google Search ad campaigns targeting serious local HNIs and NRI investors.\n• **Sub-5 Minute Speed-to-Lead**: Integrated WhatsApp CRM automation connecting interested buyers directly with your sales managers before leads go cold.\n• **Cinematic Visual Walkthroughs**: Drone videography, luxury villa walkthroughs, and 3D floor plan reels that drive high emotional intent.\n• **High Site-Visit Conversion**: Qualified site visit generation for open plots, gated communities, and luxury residential projects.\n• **Proven Track Record**: 5.8x – 6.4x verified ROAS for top developers across Hyderabad and South India.",
         cta: { 
-          label: "Discuss Real Estate Project (+91 6304989071)", 
-          href: "https://wa.me/916304989071?text=Hi%20Kishore%20Patel%2C%20I%20would%20like%20to%20discuss%20marketing%20for%20our%20real%20estate%20project", 
-          isExternal: true 
+          label: "Get Real Estate Audit", 
+          href: "/#contact", 
+          isExternal: false 
         },
         options: [
           "📊 Claim Free 48-Hour Audit",
@@ -642,7 +642,7 @@ export function AIChatbot() {
       q.includes("tell me about yourself")
     ) {
       return {
-        text: "🏢 **About Himastech — Digital Realty Marketing & AI Solutions:**\n\n• **Founder & Lead Strategist:** Kishore Patel (Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist)\n• **Core Mission:** Helping real estate developers and businesses build their brand, generate qualified leads, and improve sales using digital + AI solutions.\n• **Operational Hub:** Nagole, Hyderabad, Telangana, India\n• **Direct Contact:** +91 6304989071 | info@himastech.com\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, 100% Ad Account Transparency, Creative Science, and Measurable Revenue.",
+        text: "🏢 **About Himastech — Digital Realty Marketing & AI Solutions:**\n\n• **Founder & Lead Strategist:** Kishore Patel (Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist)\n• **Core Mission:** Helping real estate developers and businesses build their brand, generate qualified leads, and improve sales using digital + AI solutions.\n• **Operational Hub:** Nagole, Hyderabad, Telangana, India\n• **Direct Contact:** +91 6304989071 | info@himastechdigi.com\n• **Strategic Technology Alliance:** Merlinflow Technologies Private Limited\n• **Core Pillars:** Algorithmic Precision, 100% Ad Account Transparency, Creative Science, and Measurable Revenue.",
         cta: { label: "Read Our Full Story", href: "#about" },
         options: ["🏡 Real Estate Marketing Solutions", "🏢 Who is Kishore Patel?", "💼 12 Core Digital Services", "📊 Claim Free 48-Hour Audit"]
       };
@@ -846,7 +846,7 @@ export function AIChatbot() {
         "🏡 Real Estate Marketing Solutions",
         "🏢 Who is Kishore Patel?",
         "💼 12 Core Digital Services",
-        "📞 WhatsApp Strategy Desk (+91 6304989071)"
+        "📞 Contact Strategy Desk (+91 6304989071)"
       ]
     };
   };
@@ -945,7 +945,7 @@ export function AIChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end font-sans">
       {/* Interactive Chat Window Modal */}
       <AnimatePresence>
         {isOpen && (
@@ -954,7 +954,7 @@ export function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mb-3 w-[92vw] sm:w-[410px] h-[580px] max-h-[85vh] rounded-3xl bg-[#090d16]/96 backdrop-blur-2xl border border-white/15 flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.95)] ring-1 ring-amber-500/20 relative overflow-hidden text-slate-100"
+            className="mb-3 w-[calc(100vw-32px)] sm:w-[410px] h-[520px] max-h-[82vh] rounded-3xl bg-[#090d16]/96 backdrop-blur-2xl border border-white/15 flex flex-col shadow-[0_25px_60px_rgba(0,0,0,0.95)] ring-1 ring-amber-500/20 relative overflow-hidden text-slate-100"
           >
             {/* Top ambient gold & cyan glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-gradient-to-r from-amber-500/15 via-transparent to-cyan-500/15 blur-2xl pointer-events-none" />

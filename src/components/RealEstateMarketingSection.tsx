@@ -147,7 +147,8 @@ export function RealEstateMarketingSection() {
   ];
 
   return (
-    <section id="real-estate" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10">
+    <section id="real-estate" className="py-20 sm:py-24 bg-transparent border-t border-white/10 relative overflow-hidden z-10 scroll-mt-20 sm:scroll-mt-24">
+      <div id="realty" className="scroll-mt-28" />
       
       {/* Ambient Glows */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
@@ -318,15 +319,6 @@ export function RealEstateMarketingSection() {
                 <span>GET MY PROJECT MARKETING PLAN</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href="https://wa.me/916304989071?text=Hi%20Himastech%20team%2C%20I%20would%20like%20to%20get%20a%20Project%20Marketing%20Plan%20for%20our%20real%20estate%20development."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <PhoneCall className="w-4 h-4 fill-white" />
-                <span>WHATSAPP CONSULTATION</span>
-              </a>
             </div>
           </div>
         </motion.div>
