@@ -333,7 +333,7 @@ export default function TrainingPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium max-w-3xl mx-auto mb-8">
-            Learn directly from the team that has scaled ₹480Cr+ in property sales and driven over 18,500+ verified site visits. From our flagship <strong>Real Estate Marketing &amp; Sales Closing Mastery</strong> to Advanced Performance Media Buying and AI Systems.
+            Learn directly from the team that has launched 50+ property and brand marketing campaigns and generated thousands of verified buyer visits. From our flagship <strong>Real Estate Marketing &amp; Sales Closing Mastery</strong> to Advanced Performance Media Buying and AI Systems.
           </p>
 
           {/* Quick Credibility Badges */}

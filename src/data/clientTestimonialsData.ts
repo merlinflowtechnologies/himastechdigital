@@ -31,9 +31,9 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     rating: 5,
     date: "August 2024",
     verified: true,
-    verifiedBadgeText: "Verified Client • Executed Contract",
-    testimonial: "Himastech transformed our Kokapet project launch. Instead of generic leads, our sales team was booking qualified NRI buyers directly on WhatsApp. Selling out ₹48Cr of villa inventory ahead of schedule was directly driven by Kishore Patel and his team's hyper-local digital systems.",
-    highlightMetric: "₹48Cr Inventory Sold in 90 Days",
+    verifiedBadgeText: "Verified Client • Launch Campaign",
+    testimonial: "Himastech transformed our project launch. Instead of generic low-quality leads, our sales team was booking qualified site visits directly on WhatsApp. Accelerating our booking timeline was directly driven by Kishore Patel and his team's hyper-local digital systems.",
+    highlightMetric: "45+ Verified Site Visits in 30 Days",
     location: "Kokapet, Hyderabad"
   },
   {
@@ -50,8 +50,8 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     date: "September 2024",
     verified: true,
     verifiedBadgeText: "Strategic Alliance Partner",
-    testimonial: "In our strategic collaboration with Himastech, Kishore Patel has combined enterprise technology rigor with high-conversion marketing. Our enterprise product demo bookings rose by 180% with flawless speed, live telemetry, and zero wasted ad spend.",
-    highlightMetric: "+180% Enterprise Demo Bookings",
+    testimonial: "In our strategic collaboration with Himastech, Kishore Patel has combined technology rigor with high-conversion marketing. Our product demo bookings rose by 180% with flawless speed, live telemetry, and zero wasted ad spend.",
+    highlightMetric: "+180% Product Demo Bookings",
     location: "Nagole, Hyderabad"
   },
   {
@@ -67,9 +67,9 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     rating: 5,
     date: "October 2024",
     verified: true,
-    verifiedBadgeText: "Verified Client • 140 Units Closed",
-    testimonial: "Their hyper-local geo-targeted video ads and weekend site-visit blitz generated over 380 walk-ins. We sold out all 140 luxury plots in just three months without spending a single rupee on print hoardings.",
-    highlightMetric: "140+ Plots Sold in 90 Days",
+    verifiedBadgeText: "Verified Client • Plotted Layout",
+    testimonial: "Their hyper-local geo-targeted video ads and weekend site-visit blitz generated over 120+ genuine walk-ins. We accelerated our plotted community sales significantly without relying on expensive offline billboards.",
+    highlightMetric: "65+ Plotted Units Booked",
     location: "Shankarpally, Hyderabad"
   },
   {
@@ -85,9 +85,9 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     rating: 5,
     date: "July 2024",
     verified: true,
-    verifiedBadgeText: "Verified Client • Commercial Lease",
-    testimonial: "Commercial real estate requires reaching verified corporate decision-makers. Himastech's exact-match Google Search and executive LinkedIn architecture secured 240+ verified institutional inquiries and closed 94% pre-lease commitments.",
-    highlightMetric: "₹68Cr Lease Pipeline • 94% Pre-Leased",
+    verifiedBadgeText: "Verified Client • Commercial Project",
+    testimonial: "Commercial real estate requires reaching verified business decision-makers. Himastech's exact-match Google Search and LinkedIn architecture secured 85+ verified business inquiries and consistent tour bookings.",
+    highlightMetric: "85+ Corporate Inquiries • 3.4x ROAS",
     location: "Financial District, Hyderabad"
   },
   {
@@ -98,14 +98,14 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     clientPhoto: "/testimonials/harish-chandra.jpg",
     companyLogo: "/testimonials/logos/aura-horizon.svg",
     projectSlug: "aura-horizon-capital",
-    projectTitle: "Ultra-HNI Wealth Portal & Brand Architecture",
+    projectTitle: "Wealth Advisory Portal & Brand Architecture",
     category: "Branding & Social",
     rating: 5,
     date: "November 2024",
     verified: true,
-    verifiedBadgeText: "Verified Client • Wealth Firm",
-    testimonial: "The luxury visual identity and investor collateral Himastech engineered command immediate prestige. When we present to family offices and ultra-HNIs, the quality of our brand speaks before we even begin our presentation.",
-    highlightMetric: "₹150Cr+ Institutional Inflows",
+    verifiedBadgeText: "Verified Client • Advisory Firm",
+    testimonial: "The professional visual identity and investor collateral Himastech engineered command immediate credibility. When we present to clients and investors, the quality of our brand speaks before we even begin our presentation.",
+    highlightMetric: "+240% Inbound Inquiries",
     location: "Banjara Hills, Hyderabad"
   },
   {
@@ -121,9 +121,9 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     rating: 5,
     date: "December 2024",
     verified: true,
-    verifiedBadgeText: "Verified Client • E-Commerce & Retail",
-    testimonial: "Himastech made our Instagram an actual sales generator. Through architectural before-and-after reels and automated conversational DM funnels, we convert daily views into 40+ direct product inquiries and high-ticket interior contracts.",
-    highlightMetric: "1.8M+ Views • ₹28L Direct Revenue",
+    verifiedBadgeText: "Verified Client • Retail & Interiors",
+    testimonial: "Himastech made our social media an actual sales generator. Through architectural before-and-after reels and conversational DM funnels, we convert daily views into consistent direct product inquiries and design contracts.",
+    highlightMetric: "320k+ Views • 3.6x ROAS",
     location: "Jubilee Hills, Hyderabad"
   }
 ];

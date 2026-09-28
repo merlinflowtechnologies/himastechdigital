@@ -239,41 +239,6 @@ export function HimastechDifference() {
           })}
         </div>
 
-        {/* Bottom System Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 p-6 sm:p-8 rounded-3xl glass-card-gold text-white relative overflow-hidden border border-amber-400/30 shadow-[0_20px_50px_rgba(245,158,11,0.15)]"
-        >
-          <div className="absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-amber-500/10 to-transparent pointer-events-none" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider mb-2 border border-amber-400/40">
-                <Sparkles className="w-3 h-3 text-amber-400" /> Complete Growth System
-              </div>
-              <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white mb-1.5">
-                Ready To Automate Your Real Estate Lead Pipeline?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-xl font-medium">
-                Let our senior growth strategists audit your project funnels and install the 3-stage Attract • Engage • Convert framework.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <Link
-                href="#contact"
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2 cursor-pointer shadow-md"
-              >
-                <span>Request Growth Audit</span>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-950" />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

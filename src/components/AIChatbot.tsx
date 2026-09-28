@@ -318,7 +318,7 @@ export function AIChatbot() {
       q.includes("dtcp")
     ) {
       return {
-        text: "🏡 **Himastech Digital Realty Marketing Solutions:**\n\nReal Estate Marketing is our primary flagship specialty led by Founder & Lead Strategist **Kishore Patel** (12+ years expertise, ₹120Cr+ inventory moved).\n\n• **Verified Inbound Buyer Leads**: Multi-tier Meta (FB/IG) and Google Search ad campaigns targeting serious local HNIs and NRI investors.\n• **Sub-5 Minute Speed-to-Lead**: Integrated WhatsApp CRM automation connecting interested buyers directly with your sales managers before leads go cold.\n• **Cinematic Visual Walkthroughs**: Drone videography, luxury villa walkthroughs, and 3D floor plan reels that drive high emotional intent.\n• **High Site-Visit Conversion**: Qualified site visit generation for open plots, gated communities, and luxury residential projects.\n• **Proven Track Record**: 5.8x – 6.4x verified ROAS for top developers across Hyderabad and South India.",
+        text: "🏡 **Himastech Digital Realty Marketing Solutions:**\n\nReal Estate Marketing is our primary flagship specialty led by Founder & Lead Strategist **Kishore Patel** (12+ years expertise, 50+ projects delivered).\n\n• **Verified Inbound Buyer Leads**: Multi-tier Meta (FB/IG) and Google Search ad campaigns targeting serious local homebuyers and investors.\n• **Sub-5 Minute Speed-to-Lead**: Integrated WhatsApp CRM automation connecting interested buyers directly with your sales managers before leads go cold.\n• **Cinematic Visual Walkthroughs**: Drone videography, architectural walkthroughs, and social reels that drive high emotional intent.\n• **High Site-Visit Conversion**: Qualified site visit generation for open plots, residential layouts, and commercial projects.\n• **Proven Track Record**: 3.5x – 4.2x verified ROAS for clients across Hyderabad and South India.",
         cta: { 
           label: "Get Real Estate Audit", 
           href: "/#contact", 
@@ -350,7 +350,7 @@ export function AIChatbot() {
       q.includes("executive team")
     ) {
       return {
-        text: "🏢 **About Kishore Patel — Founder & Lead Strategist:**\n\n• **Role:** Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist\n\n*“Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.”*\n\n**Key Accomplishments & Authority:**\n• **12+ Years Industry Experience:** Veteran growth architect across Meta Ads, Google Ads, and modern acquisition funnels.\n• **Real Estate Marketing Specialist:** ₹120Cr+ inventory moved across luxury villas, open plotted layouts, and NRI buyer networks.\n• **Digital Marketing Trainer & Mentor:** Trained over 5,000+ professionals, business founders, and career aspirants.\n• **Sales Systems Architect:** Designing automated speed-to-lead pipelines, high-converting WhatsApp cadences, and sales closing scripts.",
+        text: "🏢 **About Kishore Patel — Founder & Lead Strategist:**\n\n• **Role:** Digital Marketing Trainer | Sales Strategist | Real Estate Marketing Specialist\n\n*“Helping businesses understand digital marketing, generate opportunities and build stronger sales systems.”*\n\n**Key Accomplishments & Authority:**\n• **12+ Years Industry Experience:** Veteran growth architect across Meta Ads, Google Ads, and modern acquisition funnels.\n• **Real Estate Marketing Specialist:** 50+ successful projects delivered across residential communities, plotted layouts, and growing brands.\n• **Digital Marketing Trainer & Mentor:** Trained over 5,000+ professionals, business founders, and career aspirants.\n• **Sales Systems Architect:** Designing automated speed-to-lead pipelines, high-converting WhatsApp cadences, and sales closing scripts.",
         cta: { label: "Learn More About Kishore Patel", href: "#about" },
         options: [
           "🏡 Real Estate Marketing Solutions",
@@ -756,10 +756,10 @@ export function AIChatbot() {
       q.includes("past work") ||
       q.includes("portfolio") ||
       q.includes("track record") ||
-      hasPhrase("prestige", "urbanrise", "lumina", "aura", "cloudscale", "nexusflow")
+      hasPhrase("lumina", "aura", "cloudscale", "kura")
     ) {
       return {
-        text: "📈 **Verified Client Results & Proven ROAS:**\n\n• **Prestige Luxury Estates (Real Estate):** 6.4x ROAS | ₹48Cr+ Inventory Sold\n• **UrbanRise Luxury Villas (Real Estate):** 5.8x ROAS | ₹32Cr Booked\n• **Open Plotted Communities:** 2,400+ Verified Site Visits Generated\n• **Lumina Glow Skincare (D2C E-Commerce):** 4.2x ROAS | 310% MRR Surge in 90 Days\n• **Aura Minimalist Apparel (Fashion E-Com):** 5.1x ROAS | 420% Revenue Scale\n• **CloudScale DevOps (B2B SaaS):** ₹18M Pipeline Closed | 48% CAC Reduction\n\n⭐ **Agency Benchmark:** 4.8x – 6.4x Average ROAS across active client portfolios and a 94%+ client retention rate.",
+        text: "📈 **Verified Client Results & Proven ROAS:**\n\n• **Residential Apartment Launch:** 3.8x ROAS | 45+ Verified Site Visits\n• **Boutique Gated Villas:** 3.9x ROAS | 28 Units Booked\n• **Plotted Communities:** 120+ Walk-ins & Rapid Sell-Through\n• **Kura Botanicals (D2C E-Commerce):** 3.6x ROAS | +240% Revenue Scale\n• **Lumina Organic Apparel (Fashion):** 3.8x ROAS | +140% Customer Repeat Rate\n• **CloudScale Analytics (B2B SaaS):** +180% Demo Growth | -35% CAC Reduction\n\n⭐ **Agency Benchmark:** 3.5x – 4.2x Average ROAS across active client campaigns and a 98% client satisfaction rate.",
         cta: { label: "View Detailed Case Studies", href: "#case-studies" },
         options: ["📊 Claim Free 48-Hour Audit", "🏡 Real Estate Marketing Solutions", "📞 WhatsApp Strategy Desk"]
       };

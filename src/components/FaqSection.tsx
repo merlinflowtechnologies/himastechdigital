@@ -149,27 +149,6 @@ export function FaqSection() {
           })}
         </div>
 
-        {/* Compact Bottom Support Banner */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-12 text-center p-6 sm:p-8 rounded-3xl glass-card border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl backdrop-blur-xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-          <div className="text-left">
-            <h4 className="text-base sm:text-lg font-bold text-white">Have a specific question about your marketing stack?</h4>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">Our senior media strategists are available for a 1-on-1 strategy call.</p>
-          </div>
-          <Link
-            href="#contact"
-            className="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:scale-105"
-          >
-            <MessageSquare className="w-4 h-4 text-slate-950" />
-            <span>Book Strategy Call</span>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

@@ -163,15 +163,15 @@ export default function RealEstatePage() {
     {
       title: "Luxury High-Rise Communities",
       badge: "2BHK / 3BHK / 4BHK",
-      desc: "Targeting corporate tech leaders and HNIs in Kokapet, Nanakramguda, and Gachibowli with 3D walkthroughs, amenity videos, and high-converting floorplan downloads.",
-      stat: "₹48Cr+ Sold",
+      desc: "Targeting corporate professionals and homebuyers in Kokapet, Nanakramguda, and Gachibowli with 3D walkthroughs, amenity videos, and high-converting floorplan downloads.",
+      stat: "45+ Units Sold",
       color: "border-cyan-400/30"
     },
     {
       title: "Gated Luxury Villas & Duplexes",
-      badge: "₹3.5Cr - ₹15Cr+",
-      desc: "Architected for high-ticket buyers. Ultra-exclusive branding, private video tours, personalized concierge site visits, and private WhatsApp concierge nurture funnels.",
-      stat: "84 Villas Sold",
+      badge: "Luxury Tier",
+      desc: "Architected for high-intent buyers. Exclusive branding, private video tours, personalized site visits, and automated WhatsApp concierge nurture funnels.",
+      stat: "28 Villas Sold",
       color: "border-amber-400/30"
     },
     {
@@ -192,37 +192,37 @@ export default function RealEstatePage() {
 
   const caseStudies = [
     {
-      client: "Prestige Kokapet Luxury High-Rise",
+      client: "Skyline Kokapet Residences",
       location: "Kokapet, Financial District",
-      result: "₹48.4 Cr Revenue Generated",
+      result: "45+ Units Sold Out Ahead of Schedule",
       metrics: [
-        { label: "Verified Leads", val: "1,840+" },
-        { label: "Site Visits", val: "412 Booked" },
-        { label: "Average CPL", val: "₹320" },
-        { label: "Overall ROAS", val: "6.8x" }
+        { label: "Verified Leads", val: "480+" },
+        { label: "Site Visits", val: "112 Booked" },
+        { label: "Average CPL", val: "₹420" },
+        { label: "Overall ROAS", val: "3.8x" }
       ],
-      desc: "Deployed full-funnel Meta Reels, Google Search on competitor keywords, sub-second Next.js landing pages, and an automated WhatsApp bot for immediate site visit appointment bookings."
+      desc: "Deployed full-funnel Meta Reels, Google Search on high-intent keywords, sub-second landing pages, and an automated WhatsApp bot for immediate site visit appointment bookings."
     },
     {
       client: "Emerald Luxury Villa County",
       location: "Mokila, Hyderabad",
-      result: "84 Luxury Villas Sold Out in 6 Months",
+      result: "28 Luxury Villas Sold Out in 6 Months",
       metrics: [
-        { label: "Ticket Size", val: "₹4.5Cr - ₹7Cr" },
-        { label: "Site Visits", val: "520+ HNIs" },
+        { label: "Ticket Tier", val: "Premium Villas" },
+        { label: "Site Visits", val: "120+ Tours" },
         { label: "Speed to Lead", val: "<45 Seconds" },
-        { label: "Ad Spend ROAS", val: "5.4x" }
+        { label: "Ad Spend ROAS", val: "3.9x" }
       ],
-      desc: "Used 4K drone cinematography, hyper-local geofencing of Hyderabad tech parks, and our in-house calling objection handling scripts to achieve a record sell-out speed."
+      desc: "Used 4K drone cinematography, hyper-local geofencing of tech parks, and our in-house calling objection handling scripts to achieve a record sell-out speed."
     },
     {
       client: "GreenMeadows HMDA Open Plots",
       location: "Vijayawada Highway Corridor",
-      result: "220 Plots Closed in 45 Days",
+      result: "65 Plots Closed in 60 Days",
       metrics: [
-        { label: "Inquiries", val: "3,200+" },
-        { label: "Sunday Visitors", val: "68 Families" },
-        { label: "Cost Per Visit", val: "₹1,150" },
+        { label: "Inquiries", val: "820+" },
+        { label: "Sunday Visitors", val: "48 Families" },
+        { label: "Cost Per Visit", val: "₹1,250" },
         { label: "Inventory Clearance", val: "94%" }
       ],
       desc: "Leveraged short-form video reels highlighting future highway connectivity, appreciation data, and an automated Sunday site-visit bus seat reservation engine."
@@ -262,21 +262,21 @@ export default function RealEstatePage() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium max-w-3xl mx-auto mb-8">
-            From luxury high-rise gated communities in Kokapet and Gachibowli to premium villas and HMDA open plots. We architect end-to-end demand engines that deliver verified high-ticket buyers, 18,500+ booked site visits, and ₹480Cr+ in property inventory sales.
+            From residential communities in Kokapet and Gachibowli to villas and HMDA open plots. We architect end-to-end demand engines that deliver verified high-intent buyers, thousands of booked site visits, and 50+ successful property marketing launches.
           </p>
 
           {/* Quick Metrics Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10 max-w-4xl mx-auto">
             <div className="p-4 rounded-2xl glass-subcard border border-white/10 text-center shadow-md">
-              <span className="text-2xl sm:text-3xl font-black text-amber-400 block">₹480Cr+</span>
-              <span className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider font-bold mt-1 block">Inventory Sold</span>
+              <span className="text-2xl sm:text-3xl font-black text-amber-400 block">50+</span>
+              <span className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider font-bold mt-1 block">Projects Launched</span>
             </div>
             <div className="p-4 rounded-2xl glass-subcard border border-white/10 text-center shadow-md">
-              <span className="text-2xl sm:text-3xl font-black text-cyan-400 block">18,500+</span>
-              <span className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider font-bold mt-1 block">Site Visits Booked</span>
+              <span className="text-2xl sm:text-3xl font-black text-cyan-400 block">12,000+</span>
+              <span className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider font-bold mt-1 block">Leads Generated</span>
             </div>
             <div className="p-4 rounded-2xl glass-subcard border border-white/10 text-center shadow-md">
-              <span className="text-2xl sm:text-3xl font-black text-emerald-400 block">4.8x</span>
+              <span className="text-2xl sm:text-3xl font-black text-emerald-400 block">3.8x</span>
               <span className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider font-bold mt-1 block">Average ROAS</span>
             </div>
             <div className="p-4 rounded-2xl glass-subcard border border-white/10 text-center shadow-md">

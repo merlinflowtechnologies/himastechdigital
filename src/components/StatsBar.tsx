@@ -59,53 +59,53 @@ function AnimatedCounter({
 export function StatsBar() {
   const stats = [
     {
-      numericTarget: 120,
-      prefix: "₹",
-      suffix: "Cr+",
+      numericTarget: 50,
+      prefix: "",
+      suffix: "+",
       decimals: 0,
-      label: "Real Estate Marketed",
-      sublabel: "Luxury villas, high-rises & commercial off-plan inventory",
-      badge: "Realty Benchmark",
-      icon: <IndianRupee className="w-5 h-5 text-amber-400" />,
+      label: "Projects Delivered",
+      sublabel: "Residential, commercial & growing business launches",
+      badge: "Track Record",
+      icon: <Building2 className="w-5 h-5 text-amber-400" />,
       accent: "from-amber-500/20 via-yellow-500/10 to-transparent",
       border: "border-amber-400/30 hover:border-amber-400/60",
       valueColor: "text-gold-gradient",
     },
     {
-      numericTarget: 8.4,
+      numericTarget: 3.8,
       prefix: "",
       suffix: "x",
       decimals: 1,
       label: "Average Campaign ROAS",
-      sublabel: "Hyper-local Meta & Google CAPI verified acquisition",
-      badge: "Performance Standard",
+      sublabel: "Targeted Meta & Google acquisition campaigns",
+      badge: "Performance",
       icon: <TrendingUp className="w-5 h-5 text-cyan-400" />,
       accent: "from-cyan-500/20 via-sky-500/10 to-transparent",
       border: "border-cyan-400/30 hover:border-cyan-400/60",
       valueColor: "text-electric-gradient",
     },
     {
-      numericTarget: 150000,
+      numericTarget: 12000,
       prefix: "",
       suffix: "+",
       decimals: 0,
-      label: "Verified Buyer Inquiries",
-      sublabel: "Pre-screened HNI & NRI buyers with phone OTP",
-      badge: "Verified Inquiries",
+      label: "Qualified Leads Generated",
+      sublabel: "Targeted customer and buyer inquiries generated",
+      badge: "Lead Velocity",
       icon: <Users className="w-5 h-5 text-amber-300" />,
       accent: "from-amber-400/20 via-orange-500/10 to-transparent",
       border: "border-amber-400/30 hover:border-amber-400/60",
       valueColor: "text-gold-gradient",
     },
     {
-      numericTarget: 45,
+      numericTarget: 98,
       prefix: "",
-      suffix: "+",
+      suffix: "%",
       decimals: 0,
-      label: "Luxury Projects Scaled",
-      sublabel: "Kokapet, Financial District, Gachibowli & prime hubs",
-      badge: "Track Record",
-      icon: <Building2 className="w-5 h-5 text-cyan-400" />,
+      label: "Client Satisfaction Rate",
+      sublabel: "Transparent reporting & agile growth support",
+      badge: "Client Success",
+      icon: <IndianRupee className="w-5 h-5 text-cyan-400" />,
       accent: "from-cyan-500/20 via-indigo-500/10 to-transparent",
       border: "border-cyan-400/30 hover:border-cyan-400/60",
       valueColor: "text-electric-gradient",
@@ -126,7 +126,7 @@ export function StatsBar() {
           </div>
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Audited Real Estate Ad Accounts • Updated Weekly</span>
+            <span>Audited Campaign Metrics • Updated Monthly</span>
           </div>
         </div>
 

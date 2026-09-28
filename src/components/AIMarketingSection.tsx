@@ -279,42 +279,6 @@ export function AIMarketingSection() {
           </motion.div>
         </div>
 
-        {/* Primary Step 5 Action CTA Banner: EXPLORE AI MARKETING */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="p-6 sm:p-8 rounded-3xl glass-card-cyan text-white relative overflow-hidden shadow-2xl border border-cyan-400/30"
-        >
-          <div className="absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-cyan-500/20 to-transparent pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-3 border border-cyan-500/30">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-300" /> Transform Your Marketing Today
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-2 leading-tight">
-                Upgrade Your Business With AI Marketing Systems
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
-                Discover how our AI marketing stack cuts customer acquisition costs, eliminates lead response delays, and turns raw attention into qualified buyer pipeline.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3.5 w-full lg:w-auto shrink-0">
-              <Link
-                href="#contact"
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_35px_rgba(245,158,11,0.55)] transition-all hover:scale-105 flex items-center justify-center gap-2 group shadow-md cursor-pointer"
-              >
-                <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>EXPLORE AI MARKETING</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

@@ -118,6 +118,13 @@ export function ClientTestimonialsSection() {
                 {cat}
               </button>
             ))}
+            <button
+              onClick={() => setShowSubmitModal(true)}
+              className="px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border border-amber-400/30 bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 flex items-center gap-1.5"
+            >
+              <PlusCircle className="w-3.5 h-3.5 text-amber-400" />
+              <span>Submit Review</span>
+            </button>
           </motion.div>
         </div>
 
@@ -230,39 +237,6 @@ export function ClientTestimonialsSection() {
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
-
-        {/* Client Authenticity & Direct Review Verification Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-500/10 via-[#0b0e17] to-amber-500/10 border border-white/15 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Verified Client Integrity Charter</span>
-            </div>
-            <h4 className="text-lg sm:text-xl font-black text-white">
-              Zero Invented Testimonials. 100% Real, Audited Partnerships.
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Every review featured above is from verified decision-makers with client photographs, company logos, and documented campaign revenue across Hyderabad and national corridors.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <button
-              onClick={() => setShowSubmitModal(true)}
-              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <PlusCircle className="w-4 h-4 text-amber-400" />
-              <span>Submit Verified Review</span>
-            </button>
-            <Link
-              href="#contact"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer uppercase tracking-wider"
-            >
-              <span>Connect With Our Team</span>
-              <ArrowRight className="w-4 h-4 text-slate-950" />
-            </Link>
-          </div>
         </div>
 
       </div>

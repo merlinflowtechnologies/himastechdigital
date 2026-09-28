@@ -58,7 +58,7 @@ export default function MerlinflowPortfolioPage() {
         "RERA-Compliant Cost Sheets, Payment Schedules & Milestone Invoicing",
         "Executive Sales Manager Performance & Pipeline Forecast Dashboard"
       ],
-      metrics: "₹480Cr+ Pipeline Handled"
+      metrics: "50+ Active Deployments"
     },
     {
       id: "enterprise-crm",

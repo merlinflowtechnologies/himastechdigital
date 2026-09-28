@@ -51,8 +51,8 @@ export function WhoWeHelpSection() {
       tagline: "Turn Luxury Villas, Penthouses & Open Plots Into Sold-Out Inventories.",
       badge: "Flagship Specialty",
       icon: Building2,
-      metric: "₹120Cr+",
-      metricLabel: "Inventory Moved",
+      metric: "50+",
+      metricLabel: "Projects Launched",
       challenge: "High project holding costs, declining returns from print/hoarding media, and low-intent enquiries that waste sales team hours.",
       solution: "Hyper-targeted 360° project marketing blitzes: photorealistic 3D/AI drone walkthroughs, NRI buyer acquisition funnels, and verified site-visit generation.",
       deliverables: [

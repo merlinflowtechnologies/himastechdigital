@@ -170,7 +170,7 @@ export default function Home() {
               {/* Proof / Trust Metrics */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-white/10 text-xs text-slate-300 font-semibold w-full">
                 <span className="flex items-center gap-1.5 text-white">
-                  <ShieldCheck className="w-4 h-4 text-amber-400" /> ₹120Cr+ Real Estate Sold
+                  <ShieldCheck className="w-4 h-4 text-amber-400" /> 50+ Projects Delivered
                 </span>
                 <span className="text-slate-600">•</span>
                 <span className="flex items-center gap-1.5 text-white">
@@ -253,8 +253,8 @@ export default function Home() {
                       <div className="text-xs font-bold text-amber-300">12+ Years Industry</div>
                     </div>
                     <div className="px-3 py-2 rounded-xl glass-subcard">
-                      <div className="text-[10px] text-slate-400 font-medium">Realty Portfolio</div>
-                      <div className="text-xs font-bold text-cyan-300">₹120Cr+ Inventory</div>
+                      <div className="text-[10px] text-slate-400 font-medium">Campaigns</div>
+                      <div className="text-xs font-bold text-cyan-300">50+ Projects Launched</div>
                     </div>
                   </div>
 

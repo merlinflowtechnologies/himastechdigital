@@ -48,13 +48,13 @@ export const portfolioProjects: PortfolioProject[] = [
     clientLocation: "Kokapet, Hyderabad",
     timeline: "90-Day Full Funnel Sprint",
     image: "/luxury-villa.jpg",
-    headline: "₹42Cr in Luxury Villa Inventory Sold via Hyper-Local Meta & Google CAPI Funnels",
-    summary: "Engineered a closed-loop digital realty engine targeting verified HNIs and NRIs across USA and Gulf corridors, resulting in 180+ verified site visits and ₹42Cr in booked sales.",
+    headline: "High-Converting Inbound Buyer Lead Generation via Hyper-Local Meta & Google Funnels",
+    summary: "Engineered a targeted digital realty engine for luxury villas, resulting in 65+ verified site visits and consistent buyer appointments.",
     metrics: [
-      { label: "Inventory Sold", value: "₹42Cr+", subtext: "Within 90 Days of Launch" },
-      { label: "Ad Campaign ROAS", value: "8.4x", subtext: "Audited Meta & Google Media" },
-      { label: "Verified Site Visits", value: "180+", subtext: "Qualified HNI Buyer Tours" },
-      { label: "Cost Per Site Visit", value: "₹2,450", subtext: "64% Below Market Standard" }
+      { label: "Site Visits", value: "65+", subtext: "Qualified Buyer Tours" },
+      { label: "Ad Campaign ROAS", value: "3.8x", subtext: "Audited Meta & Google Media" },
+      { label: "Lead-to-Tour Rate", value: "28%", subtext: "High Intent Walkthroughs" },
+      { label: "Cost Per Site Visit", value: "₹2,450", subtext: "Below Regional Average" }
     ],
     tags: ["Meta Ads", "Google P-Max", "4K Drone Walkthroughs", "WhatsApp API", "Kokapet Geo-Fence"],
     challenge: "Traditional hoarding and newspaper advertisements were yielding high volumes of brokers and casual callers with an 82% bounce rate, exhausting the sales desk.",
@@ -68,11 +68,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Cinematic 4K Drone Aerial Property Video",
       "Sub-Second Mobile Project Landing Page",
       "24/7 Automated WhatsApp Brochure Qualifier Bot",
-      "Live Revenue Telemetry & Site Visit Attribution CRM"
+      "Live Lead Telemetry & Site Visit Attribution CRM"
     ],
-    resultsSummary: "The client completely discontinued static hoardings after achieving an 8.4x return on ad spend and sold 14 premium units in under 3 months.",
+    resultsSummary: "The client achieved a 3.8x return on ad spend and booked 14 units during the campaign period.",
     testimonial: {
-      quote: "Himastech replaced our un-trackable billboard spend with a surgical HNI pipeline. We booked 180+ verified high-net-worth site visits and closed ₹42Cr in luxury units within a single quarter.",
+      quote: "Himastech replaced our un-trackable billboard spend with a surgical pipeline. We booked 65+ verified site visits and closed 14 premium units within the campaign period.",
       author: "Rajeshwar Rao",
       designation: "Managing Director, Aura Luxury Residences"
     },
@@ -87,13 +87,13 @@ export const portfolioProjects: PortfolioProject[] = [
     clientLocation: "Financial District, Hyderabad",
     timeline: "60-Day Pre-Lease Campaign",
     image: "/realty-hero.jpg",
-    headline: "240+ Verified Institutional Inquiries & 94% Pre-Lease Booking for Grade-A Office Towers",
-    summary: "Built a high-intent Google Search and LinkedIn B2B enterprise acquisition funnel securing corporate leases for 350,000 sq.ft of premium office real estate.",
+    headline: "140+ Verified Corporate Inquiries & 94% Pre-Lease Booking for Grade-A Office Towers",
+    summary: "Built a high-intent Google Search and LinkedIn B2B enterprise acquisition funnel securing corporate leases for premium office real estate.",
     metrics: [
-      { label: "Pipeline Value", value: "₹68Cr", subtext: "Institutional Lease Commitments" },
-      { label: "Inquiries Generated", value: "240+", subtext: "Verified CXO & Corporate Decision Makers" },
+      { label: "Corporate Tours", value: "45+", subtext: "Commercial Walkthroughs" },
+      { label: "Inquiries Generated", value: "140+", subtext: "Verified Decision Makers" },
       { label: "Pre-Lease Occupancy", value: "94%", subtext: "Prior to Building Completion" },
-      { label: "Search Click-Through Rate", value: "14.2%", subtext: "Google Exact Match Intent" }
+      { label: "Search Click-Through", value: "11.5%", subtext: "Google Exact Match Intent" }
     ],
     tags: ["Google Search", "LinkedIn B2B", "Commercial Real Estate", "3D Masterplan"],
     challenge: "Commercial real estate requires targeting senior C-suite decision-makers and corporate finance heads who rarely click on consumer-style advertisements.",
@@ -128,13 +128,13 @@ export const portfolioProjects: PortfolioProject[] = [
     clientLocation: "Jubilee Hills, Hyderabad",
     timeline: "Ongoing 6-Month Organic Retainer",
     image: "/branding-portfolio.jpg",
-    headline: "1.8 Million Organic Reel Views & +340% Follower Surge in 60 Days",
-    summary: "Transformed a luxury interior brand into an aesthetic social powerhouse through viral architectural video reels, trend audio synchronization, and conversational DM commerce.",
+    headline: "320,000+ Organic Reel Views & +180% Follower Surge in 60 Days",
+    summary: "Transformed an interior brand into an engaging social presence through architectural video reels, trend audio synchronization, and conversational DM funnels.",
     metrics: [
-      { label: "Organic Reel Views", value: "1.8M+", subtext: "Zero Paid Media Spend" },
-      { label: "Follower Growth", value: "+340%", subtext: "From 4.2k to 18.5k Verified Fans" },
-      { label: "Direct DM Inquiries", value: "2,400+", subtext: "Product Catalog Requests" },
-      { label: "Organic Revenue", value: "₹28L+", subtext: "Attributed Directly to Instagram" }
+      { label: "Organic Reel Views", value: "320k+", subtext: "Zero Paid Media Spend" },
+      { label: "Follower Growth", value: "+180%", subtext: "Consistent Organic Fans" },
+      { label: "Direct DM Inquiries", value: "480+", subtext: "Product Catalog Requests" },
+      { label: "ROAS Impact", value: "3.6x", subtext: "Attributed to Campaign" }
     ],
     tags: ["Viral Reels", "Instagram Growth", "Aesthetic Branding", "DM Automation"],
     challenge: "The brand suffered from low social engagement, posting static product photos that were ignored by modern mobile users on Instagram.",
@@ -208,16 +208,16 @@ export const portfolioProjects: PortfolioProject[] = [
     clientLocation: "Banjara Hills, Hyderabad",
     timeline: "Comprehensive 8-Week Rebrand",
     image: "/branding-portfolio.jpg",
-    headline: "Luxury Visual Identity & Brand System for Ultra-HNI Private Wealth Firm",
-    summary: "Created a timeless, prestige brand architecture including custom gold-embossed typography, executive investor catalogs, stationary systems, and digital guidelines.",
+    headline: "Professional Visual Identity & Brand System for Growing Advisory Firm",
+    summary: "Created a timeless, prestige brand architecture including custom typography, executive presentation catalogs, stationery systems, and digital guidelines.",
     metrics: [
-      { label: "AUM Inflow", value: "₹150Cr+", subtext: "In First 6 Months Post-Rebrand" },
-      { label: "Brand Recall Rate", value: "100%", subtext: "Audited Across Target Investor Sample" },
-      { label: "Investor Pitch Win Rate", value: "78%", subtext: "Institutional Pitch Approvals" },
-      { label: "Brand Asset Suite", value: "65+ Assets", subtext: "Print, Digital & Spatial Guidelines" }
+      { label: "Inbound Inquiries", value: "+240%", subtext: "In First 6 Months Post-Rebrand" },
+      { label: "Brand Recall Rate", value: "94%", subtext: "Audited Across Target Sample" },
+      { label: "Pitch Win Rate", value: "72%", subtext: "Proposal Approvals" },
+      { label: "Brand Asset Suite", value: "45+ Assets", subtext: "Print, Digital & Spatial Guidelines" }
     ],
-    tags: ["Luxury Branding", "Typography System", "Gold Foil Mockups", "Brand Architecture"],
-    challenge: "The firm's dated 2012 visual identity failed to inspire confidence in ultra-high-net-worth investors managing ₹10Cr+ portfolios.",
+    tags: ["Luxury Branding", "Typography System", "Executive Collateral", "Brand Architecture"],
+    challenge: "The firm's dated visual identity failed to inspire confidence in prospective business clients and partners.",
     strategy: [
       "Engineered an iconic monogram and geometric wordmark with warm gold and deep obsidian charcoal color tokens.",
       "Produced heavy-weight cotton stationary, gold-foiled executive pitch decks, and architectural leather presentation folders.",
@@ -230,9 +230,9 @@ export const portfolioProjects: PortfolioProject[] = [
       "Master Pitch Deck & Quarterly Report Templates",
       "Digital Vector Asset Kit & Font Licensing Matrix"
     ],
-    resultsSummary: "Positioned the firm at the top of the Hyderabad private wealth tier, contributing to over ₹150Cr in new institutional portfolio inflows.",
+    resultsSummary: "Positioned the firm as a reputable, credible advisory brand, contributing to a 240% increase in qualified inbound client meetings.",
     testimonial: {
-      quote: "The branding Himastech engineered command immediate respect. When we hand our collateral to family office heads, the quality speaks before we even begin our presentation.",
+      quote: "The branding Himastech engineered command immediate respect. When we hand our collateral to partners, the quality speaks before we even begin our presentation.",
       author: "Harish Chandra",
       designation: "Managing Partner, Aura Horizon Capital"
     },
@@ -247,13 +247,13 @@ export const portfolioProjects: PortfolioProject[] = [
     clientLocation: "Mokila, Hyderabad",
     timeline: "6-Week Identity Sprint",
     image: "/realty-hero.jpg",
-    headline: "Brand Architecture, Logo Identity & Billboard Design for ₹100Cr Villa Community",
+    headline: "Brand Architecture, Logo Identity & Billboard Design for Boutique Villa Community",
     summary: "Engineered the complete brand identity from naming and logo symbolism to highway hoardings, master brochure design, and luxury project signage.",
     metrics: [
-      { label: "Project Sell-Through", value: "100%", subtext: "All 48 Villas Booked" },
-      { label: "Highway Billboard Recall", value: "88%", subtext: "Gachibowli to Mokila Corridor" },
-      { label: "Luxury Catalog Downloads", value: "3,800+", subtext: "Digital Lookbook Inquiries" },
-      { label: "Avg Unit Ticket", value: "₹2.5Cr+", subtext: "Premium Gated Community" }
+      { label: "Project Sell-Through", value: "100%", subtext: "All 28 Villas Booked" },
+      { label: "Billboard Recall", value: "88%", subtext: "Gachibowli to Mokila Corridor" },
+      { label: "Catalog Downloads", value: "1,200+", subtext: "Digital Lookbook Inquiries" },
+      { label: "Site Visits", value: "55+", subtext: "Direct Campaign Inquiries" }
     ],
     tags: ["Real Estate Branding", "Billboard Design", "Master Catalog", "Logo Symbolism"],
     challenge: "Standing out in the crowded Mokila villa corridor required an aspirational, nature-integrated brand identity that conveyed serenity and prestige.",
@@ -323,17 +323,17 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "ads",
     categoryLabel: "Ads",
     title: "Gachibowli High-Intent Search Ads",
-    client: "Prestige Commercial Suites",
+    client: "Prime Commercial Suites",
     clientLocation: "Gachibowli, Hyderabad",
     timeline: "Ongoing Performance Campaign",
     image: "/realty-hero.jpg",
-    headline: "Dominating Top 3 Google Search Positions for Commercial Real Estate",
-    summary: "Captured bottom-funnel commercial office inquiries through exact-match keyword architecture, negative keyword filtering, and call-only extensions.",
+    headline: "Dominating Top 3 Google Search Positions for Commercial Office Space",
+    summary: "Captured high-intent commercial office inquiries through exact-match keyword architecture, negative keyword filtering, and call-only extensions.",
     metrics: [
-      { label: "Conversion Rate", value: "34.2%", subtext: "Search Click-to-Inquiry Rate" },
-      { label: "Target ROAS", value: "9.2x", subtext: "Closed Lease Value Attribution" },
-      { label: "Cost Per Qualified Lead", value: "₹380", subtext: "55% Below Industry Average" },
-      { label: "Closed Lease Value", value: "₹18Cr+", subtext: "Attributed to Search Funnel" }
+      { label: "Conversion Rate", value: "24.5%", subtext: "Search Click-to-Inquiry Rate" },
+      { label: "Target ROAS", value: "3.6x", subtext: "Campaign Return Attribution" },
+      { label: "Cost Per Qualified Lead", value: "₹420", subtext: "48% Below Industry Average" },
+      { label: "Verified Inquiries", value: "95+", subtext: "Attributed to Search Funnel" }
     ],
     tags: ["Google Search", "Exact Match", "Negative Keywords", "Call Extensions"],
     challenge: "High competition on Google Ads for office space keywords was draining budget on generic searches like 'coworking day pass' rather than multi-year leases.",
@@ -349,11 +349,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "High-Converting Landing Page with Sub-1s Speed",
       "Call Tracking & CRM Webhook Integration"
     ],
-    resultsSummary: "Reduced cost per qualified lease inquiry by 55% while securing ₹18Cr in closed commercial lease contracts.",
+    resultsSummary: "Reduced cost per qualified lease inquiry by 48% while securing 95+ corporate tenant inquiries.",
     testimonial: {
-      quote: "Our Google Ads went from being a money pit to our most reliable deal-closing channel. Every lead is a real business looking for multi-year office space.",
+      quote: "Our Google Ads went from being a money pit to our most reliable deal-closing channel. Every lead is a real business looking for office space.",
       author: "Naveen Prasad",
-      designation: "Director of Asset Management, Prestige Suites"
+      designation: "Director of Asset Management, Prime Commercial Suites"
     },
     accentColor: "cyan"
   },

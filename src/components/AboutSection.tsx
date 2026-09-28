@@ -36,10 +36,10 @@ export function AboutSection() {
     },
     {
       icon: <Building2 className="w-6 h-6 text-cyan-400" />,
-      metric: "₹120Cr+",
-      title: "Real Estate Marketing Expertise",
-      badge: "Realty Specialist",
-      desc: "Hyper-targeted campaigns for luxury gated villas, high-rise apartments, open plots, and commercial developments across Hyderabad & NRI corridors.",
+      metric: "50+",
+      title: "Real Estate & Growth Projects",
+      badge: "Proven Campaigns",
+      desc: "Targeted campaigns for residential projects, plotted layouts, boutique brands, and local businesses across Hyderabad and regional hubs.",
       accent: "from-cyan-500/20 via-cyan-500/5 to-transparent border-cyan-500/30",
       iconBg: "bg-cyan-400/10 border-cyan-400/20 text-cyan-400",
       metricColor: "text-cyan-400"
@@ -257,7 +257,7 @@ export function AboutSection() {
                 With over <strong className="text-white font-semibold">12+ years of hands-on marketing leadership</strong>, Kishore Patel has guided real estate developers, enterprise brands, and ambitious founders through the rapidly shifting landscape of online customer acquisition.
               </p>
               <p>
-                Specializing in high-value real estate projects across Hyderabad and South India, Kishore has orchestrated multi-channel marketing engines that successfully connected thousands of luxury homebuyers and investors with premium properties—generating over <strong className="text-amber-300 font-semibold">₹120Cr+ in verified project inventory velocity</strong>.
+                Specializing in residential and commercial marketing across Hyderabad and South India, Kishore has orchestrated multi-channel campaigns that connect genuine buyers with developers—delivering over <strong className="text-amber-300 font-semibold">50+ successful marketing launches and thousands of qualified inquiries</strong>.
               </p>
               <p>
                 As a passionate <strong className="text-white font-semibold">Digital Marketing Trainer</strong>, Kishore has mentored more than 5,000 students, business owners, and corporate sales teams, teaching them how to turn complex advertising algorithms into predictable revenue streams.
@@ -363,38 +363,6 @@ export function AboutSection() {
             ))}
           </div>
         </div>
-
-        {/* Bottom Dual Strategy Consultation Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl glass-card-gold border border-amber-400/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
-        >
-          <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Connect Directly With Kishore Patel</span>
-            </div>
-            <h4 className="text-xl sm:text-2xl font-black text-white">
-              Ready to Upgrade Your Digital Marketing & Sales Systems?
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              Whether you are a real estate builder aiming to sell out your project or a business looking for high-impact marketing strategy and team training, connect with our growth team today.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              href="#contact"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <span>Get Free Marketing Audit</span>
-              <ChevronRight className="w-4 h-4 text-slate-950" />
-            </Link>
-          </div>
-        </motion.div>
 
       </div>
     </section>
