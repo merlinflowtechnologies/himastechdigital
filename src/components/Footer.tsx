@@ -11,13 +11,9 @@ import {
   Phone, 
   MessageCircle, 
   ExternalLink, 
-  Layers, 
-  Building2, 
-  Cpu, 
-  TrendingUp,
-  Award,
+  Building2,
   Compass,
-  CheckCircle2
+  TrendingUp
 } from "lucide-react";
 import { handleNavAnchorClick } from "@/lib/navigation";
 

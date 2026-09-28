@@ -13,9 +13,7 @@ import {
   Clock, 
   ArrowRight,
   Building2,
-  User,
-  Layers,
-  FileText
+  User
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitContactForm } from "@/app/actions";

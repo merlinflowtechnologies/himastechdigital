@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight, Sparkles, Zap, ShieldCheck, Activity, BarChart3, Building2, TrendingUp, MapPin, User, Award, Target, Camera } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Activity, Building2, User, Award, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { scrollToSection } from "@/lib/navigation";
 
@@ -321,7 +321,7 @@ export default function Home() {
       {/* 8. Elite Marketing Training & Recruiting Academy */}
       <TrainingSection />
 
-      {/* 9. Genuine Client Testimonials (100% Genuine with Client Photos & Logos) */}
+      {/* 9. Genuine Client Testimonials */}
       <ClientTestimonialsSection />
 
       {/* 10. Founder & Agency Moments Photo Gallery */}

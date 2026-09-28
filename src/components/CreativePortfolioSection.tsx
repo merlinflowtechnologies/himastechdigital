@@ -14,7 +14,6 @@ import {
   Video, 
   Laptop, 
   TrendingUp, 
-  PhoneCall,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";

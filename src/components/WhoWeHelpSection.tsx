@@ -15,13 +15,11 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Sparkles, 
-  MessageCircle, 
-  PhoneCall, 
-  ChevronRight,
   Layers,
   Target,
   Zap,
-  Award
+  Award,
+  PhoneCall
 } from "lucide-react";
 
 interface AudienceSegment {

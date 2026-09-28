@@ -9,17 +9,14 @@ import {
   GraduationCap, 
   Users, 
   Sparkles, 
-  CheckCircle2, 
-  ArrowRight, 
-  MessageCircle, 
-  PhoneCall, 
-  ShieldCheck, 
-  TrendingUp, 
-  Lightbulb, 
-  Target, 
-  BookOpen, 
+  ArrowRight,
+  Lightbulb,
+  Target,
+  TrendingUp,
   UserCheck,
-  ChevronRight
+  PhoneCall,
+  ShieldCheck,
+  CheckCircle2
 } from "lucide-react";
 
 export function AboutSection() {

@@ -16,8 +16,7 @@ import {
   UserCheck, 
   ArrowRight, 
   Sparkles, 
-  CheckCircle2, 
-  PhoneCall,
+  CheckCircle2,
   ChevronRight
 } from "lucide-react";
 import Link from "next/link";

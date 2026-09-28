@@ -6,9 +6,7 @@ import {
   Building2, 
   Target, 
   Cpu, 
-  Users, 
-  CheckCircle2, 
-  Sparkles 
+  Users
 } from "lucide-react";
 
 export function TrustStrip() {

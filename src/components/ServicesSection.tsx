@@ -23,7 +23,6 @@ import {
   ShieldCheck,
   Clock,
   Layers,
-  PhoneCall,
   ChevronLeft,
   ChevronRight,
   MoveHorizontal

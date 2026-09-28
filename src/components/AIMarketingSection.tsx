@@ -14,8 +14,7 @@ import {
   CheckCircle2, 
   MessageSquare,
   Activity,
-  Layers,
-  PhoneCall
+  Layers
 } from "lucide-react";
 import Link from "next/link";
 

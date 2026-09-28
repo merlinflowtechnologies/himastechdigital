@@ -7,18 +7,12 @@ import {
   Star, 
   Quote, 
   CheckCircle2, 
-  ShieldCheck, 
-  Building2, 
   Sparkles, 
-  MessageCircle, 
-  ExternalLink,
-  MapPin,
-  Calendar,
-  Lock,
-  PlusCircle,
-  X,
-  FileCheck2,
-  Check
+  MapPin, 
+  X, 
+  FileCheck2, 
+  Check,
+  PlusCircle
 } from "lucide-react";
 import { genuineClientTestimonials, ClientTestimonial } from "@/data/clientTestimonialsData";
 

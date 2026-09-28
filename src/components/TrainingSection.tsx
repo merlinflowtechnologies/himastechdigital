@@ -21,11 +21,8 @@ import {
   TrendingUp, 
   Layers, 
   X, 
-  UserCheck, 
-  Laptop, 
-  ChevronRight,
   Send,
-  Building
+  ChevronRight
 } from "lucide-react";
 
 interface TrainingModule {
