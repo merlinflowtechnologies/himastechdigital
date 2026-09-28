@@ -16,12 +16,12 @@ export async function submitContactForm(formData: FormData) {
   try {
     const payload = {
       _subject: `⚡ New Himastech Lead Inquiry: ${name} (${businessName || "Direct Inquiry"})`,
-      "Client Name": name,
-      "Business / Project": businessName || "Not provided",
-      "Phone / WhatsApp": phone,
-      "Email Address": email,
-      "Service Required": serviceRequired || "Growth Strategy & Audit",
-      "Project Details": businessDetails,
+      Full_Name: name,
+      Business_or_Project: businessName || "Not provided",
+      Phone_or_WhatsApp: phone,
+      Email: email,
+      Service_Required: serviceRequired || "Growth Strategy & Audit",
+      Project_Details: businessDetails,
       _template: "table",
       _captcha: "false"
     };
@@ -61,13 +61,13 @@ export async function submitReviewAction(data: {
 
   try {
     const payload = {
-      _subject: `★ New Client Endorsement Received: ${data.name} (${data.company})`,
-      "Client Name": data.name,
-      "Designation / Role": data.designation,
-      "Company / Project": data.company,
-      "Official Phone / WhatsApp": data.phone,
-      "Star Rating": `${data.rating || 5} / 5 Stars`,
-      "Client Endorsement": data.reviewText,
+      _subject: `★ New Client Endorsement: ${data.name} (${data.company})`,
+      Client_Name: data.name,
+      Designation: data.designation,
+      Company: data.company,
+      Phone_or_WhatsApp: data.phone,
+      Star_Rating: `${data.rating || 5} / 5 Stars`,
+      Client_Review: data.reviewText,
       _template: "table",
       _captcha: "false"
     };
