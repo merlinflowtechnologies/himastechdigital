@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   Sparkles, 
@@ -13,17 +12,11 @@ import {
   CheckCircle2, 
   Clock, 
   Zap, 
-  PhoneCall
+  PhoneCall,
+  Star
 } from "lucide-react";
 
 export function PowerfulCtaSection() {
-  const clientAvatars = [
-    { src: "/testimonials/rajeshwar-rao.jpg", alt: "Rajeshwar Rao" },
-    { src: "/testimonials/sai-kishore.jpg", alt: "Adduri Sai Kishore" },
-    { src: "/testimonials/venkat-rao.jpg", alt: "M. Venkat Rao" },
-    { src: "/testimonials/siddharth-verma.jpg", alt: "Siddharth Verma" },
-    { src: "/testimonials/pooja-reddy.jpg", alt: "Pooja Reddy" },
-  ];
 
   return (
     <section className="py-20 lg:py-28 bg-[#07090e] border-t border-white/10 relative overflow-hidden z-20">
@@ -109,19 +102,13 @@ export function PowerfulCtaSection() {
 
           {/* Client Social Proof Strip */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 text-xs text-slate-400">
-            <div className="flex -space-x-2 overflow-hidden">
-              {clientAvatars.map((avatar, idx) => (
-                <div key={idx} className="relative inline-block h-8 w-8 rounded-full ring-2 ring-[#0e1424] overflow-hidden">
-                  <Image
-                    src={avatar.src}
-                    alt={avatar.alt}
-                    width={32}
-                    height={32}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+            <div className="flex items-center gap-1 text-amber-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               ))}
+              <span className="font-bold text-white text-xs ml-1.5">5.0 / 5.0 Rating</span>
             </div>
+            <span className="hidden sm:inline text-slate-600">•</span>
             <div className="font-medium text-slate-300">
               Trusted by Managing Directors, Developers &amp; Founders across Hyderabad
             </div>

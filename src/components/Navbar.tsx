@@ -53,7 +53,7 @@ export function Navbar() {
     { name: "Founder & Moments Gallery", href: "/#gallery", desc: "Leadership, site visits & workshops" },
     { name: "Social Media Activity", href: "/#social-activity", desc: "Live Instagram reels & project shoots" },
     { name: "Case Studies & Portfolio", href: "/#portfolio", desc: "Real estate & brand growth results" },
-    { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & photos" },
+    { name: "Client Testimonials", href: "/#testimonials", desc: "Verified client feedback & results" },
     { name: "Who We Help", href: "/#who-we-help", desc: "8 specialized industry sectors" },
     { name: "6-Step Process", href: "/#process", desc: "Our proven revenue multiplication engine" },
     { name: "About Founder", href: "/#about", desc: "Kishore Patel & company vision" },

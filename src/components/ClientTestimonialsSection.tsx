@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Star, 
@@ -10,7 +9,6 @@ import {
   CheckCircle2, 
   ShieldCheck, 
   Building2, 
-  ArrowRight, 
   Sparkles, 
   MessageCircle, 
   ExternalLink,
@@ -82,7 +80,7 @@ export function ClientTestimonialsSection() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto"
           >
-            Direct testimonials from verified real estate developers, enterprise tech founders, and commercial leaders. Every endorsement features real client photos, authentic company logos, and documented results.
+            Direct testimonials from verified real estate developers, enterprise tech founders, and commercial leaders with authentic company partnerships and documented results.
           </motion.p>
 
           {/* Genuine Client Standard Banner */}
@@ -187,21 +185,16 @@ export function ClientTestimonialsSection() {
                   </div>
                 </div>
 
-                {/* Bottom Identity & Project Anchor */}
-                <div className="pt-5 border-t border-white/10 space-y-4">
-                  {/* Client Profile Block with Genuine Client Photo */}
+                {/* Bottom Identity Block (Without Photo) */}
+                <div className="pt-5 border-t border-white/10">
                   <div className="flex items-center gap-3.5">
-                    {/* Genuine Client Photo with Verified Check Badge */}
-                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-amber-400/40 shadow-lg shrink-0 group-hover:border-amber-400 transition-colors">
-                      <Image
-                        src={item.clientPhoto}
-                        alt={`Photo of ${item.name}`}
-                        width={56}
-                        height={56}
-                        className="object-cover w-full h-full"
-                      />
-                      <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#0b0e17] flex items-center justify-center shadow-xs">
-                        <Check className="w-3 h-3 text-slate-950 font-black stroke-[3]" />
+                    {/* Clean Executive Initials Monogram Avatar */}
+                    <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400/20 via-amber-500/10 to-amber-600/20 border-2 border-amber-400/30 flex items-center justify-center shadow-lg shrink-0 group-hover:border-amber-400 transition-colors">
+                      <span className="text-sm font-black text-amber-300 tracking-wider">
+                        {item.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                      </span>
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#0b0e17] flex items-center justify-center shadow-xs">
+                        <Check className="w-2.5 h-2.5 text-slate-950 font-black stroke-[3]" />
                       </div>
                     </div>
 
@@ -221,17 +214,6 @@ export function ClientTestimonialsSection() {
                       </p>
                     </div>
                   </div>
-
-                  {/* Case Study Link */}
-                  {item.projectSlug && (
-                    <Link
-                      href={`/case-studies/${item.projectSlug}`}
-                      className="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-[11px] font-bold border border-white/10 transition-all flex items-center justify-between group/link"
-                    >
-                      <span className="truncate">View Documented Case Study</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-amber-400 shrink-0 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                  )}
                 </div>
 
               </motion.div>

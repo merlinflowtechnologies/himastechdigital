@@ -3,9 +3,7 @@ export interface ClientTestimonial {
   name: string;
   designation: string;
   company: string;
-  clientPhoto: string;
   companyLogo: string;
-  projectSlug?: string;
   projectTitle: string;
   category: "Real Estate" | "Technology" | "Branding & Social" | "High-Ticket Ads";
   rating: number;
@@ -23,9 +21,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "Rajeshwar Rao",
     designation: "Managing Director",
     company: "Aura Luxury Residences & Estates",
-    clientPhoto: "/testimonials/rajeshwar-rao.jpg",
     companyLogo: "/testimonials/logos/aura-luxury.svg",
-    projectSlug: "kokapet-sky-villas",
     projectTitle: "Kokapet Luxury Sky Villas & Penthouses",
     category: "Real Estate",
     rating: 5,
@@ -41,9 +37,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "Adduri Sai Kishore",
     designation: "Chief Executive Officer",
     company: "Merlinflow Technologies Private Limited",
-    clientPhoto: "/testimonials/sai-kishore.jpg",
     companyLogo: "/testimonials/logos/merlinflow.svg",
-    projectSlug: "the-solitaire-experience-portal",
     projectTitle: "Enterprise Cloud ERP Suites & Web Architecture",
     category: "Technology",
     rating: 5,
@@ -59,9 +53,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "M. Venkat Rao",
     designation: "Head of Sales & Marketing",
     company: "Greenstone Infra Projects",
-    clientPhoto: "/testimonials/venkat-rao.jpg",
     companyLogo: "/testimonials/logos/greenstone.svg",
-    projectSlug: "jubilee-greens-plots",
     projectTitle: "Jubilee Greens Eco-Luxury Villa Plots",
     category: "Real Estate",
     rating: 5,
@@ -77,9 +69,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "Siddharth Verma",
     designation: "Head of Commercial Leasing",
     company: "Urban Heights Infrastructure",
-    clientPhoto: "/testimonials/siddharth-verma.jpg",
     companyLogo: "/testimonials/logos/urban-heights.svg",
-    projectSlug: "financial-district-highrise",
     projectTitle: "Financial District Commercial Grade-A Towers",
     category: "High-Ticket Ads",
     rating: 5,
@@ -95,9 +85,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "Harish Chandra",
     designation: "Managing Partner",
     company: "Aura Horizon Capital Partners",
-    clientPhoto: "/testimonials/harish-chandra.jpg",
     companyLogo: "/testimonials/logos/aura-horizon.svg",
-    projectSlug: "aura-horizon-capital",
     projectTitle: "Wealth Advisory Portal & Brand Architecture",
     category: "Branding & Social",
     rating: 5,
@@ -113,9 +101,7 @@ export const genuineClientTestimonials: ClientTestimonial[] = [
     name: "Pooja Reddy",
     designation: "Creative Director",
     company: "Urban Luxe Decor & Furnishings",
-    clientPhoto: "/testimonials/pooja-reddy.jpg",
     companyLogo: "/testimonials/logos/urban-luxe.svg",
-    projectSlug: "urban-luxe-lifestyle",
     projectTitle: "Aesthetic Social Media & DM Commerce",
     category: "Branding & Social",
     rating: 5,
