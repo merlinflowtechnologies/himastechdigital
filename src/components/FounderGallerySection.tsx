@@ -37,13 +37,25 @@ export function FounderGallerySection() {
     { src: "/gallery/img17.jpeg", alt: "Agency Milestones & Workshop Celebration" },
   ];
 
+  // Duplicated for an unbroken infinite seamless conveyor loop (no start, no end)
+  const displayPhotos = [...photos, ...photos];
+
   const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 360;
-      scrollContainerRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth"
-      });
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const halfWidth = container.scrollWidth / 2;
+    const scrollAmount = 360;
+
+    if (direction === "left") {
+      if (container.scrollLeft <= scrollAmount) {
+        container.scrollLeft += halfWidth;
+      }
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    } else {
+      if (container.scrollLeft >= halfWidth) {
+        container.scrollLeft -= halfWidth;
+      }
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -68,24 +80,32 @@ export function FounderGallerySection() {
     setIsDragging(false);
   };
 
-  // Continuous smooth auto-scroll effect
+  // Continuous smooth auto-scroll effect with seamless infinite wrap
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
     let animationFrameId: number;
     let scrollAcc = container.scrollLeft;
-    const speed = 2.4; // Fast, fluid continuous auto-scroll
+    const speed = 2.2; // Fast, fluid continuous auto-scroll
 
     const step = () => {
-      if (!isHovered && !isDragging && !activePhoto) {
-        scrollAcc += speed;
-        if (scrollAcc >= container.scrollWidth - container.clientWidth - 2) {
-          scrollAcc = 0;
+      const halfWidth = container.scrollWidth / 2;
+      if (halfWidth > 0) {
+        if (!isHovered && !isDragging && !activePhoto) {
+          scrollAcc += speed;
+          if (scrollAcc >= halfWidth) {
+            scrollAcc -= halfWidth;
+          }
+          container.scrollLeft = scrollAcc;
+        } else {
+          if (container.scrollLeft >= halfWidth) {
+            container.scrollLeft -= halfWidth;
+          } else if (container.scrollLeft <= 0) {
+            container.scrollLeft += halfWidth;
+          }
+          scrollAcc = container.scrollLeft;
         }
-        container.scrollLeft = Math.floor(scrollAcc);
-      } else {
-        scrollAcc = container.scrollLeft;
       }
       animationFrameId = requestAnimationFrame(step);
     };
@@ -170,9 +190,9 @@ export function FounderGallerySection() {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
-          className={`flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth no-scrollbar select-none cursor-grab active:cursor-grabbing -mx-4 px-4 sm:mx-0 sm:px-0`}
+          className={`flex gap-5 sm:gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar select-none cursor-grab active:cursor-grabbing -mx-4 px-4 sm:mx-0 sm:px-0`}
         >
-          {photos.map((photo, idx) => (
+          {displayPhotos.map((photo, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}

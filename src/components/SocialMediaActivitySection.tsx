@@ -198,6 +198,9 @@ export function SocialMediaActivitySection() {
     setIsDragging(false);
   };
 
+  // 3x looped array for seamless infinite conveyor loop (no start, no end)
+  const displayPosts = [...SOCIAL_POSTS, ...SOCIAL_POSTS, ...SOCIAL_POSTS];
+
   // Continuous smooth fast auto-scroll effect (pauses on hover, drag, or modal view)
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -208,14 +211,22 @@ export function SocialMediaActivitySection() {
     const speed = 2.0; // Fast, fluid 60fps auto-scroll
 
     const step = () => {
-      if (!isHovered && !isDragging && !activeVideoPost) {
-        scrollAcc += speed;
-        if (scrollAcc >= container.scrollWidth - container.clientWidth - 2) {
-          scrollAcc = 0;
+      const oneThirdWidth = container.scrollWidth / 3;
+      if (oneThirdWidth > 0) {
+        if (!isHovered && !isDragging && !activeVideoPost) {
+          scrollAcc += speed;
+          if (scrollAcc >= oneThirdWidth) {
+            scrollAcc -= oneThirdWidth;
+          }
+          container.scrollLeft = scrollAcc;
+        } else {
+          if (container.scrollLeft >= oneThirdWidth) {
+            container.scrollLeft -= oneThirdWidth;
+          } else if (container.scrollLeft <= 0) {
+            container.scrollLeft += oneThirdWidth;
+          }
+          scrollAcc = container.scrollLeft;
         }
-        container.scrollLeft = Math.floor(scrollAcc);
-      } else {
-        scrollAcc = container.scrollLeft;
       }
       animationFrameId = requestAnimationFrame(step);
     };
@@ -238,12 +249,21 @@ export function SocialMediaActivitySection() {
   };
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 340;
-      scrollContainerRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth"
-      });
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const oneThirdWidth = container.scrollWidth / 3;
+    const scrollAmount = 340;
+
+    if (direction === "left") {
+      if (container.scrollLeft <= scrollAmount) {
+        container.scrollLeft += oneThirdWidth;
+      }
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    } else {
+      if (container.scrollLeft >= oneThirdWidth) {
+        container.scrollLeft -= oneThirdWidth;
+      }
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -339,13 +359,13 @@ export function SocialMediaActivitySection() {
             isDragging ? "cursor-grabbing" : "cursor-grab"
           }`}
         >
-          {SOCIAL_POSTS.map((post, idx) => {
+          {displayPosts.map((post, idx) => {
             const isLiked = likedPosts[post.id];
             const currentLikes = likeCounts[post.id];
 
             return (
               <motion.div
-                key={post.id}
+                key={`${post.id}-${idx}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

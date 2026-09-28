@@ -1,15 +1,5 @@
 export default function Loading() {
   return (
-    <div className="min-h-[50vh] flex flex-col items-center justify-center">
-      <div className="relative">
-        {/* Outer glowing ring */}
-        <div className="w-16 h-16 rounded-full border-4 border-white/5 border-t-brand-blue border-r-brand-purple animate-spin"></div>
-        {/* Inner glow */}
-        <div className="absolute inset-0 bg-brand-purple/20 blur-xl rounded-full animate-pulse"></div>
-      </div>
-      <p className="mt-6 text-gray-400 text-sm font-medium tracking-widest uppercase animate-pulse">
-        Loading
-      </p>
-    </div>
+    <div className="fixed top-0 left-0 right-0 z-[100] h-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 animate-pulse pointer-events-none shadow-[0_0_12px_rgba(245,158,11,0.8)]" />
   );
 }
