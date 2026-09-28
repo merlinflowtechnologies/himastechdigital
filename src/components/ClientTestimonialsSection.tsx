@@ -22,6 +22,7 @@ export function ClientTestimonialsSection() {
   const [showSubmitModal, setShowSubmitModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [dynamicReviews, setDynamicReviews] = useState<ClientTestimonial[]>([]);
   const [submitForm, setSubmitForm] = useState({
     name: "",
@@ -68,13 +69,35 @@ export function ClientTestimonialsSection() {
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
+
     try {
-      await submitReviewAction(submitForm);
-    } catch (err) {
-      console.error(err);
+      const response = await fetch("/api/reviews/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitForm),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.error || "Failed to submit review. Please try again.");
+      }
+    } catch (err: any) {
+      console.error("Direct API submission failed, trying fallback action:", err);
+      try {
+        const fallbackRes = await submitReviewAction(submitForm);
+        if (fallbackRes.success) {
+          setSubmitted(true);
+          return;
+        }
+      } catch (fbErr) {
+        console.error("Fallback error:", fbErr);
+      }
+      setErrorMessage("Network error submitting review. Please try again.");
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
@@ -282,6 +305,11 @@ export function ClientTestimonialsSection() {
 
             {!submitted ? (
               <form onSubmit={handleSubmitReview} className="space-y-3.5">
+                {errorMessage && (
+                  <div className="p-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-300 text-xs font-medium">
+                    {errorMessage}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="text-xs font-bold text-slate-300 block mb-1">Your Full Name *</label>
