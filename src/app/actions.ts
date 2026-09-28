@@ -14,27 +14,26 @@ export async function submitContactForm(formData: FormData) {
   }
 
   try {
-    const payload = {
-      _subject: `⚡ New Himastech Lead Inquiry: ${name} (${businessName || "Direct Inquiry"})`,
-      Full_Name: name,
-      Business_or_Project: businessName || "Not provided",
-      Phone_or_WhatsApp: phone,
-      Email: email,
-      Service_Required: serviceRequired || "Growth Strategy & Audit",
-      Project_Details: businessDetails,
-      _template: "table",
-      _captcha: "false"
-    };
+    const params = new URLSearchParams();
+    params.append("_subject", `⚡ New Himastech Lead Inquiry: ${name} (${businessName || "Direct Inquiry"})`);
+    params.append("name", name);
+    params.append("email", email);
+    params.append("phone", phone);
+    params.append("company", businessName || "Not provided");
+    params.append("service_required", serviceRequired || "Growth Strategy & Audit");
+    params.append("message", businessDetails);
+    params.append("_template", "table");
+    params.append("_captcha", "false");
 
     await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Origin": "https://www.himastechdigi.com",
         "Referer": "https://www.himastechdigi.com/contact"
       },
-      body: JSON.stringify(payload)
+      body: params.toString()
     });
 
     return { 
@@ -60,27 +59,26 @@ export async function submitReviewAction(data: {
   }
 
   try {
-    const payload = {
-      _subject: `★ New Client Endorsement: ${data.name} (${data.company})`,
-      Client_Name: data.name,
-      Designation: data.designation,
-      Company: data.company,
-      Phone_or_WhatsApp: data.phone,
-      Star_Rating: `${data.rating || 5} / 5 Stars`,
-      Client_Review: data.reviewText,
-      _template: "table",
-      _captcha: "false"
-    };
+    const params = new URLSearchParams();
+    params.append("_subject", `★ New Client Endorsement: ${data.name} (${data.company})`);
+    params.append("name", data.name);
+    params.append("company", data.company);
+    params.append("designation", data.designation || "Not provided");
+    params.append("phone", data.phone);
+    params.append("rating", `${data.rating || 5} / 5 Stars`);
+    params.append("message", data.reviewText);
+    params.append("_template", "table");
+    params.append("_captcha", "false");
 
     await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Origin": "https://www.himastechdigi.com",
         "Referer": "https://www.himastechdigi.com/testimonials"
       },
-      body: JSON.stringify(payload)
+      body: params.toString()
     });
 
     return { success: true, message: "Review received and submitted for verification!" };
