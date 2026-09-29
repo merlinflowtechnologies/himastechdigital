@@ -67,6 +67,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Review received and submitted for verification!",
+      delivery: emailJson,
     });
   } catch (error: any) {
     console.error("Unhandled error in /api/reviews/submit:", error);
