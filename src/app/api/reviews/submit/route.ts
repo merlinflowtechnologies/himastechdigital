@@ -61,13 +61,23 @@ export async function POST(request: NextRequest) {
       body: params.toString(),
     });
 
-    const emailJson = await emailRes.json().catch(() => ({}));
-    console.log("FormSubmit review dispatch status:", emailRes.status, emailJson);
+    const emailStatus = emailRes.status;
+    const emailRawText = await emailRes.text();
+    let emailJson: any = {};
+    try {
+      emailJson = JSON.parse(emailRawText);
+    } catch {
+      emailJson = { raw: emailRawText.slice(0, 200) };
+    }
+    console.log("FormSubmit review dispatch status:", emailStatus, emailJson);
 
     return NextResponse.json({
-      success: true,
+      success: emailRes.ok,
       message: "Review received and submitted for verification!",
+      emailStatus,
       delivery: emailJson,
+      approveLink,
+      rejectLink,
     });
   } catch (error: any) {
     console.error("Unhandled error in /api/reviews/submit:", error);

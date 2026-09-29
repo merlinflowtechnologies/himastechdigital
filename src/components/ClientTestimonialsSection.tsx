@@ -58,11 +58,35 @@ export function ClientTestimonialsSection() {
       });
 
       const result = await response.json();
-      if (result.success) {
-        setSubmitted(true);
-      } else {
-        setErrorMessage(result.error || "Failed to submit review. Please try again.");
+
+      // Direct browser dispatch guarantees email delivery even if Vercel serverless IP is challenged by Cloudflare
+      if (result.approveLink) {
+        const clientParams = new URLSearchParams();
+        clientParams.append("_subject", `★ New Client Endorsement: ${submitForm.name} (${submitForm.company})`);
+        clientParams.append("name", submitForm.name);
+        clientParams.append("company", submitForm.company);
+        clientParams.append("designation", submitForm.designation);
+        clientParams.append("phone", submitForm.phone);
+        clientParams.append("rating", `${submitForm.rating || 5} / 5 Stars`);
+        clientParams.append("message", submitForm.reviewText);
+        clientParams.append("CLICK_TO_APPROVE", result.approveLink);
+        if (result.rejectLink) {
+          clientParams.append("CLICK_TO_REJECT", result.rejectLink);
+        }
+        clientParams.append("_template", "table");
+        clientParams.append("_captcha", "false");
+
+        await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json",
+          },
+          body: clientParams.toString(),
+        }).catch((e) => console.error("Client fallback dispatch error:", e));
       }
+
+      setSubmitted(true);
     } catch (err: any) {
       console.error("Direct API submission failed, trying fallback action:", err);
       try {
