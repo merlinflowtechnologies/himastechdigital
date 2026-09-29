@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { 
-  Sparkles, 
   FileText, 
   Video, 
   Palette, 
@@ -10,11 +9,8 @@ import {
   Bot, 
   ArrowRight, 
   Cpu, 
-  Zap, 
   CheckCircle2, 
-  MessageSquare,
-  Activity,
-  Layers
+  Activity
 } from "lucide-react";
 import Link from "next/link";
 

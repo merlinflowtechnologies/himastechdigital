@@ -8,7 +8,6 @@ import {
   Sparkles, 
   TrendingUp, 
   CheckCircle2, 
-  ShieldCheck, 
   Building2, 
   Clock, 
   MapPin, 
@@ -17,11 +16,10 @@ import {
   Target, 
   Video, 
   Laptop, 
-  PhoneCall,
-  Quote,
+  Quote, 
   Layers
 } from "lucide-react";
-import { portfolioProjects, PortfolioProject } from "@/data/portfolioData";
+import { portfolioProjects } from "@/data/portfolioData";
 
 export async function generateStaticParams() {
   return portfolioProjects.map((project) => ({

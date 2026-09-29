@@ -15,10 +15,7 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Sparkles, 
-  Layers,
   Target,
-  Zap,
-  Award,
   PhoneCall
 } from "lucide-react";
 

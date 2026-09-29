@@ -5,11 +5,8 @@ import {
   Sparkles, 
   ArrowRight, 
   Eye, 
-  TrendingUp, 
-  Target, 
   Compass, 
   Zap, 
-  ShieldCheck, 
   CheckCircle2,
   ChevronRight
 } from "lucide-react";

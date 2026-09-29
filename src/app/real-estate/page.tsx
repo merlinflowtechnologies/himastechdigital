@@ -16,18 +16,10 @@ import {
   ArrowRight, 
   Sparkles, 
   CheckCircle2, 
-  PhoneCall, 
   TrendingUp, 
-  ShieldCheck, 
   GraduationCap, 
-  Compass, 
   Home, 
-  Award,
-  Globe2,
-  Clock,
-  ChevronRight,
-  Layers,
-  Zap
+  ChevronRight
 } from "lucide-react";
 
 export const metadata: Metadata = {

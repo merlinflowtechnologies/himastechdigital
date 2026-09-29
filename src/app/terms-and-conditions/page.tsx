@@ -2,17 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { 
   ShieldCheck, 
-  FileText, 
   ArrowLeft, 
-  CheckCircle2, 
   Clock, 
   Building2, 
-  ExternalLink, 
-  Lock, 
   Scale, 
-  CreditCard, 
-  Mail, 
-  Phone,
   Sparkles,
   Award,
   ChevronRight

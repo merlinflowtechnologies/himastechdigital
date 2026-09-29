@@ -3,31 +3,17 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { 
-  Share2,
-  Search, 
-  Target, 
   TrendingUp,
-  Laptop,
-  Layout,
-  Palette,
-  Video,
-  FileText,
-  MessageCircle,
-  Mail,
-  Cpu,
   CheckCircle2, 
   ArrowRight, 
   Zap, 
   X,
-  Sparkles,
-  ShieldCheck,
-  Clock,
   Layers,
   ChevronLeft,
   ChevronRight,
   MoveHorizontal
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { allServices, ServiceItem } from "@/data/servicesData";

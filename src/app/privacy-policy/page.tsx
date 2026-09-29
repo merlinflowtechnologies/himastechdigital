@@ -4,18 +4,11 @@ import {
   ShieldCheck, 
   Lock, 
   ArrowLeft, 
-  CheckCircle2, 
   Clock, 
   Building2, 
-  ExternalLink, 
-  EyeOff, 
-  FileCheck, 
   Server, 
-  Mail, 
-  Phone,
   Sparkles,
   Cookie,
-  UserCheck,
   ChevronRight,
   Award
 } from "lucide-react";

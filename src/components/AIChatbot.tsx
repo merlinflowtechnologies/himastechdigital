@@ -8,9 +8,7 @@ import {
   X, 
   ArrowRight, 
   RotateCcw, 
-  Phone, 
-  Building2,
-  Sparkles
+  Phone
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";

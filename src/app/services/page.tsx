@@ -6,9 +6,7 @@ import {
   CheckCircle2, 
   Sparkles, 
   Zap, 
-  PhoneCall, 
   TrendingUp,
-  Layers,
   Home
 } from "lucide-react";
 

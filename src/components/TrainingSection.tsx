@@ -13,15 +13,10 @@ import {
   Sparkles, 
   CheckCircle2, 
   ArrowRight, 
-  MessageCircle, 
   Calendar, 
   ShieldCheck, 
   Clock, 
-  Zap, 
-  TrendingUp, 
-  Layers, 
   X, 
-  Send,
   ChevronRight
 } from "lucide-react";
 
@@ -48,7 +43,6 @@ interface TrainingModule {
 export function TrainingSection() {
   const [activeTab, setActiveTab] = useState<string>("real-estate-sales");
   const [showBookingModal, setShowBookingModal] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState<string>("Real Estate Sales & Marketing Training");
   const [mounted, setMounted] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -239,7 +233,6 @@ export function TrainingSection() {
 
   const handleOpenBooking = (programTitle?: string) => {
     if (programTitle) {
-      setSelectedProgram(programTitle);
       setBookingForm((prev) => ({ ...prev, program: programTitle }));
     }
     setShowBookingModal(true);
@@ -672,7 +665,7 @@ export function TrainingSection() {
                   </div>
                   <h4 className="text-xl font-bold text-white">Training Session Request Received!</h4>
                   <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you <strong>{bookingForm.name}</strong> from <strong>{bookingForm.company}</strong>. Kishore Patel's executive desk will contact you via WhatsApp/Phone at <strong>{bookingForm.phone}</strong> within 4 hours to coordinate scheduling and curriculum customization.
+                    Thank you <strong>{bookingForm.name}</strong> from <strong>{bookingForm.company}</strong>. Kishore Patel&apos;s executive desk will contact you via WhatsApp/Phone at <strong>{bookingForm.phone}</strong> within 4 hours to coordinate scheduling and curriculum customization.
                   </p>
                   <div className="pt-2">
                     <button

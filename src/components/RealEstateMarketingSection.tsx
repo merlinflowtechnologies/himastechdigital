@@ -15,7 +15,6 @@ import {
   BarChart3, 
   UserCheck, 
   ArrowRight, 
-  Sparkles, 
   CheckCircle2,
   ChevronRight
 } from "lucide-react";

@@ -17,7 +17,7 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import { portfolioProjects, portfolioCategories, PortfolioProject } from "@/data/portfolioData";
+import { portfolioProjects, portfolioCategories } from "@/data/portfolioData";
 
 export function CreativePortfolioSection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");

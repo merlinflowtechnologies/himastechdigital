@@ -12,21 +12,14 @@ import {
   Sparkles, 
   CheckCircle2, 
   ArrowRight, 
-  PhoneCall, 
-  Calendar, 
-  ShieldCheck, 
   Award, 
-  Clock, 
-  Zap, 
-  TrendingUp, 
   Home, 
   UserCheck, 
   Layers, 
   X, 
   Send,
   Download,
-  Star,
-  ChevronRight
+  Star
 } from "lucide-react";
 
 interface TrainingTrack {

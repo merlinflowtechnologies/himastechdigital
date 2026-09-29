@@ -4,20 +4,16 @@ import { Metadata } from "next";
 import { 
   allServices, 
   getServiceBySlug, 
-  getOtherServices, 
-  ServiceItem 
+  getOtherServices
 } from "@/data/servicesData";
 import { 
   ArrowRight, 
   CheckCircle2, 
   Sparkles, 
   Zap, 
-  PhoneCall, 
   ChevronLeft, 
   ChevronRight, 
   Layers, 
-  ShieldCheck, 
-  Clock, 
   TrendingUp,
   Cpu,
   Home

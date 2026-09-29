@@ -6,14 +6,11 @@ import {
   Mail, 
   MapPin, 
   MessageCircle, 
-  Send, 
   CheckCircle2, 
   Sparkles, 
   ShieldCheck, 
   Clock, 
-  ArrowRight,
-  Building2,
-  User
+  ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitContactForm } from "@/app/actions";

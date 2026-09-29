@@ -10,10 +10,7 @@ import {
   TrendingUp, 
   Sparkles, 
   CheckCircle2, 
-  ArrowRight, 
-  PhoneCall,
-  ChevronRight,
-  ShieldCheck
+  ChevronRight
 } from "lucide-react";
 import Link from "next/link";
 
