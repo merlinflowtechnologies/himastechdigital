@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
-import { getSupabaseAdmin } from "@/lib/supabase";
+import { signReviewPayload } from "@/lib/reviewSigner";
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,41 +20,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let approveLink = "";
-    let rejectLink = "";
+    // 1. Generate tamper-proof signed approval link (Zero Database!)
+    const reviewId = randomUUID();
+    const { data: signedData, sig } = signReviewPayload({
+      id: reviewId,
+      name,
+      company,
+      designation,
+      phone,
+      rating,
+      message: reviewText,
+      timestamp: Date.now(),
+    });
 
-    // 1. Insert into Supabase
-    try {
-      const supabase = getSupabaseAdmin();
-      if (supabase) {
-        const approvalToken = randomUUID();
-        const { data: inserted, error: insertError } = await supabase
-          .from("reviews")
-          .insert({
-            name,
-            company,
-            designation,
-            phone,
-            rating,
-            message: reviewText,
-            status: "pending",
-            approval_token: approvalToken,
-          })
-          .select("id")
-          .single();
+    const approveLink = `https://www.himastechdigi.com/api/reviews/approve?data=${signedData}&sig=${sig}`;
+    const rejectLink = `https://www.himastechdigi.com/api/reviews/reject?data=${signedData}&sig=${sig}`;
 
-        if (insertError) {
-          console.error("Supabase insert error in API route:", insertError);
-        } else if (inserted?.id) {
-          approveLink = `https://www.himastechdigi.com/api/reviews/approve?id=${inserted.id}&token=${approvalToken}`;
-          rejectLink = `https://www.himastechdigi.com/api/reviews/reject?id=${inserted.id}&token=${approvalToken}`;
-        }
-      }
-    } catch (dbErr) {
-      console.error("Database error in /api/reviews/submit:", dbErr);
-    }
-
-    // 2. Dispatch email to FormSubmit
+    // 2. Dispatch email to Cloudflare Email Routing address: info@himastechdigi.com
     const params = new URLSearchParams();
     params.append("_subject", `★ New Client Endorsement: ${name} (${company})`);
     params.append("name", name);
@@ -63,32 +45,28 @@ export async function POST(request: NextRequest) {
     params.append("phone", phone);
     params.append("rating", `${rating} / 5 Stars`);
     params.append("message", reviewText);
-
-    if (approveLink) {
-      params.append("CLICK_TO_APPROVE", approveLink);
-      params.append("CLICK_TO_REJECT", rejectLink);
-    }
-
+    params.append("CLICK_TO_APPROVE", approveLink);
+    params.append("CLICK_TO_REJECT", rejectLink);
     params.append("_template", "table");
     params.append("_captcha", "false");
 
-    const emailRes = await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
+    const emailRes = await fetch("https://formsubmit.co/ajax/info@himastechdigi.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "application/json",
         "Origin": "https://www.himastechdigi.com",
-        "Referer": "https://www.himastechdigi.com"
+        "Referer": "https://www.himastechdigi.com",
       },
-      body: params.toString()
+      body: params.toString(),
     });
 
     const emailJson = await emailRes.json().catch(() => ({}));
-    console.log("FormSubmit API dispatch status:", emailRes.status, emailJson);
+    console.log("FormSubmit review dispatch status:", emailRes.status, emailJson);
 
     return NextResponse.json({
       success: true,
-      message: "Review received and submitted for verification!"
+      message: "Review received and submitted for verification!",
     });
   } catch (error: any) {
     console.error("Unhandled error in /api/reviews/submit:", error);

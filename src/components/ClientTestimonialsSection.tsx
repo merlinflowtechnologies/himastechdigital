@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -15,7 +15,8 @@ import {
   PlusCircle
 } from "lucide-react";
 import { genuineClientTestimonials, ClientTestimonial } from "@/data/clientTestimonialsData";
-import { submitReviewAction, getApprovedReviews } from "@/app/actions";
+import approvedReviewsData from "@/data/approvedReviews.json";
+import { submitReviewAction } from "@/app/actions";
 
 export function ClientTestimonialsSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -23,7 +24,6 @@ export function ClientTestimonialsSection() {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [dynamicReviews, setDynamicReviews] = useState<ClientTestimonial[]>([]);
   const [submitForm, setSubmitForm] = useState({
     name: "",
     company: "",
@@ -34,33 +34,12 @@ export function ClientTestimonialsSection() {
     rating: 5
   });
 
-  useEffect(() => {
-    getApprovedReviews().then((reviews) => {
-      if (reviews && reviews.length > 0) {
-        const formatted: ClientTestimonial[] = reviews.map((r: { id: string; name: string; designation?: string; company: string; rating?: number; created_at: string; message: string }) => ({
-          id: r.id,
-          name: r.name,
-          designation: r.designation || "Verified Client",
-          company: r.company,
-          companyLogo: "/testimonials/logos/merlinflow.svg",
-          projectTitle: "Strategic Digital & Sales Growth",
-          category: "Technology" as const,
-          rating: r.rating || 5,
-          date: new Date(r.created_at).toLocaleDateString("en-US", { month: "short", year: "numeric" }),
-          verified: true,
-          verifiedBadgeText: "Verified Client • Approved Endorsement",
-          testimonial: r.message,
-          highlightMetric: "Verified Client Review",
-          location: "Hyderabad"
-        }));
-        setDynamicReviews(formatted);
-      }
-    });
-  }, []);
-
   const categories = ["All", "Real Estate", "Technology", "Branding & Social", "High-Ticket Ads"];
 
-  const allTestimonials = [...dynamicReviews, ...genuineClientTestimonials];
+  const allTestimonials = [
+    ...(approvedReviewsData as unknown as ClientTestimonial[]),
+    ...genuineClientTestimonials
+  ];
 
   const filteredTestimonials = activeCategory === "All"
     ? allTestimonials
@@ -357,6 +336,33 @@ export function ClientTestimonialsSection() {
                       placeholder="+91 98765 43210"
                       className="w-full px-3 py-2 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-500 focus:border-amber-400 focus:outline-none"
                     />
+                  </div>
+                </div>
+
+                {/* Interactive Star Rating Selector */}
+                <div>
+                  <label className="text-xs font-bold text-slate-300 block mb-1.5">Your Rating *</label>
+                  <div className="flex items-center gap-1.5 bg-white/5 border border-white/15 px-3 py-2 rounded-xl w-fit">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setSubmitForm({ ...submitForm, rating: star })}
+                        className="p-0.5 hover:scale-115 transition-transform cursor-pointer focus:outline-none"
+                        title={`${star} Star${star > 1 ? "s" : ""}`}
+                      >
+                        <Star
+                          className={`w-5 h-5 ${
+                            star <= submitForm.rating
+                              ? "text-amber-400 fill-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]"
+                              : "text-slate-600 hover:text-slate-400"
+                          } transition-colors`}
+                        />
+                      </button>
+                    ))}
+                    <span className="text-xs font-extrabold text-amber-300 ml-2 tracking-wide">
+                      {submitForm.rating} / 5 Stars
+                    </span>
                   </div>
                 </div>
 
