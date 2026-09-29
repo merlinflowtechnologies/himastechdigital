@@ -28,7 +28,7 @@ export async function submitContactForm(formData: FormData) {
     params.append("_template", "table");
     params.append("_captcha", "false");
 
-    await fetch("https://formsubmit.co/ajax/info@himastechdigi.com", {
+    await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -90,7 +90,7 @@ export async function submitReviewAction(data: {
     params.append("_template", "table");
     params.append("_captcha", "false");
 
-    const emailRes = await fetch("https://formsubmit.co/ajax/info@himastechdigi.com", {
+    const emailRes = await fetch("https://formsubmit.co/ajax/himastechdigi@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
