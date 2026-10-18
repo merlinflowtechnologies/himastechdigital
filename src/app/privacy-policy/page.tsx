@@ -299,40 +299,43 @@ export default function PrivacyPolicyPage() {
           <span className="text-blue-600 font-bold">Privacy Policy</span>
         </div>
 
-        {/* Page Hero Header */}
-        <div className="mb-10 p-6 sm:p-10 rounded-3xl glass-card border border-slate-200/90 shadow-sm relative overflow-hidden">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-subcard text-slate-800 text-xs font-bold mb-4 shadow-xs">
+        {/* Page Hero Header - Luminous, Bright & Crystal Clear */}
+        <div className="mb-10 p-6 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-lg relative overflow-hidden">
+          {/* Subtle Top Accent Bar */}
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#062d72] via-[#e59800] to-[#f15a22]" />
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold mb-4 shadow-2xs">
             <Lock className="w-3.5 h-3.5 text-blue-600" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+            <span>
               Data Protection &amp; Telemetry Framework • 26 Numbered Policies
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062d72] tracking-tight mb-4">
             Privacy Policy
           </h1>
 
-          <p className="text-slate-600 text-sm sm:text-base max-w-3xl leading-relaxed">
-            Your privacy is paramount at <strong>Himastech Digital Marketing</strong>. The following 26 numbered policy sections explain in complete detail how we collect, store, safeguard, encrypt, and handle business data under the Indian Digital Personal Data Protection (DPDP) Act 2023, EU GDPR, and global standards.
+          <p className="text-slate-700 text-sm sm:text-base max-w-3xl leading-relaxed font-normal">
+            Your privacy is paramount at <strong className="text-[#062d72] font-bold">Himastech Digital Marketing</strong>. The following 26 numbered policy sections explain in complete detail how we collect, store, safeguard, encrypt, and handle business data under the Indian Digital Personal Data Protection (DPDP) Act 2023, EU GDPR, and global standards.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 mt-6 text-xs text-slate-500 pt-6 border-t border-slate-200/80">
+          <div className="flex flex-wrap items-center gap-4 mt-6 text-xs text-slate-600 pt-6 border-t border-slate-200 font-medium">
             <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-slate-400" />
-              <span>Effective: <strong>{lastUpdated}</strong></span>
+              <Clock className="w-3.5 h-3.5 text-slate-500" />
+              <span>Effective: <strong className="text-slate-800">{lastUpdated}</strong></span>
             </div>
             <span>•</span>
             <div className="flex items-center gap-1.5">
-              <Building2 className="w-3.5 h-3.5 text-slate-400" />
-              <span>Standard: <strong>DPDP Act 2023 &amp; GDPR Compliant</strong></span>
+              <Building2 className="w-3.5 h-3.5 text-slate-500" />
+              <span>Standard: <strong className="text-slate-800">DPDP Act 2023 &amp; GDPR Compliant</strong></span>
             </div>
             <span>•</span>
             <div className="flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="text-emerald-700 font-semibold">26 Binding Policies</span>
+              <span className="text-emerald-700 font-bold">26 Binding Policies</span>
             </div>
             <span>•</span>
-            <Link href="/terms-and-conditions" className="text-blue-600 underline hover:text-blue-800 font-semibold ml-auto flex items-center gap-1">
+            <Link href="/terms-and-conditions" className="text-blue-600 underline hover:text-blue-800 font-bold ml-auto flex items-center gap-1">
               <span>View Terms &amp; Conditions</span>
               <ChevronRight className="w-3 h-3" />
             </Link>
@@ -340,9 +343,9 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Quick Policy Index Matrix */}
-        <div className="mb-10 p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/90 shadow-xs">
-          <p className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
+        <div className="mb-10 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <p className="text-xs font-black text-[#062d72] uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#f15a22]" />
             <span>Quick Policy Directory (Click to jump to any policy)</span>
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs">
@@ -350,7 +353,7 @@ export default function PrivacyPolicyPage() {
               <a
                 key={item.num}
                 href={`#policy-${item.num}`}
-                className="p-2 rounded-lg bg-slate-50 hover:bg-blue-50 hover:text-blue-700 border border-slate-200/60 transition-colors flex items-center gap-2 truncate"
+                className="p-2.5 rounded-xl bg-slate-50 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200/80 transition-all flex items-center gap-2 truncate shadow-2xs"
               >
                 <span className="font-mono font-bold text-blue-600">#{item.num}</span>
                 <span className="truncate text-[11px] font-medium text-slate-700">{item.title}</span>
@@ -360,22 +363,22 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* 26 Full Numbered Policies */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           {policiesList.map((policy) => (
             <div 
               key={policy.num}
               id={`policy-${policy.num}`}
-              className="glass-card rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-xs hover:border-blue-300 transition-all scroll-mt-28"
+              className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-xs hover:shadow-md hover:border-blue-300 transition-all scroll-mt-28"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-700 text-white font-mono font-black text-sm flex items-center justify-center shrink-0 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#062d72] to-[#1e40af] text-white font-mono font-black text-sm flex items-center justify-center shrink-0 shadow-sm">
                   {policy.num}
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-base sm:text-lg font-black text-slate-950 mb-2.5">
+                  <h2 className="text-base sm:text-lg font-black text-[#062d72] mb-2.5">
                     {policy.num}. {policy.title}
                   </h2>
-                  <div className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <div className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                     {policy.content}
                   </div>
                 </div>
@@ -385,27 +388,27 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Bottom Contact & Action Box */}
-        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#062d72] via-[#09357a] to-[#0a2550] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold mb-2">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Data Rights &amp; Privacy Requests</span>
             </div>
             <h3 className="text-lg sm:text-xl font-bold">Have privacy questions or wish to exercise your rights?</h3>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1">
+            <p className="text-slate-300 text-xs sm:text-sm mt-1">
               Our Data Protection Officer reviews all access, rectification, and erasure requests within 30 days.
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/terms-and-conditions"
-              className="px-5 py-2.5 rounded-full glass-subcard text-white hover:bg-white/10 text-xs font-bold transition-all"
+              className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all"
             >
               Terms &amp; Conditions
             </Link>
             <a
               href="mailto:info@himastechdigi.com"
-              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs hover:opacity-95 transition-all shadow-md"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#e59800] to-[#f15a22] text-white font-bold text-xs hover:opacity-95 transition-all shadow-md"
             >
               Email Privacy Desk
             </a>

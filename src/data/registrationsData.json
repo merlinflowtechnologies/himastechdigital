@@ -1,0 +1,35 @@
+[
+  {
+    "id": "reg_1729176400000_89f1a",
+    "name": "Srinivas Rao",
+    "phone": "+91 98480 12345",
+    "email": "srinivas.rao@gmail.com",
+    "course": "Real Estate Lead Generation Funnels",
+    "createdAt": "2026-10-17T14:45:00.000Z",
+    "status": "New",
+    "source": "Website Registration Modal",
+    "notes": "Interested in gated community villas in Hyderabad"
+  },
+  {
+    "id": "reg_1729175100000_42a8b",
+    "name": "Madhavi Latha",
+    "phone": "+91 97000 54321",
+    "email": "madhavi.latha@yahoo.com",
+    "course": "Affiliate Marketing (Amazon & Flipkart)",
+    "createdAt": "2026-10-17T13:20:00.000Z",
+    "status": "Contacted",
+    "source": "Website Registration Modal",
+    "notes": "Homemaker looking for work-from-home side income"
+  },
+  {
+    "id": "reg_1729173200000_17c9d",
+    "name": "Rajesh Varma",
+    "phone": "+91 91630 49890",
+    "email": "rajesh.varma@outlook.com",
+    "course": "Gen-AI & Digital Marketing",
+    "createdAt": "2026-10-17T11:30:00.000Z",
+    "status": "Converted",
+    "source": "Website Registration Modal",
+    "notes": "Paid fees for Telugu masterclass batch"
+  }
+]

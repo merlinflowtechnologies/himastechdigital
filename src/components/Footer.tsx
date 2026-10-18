@@ -103,16 +103,80 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Primary Action Button */}
-            <Link
-              href="/#contact"
-              onClick={(e) => handleScrollTo(e, "/#contact")}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(245,158,11,0.35)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] hover:scale-105 transition-all group cursor-pointer"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
-              <span>GET FREE AUDIT</span>
-              <ArrowRight className="w-3.5 h-3.5 text-slate-950 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            {/* Primary Action Button & Social Media Handles */}
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/#contact"
+                onClick={(e) => handleScrollTo(e, "/#contact")}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(245,158,11,0.35)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] hover:scale-105 transition-all group cursor-pointer w-fit"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+                <span>GET FREE AUDIT</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-950 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              {/* Official Social Media Channels */}
+              <div className="flex items-center gap-2.5 pt-1">
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/916304989071?text=Hi%20Himastech%2C%20let's%20talk%20about%20our%20business."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#25D366] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] border border-white/10 group cursor-pointer"
+                  title="WhatsApp: +91 6304989071"
+                  aria-label="Chat on WhatsApp"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.96.536 1.764.78 2.791.78h.001c3.181 0 5.768-2.586 5.768-5.766 0-3.18-2.587-5.766-5.769-5.766zm3.376 8.21c-.144.405-.837.774-1.17.824-.312.045-.634.07-1.748-.393-1.423-.592-2.339-2.043-2.41-2.138-.071-.095-.572-.76-.572-1.45 0-.69.362-1.03.49-1.173.128-.143.279-.179.373-.179.094 0 .188.001.27.006.086.005.201-.033.314.24.118.283.402.981.437 1.053.036.072.06.155.012.25-.048.096-.072.156-.143.239-.072.083-.151.185-.216.248-.071.07-.145.147-.062.29.083.143.37.61.794.987.545.485 1.006.636 1.149.707.143.072.227.06.312-.036.084-.096.363-.423.46-.568.096-.144.192-.12.324-.072.132.048.837.394.981.466.144.072.24.108.276.168.036.06.036.347-.108.752z" />
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.528 3.659 1.442 5.17L2 22l4.98-1.306A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.062c-1.637 0-3.155-.494-4.42-1.341l-.317-.213-2.955.775.789-2.88-.233-.37A8.04 8.04 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8.062-8 8.062z" />
+                  </svg>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/himastech_digitalmarketing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-600 hover:to-purple-600 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(225,48,108,0.4)] border border-white/10 group cursor-pointer"
+                  title="Instagram: @himastech_digitalmarketing"
+                  aria-label="Visit Himastech on Instagram"
+                >
+                  <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                  </svg>
+                </a>
+
+                {/* YouTube */}
+                <a
+                  href="https://youtube.com/@himastech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#FF0000] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)] border border-white/10 group cursor-pointer"
+                  title="YouTube: @himastech"
+                  aria-label="Subscribe to Himastech on YouTube"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/share/1CWdf1L6SK/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] border border-white/10 group cursor-pointer"
+                  title="Facebook: Himastech"
+                  aria-label="Visit Himastech on Facebook"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
           
           {/* ========================================================================= */}
@@ -319,12 +383,12 @@ export function Footer() {
 
           <div className="text-center sm:text-right">
             <p className="text-slate-400 font-medium">
-              In strategic alliance with{" "}
+              Powered by{" "}
               <Link
                 href="/merlinflow"
                 className="text-cyan-400 font-bold hover:underline inline-flex items-center gap-1"
               >
-                <span>Merlinflow Technologies Pvt Ltd</span>
+                <span>Merlinflow Technologies Private Limited</span>
                 <ExternalLink className="w-3 h-3 text-cyan-400 inline" />
               </Link>
             </p>

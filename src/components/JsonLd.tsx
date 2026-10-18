@@ -31,9 +31,11 @@ export function JsonLd() {
       },
     ],
     sameAs: [
-      "https://www.linkedin.com/company/himastech",
-      "https://www.instagram.com/himastech",
+      "https://www.instagram.com/himastech_digitalmarketing",
+      "https://youtube.com/@himastech",
+      "https://www.facebook.com/share/1CWdf1L6SK/",
       "https://wa.me/916304989071",
+      "https://www.linkedin.com/company/himastech",
     ],
   };
 

@@ -56,7 +56,7 @@ interface SocialPost {
 const SOCIAL_POSTS: SocialPost[] = [
   {
     id: "post-1",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "kishorepatel_growth",
     avatar: "/saik.jpeg",
     audio: "Original audio • Real Estate Strategy",
@@ -69,11 +69,11 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#RealEstateMarketing", "#HyderabadRealty", "#MetaAds", "#KishorePatel", "#SalesFunnel"],
     commentsCount: 64,
     timeAgo: "2 days ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   },
   {
     id: "post-2",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "residential_project",
     avatar: "/realty-hero.jpg",
     audio: "Original audio • Luxury Drone Beats",
@@ -86,11 +86,11 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#ResidentialLaunch", "#ModernLiving", "#SiteVisitFunnel", "#HimastechResults"],
     commentsCount: 42,
     timeAgo: "4 days ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   },
   {
     id: "post-3",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "villa_community",
     avatar: "/luxury-villa.jpg",
     audio: "Original audio • Architectural Walkthrough",
@@ -103,11 +103,11 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#VillaDevelopment", "#GatedCommunity", "#RealEstateReels", "#LeadGeneration"],
     commentsCount: 38,
     timeAgo: "1 week ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   },
   {
     id: "post-4",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "himastech_academy",
     avatar: "/ceo.jpg",
     audio: "Original audio • Live Workshop Session",
@@ -120,11 +120,11 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#TrainingAcademy", "#KishorePatel", "#SalesTraining", "#DigitalMarketingCourse"],
     commentsCount: 45,
     timeAgo: "1 week ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   },
   {
     id: "post-5",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "himastech_studios",
     avatar: "/ai-video-portfolio.jpg",
     audio: "Original audio • Production Studio Mix",
@@ -137,11 +137,11 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#VideoProduction", "#DroneCinematography", "#AdCreative", "#ReelsViral"],
     commentsCount: 53,
     timeAgo: "2 weeks ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   },
   {
     id: "post-6",
-    author: "himastech_official",
+    author: "himastech_digitalmarketing",
     collaborator: "himastech_creative",
     avatar: "/branding-portfolio.jpg",
     audio: "Original audio • Creative Studio",
@@ -154,7 +154,7 @@ const SOCIAL_POSTS: SocialPost[] = [
     hashtags: ["#BrandDesign", "#LuxuryRealEstate", "#ArchitecturalRenders", "#HimastechAgency"],
     commentsCount: 39,
     timeAgo: "2 weeks ago",
-    instagramUrl: "https://www.instagram.com/himastech"
+    instagramUrl: "https://www.instagram.com/himastech_digitalmarketing"
   }
 ];
 
@@ -311,16 +311,46 @@ export function SocialMediaActivitySection() {
             </motion.p>
           </div>
 
-          {/* Carousel Arrows & Instagram CTA */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Carousel Arrows & Social Channel CTAs */}
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* Instagram Follow */}
             <a
-              href="https://www.instagram.com/himastech"
+              href="https://www.instagram.com/himastech_digitalmarketing"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-xs hover:opacity-95 transition-all flex items-center gap-2 shadow-lg shadow-pink-500/20 cursor-pointer"
+              className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-bold text-xs hover:opacity-95 transition-all flex items-center gap-1.5 shadow-lg shadow-pink-500/20 cursor-pointer"
+              title="Follow @himastech_digitalmarketing on Instagram"
             >
               <InstagramIcon className="w-4 h-4 text-white" />
-              <span>Follow @himastech</span>
+              <span>@himastech_digitalmarketing</span>
+            </a>
+
+            {/* YouTube Channel */}
+            <a
+              href="https://youtube.com/@himastech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 sm:py-2.5 rounded-xl bg-[#FF0000] hover:bg-[#d90000] text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-lg shadow-red-500/20 cursor-pointer"
+              title="Subscribe to @himastech on YouTube"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span className="hidden sm:inline">YouTube</span>
+            </a>
+
+            {/* Facebook Page */}
+            <a
+              href="https://www.facebook.com/share/1CWdf1L6SK/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 sm:py-2.5 rounded-xl bg-[#1877F2] hover:bg-[#1567d3] text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-lg shadow-blue-500/20 cursor-pointer"
+              title="Connect on Facebook"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span className="hidden sm:inline">Facebook</span>
             </a>
 
             <div className="flex items-center gap-2">
